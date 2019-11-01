@@ -3,12 +3,12 @@ export IMAGE_NAME=flytepropeller-stagemaker
 .PHONY: linux_compile_propeller
 propeller_linux_compile:
 	mkdir -p ./bin
-	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o /bin/flytepropeller ./flytepropeller/cmd/main.go
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GO111MODULE=auto  go build -o /bin/flytepropeller ./flytepropeller/cmd/main.go
 
 .PHONY: compile_propeller
 propeller_compile:
 	mkdir -p ./bin
-	go build -o bin/flytepropeller ./flytepropeller/cmd/main.go
+	GO111MODULE=auto go build -o bin/flytepropeller ./flytepropeller/cmd/main.go
 
 .PHONY: docker_build
 propeller_docker_build:
@@ -27,4 +27,4 @@ propeller_run_sandbox:
 	# This will start a background process to port forward. It'll be killed when propeller process is.
 	kubectl port-forward service/datacatalog 8089:89 -n flyte &
 
-	go run ./flytepropeller/cmd/main.go --config ./flytepropeller/config.yaml
+	GO111MODULE=auto go run ./flytepropeller/cmd/main.go --config ./flytepropeller/config.yaml
