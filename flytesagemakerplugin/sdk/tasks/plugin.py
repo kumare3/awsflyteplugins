@@ -19,7 +19,7 @@ from flytek8ssparkplugin.sdk.models import task as _spark_model
 from google.protobuf.json_format import MessageToDict as _MessageToDict
 
 
-TASK_TYPE = "sagemaker"
+TASK_TYPE = "aws_sagemaker"
 
 
 class SdkRunnableSparkContainer(_sdk_runnable.SdkRunnableContainer):

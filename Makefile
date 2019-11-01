@@ -1,3 +1,5 @@
+include flytepropeller/Makefile
+
 .PHONY: build_python
 build_python:
 	@python setup.py sdist

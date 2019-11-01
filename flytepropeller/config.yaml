@@ -1,0 +1,77 @@
+# This is a sample configuration file.
+# Real configuration when running inside K8s (local or otherwise) lives in a ConfigMap
+propeller:
+  workers: 4
+  workflow-reeval-duration: 10s
+  downstream-eval-duration: 5s
+  limit-namespace: "all"
+  prof-port: 11254
+  metrics-prefix: flyte
+  enable-admin-launcher: true
+  max-ttl-hours: 1
+  gc-interval: 500m
+  queue:
+    type: batch
+    queue:
+      type: bucket
+      rate: 20
+      capacity: 100
+    sub-queue:
+      type: bucket
+      rate: 100
+      capacity: 1000
+  kube-config: "$HOME/.kube/config"
+  publish-k8s-events: true
+tasks:
+  task-plugins:
+    enabled-plugins:
+      - container
+      - K8S-ARRAY
+      - sidecar
+      - aws_sagemaker
+plugins:
+  # All k8s plugins default configuration
+  k8s:
+    inject-finalizer: true
+    default-annotations:
+      - annotationKey1: annotationValue1
+    resource-tolerations:
+      nvidia.com/gpu:
+        key: flyte/gpu
+        value: dedicated
+        operator: Equal
+        effect: NoSchedule
+    default-env-vars:
+      - AWS_METADATA_SERVICE_TIMEOUT: 5
+      - AWS_METADATA_SERVICE_NUM_ATTEMPTS: 20
+      - FLYTE_AWS_ENDPOINT: "http://minio.flyte:9000"
+      - FLYTE_AWS_ACCESS_KEY_ID: minio
+      - FLYTE_AWS_SECRET_ACCESS_KEY: miniostorage
+  #  # Logging configuration
+  logs:
+    kubernetes-enabled: true
+    kubernetes-url: "http://localhost:30081"
+storage:
+  connection:
+    access-key: minio
+    auth-type: accesskey
+    disable-ssl: true
+    endpoint: http://localhost:9000
+    region: us-east-1
+    secret-key: miniostorage
+  type: minio
+  container: "my-s3-bucket"
+event:
+  type: admin
+  rate: 500
+  capacity: 1000
+admin:
+  endpoint: localhost:30081
+  insecure: true
+catalog-cache:
+  type: noop
+  endpoint: datacatalog:8089
+  insecure: true
+logger:
+  level: 4
+  show-source: true

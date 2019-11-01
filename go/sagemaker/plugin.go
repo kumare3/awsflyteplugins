@@ -1,4 +1,4 @@
-package main
+package sagemaker
 
 import (
 	"context"
@@ -18,9 +18,13 @@ import (
 	"github.com/kumare3/awsflyteplugins/gen/pb-go/proto"
 )
 
-const sagemakerTaskType = "aws_sagemaker"
+const (
+	pluginID          = "aws_sagemaker"
+	sagemakerTaskType = "aws_sagemaker"
+)
+
 // Sanity test that the plugin implements method of k8s.Plugin
-var o k8s.Plugin = mySamplePlugin{}
+var _ k8s.Plugin = mySamplePlugin{}
 
 type mySamplePlugin struct {
 }
@@ -28,9 +32,9 @@ type mySamplePlugin struct {
 func (m mySamplePlugin) BuildIdentityResource(ctx context.Context, taskCtx pluginsCore.TaskExecutionMetadata) (k8s.Resource, error) {
 	// TODO This should return the type of the kubernetes resource. As golang has no generics it is hard to gather the type information automatically
 	// Example of a pod
-	return &v1.Pod{
+	return &v1.PersistentVolume{
 		TypeMeta: metav1.TypeMeta{
-			Kind:       "pod",
+			Kind:       "PersistentVolume",
 			APIVersion: v1.SchemeGroupVersion.String(),
 		},
 	}, nil
@@ -64,7 +68,7 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 func (m mySamplePlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
 	// TODO observe the applicate state from the passed in resource and return the PhaseInfo
 	// E.g we will consider the resource to be a pod
-	p := resource.(*v1.Pod)
+	//p := resource.(*v1.Pod)
 	panic("implement me")
 }
 
@@ -72,11 +76,11 @@ func (m mySamplePlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.Plug
 func init() {
 	pluginmachinery.PluginRegistry().RegisterK8sPlugin(
 		k8s.PluginEntry{
-			ID:                   sagemakerTaskType,
+			ID:                  pluginID,
 			RegisteredTaskTypes: []pluginsCore.TaskType{sagemakerTaskType},
 			// TODO Type of the k8s resource, e.g. Pod
-			ResourceToWatch:     &v1.Pod{},
-			Plugin:              mySamplePlugin{},
-			IsDefault:           false,
+			ResourceToWatch: &v1.PersistentVolume{},
+			Plugin:          mySamplePlugin{},
+			IsDefault:       false,
 		})
 }
