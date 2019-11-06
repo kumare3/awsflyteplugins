@@ -31,13 +31,13 @@ class DemoWorkflow(object):
 
     # Node definitions
     train_node = xgtrainer_task(
-        static_hyperparameters={
-            "eval_metric": "auc",
-            "num_round": "100",
-            "objective": "binary:logistic",
-            "rate_drop": "0.3",
-            "tweedie_variance_power": "1.4",
-        },
+        # static_hyperparameters={
+        #     "eval_metric": "auc",
+        #     "num_round": "100",
+        #     "objective": "binary:logistic",
+        #     "rate_drop": "0.3",
+        #     "tweedie_variance_power": "1.4",
+        # },
         train=train_data,
         validation=validation_data,
     )
@@ -50,7 +50,7 @@ class DemoWorkflow(object):
 
 
 if __name__ == "__main__":
-    _PROJECT = "demo"
+    _PROJECT = "aws"
     _DOMAIN = "development"
     _USAGE = (
         "Usage:\n\n"
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     )
 
     with TemporaryConfiguration(
-        os.path.join(os.path.dirname(__file__), "flyte.config")
+        os.path.join(os.path.dirname(__file__), "..", "flyte.config")
     ):
         if sys.argv[1] == "render_task":
             print("Task Definition:\n\n")

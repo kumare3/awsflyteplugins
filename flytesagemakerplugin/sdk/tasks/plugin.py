@@ -92,9 +92,9 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
         # refactor.
         self.add_inputs(
             {
-                "static_hyperparameters": _interface_model.Variable(
-                    _sdk_types.Types.Generic.to_flyte_literal_type(), ""
-                ),
+                # "static_hyperparameters": _interface_model.Variable(
+                #     _sdk_types.Types.Generic.to_flyte_literal_type(), ""
+                # ),
                 "train": _interface_model.Variable(
                     _sdk_types.Types.MultiPartCSV.to_flyte_literal_type(), ""
                 ),
