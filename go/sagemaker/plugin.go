@@ -50,7 +50,7 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 	}
 
 	// TODO if we have special information to be marshalled through from the python SDK then it can be retrieved using the util
-	sagemakerJob := proto.SagemakerJob{}
+	sagemakerJob := proto.SagemakerHPOJob{}
 	err = utils.UnmarshalStruct(taskTemplate.GetCustom(), &sagemakerJob)
 	if err != nil {
 		return nil, errors.Wrapf(err, "invalid task specification for taskType [%s]", sagemakerTaskType)

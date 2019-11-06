@@ -28,6 +28,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -36,24 +37,54 @@ namespace protobuf_sagemaker_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[1];
+  static const ::google::protobuf::internal::ParseTable schema[6];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors();
-void InitDefaultsSagemakerJobImpl();
-void InitDefaultsSagemakerJob();
+void InitDefaultsAlgorithmSpecification_MetricDefinitionImpl();
+void InitDefaultsAlgorithmSpecification_MetricDefinition();
+void InitDefaultsAlgorithmSpecificationImpl();
+void InitDefaultsAlgorithmSpecification();
+void InitDefaultsResourceConfigImpl();
+void InitDefaultsResourceConfig();
+void InitDefaultsStoppingConditionImpl();
+void InitDefaultsStoppingCondition();
+void InitDefaultsVpcConfigImpl();
+void InitDefaultsVpcConfig();
+void InitDefaultsSagemakerHPOJobImpl();
+void InitDefaultsSagemakerHPOJob();
 inline void InitDefaults() {
-  InitDefaultsSagemakerJob();
+  InitDefaultsAlgorithmSpecification_MetricDefinition();
+  InitDefaultsAlgorithmSpecification();
+  InitDefaultsResourceConfig();
+  InitDefaultsStoppingCondition();
+  InitDefaultsVpcConfig();
+  InitDefaultsSagemakerHPOJob();
 }
 }  // namespace protobuf_sagemaker_2eproto
 namespace flyte {
 namespace plugins {
 namespace sagemaker {
-class SagemakerJob;
-class SagemakerJobDefaultTypeInternal;
-extern SagemakerJobDefaultTypeInternal _SagemakerJob_default_instance_;
+class AlgorithmSpecification;
+class AlgorithmSpecificationDefaultTypeInternal;
+extern AlgorithmSpecificationDefaultTypeInternal _AlgorithmSpecification_default_instance_;
+class AlgorithmSpecification_MetricDefinition;
+class AlgorithmSpecification_MetricDefinitionDefaultTypeInternal;
+extern AlgorithmSpecification_MetricDefinitionDefaultTypeInternal _AlgorithmSpecification_MetricDefinition_default_instance_;
+class ResourceConfig;
+class ResourceConfigDefaultTypeInternal;
+extern ResourceConfigDefaultTypeInternal _ResourceConfig_default_instance_;
+class SagemakerHPOJob;
+class SagemakerHPOJobDefaultTypeInternal;
+extern SagemakerHPOJobDefaultTypeInternal _SagemakerHPOJob_default_instance_;
+class StoppingCondition;
+class StoppingConditionDefaultTypeInternal;
+extern StoppingConditionDefaultTypeInternal _StoppingCondition_default_instance_;
+class VpcConfig;
+class VpcConfigDefaultTypeInternal;
+extern VpcConfigDefaultTypeInternal _VpcConfig_default_instance_;
 }  // namespace sagemaker
 }  // namespace plugins
 }  // namespace flyte
@@ -61,26 +92,47 @@ namespace flyte {
 namespace plugins {
 namespace sagemaker {
 
+enum AlgorithmSpecification_TrainingInputModeEnum {
+  AlgorithmSpecification_TrainingInputModeEnum_Pipe = 0,
+  AlgorithmSpecification_TrainingInputModeEnum_File = 1,
+  AlgorithmSpecification_TrainingInputModeEnum_AlgorithmSpecification_TrainingInputModeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  AlgorithmSpecification_TrainingInputModeEnum_AlgorithmSpecification_TrainingInputModeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool AlgorithmSpecification_TrainingInputModeEnum_IsValid(int value);
+const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MIN = AlgorithmSpecification_TrainingInputModeEnum_Pipe;
+const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MAX = AlgorithmSpecification_TrainingInputModeEnum_File;
+const int AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_ARRAYSIZE = AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AlgorithmSpecification_TrainingInputModeEnum_descriptor();
+inline const ::std::string& AlgorithmSpecification_TrainingInputModeEnum_Name(AlgorithmSpecification_TrainingInputModeEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AlgorithmSpecification_TrainingInputModeEnum_descriptor(), value);
+}
+inline bool AlgorithmSpecification_TrainingInputModeEnum_Parse(
+    const ::std::string& name, AlgorithmSpecification_TrainingInputModeEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AlgorithmSpecification_TrainingInputModeEnum>(
+    AlgorithmSpecification_TrainingInputModeEnum_descriptor(), name, value);
+}
 // ===================================================================
 
-class SagemakerJob : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.SagemakerJob) */ {
+class AlgorithmSpecification_MetricDefinition : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition) */ {
  public:
-  SagemakerJob();
-  virtual ~SagemakerJob();
+  AlgorithmSpecification_MetricDefinition();
+  virtual ~AlgorithmSpecification_MetricDefinition();
 
-  SagemakerJob(const SagemakerJob& from);
+  AlgorithmSpecification_MetricDefinition(const AlgorithmSpecification_MetricDefinition& from);
 
-  inline SagemakerJob& operator=(const SagemakerJob& from) {
+  inline AlgorithmSpecification_MetricDefinition& operator=(const AlgorithmSpecification_MetricDefinition& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SagemakerJob(SagemakerJob&& from) noexcept
-    : SagemakerJob() {
+  AlgorithmSpecification_MetricDefinition(AlgorithmSpecification_MetricDefinition&& from) noexcept
+    : AlgorithmSpecification_MetricDefinition() {
     *this = ::std::move(from);
   }
 
-  inline SagemakerJob& operator=(SagemakerJob&& from) noexcept {
+  inline AlgorithmSpecification_MetricDefinition& operator=(AlgorithmSpecification_MetricDefinition&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -90,30 +142,30 @@ class SagemakerJob : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SagemakerJob& default_instance();
+  static const AlgorithmSpecification_MetricDefinition& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SagemakerJob* internal_default_instance() {
-    return reinterpret_cast<const SagemakerJob*>(
-               &_SagemakerJob_default_instance_);
+  static inline const AlgorithmSpecification_MetricDefinition* internal_default_instance() {
+    return reinterpret_cast<const AlgorithmSpecification_MetricDefinition*>(
+               &_AlgorithmSpecification_MetricDefinition_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     0;
 
-  void Swap(SagemakerJob* other);
-  friend void swap(SagemakerJob& a, SagemakerJob& b) {
+  void Swap(AlgorithmSpecification_MetricDefinition* other);
+  friend void swap(AlgorithmSpecification_MetricDefinition& a, AlgorithmSpecification_MetricDefinition& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SagemakerJob* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline AlgorithmSpecification_MetricDefinition* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  SagemakerJob* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  AlgorithmSpecification_MetricDefinition* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SagemakerJob& from);
-  void MergeFrom(const SagemakerJob& from);
+  void CopyFrom(const AlgorithmSpecification_MetricDefinition& from);
+  void MergeFrom(const AlgorithmSpecification_MetricDefinition& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -129,7 +181,7 @@ class SagemakerJob : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SagemakerJob* other);
+  void InternalSwap(AlgorithmSpecification_MetricDefinition* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -145,13 +197,747 @@ class SagemakerJob : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.SagemakerJob)
+  // string Name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // string Regex = 2;
+  void clear_regex();
+  static const int kRegexFieldNumber = 2;
+  const ::std::string& regex() const;
+  void set_regex(const ::std::string& value);
+  #if LANG_CXX11
+  void set_regex(::std::string&& value);
+  #endif
+  void set_regex(const char* value);
+  void set_regex(const char* value, size_t size);
+  ::std::string* mutable_regex();
+  ::std::string* release_regex();
+  void set_allocated_regex(::std::string* regex);
+
+  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr regex_;
   mutable int _cached_size_;
   friend struct ::protobuf_sagemaker_2eproto::TableStruct;
-  friend void ::protobuf_sagemaker_2eproto::InitDefaultsSagemakerJobImpl();
+  friend void ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification_MetricDefinitionImpl();
+};
+// -------------------------------------------------------------------
+
+class AlgorithmSpecification : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.AlgorithmSpecification) */ {
+ public:
+  AlgorithmSpecification();
+  virtual ~AlgorithmSpecification();
+
+  AlgorithmSpecification(const AlgorithmSpecification& from);
+
+  inline AlgorithmSpecification& operator=(const AlgorithmSpecification& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  AlgorithmSpecification(AlgorithmSpecification&& from) noexcept
+    : AlgorithmSpecification() {
+    *this = ::std::move(from);
+  }
+
+  inline AlgorithmSpecification& operator=(AlgorithmSpecification&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AlgorithmSpecification& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AlgorithmSpecification* internal_default_instance() {
+    return reinterpret_cast<const AlgorithmSpecification*>(
+               &_AlgorithmSpecification_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(AlgorithmSpecification* other);
+  friend void swap(AlgorithmSpecification& a, AlgorithmSpecification& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AlgorithmSpecification* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  AlgorithmSpecification* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const AlgorithmSpecification& from);
+  void MergeFrom(const AlgorithmSpecification& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(AlgorithmSpecification* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  typedef AlgorithmSpecification_MetricDefinition MetricDefinition;
+
+  typedef AlgorithmSpecification_TrainingInputModeEnum TrainingInputModeEnum;
+  static const TrainingInputModeEnum Pipe =
+    AlgorithmSpecification_TrainingInputModeEnum_Pipe;
+  static const TrainingInputModeEnum File =
+    AlgorithmSpecification_TrainingInputModeEnum_File;
+  static inline bool TrainingInputModeEnum_IsValid(int value) {
+    return AlgorithmSpecification_TrainingInputModeEnum_IsValid(value);
+  }
+  static const TrainingInputModeEnum TrainingInputModeEnum_MIN =
+    AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MIN;
+  static const TrainingInputModeEnum TrainingInputModeEnum_MAX =
+    AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MAX;
+  static const int TrainingInputModeEnum_ARRAYSIZE =
+    AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  TrainingInputModeEnum_descriptor() {
+    return AlgorithmSpecification_TrainingInputModeEnum_descriptor();
+  }
+  static inline const ::std::string& TrainingInputModeEnum_Name(TrainingInputModeEnum value) {
+    return AlgorithmSpecification_TrainingInputModeEnum_Name(value);
+  }
+  static inline bool TrainingInputModeEnum_Parse(const ::std::string& name,
+      TrainingInputModeEnum* value) {
+    return AlgorithmSpecification_TrainingInputModeEnum_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
+  int metricdefinitions_size() const;
+  void clear_metricdefinitions();
+  static const int kMetricDefinitionsFieldNumber = 4;
+  const ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition& metricdefinitions(int index) const;
+  ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition* mutable_metricdefinitions(int index);
+  ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition* add_metricdefinitions();
+  ::google::protobuf::RepeatedPtrField< ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition >*
+      mutable_metricdefinitions();
+  const ::google::protobuf::RepeatedPtrField< ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition >&
+      metricdefinitions() const;
+
+  // string TrainingImage = 1;
+  void clear_trainingimage();
+  static const int kTrainingImageFieldNumber = 1;
+  const ::std::string& trainingimage() const;
+  void set_trainingimage(const ::std::string& value);
+  #if LANG_CXX11
+  void set_trainingimage(::std::string&& value);
+  #endif
+  void set_trainingimage(const char* value);
+  void set_trainingimage(const char* value, size_t size);
+  ::std::string* mutable_trainingimage();
+  ::std::string* release_trainingimage();
+  void set_allocated_trainingimage(::std::string* trainingimage);
+
+  // string AlgorithmName = 3;
+  void clear_algorithmname();
+  static const int kAlgorithmNameFieldNumber = 3;
+  const ::std::string& algorithmname() const;
+  void set_algorithmname(const ::std::string& value);
+  #if LANG_CXX11
+  void set_algorithmname(::std::string&& value);
+  #endif
+  void set_algorithmname(const char* value);
+  void set_algorithmname(const char* value, size_t size);
+  ::std::string* mutable_algorithmname();
+  ::std::string* release_algorithmname();
+  void set_allocated_algorithmname(::std::string* algorithmname);
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+  void clear_traininginputmode();
+  static const int kTrainingInputModeFieldNumber = 2;
+  ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum traininginputmode() const;
+  void set_traininginputmode(::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum value);
+
+  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.AlgorithmSpecification)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition > metricdefinitions_;
+  ::google::protobuf::internal::ArenaStringPtr trainingimage_;
+  ::google::protobuf::internal::ArenaStringPtr algorithmname_;
+  int traininginputmode_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sagemaker_2eproto::TableStruct;
+  friend void ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecificationImpl();
+};
+// -------------------------------------------------------------------
+
+class ResourceConfig : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.ResourceConfig) */ {
+ public:
+  ResourceConfig();
+  virtual ~ResourceConfig();
+
+  ResourceConfig(const ResourceConfig& from);
+
+  inline ResourceConfig& operator=(const ResourceConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ResourceConfig(ResourceConfig&& from) noexcept
+    : ResourceConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline ResourceConfig& operator=(ResourceConfig&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ResourceConfig& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ResourceConfig* internal_default_instance() {
+    return reinterpret_cast<const ResourceConfig*>(
+               &_ResourceConfig_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(ResourceConfig* other);
+  friend void swap(ResourceConfig& a, ResourceConfig& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ResourceConfig* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ResourceConfig* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ResourceConfig& from);
+  void MergeFrom(const ResourceConfig& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ResourceConfig* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string InstanceType = 1;
+  void clear_instancetype();
+  static const int kInstanceTypeFieldNumber = 1;
+  const ::std::string& instancetype() const;
+  void set_instancetype(const ::std::string& value);
+  #if LANG_CXX11
+  void set_instancetype(::std::string&& value);
+  #endif
+  void set_instancetype(const char* value);
+  void set_instancetype(const char* value, size_t size);
+  ::std::string* mutable_instancetype();
+  ::std::string* release_instancetype();
+  void set_allocated_instancetype(::std::string* instancetype);
+
+  // string VolumeKmsKeyId = 4;
+  void clear_volumekmskeyid();
+  static const int kVolumeKmsKeyIdFieldNumber = 4;
+  const ::std::string& volumekmskeyid() const;
+  void set_volumekmskeyid(const ::std::string& value);
+  #if LANG_CXX11
+  void set_volumekmskeyid(::std::string&& value);
+  #endif
+  void set_volumekmskeyid(const char* value);
+  void set_volumekmskeyid(const char* value, size_t size);
+  ::std::string* mutable_volumekmskeyid();
+  ::std::string* release_volumekmskeyid();
+  void set_allocated_volumekmskeyid(::std::string* volumekmskeyid);
+
+  // int32 InstanceCount = 2;
+  void clear_instancecount();
+  static const int kInstanceCountFieldNumber = 2;
+  ::google::protobuf::int32 instancecount() const;
+  void set_instancecount(::google::protobuf::int32 value);
+
+  // int32 VolumeSizeInGB = 3;
+  void clear_volumesizeingb();
+  static const int kVolumeSizeInGBFieldNumber = 3;
+  ::google::protobuf::int32 volumesizeingb() const;
+  void set_volumesizeingb(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.ResourceConfig)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr instancetype_;
+  ::google::protobuf::internal::ArenaStringPtr volumekmskeyid_;
+  ::google::protobuf::int32 instancecount_;
+  ::google::protobuf::int32 volumesizeingb_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sagemaker_2eproto::TableStruct;
+  friend void ::protobuf_sagemaker_2eproto::InitDefaultsResourceConfigImpl();
+};
+// -------------------------------------------------------------------
+
+class StoppingCondition : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.StoppingCondition) */ {
+ public:
+  StoppingCondition();
+  virtual ~StoppingCondition();
+
+  StoppingCondition(const StoppingCondition& from);
+
+  inline StoppingCondition& operator=(const StoppingCondition& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StoppingCondition(StoppingCondition&& from) noexcept
+    : StoppingCondition() {
+    *this = ::std::move(from);
+  }
+
+  inline StoppingCondition& operator=(StoppingCondition&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StoppingCondition& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StoppingCondition* internal_default_instance() {
+    return reinterpret_cast<const StoppingCondition*>(
+               &_StoppingCondition_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(StoppingCondition* other);
+  friend void swap(StoppingCondition& a, StoppingCondition& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StoppingCondition* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  StoppingCondition* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const StoppingCondition& from);
+  void MergeFrom(const StoppingCondition& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(StoppingCondition* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 MaxRuntimeInSeconds = 1;
+  void clear_maxruntimeinseconds();
+  static const int kMaxRuntimeInSecondsFieldNumber = 1;
+  ::google::protobuf::int32 maxruntimeinseconds() const;
+  void set_maxruntimeinseconds(::google::protobuf::int32 value);
+
+  // int32 MaxWaitTimeInSeconds = 2;
+  void clear_maxwaittimeinseconds();
+  static const int kMaxWaitTimeInSecondsFieldNumber = 2;
+  ::google::protobuf::int32 maxwaittimeinseconds() const;
+  void set_maxwaittimeinseconds(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.StoppingCondition)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 maxruntimeinseconds_;
+  ::google::protobuf::int32 maxwaittimeinseconds_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sagemaker_2eproto::TableStruct;
+  friend void ::protobuf_sagemaker_2eproto::InitDefaultsStoppingConditionImpl();
+};
+// -------------------------------------------------------------------
+
+class VpcConfig : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.VpcConfig) */ {
+ public:
+  VpcConfig();
+  virtual ~VpcConfig();
+
+  VpcConfig(const VpcConfig& from);
+
+  inline VpcConfig& operator=(const VpcConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  VpcConfig(VpcConfig&& from) noexcept
+    : VpcConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline VpcConfig& operator=(VpcConfig&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const VpcConfig& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const VpcConfig* internal_default_instance() {
+    return reinterpret_cast<const VpcConfig*>(
+               &_VpcConfig_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(VpcConfig* other);
+  friend void swap(VpcConfig& a, VpcConfig& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline VpcConfig* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  VpcConfig* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const VpcConfig& from);
+  void MergeFrom(const VpcConfig& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(VpcConfig* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated string SecurityGroupIds = 1;
+  int securitygroupids_size() const;
+  void clear_securitygroupids();
+  static const int kSecurityGroupIdsFieldNumber = 1;
+  const ::std::string& securitygroupids(int index) const;
+  ::std::string* mutable_securitygroupids(int index);
+  void set_securitygroupids(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_securitygroupids(int index, ::std::string&& value);
+  #endif
+  void set_securitygroupids(int index, const char* value);
+  void set_securitygroupids(int index, const char* value, size_t size);
+  ::std::string* add_securitygroupids();
+  void add_securitygroupids(const ::std::string& value);
+  #if LANG_CXX11
+  void add_securitygroupids(::std::string&& value);
+  #endif
+  void add_securitygroupids(const char* value);
+  void add_securitygroupids(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& securitygroupids() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_securitygroupids();
+
+  // repeated string Subnets = 2;
+  int subnets_size() const;
+  void clear_subnets();
+  static const int kSubnetsFieldNumber = 2;
+  const ::std::string& subnets(int index) const;
+  ::std::string* mutable_subnets(int index);
+  void set_subnets(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_subnets(int index, ::std::string&& value);
+  #endif
+  void set_subnets(int index, const char* value);
+  void set_subnets(int index, const char* value, size_t size);
+  ::std::string* add_subnets();
+  void add_subnets(const ::std::string& value);
+  #if LANG_CXX11
+  void add_subnets(::std::string&& value);
+  #endif
+  void add_subnets(const char* value);
+  void add_subnets(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& subnets() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_subnets();
+
+  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.VpcConfig)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> securitygroupids_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> subnets_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sagemaker_2eproto::TableStruct;
+  friend void ::protobuf_sagemaker_2eproto::InitDefaultsVpcConfigImpl();
+};
+// -------------------------------------------------------------------
+
+class SagemakerHPOJob : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.SagemakerHPOJob) */ {
+ public:
+  SagemakerHPOJob();
+  virtual ~SagemakerHPOJob();
+
+  SagemakerHPOJob(const SagemakerHPOJob& from);
+
+  inline SagemakerHPOJob& operator=(const SagemakerHPOJob& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SagemakerHPOJob(SagemakerHPOJob&& from) noexcept
+    : SagemakerHPOJob() {
+    *this = ::std::move(from);
+  }
+
+  inline SagemakerHPOJob& operator=(SagemakerHPOJob&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SagemakerHPOJob& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SagemakerHPOJob* internal_default_instance() {
+    return reinterpret_cast<const SagemakerHPOJob*>(
+               &_SagemakerHPOJob_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void Swap(SagemakerHPOJob* other);
+  friend void swap(SagemakerHPOJob& a, SagemakerHPOJob& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SagemakerHPOJob* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SagemakerHPOJob* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SagemakerHPOJob& from);
+  void MergeFrom(const SagemakerHPOJob& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SagemakerHPOJob* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string RoleArn = 1;
+  void clear_rolearn();
+  static const int kRoleArnFieldNumber = 1;
+  const ::std::string& rolearn() const;
+  void set_rolearn(const ::std::string& value);
+  #if LANG_CXX11
+  void set_rolearn(::std::string&& value);
+  #endif
+  void set_rolearn(const char* value);
+  void set_rolearn(const char* value, size_t size);
+  ::std::string* mutable_rolearn();
+  ::std::string* release_rolearn();
+  void set_allocated_rolearn(::std::string* rolearn);
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  bool has_algorithmspecification() const;
+  void clear_algorithmspecification();
+  static const int kAlgorithmSpecificationFieldNumber = 2;
+  const ::flyte::plugins::sagemaker::AlgorithmSpecification& algorithmspecification() const;
+  ::flyte::plugins::sagemaker::AlgorithmSpecification* release_algorithmspecification();
+  ::flyte::plugins::sagemaker::AlgorithmSpecification* mutable_algorithmspecification();
+  void set_allocated_algorithmspecification(::flyte::plugins::sagemaker::AlgorithmSpecification* algorithmspecification);
+
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  bool has_resourceconfig() const;
+  void clear_resourceconfig();
+  static const int kResourceConfigFieldNumber = 3;
+  const ::flyte::plugins::sagemaker::ResourceConfig& resourceconfig() const;
+  ::flyte::plugins::sagemaker::ResourceConfig* release_resourceconfig();
+  ::flyte::plugins::sagemaker::ResourceConfig* mutable_resourceconfig();
+  void set_allocated_resourceconfig(::flyte::plugins::sagemaker::ResourceConfig* resourceconfig);
+
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  bool has_stoppingcondition() const;
+  void clear_stoppingcondition();
+  static const int kStoppingConditionFieldNumber = 4;
+  const ::flyte::plugins::sagemaker::StoppingCondition& stoppingcondition() const;
+  ::flyte::plugins::sagemaker::StoppingCondition* release_stoppingcondition();
+  ::flyte::plugins::sagemaker::StoppingCondition* mutable_stoppingcondition();
+  void set_allocated_stoppingcondition(::flyte::plugins::sagemaker::StoppingCondition* stoppingcondition);
+
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  bool has_vpcconfig() const;
+  void clear_vpcconfig();
+  static const int kVpcConfigFieldNumber = 5;
+  const ::flyte::plugins::sagemaker::VpcConfig& vpcconfig() const;
+  ::flyte::plugins::sagemaker::VpcConfig* release_vpcconfig();
+  ::flyte::plugins::sagemaker::VpcConfig* mutable_vpcconfig();
+  void set_allocated_vpcconfig(::flyte::plugins::sagemaker::VpcConfig* vpcconfig);
+
+  // bool EnableSpotTraining = 6;
+  void clear_enablespottraining();
+  static const int kEnableSpotTrainingFieldNumber = 6;
+  bool enablespottraining() const;
+  void set_enablespottraining(bool value);
+
+  // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.SagemakerHPOJob)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr rolearn_;
+  ::flyte::plugins::sagemaker::AlgorithmSpecification* algorithmspecification_;
+  ::flyte::plugins::sagemaker::ResourceConfig* resourceconfig_;
+  ::flyte::plugins::sagemaker::StoppingCondition* stoppingcondition_;
+  ::flyte::plugins::sagemaker::VpcConfig* vpcconfig_;
+  bool enablespottraining_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_sagemaker_2eproto::TableStruct;
+  friend void ::protobuf_sagemaker_2eproto::InitDefaultsSagemakerHPOJobImpl();
 };
 // ===================================================================
 
@@ -162,17 +948,882 @@ class SagemakerJob : public ::google::protobuf::Message /* @@protoc_insertion_po
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// SagemakerJob
+// AlgorithmSpecification_MetricDefinition
+
+// string Name = 1;
+inline void AlgorithmSpecification_MetricDefinition::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& AlgorithmSpecification_MetricDefinition::name() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+  return name_.GetNoArena();
+}
+inline void AlgorithmSpecification_MetricDefinition::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+}
+#if LANG_CXX11
+inline void AlgorithmSpecification_MetricDefinition::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+}
+#endif
+inline void AlgorithmSpecification_MetricDefinition::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+}
+inline void AlgorithmSpecification_MetricDefinition::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+}
+inline ::std::string* AlgorithmSpecification_MetricDefinition::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AlgorithmSpecification_MetricDefinition::release_name() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AlgorithmSpecification_MetricDefinition::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name)
+}
+
+// string Regex = 2;
+inline void AlgorithmSpecification_MetricDefinition::clear_regex() {
+  regex_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& AlgorithmSpecification_MetricDefinition::regex() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+  return regex_.GetNoArena();
+}
+inline void AlgorithmSpecification_MetricDefinition::set_regex(const ::std::string& value) {
+  
+  regex_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+}
+#if LANG_CXX11
+inline void AlgorithmSpecification_MetricDefinition::set_regex(::std::string&& value) {
+  
+  regex_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+}
+#endif
+inline void AlgorithmSpecification_MetricDefinition::set_regex(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  regex_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+}
+inline void AlgorithmSpecification_MetricDefinition::set_regex(const char* value, size_t size) {
+  
+  regex_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+}
+inline ::std::string* AlgorithmSpecification_MetricDefinition::mutable_regex() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+  return regex_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AlgorithmSpecification_MetricDefinition::release_regex() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+  
+  return regex_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AlgorithmSpecification_MetricDefinition::set_allocated_regex(::std::string* regex) {
+  if (regex != NULL) {
+    
+  } else {
+    
+  }
+  regex_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), regex);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex)
+}
+
+// -------------------------------------------------------------------
+
+// AlgorithmSpecification
+
+// string TrainingImage = 1;
+inline void AlgorithmSpecification::clear_trainingimage() {
+  trainingimage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& AlgorithmSpecification::trainingimage() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+  return trainingimage_.GetNoArena();
+}
+inline void AlgorithmSpecification::set_trainingimage(const ::std::string& value) {
+  
+  trainingimage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+}
+#if LANG_CXX11
+inline void AlgorithmSpecification::set_trainingimage(::std::string&& value) {
+  
+  trainingimage_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+}
+#endif
+inline void AlgorithmSpecification::set_trainingimage(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  trainingimage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+}
+inline void AlgorithmSpecification::set_trainingimage(const char* value, size_t size) {
+  
+  trainingimage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+}
+inline ::std::string* AlgorithmSpecification::mutable_trainingimage() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+  return trainingimage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AlgorithmSpecification::release_trainingimage() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+  
+  return trainingimage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AlgorithmSpecification::set_allocated_trainingimage(::std::string* trainingimage) {
+  if (trainingimage != NULL) {
+    
+  } else {
+    
+  }
+  trainingimage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), trainingimage);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
+}
+
+// .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+inline void AlgorithmSpecification::clear_traininginputmode() {
+  traininginputmode_ = 0;
+}
+inline ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::traininginputmode() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+  return static_cast< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum >(traininginputmode_);
+}
+inline void AlgorithmSpecification::set_traininginputmode(::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum value) {
+  
+  traininginputmode_ = value;
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+}
+
+// string AlgorithmName = 3;
+inline void AlgorithmSpecification::clear_algorithmname() {
+  algorithmname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& AlgorithmSpecification::algorithmname() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+  return algorithmname_.GetNoArena();
+}
+inline void AlgorithmSpecification::set_algorithmname(const ::std::string& value) {
+  
+  algorithmname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+}
+#if LANG_CXX11
+inline void AlgorithmSpecification::set_algorithmname(::std::string&& value) {
+  
+  algorithmname_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+}
+#endif
+inline void AlgorithmSpecification::set_algorithmname(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  algorithmname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+}
+inline void AlgorithmSpecification::set_algorithmname(const char* value, size_t size) {
+  
+  algorithmname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+}
+inline ::std::string* AlgorithmSpecification::mutable_algorithmname() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+  return algorithmname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AlgorithmSpecification::release_algorithmname() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+  
+  return algorithmname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AlgorithmSpecification::set_allocated_algorithmname(::std::string* algorithmname) {
+  if (algorithmname != NULL) {
+    
+  } else {
+    
+  }
+  algorithmname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), algorithmname);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName)
+}
+
+// repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
+inline int AlgorithmSpecification::metricdefinitions_size() const {
+  return metricdefinitions_.size();
+}
+inline void AlgorithmSpecification::clear_metricdefinitions() {
+  metricdefinitions_.Clear();
+}
+inline const ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition& AlgorithmSpecification::metricdefinitions(int index) const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinitions)
+  return metricdefinitions_.Get(index);
+}
+inline ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition* AlgorithmSpecification::mutable_metricdefinitions(int index) {
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinitions)
+  return metricdefinitions_.Mutable(index);
+}
+inline ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition* AlgorithmSpecification::add_metricdefinitions() {
+  // @@protoc_insertion_point(field_add:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinitions)
+  return metricdefinitions_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition >*
+AlgorithmSpecification::mutable_metricdefinitions() {
+  // @@protoc_insertion_point(field_mutable_list:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinitions)
+  return &metricdefinitions_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition >&
+AlgorithmSpecification::metricdefinitions() const {
+  // @@protoc_insertion_point(field_list:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinitions)
+  return metricdefinitions_;
+}
+
+// -------------------------------------------------------------------
+
+// ResourceConfig
+
+// string InstanceType = 1;
+inline void ResourceConfig::clear_instancetype() {
+  instancetype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ResourceConfig::instancetype() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+  return instancetype_.GetNoArena();
+}
+inline void ResourceConfig::set_instancetype(const ::std::string& value) {
+  
+  instancetype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+}
+#if LANG_CXX11
+inline void ResourceConfig::set_instancetype(::std::string&& value) {
+  
+  instancetype_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+}
+#endif
+inline void ResourceConfig::set_instancetype(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  instancetype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+}
+inline void ResourceConfig::set_instancetype(const char* value, size_t size) {
+  
+  instancetype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+}
+inline ::std::string* ResourceConfig::mutable_instancetype() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+  return instancetype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ResourceConfig::release_instancetype() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+  
+  return instancetype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ResourceConfig::set_allocated_instancetype(::std::string* instancetype) {
+  if (instancetype != NULL) {
+    
+  } else {
+    
+  }
+  instancetype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instancetype);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
+}
+
+// int32 InstanceCount = 2;
+inline void ResourceConfig::clear_instancecount() {
+  instancecount_ = 0;
+}
+inline ::google::protobuf::int32 ResourceConfig::instancecount() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.ResourceConfig.InstanceCount)
+  return instancecount_;
+}
+inline void ResourceConfig::set_instancecount(::google::protobuf::int32 value) {
+  
+  instancecount_ = value;
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.ResourceConfig.InstanceCount)
+}
+
+// int32 VolumeSizeInGB = 3;
+inline void ResourceConfig::clear_volumesizeingb() {
+  volumesizeingb_ = 0;
+}
+inline ::google::protobuf::int32 ResourceConfig::volumesizeingb() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.ResourceConfig.VolumeSizeInGB)
+  return volumesizeingb_;
+}
+inline void ResourceConfig::set_volumesizeingb(::google::protobuf::int32 value) {
+  
+  volumesizeingb_ = value;
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.ResourceConfig.VolumeSizeInGB)
+}
+
+// string VolumeKmsKeyId = 4;
+inline void ResourceConfig::clear_volumekmskeyid() {
+  volumekmskeyid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ResourceConfig::volumekmskeyid() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+  return volumekmskeyid_.GetNoArena();
+}
+inline void ResourceConfig::set_volumekmskeyid(const ::std::string& value) {
+  
+  volumekmskeyid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+}
+#if LANG_CXX11
+inline void ResourceConfig::set_volumekmskeyid(::std::string&& value) {
+  
+  volumekmskeyid_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+}
+#endif
+inline void ResourceConfig::set_volumekmskeyid(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  volumekmskeyid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+}
+inline void ResourceConfig::set_volumekmskeyid(const char* value, size_t size) {
+  
+  volumekmskeyid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+}
+inline ::std::string* ResourceConfig::mutable_volumekmskeyid() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+  return volumekmskeyid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ResourceConfig::release_volumekmskeyid() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+  
+  return volumekmskeyid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ResourceConfig::set_allocated_volumekmskeyid(::std::string* volumekmskeyid) {
+  if (volumekmskeyid != NULL) {
+    
+  } else {
+    
+  }
+  volumekmskeyid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), volumekmskeyid);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId)
+}
+
+// -------------------------------------------------------------------
+
+// StoppingCondition
+
+// int32 MaxRuntimeInSeconds = 1;
+inline void StoppingCondition::clear_maxruntimeinseconds() {
+  maxruntimeinseconds_ = 0;
+}
+inline ::google::protobuf::int32 StoppingCondition::maxruntimeinseconds() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.StoppingCondition.MaxRuntimeInSeconds)
+  return maxruntimeinseconds_;
+}
+inline void StoppingCondition::set_maxruntimeinseconds(::google::protobuf::int32 value) {
+  
+  maxruntimeinseconds_ = value;
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.StoppingCondition.MaxRuntimeInSeconds)
+}
+
+// int32 MaxWaitTimeInSeconds = 2;
+inline void StoppingCondition::clear_maxwaittimeinseconds() {
+  maxwaittimeinseconds_ = 0;
+}
+inline ::google::protobuf::int32 StoppingCondition::maxwaittimeinseconds() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.StoppingCondition.MaxWaitTimeInSeconds)
+  return maxwaittimeinseconds_;
+}
+inline void StoppingCondition::set_maxwaittimeinseconds(::google::protobuf::int32 value) {
+  
+  maxwaittimeinseconds_ = value;
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.StoppingCondition.MaxWaitTimeInSeconds)
+}
+
+// -------------------------------------------------------------------
+
+// VpcConfig
+
+// repeated string SecurityGroupIds = 1;
+inline int VpcConfig::securitygroupids_size() const {
+  return securitygroupids_.size();
+}
+inline void VpcConfig::clear_securitygroupids() {
+  securitygroupids_.Clear();
+}
+inline const ::std::string& VpcConfig::securitygroupids(int index) const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  return securitygroupids_.Get(index);
+}
+inline ::std::string* VpcConfig::mutable_securitygroupids(int index) {
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  return securitygroupids_.Mutable(index);
+}
+inline void VpcConfig::set_securitygroupids(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  securitygroupids_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void VpcConfig::set_securitygroupids(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  securitygroupids_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void VpcConfig::set_securitygroupids(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  securitygroupids_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+}
+inline void VpcConfig::set_securitygroupids(int index, const char* value, size_t size) {
+  securitygroupids_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+}
+inline ::std::string* VpcConfig::add_securitygroupids() {
+  // @@protoc_insertion_point(field_add_mutable:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  return securitygroupids_.Add();
+}
+inline void VpcConfig::add_securitygroupids(const ::std::string& value) {
+  securitygroupids_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+}
+#if LANG_CXX11
+inline void VpcConfig::add_securitygroupids(::std::string&& value) {
+  securitygroupids_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+}
+#endif
+inline void VpcConfig::add_securitygroupids(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  securitygroupids_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+}
+inline void VpcConfig::add_securitygroupids(const char* value, size_t size) {
+  securitygroupids_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+VpcConfig::securitygroupids() const {
+  // @@protoc_insertion_point(field_list:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  return securitygroupids_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+VpcConfig::mutable_securitygroupids() {
+  // @@protoc_insertion_point(field_mutable_list:flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds)
+  return &securitygroupids_;
+}
+
+// repeated string Subnets = 2;
+inline int VpcConfig::subnets_size() const {
+  return subnets_.size();
+}
+inline void VpcConfig::clear_subnets() {
+  subnets_.Clear();
+}
+inline const ::std::string& VpcConfig::subnets(int index) const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  return subnets_.Get(index);
+}
+inline ::std::string* VpcConfig::mutable_subnets(int index) {
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  return subnets_.Mutable(index);
+}
+inline void VpcConfig::set_subnets(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  subnets_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void VpcConfig::set_subnets(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  subnets_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void VpcConfig::set_subnets(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  subnets_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.VpcConfig.Subnets)
+}
+inline void VpcConfig::set_subnets(int index, const char* value, size_t size) {
+  subnets_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.VpcConfig.Subnets)
+}
+inline ::std::string* VpcConfig::add_subnets() {
+  // @@protoc_insertion_point(field_add_mutable:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  return subnets_.Add();
+}
+inline void VpcConfig::add_subnets(const ::std::string& value) {
+  subnets_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:flyte.plugins.sagemaker.VpcConfig.Subnets)
+}
+#if LANG_CXX11
+inline void VpcConfig::add_subnets(::std::string&& value) {
+  subnets_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:flyte.plugins.sagemaker.VpcConfig.Subnets)
+}
+#endif
+inline void VpcConfig::add_subnets(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  subnets_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:flyte.plugins.sagemaker.VpcConfig.Subnets)
+}
+inline void VpcConfig::add_subnets(const char* value, size_t size) {
+  subnets_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:flyte.plugins.sagemaker.VpcConfig.Subnets)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+VpcConfig::subnets() const {
+  // @@protoc_insertion_point(field_list:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  return subnets_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+VpcConfig::mutable_subnets() {
+  // @@protoc_insertion_point(field_mutable_list:flyte.plugins.sagemaker.VpcConfig.Subnets)
+  return &subnets_;
+}
+
+// -------------------------------------------------------------------
+
+// SagemakerHPOJob
+
+// string RoleArn = 1;
+inline void SagemakerHPOJob::clear_rolearn() {
+  rolearn_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SagemakerHPOJob::rolearn() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+  return rolearn_.GetNoArena();
+}
+inline void SagemakerHPOJob::set_rolearn(const ::std::string& value) {
+  
+  rolearn_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+}
+#if LANG_CXX11
+inline void SagemakerHPOJob::set_rolearn(::std::string&& value) {
+  
+  rolearn_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+}
+#endif
+inline void SagemakerHPOJob::set_rolearn(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  rolearn_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+}
+inline void SagemakerHPOJob::set_rolearn(const char* value, size_t size) {
+  
+  rolearn_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+}
+inline ::std::string* SagemakerHPOJob::mutable_rolearn() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+  return rolearn_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SagemakerHPOJob::release_rolearn() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+  
+  return rolearn_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SagemakerHPOJob::set_allocated_rolearn(::std::string* rolearn) {
+  if (rolearn != NULL) {
+    
+  } else {
+    
+  }
+  rolearn_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), rolearn);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
+}
+
+// .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+inline bool SagemakerHPOJob::has_algorithmspecification() const {
+  return this != internal_default_instance() && algorithmspecification_ != NULL;
+}
+inline void SagemakerHPOJob::clear_algorithmspecification() {
+  if (GetArenaNoVirtual() == NULL && algorithmspecification_ != NULL) {
+    delete algorithmspecification_;
+  }
+  algorithmspecification_ = NULL;
+}
+inline const ::flyte::plugins::sagemaker::AlgorithmSpecification& SagemakerHPOJob::algorithmspecification() const {
+  const ::flyte::plugins::sagemaker::AlgorithmSpecification* p = algorithmspecification_;
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.AlgorithmSpecification)
+  return p != NULL ? *p : *reinterpret_cast<const ::flyte::plugins::sagemaker::AlgorithmSpecification*>(
+      &::flyte::plugins::sagemaker::_AlgorithmSpecification_default_instance_);
+}
+inline ::flyte::plugins::sagemaker::AlgorithmSpecification* SagemakerHPOJob::release_algorithmspecification() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.SagemakerHPOJob.AlgorithmSpecification)
+  
+  ::flyte::plugins::sagemaker::AlgorithmSpecification* temp = algorithmspecification_;
+  algorithmspecification_ = NULL;
+  return temp;
+}
+inline ::flyte::plugins::sagemaker::AlgorithmSpecification* SagemakerHPOJob::mutable_algorithmspecification() {
+  
+  if (algorithmspecification_ == NULL) {
+    algorithmspecification_ = new ::flyte::plugins::sagemaker::AlgorithmSpecification;
+  }
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.SagemakerHPOJob.AlgorithmSpecification)
+  return algorithmspecification_;
+}
+inline void SagemakerHPOJob::set_allocated_algorithmspecification(::flyte::plugins::sagemaker::AlgorithmSpecification* algorithmspecification) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete algorithmspecification_;
+  }
+  if (algorithmspecification) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      algorithmspecification = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, algorithmspecification, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  algorithmspecification_ = algorithmspecification;
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.AlgorithmSpecification)
+}
+
+// .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+inline bool SagemakerHPOJob::has_resourceconfig() const {
+  return this != internal_default_instance() && resourceconfig_ != NULL;
+}
+inline void SagemakerHPOJob::clear_resourceconfig() {
+  if (GetArenaNoVirtual() == NULL && resourceconfig_ != NULL) {
+    delete resourceconfig_;
+  }
+  resourceconfig_ = NULL;
+}
+inline const ::flyte::plugins::sagemaker::ResourceConfig& SagemakerHPOJob::resourceconfig() const {
+  const ::flyte::plugins::sagemaker::ResourceConfig* p = resourceconfig_;
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.ResourceConfig)
+  return p != NULL ? *p : *reinterpret_cast<const ::flyte::plugins::sagemaker::ResourceConfig*>(
+      &::flyte::plugins::sagemaker::_ResourceConfig_default_instance_);
+}
+inline ::flyte::plugins::sagemaker::ResourceConfig* SagemakerHPOJob::release_resourceconfig() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.SagemakerHPOJob.ResourceConfig)
+  
+  ::flyte::plugins::sagemaker::ResourceConfig* temp = resourceconfig_;
+  resourceconfig_ = NULL;
+  return temp;
+}
+inline ::flyte::plugins::sagemaker::ResourceConfig* SagemakerHPOJob::mutable_resourceconfig() {
+  
+  if (resourceconfig_ == NULL) {
+    resourceconfig_ = new ::flyte::plugins::sagemaker::ResourceConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.SagemakerHPOJob.ResourceConfig)
+  return resourceconfig_;
+}
+inline void SagemakerHPOJob::set_allocated_resourceconfig(::flyte::plugins::sagemaker::ResourceConfig* resourceconfig) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete resourceconfig_;
+  }
+  if (resourceconfig) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      resourceconfig = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, resourceconfig, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  resourceconfig_ = resourceconfig;
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.ResourceConfig)
+}
+
+// .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+inline bool SagemakerHPOJob::has_stoppingcondition() const {
+  return this != internal_default_instance() && stoppingcondition_ != NULL;
+}
+inline void SagemakerHPOJob::clear_stoppingcondition() {
+  if (GetArenaNoVirtual() == NULL && stoppingcondition_ != NULL) {
+    delete stoppingcondition_;
+  }
+  stoppingcondition_ = NULL;
+}
+inline const ::flyte::plugins::sagemaker::StoppingCondition& SagemakerHPOJob::stoppingcondition() const {
+  const ::flyte::plugins::sagemaker::StoppingCondition* p = stoppingcondition_;
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.StoppingCondition)
+  return p != NULL ? *p : *reinterpret_cast<const ::flyte::plugins::sagemaker::StoppingCondition*>(
+      &::flyte::plugins::sagemaker::_StoppingCondition_default_instance_);
+}
+inline ::flyte::plugins::sagemaker::StoppingCondition* SagemakerHPOJob::release_stoppingcondition() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.SagemakerHPOJob.StoppingCondition)
+  
+  ::flyte::plugins::sagemaker::StoppingCondition* temp = stoppingcondition_;
+  stoppingcondition_ = NULL;
+  return temp;
+}
+inline ::flyte::plugins::sagemaker::StoppingCondition* SagemakerHPOJob::mutable_stoppingcondition() {
+  
+  if (stoppingcondition_ == NULL) {
+    stoppingcondition_ = new ::flyte::plugins::sagemaker::StoppingCondition;
+  }
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.SagemakerHPOJob.StoppingCondition)
+  return stoppingcondition_;
+}
+inline void SagemakerHPOJob::set_allocated_stoppingcondition(::flyte::plugins::sagemaker::StoppingCondition* stoppingcondition) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete stoppingcondition_;
+  }
+  if (stoppingcondition) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      stoppingcondition = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, stoppingcondition, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  stoppingcondition_ = stoppingcondition;
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.StoppingCondition)
+}
+
+// .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+inline bool SagemakerHPOJob::has_vpcconfig() const {
+  return this != internal_default_instance() && vpcconfig_ != NULL;
+}
+inline void SagemakerHPOJob::clear_vpcconfig() {
+  if (GetArenaNoVirtual() == NULL && vpcconfig_ != NULL) {
+    delete vpcconfig_;
+  }
+  vpcconfig_ = NULL;
+}
+inline const ::flyte::plugins::sagemaker::VpcConfig& SagemakerHPOJob::vpcconfig() const {
+  const ::flyte::plugins::sagemaker::VpcConfig* p = vpcconfig_;
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.VpcConfig)
+  return p != NULL ? *p : *reinterpret_cast<const ::flyte::plugins::sagemaker::VpcConfig*>(
+      &::flyte::plugins::sagemaker::_VpcConfig_default_instance_);
+}
+inline ::flyte::plugins::sagemaker::VpcConfig* SagemakerHPOJob::release_vpcconfig() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.SagemakerHPOJob.VpcConfig)
+  
+  ::flyte::plugins::sagemaker::VpcConfig* temp = vpcconfig_;
+  vpcconfig_ = NULL;
+  return temp;
+}
+inline ::flyte::plugins::sagemaker::VpcConfig* SagemakerHPOJob::mutable_vpcconfig() {
+  
+  if (vpcconfig_ == NULL) {
+    vpcconfig_ = new ::flyte::plugins::sagemaker::VpcConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.SagemakerHPOJob.VpcConfig)
+  return vpcconfig_;
+}
+inline void SagemakerHPOJob::set_allocated_vpcconfig(::flyte::plugins::sagemaker::VpcConfig* vpcconfig) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete vpcconfig_;
+  }
+  if (vpcconfig) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      vpcconfig = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, vpcconfig, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  vpcconfig_ = vpcconfig;
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.VpcConfig)
+}
+
+// bool EnableSpotTraining = 6;
+inline void SagemakerHPOJob::clear_enablespottraining() {
+  enablespottraining_ = false;
+}
+inline bool SagemakerHPOJob::enablespottraining() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.EnableSpotTraining)
+  return enablespottraining_;
+}
+inline void SagemakerHPOJob::set_enablespottraining(bool value) {
+  
+  enablespottraining_ = value;
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.SagemakerHPOJob.EnableSpotTraining)
+}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace sagemaker
 }  // namespace plugins
 }  // namespace flyte
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum>() {
+  return ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

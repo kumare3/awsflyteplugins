@@ -4,20 +4,26 @@ import datetime as _datetime
 from flytekit.sdk import types as _sdk_types
 from flytekit.common.tasks import task as _sdk_task
 from flytekit.common import interface as _interface
-from flytekit.models import literals as _literal_models, task as _task_models, interface as _interface_model
+from flytekit.models import (
+    literals as _literal_models,
+    task as _task_models,
+    interface as _interface_model,
+)
+from google.protobuf.json_format import MessageToDict, ParseDict
+import gen.pb_python.sagemaker_pb2 as sagemaker_pb2
+
+_TASK_TYPE = "aws-sagemaker-hpo"
 
 
-_TASK_TYPE = "aws-sagemaker"
-
-
-class SagemakerXgBoostTrainer(_sdk_task.SdkTask):
-
+class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
     def __init__(
         self,
         role_arn,
         resource_config,
         algorithm_specification=None,
         stopping_condition=None,
+        vpc_config=None,
+        enable_spot_training=False,
         retries=0,
         cacheable=False,
         cache_version="",
@@ -27,18 +33,31 @@ class SagemakerXgBoostTrainer(_sdk_task.SdkTask):
         :param dict[Text,T] algorithm_specification: https://docs.aws.amazon.com/sagemaker/latest/dg/API_AlgorithmSpecification.html
         :param dict[Text,T] resource_config: https://docs.aws.amazon.com/sagemaker/latest/dg/API_ResourceConfig.html
         :param dict[Text,T] stopping_condition: https://docs.aws.amazon.com/sagemaker/latest/dg/API_StoppingCondition.html
+        :param dict[Text,T] vpc_config: https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html
+        :param bool enable_spot_training: https://docs.aws.amazon.com/sagemaker/latest/dg/API_HyperParameterTrainingJobDefinition.html
         :param int retries: Number of time to retry.
         :param bool cacheable: Whether or not to use Flyte's caching system.
         :param Text cache_version: Update this to notify a behavioral change requiring the cache to be invalidated.
         """
 
-        # TODO: We probably don't want to hardcode things here, but for example...
         algorithm_specification = algorithm_specification or {}
-        algorithm_specification["TrainingImage"] = algorithm_specification.get("TrainingImage") or \
-            "825641698319.dkr.ecr.us-east-2.amazonaws.com/xgboost:1"
+        algorithm_specification["TrainingImage"] = (
+            algorithm_specification.get("TrainingImage")
+            or "825641698319.dkr.ecr.us-east-2.amazonaws.com/xgboost:1"
+        )
         algorithm_specification["TrainingInputMode"] = "File"
-        resource_config = resource_config or {}
-        stopping_condition = stopping_condition or {}
+
+        job_config = ParseDict(
+            {
+                "ResourceConfig": resource_config,
+                "StoppingCondition": stopping_condition,
+                "VpcConfig": vpc_config,
+                "AlgorithmSpecification": algorithm_specification,
+                "RoleArn": role_arn,
+            },
+            sagemaker_pb2.SagemakerHPOJob(),
+        )
+        print(MessageToDict(job_config))
 
         # TODO: Optionally, pull timeout behavior from stopping condition and pass to Flyte task def.
         timeout = _datetime.timedelta(seconds=0)
@@ -53,7 +72,7 @@ class SagemakerXgBoostTrainer(_sdk_task.SdkTask):
         # TODO:     a given definition of a task, but will be more dynamic in the future. Also, it is possible to
         # TODO:     make it dynamic by using our @dynamic_task.
         # TODO: You might want to inherit the role ARN from the execution at runtime.
-        super(SagemakerXgBoostTrainer, self).__init__(
+        super(SagemakerXgBoostOptimizer, self).__init__(
             type=_TASK_TYPE,
             metadata=_task_models.TaskMetadata(
                 discoverable=cacheable,
@@ -64,12 +83,7 @@ class SagemakerXgBoostTrainer(_sdk_task.SdkTask):
                 deprecated_error_message="",
             ),
             interface=_interface.TypedInterface({}, {}),
-            custom={
-                "RoleArn": role_arn,
-                "AlgorithmSpecification": algorithm_specification,
-                "ResourceConfig": resource_config,
-                "StoppingCondition": stopping_condition,
-            }
+            custom=MessageToDict(job_config),
         )
 
         # TODO: Add more inputs that we expect to change the outputs of the task.
@@ -78,14 +92,21 @@ class SagemakerXgBoostTrainer(_sdk_task.SdkTask):
         # refactor.
         self.add_inputs(
             {
-                'static_hyperparameters':
-                    _interface_model.Variable(_sdk_types.Types.Generic.to_flyte_literal_type(), ''),
-                'train': _interface_model.Variable(_sdk_types.Types.MultiPartCSV.to_flyte_literal_type(), ''),
-                'validation': _interface_model.Variable(_sdk_types.Types.MultiPartCSV.to_flyte_literal_type(), ''),
+                "static_hyperparameters": _interface_model.Variable(
+                    _sdk_types.Types.Generic.to_flyte_literal_type(), ""
+                ),
+                "train": _interface_model.Variable(
+                    _sdk_types.Types.MultiPartCSV.to_flyte_literal_type(), ""
+                ),
+                "validation": _interface_model.Variable(
+                    _sdk_types.Types.MultiPartCSV.to_flyte_literal_type(), ""
+                ),
             }
         )
         self.add_outputs(
             {
-                'model': _interface_model.Variable(_sdk_types.Types.Blob.to_flyte_literal_type(), '')
+                "model": _interface_model.Variable(
+                    _sdk_types.Types.Blob.to_flyte_literal_type(), ""
+                )
             }
         )

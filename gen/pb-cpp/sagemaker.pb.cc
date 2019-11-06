@@ -22,16 +22,41 @@
 namespace flyte {
 namespace plugins {
 namespace sagemaker {
-class SagemakerJobDefaultTypeInternal {
+class AlgorithmSpecification_MetricDefinitionDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SagemakerJob>
+  ::google::protobuf::internal::ExplicitlyConstructed<AlgorithmSpecification_MetricDefinition>
       _instance;
-} _SagemakerJob_default_instance_;
+} _AlgorithmSpecification_MetricDefinition_default_instance_;
+class AlgorithmSpecificationDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<AlgorithmSpecification>
+      _instance;
+} _AlgorithmSpecification_default_instance_;
+class ResourceConfigDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<ResourceConfig>
+      _instance;
+} _ResourceConfig_default_instance_;
+class StoppingConditionDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<StoppingCondition>
+      _instance;
+} _StoppingCondition_default_instance_;
+class VpcConfigDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<VpcConfig>
+      _instance;
+} _VpcConfig_default_instance_;
+class SagemakerHPOJobDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<SagemakerHPOJob>
+      _instance;
+} _SagemakerHPOJob_default_instance_;
 }  // namespace sagemaker
 }  // namespace plugins
 }  // namespace flyte
 namespace protobuf_sagemaker_2eproto {
-void InitDefaultsSagemakerJobImpl() {
+void InitDefaultsAlgorithmSpecification_MetricDefinitionImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
 #ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
@@ -40,33 +65,199 @@ void InitDefaultsSagemakerJobImpl() {
   ::google::protobuf::internal::InitProtobufDefaults();
 #endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
-    void* ptr = &::flyte::plugins::sagemaker::_SagemakerJob_default_instance_;
-    new (ptr) ::flyte::plugins::sagemaker::SagemakerJob();
+    void* ptr = &::flyte::plugins::sagemaker::_AlgorithmSpecification_MetricDefinition_default_instance_;
+    new (ptr) ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::flyte::plugins::sagemaker::SagemakerJob::InitAsDefaultInstance();
+  ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition::InitAsDefaultInstance();
 }
 
-void InitDefaultsSagemakerJob() {
+void InitDefaultsAlgorithmSpecification_MetricDefinition() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSagemakerJobImpl);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsAlgorithmSpecification_MetricDefinitionImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[1];
+void InitDefaultsAlgorithmSpecificationImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification_MetricDefinition();
+  {
+    void* ptr = &::flyte::plugins::sagemaker::_AlgorithmSpecification_default_instance_;
+    new (ptr) ::flyte::plugins::sagemaker::AlgorithmSpecification();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::flyte::plugins::sagemaker::AlgorithmSpecification::InitAsDefaultInstance();
+}
+
+void InitDefaultsAlgorithmSpecification() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsAlgorithmSpecificationImpl);
+}
+
+void InitDefaultsResourceConfigImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::flyte::plugins::sagemaker::_ResourceConfig_default_instance_;
+    new (ptr) ::flyte::plugins::sagemaker::ResourceConfig();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::flyte::plugins::sagemaker::ResourceConfig::InitAsDefaultInstance();
+}
+
+void InitDefaultsResourceConfig() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsResourceConfigImpl);
+}
+
+void InitDefaultsStoppingConditionImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::flyte::plugins::sagemaker::_StoppingCondition_default_instance_;
+    new (ptr) ::flyte::plugins::sagemaker::StoppingCondition();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::flyte::plugins::sagemaker::StoppingCondition::InitAsDefaultInstance();
+}
+
+void InitDefaultsStoppingCondition() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsStoppingConditionImpl);
+}
+
+void InitDefaultsVpcConfigImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::flyte::plugins::sagemaker::_VpcConfig_default_instance_;
+    new (ptr) ::flyte::plugins::sagemaker::VpcConfig();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::flyte::plugins::sagemaker::VpcConfig::InitAsDefaultInstance();
+}
+
+void InitDefaultsVpcConfig() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsVpcConfigImpl);
+}
+
+void InitDefaultsSagemakerHPOJobImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification();
+  protobuf_sagemaker_2eproto::InitDefaultsResourceConfig();
+  protobuf_sagemaker_2eproto::InitDefaultsStoppingCondition();
+  protobuf_sagemaker_2eproto::InitDefaultsVpcConfig();
+  {
+    void* ptr = &::flyte::plugins::sagemaker::_SagemakerHPOJob_default_instance_;
+    new (ptr) ::flyte::plugins::sagemaker::SagemakerHPOJob();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::flyte::plugins::sagemaker::SagemakerHPOJob::InitAsDefaultInstance();
+}
+
+void InitDefaultsSagemakerHPOJob() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSagemakerHPOJobImpl);
+}
+
+::google::protobuf::Metadata file_level_metadata[6];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerJob, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition, regex_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification, trainingimage_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification, traininginputmode_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification, algorithmname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::AlgorithmSpecification, metricdefinitions_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::ResourceConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::ResourceConfig, instancetype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::ResourceConfig, instancecount_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::ResourceConfig, volumesizeingb_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::ResourceConfig, volumekmskeyid_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::StoppingCondition, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::StoppingCondition, maxruntimeinseconds_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::StoppingCondition, maxwaittimeinseconds_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::VpcConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::VpcConfig, securitygroupids_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::VpcConfig, subnets_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, rolearn_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, algorithmspecification_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, resourceconfig_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, stoppingcondition_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, vpcconfig_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, enablespottraining_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::flyte::plugins::sagemaker::SagemakerJob)},
+  { 0, -1, sizeof(::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition)},
+  { 7, -1, sizeof(::flyte::plugins::sagemaker::AlgorithmSpecification)},
+  { 16, -1, sizeof(::flyte::plugins::sagemaker::ResourceConfig)},
+  { 25, -1, sizeof(::flyte::plugins::sagemaker::StoppingCondition)},
+  { 32, -1, sizeof(::flyte::plugins::sagemaker::VpcConfig)},
+  { 39, -1, sizeof(::flyte::plugins::sagemaker::SagemakerHPOJob)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_SagemakerJob_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_AlgorithmSpecification_MetricDefinition_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_AlgorithmSpecification_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_ResourceConfig_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_StoppingCondition_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_VpcConfig_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::flyte::plugins::sagemaker::_SagemakerHPOJob_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -74,7 +265,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "sagemaker.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, NULL, NULL);
+      file_level_metadata, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -85,18 +276,42 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 6);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\017sagemaker.proto\022\027flyte.plugins.sagemak"
-      "er\"\016\n\014SagemakerJobB4Z2github.com/kumare3"
-      "/awsflyteplugins/gen/pb-go/protob\006proto3"
+      "er\"\343\002\n\026AlgorithmSpecification\022\025\n\rTrainin"
+      "gImage\030\001 \001(\t\022`\n\021TrainingInputMode\030\002 \001(\0162"
+      "E.flyte.plugins.sagemaker.AlgorithmSpeci"
+      "fication.TrainingInputModeEnum\022\025\n\rAlgori"
+      "thmName\030\003 \001(\t\022[\n\021MetricDefinitions\030\004 \003(\013"
+      "2@.flyte.plugins.sagemaker.AlgorithmSpec"
+      "ification.MetricDefinition\032/\n\020MetricDefi"
+      "nition\022\014\n\004Name\030\001 \001(\t\022\r\n\005Regex\030\002 \001(\t\"+\n\025T"
+      "rainingInputModeEnum\022\010\n\004Pipe\020\000\022\010\n\004File\020\001"
+      "\"m\n\016ResourceConfig\022\024\n\014InstanceType\030\001 \001(\t"
+      "\022\025\n\rInstanceCount\030\002 \001(\005\022\026\n\016VolumeSizeInG"
+      "B\030\003 \001(\005\022\026\n\016VolumeKmsKeyId\030\004 \001(\t\"N\n\021Stopp"
+      "ingCondition\022\033\n\023MaxRuntimeInSeconds\030\001 \001("
+      "\005\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\005\"6\n\tVpcCo"
+      "nfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Subnet"
+      "s\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleArn\030\001"
+      " \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\0132/.f"
+      "lyte.plugins.sagemaker.AlgorithmSpecific"
+      "ation\022\?\n\016ResourceConfig\030\003 \001(\0132\'.flyte.pl"
+      "ugins.sagemaker.ResourceConfig\022E\n\021Stoppi"
+      "ngCondition\030\004 \001(\0132*.flyte.plugins.sagema"
+      "ker.StoppingCondition\0225\n\tVpcConfig\030\005 \001(\013"
+      "2\".flyte.plugins.sagemaker.VpcConfig\022\032\n\022"
+      "EnableSpotTraining\030\006 \001(\010B4Z2github.com/k"
+      "umare3/awsflyteplugins/gen/pb-go/protob\006"
+      "proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 120);
+      descriptor, 1046);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "sagemaker.proto", &protobuf_RegisterTypes);
 }
@@ -115,129 +330,245 @@ struct StaticDescriptorInitializer {
 namespace flyte {
 namespace plugins {
 namespace sagemaker {
+const ::google::protobuf::EnumDescriptor* AlgorithmSpecification_TrainingInputModeEnum_descriptor() {
+  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_sagemaker_2eproto::file_level_enum_descriptors[0];
+}
+bool AlgorithmSpecification_TrainingInputModeEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::Pipe;
+const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::File;
+const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::TrainingInputModeEnum_MIN;
+const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::TrainingInputModeEnum_MAX;
+const int AlgorithmSpecification::TrainingInputModeEnum_ARRAYSIZE;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 // ===================================================================
 
-void SagemakerJob::InitAsDefaultInstance() {
+void AlgorithmSpecification_MetricDefinition::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int AlgorithmSpecification_MetricDefinition::kNameFieldNumber;
+const int AlgorithmSpecification_MetricDefinition::kRegexFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-SagemakerJob::SagemakerJob()
+AlgorithmSpecification_MetricDefinition::AlgorithmSpecification_MetricDefinition()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_sagemaker_2eproto::InitDefaultsSagemakerJob();
+    ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification_MetricDefinition();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
 }
-SagemakerJob::SagemakerJob(const SagemakerJob& from)
+AlgorithmSpecification_MetricDefinition::AlgorithmSpecification_MetricDefinition(const AlgorithmSpecification_MetricDefinition& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.SagemakerJob)
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  regex_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.regex().size() > 0) {
+    regex_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.regex_);
+  }
+  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
 }
 
-void SagemakerJob::SharedCtor() {
+void AlgorithmSpecification_MetricDefinition::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  regex_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
-SagemakerJob::~SagemakerJob() {
-  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.SagemakerJob)
+AlgorithmSpecification_MetricDefinition::~AlgorithmSpecification_MetricDefinition() {
+  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   SharedDtor();
 }
 
-void SagemakerJob::SharedDtor() {
+void AlgorithmSpecification_MetricDefinition::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  regex_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void SagemakerJob::SetCachedSize(int size) const {
+void AlgorithmSpecification_MetricDefinition::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* SagemakerJob::descriptor() {
+const ::google::protobuf::Descriptor* AlgorithmSpecification_MetricDefinition::descriptor() {
   ::protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const SagemakerJob& SagemakerJob::default_instance() {
-  ::protobuf_sagemaker_2eproto::InitDefaultsSagemakerJob();
+const AlgorithmSpecification_MetricDefinition& AlgorithmSpecification_MetricDefinition::default_instance() {
+  ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification_MetricDefinition();
   return *internal_default_instance();
 }
 
-SagemakerJob* SagemakerJob::New(::google::protobuf::Arena* arena) const {
-  SagemakerJob* n = new SagemakerJob;
+AlgorithmSpecification_MetricDefinition* AlgorithmSpecification_MetricDefinition::New(::google::protobuf::Arena* arena) const {
+  AlgorithmSpecification_MetricDefinition* n = new AlgorithmSpecification_MetricDefinition;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void SagemakerJob::Clear() {
-// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.SagemakerJob)
+void AlgorithmSpecification_MetricDefinition::Clear() {
+// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  regex_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
-bool SagemakerJob::MergePartialFromCodedStream(
+bool AlgorithmSpecification_MetricDefinition::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string Name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string Regex = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_regex()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->regex().data(), static_cast<int>(this->regex().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, _internal_metadata_.mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   return false;
 #undef DO_
 }
 
-void SagemakerJob::SerializeWithCachedSizes(
+void AlgorithmSpecification_MetricDefinition::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
+
+  // string Name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // string Regex = 2;
+  if (this->regex().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->regex().data(), static_cast<int>(this->regex().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->regex(), output);
+  }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
 }
 
-::google::protobuf::uint8* SagemakerJob::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* AlgorithmSpecification_MetricDefinition::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
+
+  // string Name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // string Regex = 2;
+  if (this->regex().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->regex().data(), static_cast<int>(this->regex().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition.Regex");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->regex(), target);
+  }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   return target;
 }
 
-size_t SagemakerJob::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.SagemakerJob)
+size_t AlgorithmSpecification_MetricDefinition::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -245,6 +576,20 @@ size_t SagemakerJob::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // string Name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // string Regex = 2;
+  if (this->regex().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->regex());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -252,59 +597,1929 @@ size_t SagemakerJob::ByteSizeLong() const {
   return total_size;
 }
 
-void SagemakerJob::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.SagemakerJob)
+void AlgorithmSpecification_MetricDefinition::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   GOOGLE_DCHECK_NE(&from, this);
-  const SagemakerJob* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SagemakerJob>(
+  const AlgorithmSpecification_MetricDefinition* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const AlgorithmSpecification_MetricDefinition>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.SagemakerJob)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
     MergeFrom(*source);
   }
 }
 
-void SagemakerJob::MergeFrom(const SagemakerJob& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.SagemakerJob)
+void AlgorithmSpecification_MetricDefinition::MergeFrom(const AlgorithmSpecification_MetricDefinition& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.regex().size() > 0) {
+
+    regex_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.regex_);
+  }
 }
 
-void SagemakerJob::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.SagemakerJob)
+void AlgorithmSpecification_MetricDefinition::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void SagemakerJob::CopyFrom(const SagemakerJob& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.SagemakerJob)
+void AlgorithmSpecification_MetricDefinition::CopyFrom(const AlgorithmSpecification_MetricDefinition& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SagemakerJob::IsInitialized() const {
+bool AlgorithmSpecification_MetricDefinition::IsInitialized() const {
   return true;
 }
 
-void SagemakerJob::Swap(SagemakerJob* other) {
+void AlgorithmSpecification_MetricDefinition::Swap(AlgorithmSpecification_MetricDefinition* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void SagemakerJob::InternalSwap(SagemakerJob* other) {
+void AlgorithmSpecification_MetricDefinition::InternalSwap(AlgorithmSpecification_MetricDefinition* other) {
   using std::swap;
+  name_.Swap(&other->name_);
+  regex_.Swap(&other->regex_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata SagemakerJob::GetMetadata() const {
+::google::protobuf::Metadata AlgorithmSpecification_MetricDefinition::GetMetadata() const {
+  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void AlgorithmSpecification::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int AlgorithmSpecification::kTrainingImageFieldNumber;
+const int AlgorithmSpecification::kTrainingInputModeFieldNumber;
+const int AlgorithmSpecification::kAlgorithmNameFieldNumber;
+const int AlgorithmSpecification::kMetricDefinitionsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+AlgorithmSpecification::AlgorithmSpecification()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.AlgorithmSpecification)
+}
+AlgorithmSpecification::AlgorithmSpecification(const AlgorithmSpecification& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      metricdefinitions_(from.metricdefinitions_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  trainingimage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.trainingimage().size() > 0) {
+    trainingimage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.trainingimage_);
+  }
+  algorithmname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.algorithmname().size() > 0) {
+    algorithmname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.algorithmname_);
+  }
+  traininginputmode_ = from.traininginputmode_;
+  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.AlgorithmSpecification)
+}
+
+void AlgorithmSpecification::SharedCtor() {
+  trainingimage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  algorithmname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  traininginputmode_ = 0;
+  _cached_size_ = 0;
+}
+
+AlgorithmSpecification::~AlgorithmSpecification() {
+  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.AlgorithmSpecification)
+  SharedDtor();
+}
+
+void AlgorithmSpecification::SharedDtor() {
+  trainingimage_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  algorithmname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void AlgorithmSpecification::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* AlgorithmSpecification::descriptor() {
+  ::protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const AlgorithmSpecification& AlgorithmSpecification::default_instance() {
+  ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecification();
+  return *internal_default_instance();
+}
+
+AlgorithmSpecification* AlgorithmSpecification::New(::google::protobuf::Arena* arena) const {
+  AlgorithmSpecification* n = new AlgorithmSpecification;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void AlgorithmSpecification::Clear() {
+// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  metricdefinitions_.Clear();
+  trainingimage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  algorithmname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  traininginputmode_ = 0;
+  _internal_metadata_.Clear();
+}
+
+bool AlgorithmSpecification::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string TrainingImage = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_trainingimage()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->trainingimage().data(), static_cast<int>(this->trainingimage().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_traininginputmode(static_cast< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string AlgorithmName = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_algorithmname()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->algorithmname().data(), static_cast<int>(this->algorithmname().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_metricdefinitions()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.AlgorithmSpecification)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.AlgorithmSpecification)
+  return false;
+#undef DO_
+}
+
+void AlgorithmSpecification::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string TrainingImage = 1;
+  if (this->trainingimage().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->trainingimage().data(), static_cast<int>(this->trainingimage().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->trainingimage(), output);
+  }
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+  if (this->traininginputmode() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->traininginputmode(), output);
+  }
+
+  // string AlgorithmName = 3;
+  if (this->algorithmname().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->algorithmname().data(), static_cast<int>(this->algorithmname().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->algorithmname(), output);
+  }
+
+  // repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->metricdefinitions_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->metricdefinitions(static_cast<int>(i)), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.AlgorithmSpecification)
+}
+
+::google::protobuf::uint8* AlgorithmSpecification::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string TrainingImage = 1;
+  if (this->trainingimage().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->trainingimage().data(), static_cast<int>(this->trainingimage().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->trainingimage(), target);
+  }
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+  if (this->traininginputmode() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->traininginputmode(), target);
+  }
+
+  // string AlgorithmName = 3;
+  if (this->algorithmname().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->algorithmname().data(), static_cast<int>(this->algorithmname().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->algorithmname(), target);
+  }
+
+  // repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->metricdefinitions_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, this->metricdefinitions(static_cast<int>(i)), deterministic, target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.AlgorithmSpecification)
+  return target;
+}
+
+size_t AlgorithmSpecification::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
+  {
+    unsigned int count = static_cast<unsigned int>(this->metricdefinitions_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->metricdefinitions(static_cast<int>(i)));
+    }
+  }
+
+  // string TrainingImage = 1;
+  if (this->trainingimage().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->trainingimage());
+  }
+
+  // string AlgorithmName = 3;
+  if (this->algorithmname().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->algorithmname());
+  }
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+  if (this->traininginputmode() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->traininginputmode());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void AlgorithmSpecification::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AlgorithmSpecification* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const AlgorithmSpecification>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.AlgorithmSpecification)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.AlgorithmSpecification)
+    MergeFrom(*source);
+  }
+}
+
+void AlgorithmSpecification::MergeFrom(const AlgorithmSpecification& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  metricdefinitions_.MergeFrom(from.metricdefinitions_);
+  if (from.trainingimage().size() > 0) {
+
+    trainingimage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.trainingimage_);
+  }
+  if (from.algorithmname().size() > 0) {
+
+    algorithmname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.algorithmname_);
+  }
+  if (from.traininginputmode() != 0) {
+    set_traininginputmode(from.traininginputmode());
+  }
+}
+
+void AlgorithmSpecification::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AlgorithmSpecification::CopyFrom(const AlgorithmSpecification& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.AlgorithmSpecification)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AlgorithmSpecification::IsInitialized() const {
+  return true;
+}
+
+void AlgorithmSpecification::Swap(AlgorithmSpecification* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void AlgorithmSpecification::InternalSwap(AlgorithmSpecification* other) {
+  using std::swap;
+  metricdefinitions_.InternalSwap(&other->metricdefinitions_);
+  trainingimage_.Swap(&other->trainingimage_);
+  algorithmname_.Swap(&other->algorithmname_);
+  swap(traininginputmode_, other->traininginputmode_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata AlgorithmSpecification::GetMetadata() const {
+  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void ResourceConfig::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ResourceConfig::kInstanceTypeFieldNumber;
+const int ResourceConfig::kInstanceCountFieldNumber;
+const int ResourceConfig::kVolumeSizeInGBFieldNumber;
+const int ResourceConfig::kVolumeKmsKeyIdFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ResourceConfig::ResourceConfig()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sagemaker_2eproto::InitDefaultsResourceConfig();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.ResourceConfig)
+}
+ResourceConfig::ResourceConfig(const ResourceConfig& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  instancetype_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.instancetype().size() > 0) {
+    instancetype_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.instancetype_);
+  }
+  volumekmskeyid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.volumekmskeyid().size() > 0) {
+    volumekmskeyid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.volumekmskeyid_);
+  }
+  ::memcpy(&instancecount_, &from.instancecount_,
+    static_cast<size_t>(reinterpret_cast<char*>(&volumesizeingb_) -
+    reinterpret_cast<char*>(&instancecount_)) + sizeof(volumesizeingb_));
+  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.ResourceConfig)
+}
+
+void ResourceConfig::SharedCtor() {
+  instancetype_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  volumekmskeyid_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&instancecount_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&volumesizeingb_) -
+      reinterpret_cast<char*>(&instancecount_)) + sizeof(volumesizeingb_));
+  _cached_size_ = 0;
+}
+
+ResourceConfig::~ResourceConfig() {
+  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.ResourceConfig)
+  SharedDtor();
+}
+
+void ResourceConfig::SharedDtor() {
+  instancetype_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  volumekmskeyid_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void ResourceConfig::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ResourceConfig::descriptor() {
+  ::protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const ResourceConfig& ResourceConfig::default_instance() {
+  ::protobuf_sagemaker_2eproto::InitDefaultsResourceConfig();
+  return *internal_default_instance();
+}
+
+ResourceConfig* ResourceConfig::New(::google::protobuf::Arena* arena) const {
+  ResourceConfig* n = new ResourceConfig;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ResourceConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.ResourceConfig)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  instancetype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  volumekmskeyid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&instancecount_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&volumesizeingb_) -
+      reinterpret_cast<char*>(&instancecount_)) + sizeof(volumesizeingb_));
+  _internal_metadata_.Clear();
+}
+
+bool ResourceConfig::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.ResourceConfig)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string InstanceType = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_instancetype()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->instancetype().data(), static_cast<int>(this->instancetype().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.ResourceConfig.InstanceType"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 InstanceCount = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &instancecount_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 VolumeSizeInGB = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &volumesizeingb_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string VolumeKmsKeyId = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_volumekmskeyid()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->volumekmskeyid().data(), static_cast<int>(this->volumekmskeyid().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.ResourceConfig)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.ResourceConfig)
+  return false;
+#undef DO_
+}
+
+void ResourceConfig::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.ResourceConfig)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string InstanceType = 1;
+  if (this->instancetype().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->instancetype().data(), static_cast<int>(this->instancetype().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.ResourceConfig.InstanceType");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->instancetype(), output);
+  }
+
+  // int32 InstanceCount = 2;
+  if (this->instancecount() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->instancecount(), output);
+  }
+
+  // int32 VolumeSizeInGB = 3;
+  if (this->volumesizeingb() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->volumesizeingb(), output);
+  }
+
+  // string VolumeKmsKeyId = 4;
+  if (this->volumekmskeyid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->volumekmskeyid().data(), static_cast<int>(this->volumekmskeyid().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->volumekmskeyid(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.ResourceConfig)
+}
+
+::google::protobuf::uint8* ResourceConfig::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.ResourceConfig)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string InstanceType = 1;
+  if (this->instancetype().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->instancetype().data(), static_cast<int>(this->instancetype().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.ResourceConfig.InstanceType");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->instancetype(), target);
+  }
+
+  // int32 InstanceCount = 2;
+  if (this->instancecount() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->instancecount(), target);
+  }
+
+  // int32 VolumeSizeInGB = 3;
+  if (this->volumesizeingb() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->volumesizeingb(), target);
+  }
+
+  // string VolumeKmsKeyId = 4;
+  if (this->volumekmskeyid().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->volumekmskeyid().data(), static_cast<int>(this->volumekmskeyid().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->volumekmskeyid(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.ResourceConfig)
+  return target;
+}
+
+size_t ResourceConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.ResourceConfig)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string InstanceType = 1;
+  if (this->instancetype().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->instancetype());
+  }
+
+  // string VolumeKmsKeyId = 4;
+  if (this->volumekmskeyid().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->volumekmskeyid());
+  }
+
+  // int32 InstanceCount = 2;
+  if (this->instancecount() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->instancecount());
+  }
+
+  // int32 VolumeSizeInGB = 3;
+  if (this->volumesizeingb() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->volumesizeingb());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ResourceConfig::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.ResourceConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ResourceConfig* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const ResourceConfig>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.ResourceConfig)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.ResourceConfig)
+    MergeFrom(*source);
+  }
+}
+
+void ResourceConfig::MergeFrom(const ResourceConfig& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.ResourceConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.instancetype().size() > 0) {
+
+    instancetype_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.instancetype_);
+  }
+  if (from.volumekmskeyid().size() > 0) {
+
+    volumekmskeyid_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.volumekmskeyid_);
+  }
+  if (from.instancecount() != 0) {
+    set_instancecount(from.instancecount());
+  }
+  if (from.volumesizeingb() != 0) {
+    set_volumesizeingb(from.volumesizeingb());
+  }
+}
+
+void ResourceConfig::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.ResourceConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ResourceConfig::CopyFrom(const ResourceConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.ResourceConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ResourceConfig::IsInitialized() const {
+  return true;
+}
+
+void ResourceConfig::Swap(ResourceConfig* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ResourceConfig::InternalSwap(ResourceConfig* other) {
+  using std::swap;
+  instancetype_.Swap(&other->instancetype_);
+  volumekmskeyid_.Swap(&other->volumekmskeyid_);
+  swap(instancecount_, other->instancecount_);
+  swap(volumesizeingb_, other->volumesizeingb_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ResourceConfig::GetMetadata() const {
+  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void StoppingCondition::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int StoppingCondition::kMaxRuntimeInSecondsFieldNumber;
+const int StoppingCondition::kMaxWaitTimeInSecondsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+StoppingCondition::StoppingCondition()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sagemaker_2eproto::InitDefaultsStoppingCondition();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.StoppingCondition)
+}
+StoppingCondition::StoppingCondition(const StoppingCondition& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&maxruntimeinseconds_, &from.maxruntimeinseconds_,
+    static_cast<size_t>(reinterpret_cast<char*>(&maxwaittimeinseconds_) -
+    reinterpret_cast<char*>(&maxruntimeinseconds_)) + sizeof(maxwaittimeinseconds_));
+  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.StoppingCondition)
+}
+
+void StoppingCondition::SharedCtor() {
+  ::memset(&maxruntimeinseconds_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&maxwaittimeinseconds_) -
+      reinterpret_cast<char*>(&maxruntimeinseconds_)) + sizeof(maxwaittimeinseconds_));
+  _cached_size_ = 0;
+}
+
+StoppingCondition::~StoppingCondition() {
+  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.StoppingCondition)
+  SharedDtor();
+}
+
+void StoppingCondition::SharedDtor() {
+}
+
+void StoppingCondition::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* StoppingCondition::descriptor() {
+  ::protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const StoppingCondition& StoppingCondition::default_instance() {
+  ::protobuf_sagemaker_2eproto::InitDefaultsStoppingCondition();
+  return *internal_default_instance();
+}
+
+StoppingCondition* StoppingCondition::New(::google::protobuf::Arena* arena) const {
+  StoppingCondition* n = new StoppingCondition;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void StoppingCondition::Clear() {
+// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.StoppingCondition)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&maxruntimeinseconds_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&maxwaittimeinseconds_) -
+      reinterpret_cast<char*>(&maxruntimeinseconds_)) + sizeof(maxwaittimeinseconds_));
+  _internal_metadata_.Clear();
+}
+
+bool StoppingCondition::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.StoppingCondition)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 MaxRuntimeInSeconds = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &maxruntimeinseconds_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 MaxWaitTimeInSeconds = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &maxwaittimeinseconds_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.StoppingCondition)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.StoppingCondition)
+  return false;
+#undef DO_
+}
+
+void StoppingCondition::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.StoppingCondition)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 MaxRuntimeInSeconds = 1;
+  if (this->maxruntimeinseconds() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->maxruntimeinseconds(), output);
+  }
+
+  // int32 MaxWaitTimeInSeconds = 2;
+  if (this->maxwaittimeinseconds() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->maxwaittimeinseconds(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.StoppingCondition)
+}
+
+::google::protobuf::uint8* StoppingCondition::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.StoppingCondition)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 MaxRuntimeInSeconds = 1;
+  if (this->maxruntimeinseconds() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->maxruntimeinseconds(), target);
+  }
+
+  // int32 MaxWaitTimeInSeconds = 2;
+  if (this->maxwaittimeinseconds() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->maxwaittimeinseconds(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.StoppingCondition)
+  return target;
+}
+
+size_t StoppingCondition::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.StoppingCondition)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // int32 MaxRuntimeInSeconds = 1;
+  if (this->maxruntimeinseconds() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->maxruntimeinseconds());
+  }
+
+  // int32 MaxWaitTimeInSeconds = 2;
+  if (this->maxwaittimeinseconds() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->maxwaittimeinseconds());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void StoppingCondition::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.StoppingCondition)
+  GOOGLE_DCHECK_NE(&from, this);
+  const StoppingCondition* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const StoppingCondition>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.StoppingCondition)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.StoppingCondition)
+    MergeFrom(*source);
+  }
+}
+
+void StoppingCondition::MergeFrom(const StoppingCondition& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.StoppingCondition)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.maxruntimeinseconds() != 0) {
+    set_maxruntimeinseconds(from.maxruntimeinseconds());
+  }
+  if (from.maxwaittimeinseconds() != 0) {
+    set_maxwaittimeinseconds(from.maxwaittimeinseconds());
+  }
+}
+
+void StoppingCondition::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.StoppingCondition)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void StoppingCondition::CopyFrom(const StoppingCondition& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.StoppingCondition)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StoppingCondition::IsInitialized() const {
+  return true;
+}
+
+void StoppingCondition::Swap(StoppingCondition* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void StoppingCondition::InternalSwap(StoppingCondition* other) {
+  using std::swap;
+  swap(maxruntimeinseconds_, other->maxruntimeinseconds_);
+  swap(maxwaittimeinseconds_, other->maxwaittimeinseconds_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata StoppingCondition::GetMetadata() const {
+  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void VpcConfig::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int VpcConfig::kSecurityGroupIdsFieldNumber;
+const int VpcConfig::kSubnetsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+VpcConfig::VpcConfig()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sagemaker_2eproto::InitDefaultsVpcConfig();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.VpcConfig)
+}
+VpcConfig::VpcConfig(const VpcConfig& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      securitygroupids_(from.securitygroupids_),
+      subnets_(from.subnets_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.VpcConfig)
+}
+
+void VpcConfig::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+VpcConfig::~VpcConfig() {
+  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.VpcConfig)
+  SharedDtor();
+}
+
+void VpcConfig::SharedDtor() {
+}
+
+void VpcConfig::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* VpcConfig::descriptor() {
+  ::protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const VpcConfig& VpcConfig::default_instance() {
+  ::protobuf_sagemaker_2eproto::InitDefaultsVpcConfig();
+  return *internal_default_instance();
+}
+
+VpcConfig* VpcConfig::New(::google::protobuf::Arena* arena) const {
+  VpcConfig* n = new VpcConfig;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void VpcConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.VpcConfig)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  securitygroupids_.Clear();
+  subnets_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool VpcConfig::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.VpcConfig)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated string SecurityGroupIds = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_securitygroupids()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->securitygroupids(this->securitygroupids_size() - 1).data(),
+            static_cast<int>(this->securitygroupids(this->securitygroupids_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string Subnets = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_subnets()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->subnets(this->subnets_size() - 1).data(),
+            static_cast<int>(this->subnets(this->subnets_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.VpcConfig.Subnets"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.VpcConfig)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.VpcConfig)
+  return false;
+#undef DO_
+}
+
+void VpcConfig::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.VpcConfig)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string SecurityGroupIds = 1;
+  for (int i = 0, n = this->securitygroupids_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->securitygroupids(i).data(), static_cast<int>(this->securitygroupids(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->securitygroupids(i), output);
+  }
+
+  // repeated string Subnets = 2;
+  for (int i = 0, n = this->subnets_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->subnets(i).data(), static_cast<int>(this->subnets(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.VpcConfig.Subnets");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->subnets(i), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.VpcConfig)
+}
+
+::google::protobuf::uint8* VpcConfig::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.VpcConfig)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string SecurityGroupIds = 1;
+  for (int i = 0, n = this->securitygroupids_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->securitygroupids(i).data(), static_cast<int>(this->securitygroupids(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.VpcConfig.SecurityGroupIds");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(1, this->securitygroupids(i), target);
+  }
+
+  // repeated string Subnets = 2;
+  for (int i = 0, n = this->subnets_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->subnets(i).data(), static_cast<int>(this->subnets(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.VpcConfig.Subnets");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(2, this->subnets(i), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.VpcConfig)
+  return target;
+}
+
+size_t VpcConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.VpcConfig)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // repeated string SecurityGroupIds = 1;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->securitygroupids_size());
+  for (int i = 0, n = this->securitygroupids_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->securitygroupids(i));
+  }
+
+  // repeated string Subnets = 2;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->subnets_size());
+  for (int i = 0, n = this->subnets_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->subnets(i));
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void VpcConfig::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.VpcConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  const VpcConfig* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const VpcConfig>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.VpcConfig)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.VpcConfig)
+    MergeFrom(*source);
+  }
+}
+
+void VpcConfig::MergeFrom(const VpcConfig& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.VpcConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  securitygroupids_.MergeFrom(from.securitygroupids_);
+  subnets_.MergeFrom(from.subnets_);
+}
+
+void VpcConfig::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.VpcConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void VpcConfig::CopyFrom(const VpcConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.VpcConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool VpcConfig::IsInitialized() const {
+  return true;
+}
+
+void VpcConfig::Swap(VpcConfig* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void VpcConfig::InternalSwap(VpcConfig* other) {
+  using std::swap;
+  securitygroupids_.InternalSwap(&other->securitygroupids_);
+  subnets_.InternalSwap(&other->subnets_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata VpcConfig::GetMetadata() const {
+  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void SagemakerHPOJob::InitAsDefaultInstance() {
+  ::flyte::plugins::sagemaker::_SagemakerHPOJob_default_instance_._instance.get_mutable()->algorithmspecification_ = const_cast< ::flyte::plugins::sagemaker::AlgorithmSpecification*>(
+      ::flyte::plugins::sagemaker::AlgorithmSpecification::internal_default_instance());
+  ::flyte::plugins::sagemaker::_SagemakerHPOJob_default_instance_._instance.get_mutable()->resourceconfig_ = const_cast< ::flyte::plugins::sagemaker::ResourceConfig*>(
+      ::flyte::plugins::sagemaker::ResourceConfig::internal_default_instance());
+  ::flyte::plugins::sagemaker::_SagemakerHPOJob_default_instance_._instance.get_mutable()->stoppingcondition_ = const_cast< ::flyte::plugins::sagemaker::StoppingCondition*>(
+      ::flyte::plugins::sagemaker::StoppingCondition::internal_default_instance());
+  ::flyte::plugins::sagemaker::_SagemakerHPOJob_default_instance_._instance.get_mutable()->vpcconfig_ = const_cast< ::flyte::plugins::sagemaker::VpcConfig*>(
+      ::flyte::plugins::sagemaker::VpcConfig::internal_default_instance());
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int SagemakerHPOJob::kRoleArnFieldNumber;
+const int SagemakerHPOJob::kAlgorithmSpecificationFieldNumber;
+const int SagemakerHPOJob::kResourceConfigFieldNumber;
+const int SagemakerHPOJob::kStoppingConditionFieldNumber;
+const int SagemakerHPOJob::kVpcConfigFieldNumber;
+const int SagemakerHPOJob::kEnableSpotTrainingFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+SagemakerHPOJob::SagemakerHPOJob()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_sagemaker_2eproto::InitDefaultsSagemakerHPOJob();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:flyte.plugins.sagemaker.SagemakerHPOJob)
+}
+SagemakerHPOJob::SagemakerHPOJob(const SagemakerHPOJob& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  rolearn_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.rolearn().size() > 0) {
+    rolearn_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.rolearn_);
+  }
+  if (from.has_algorithmspecification()) {
+    algorithmspecification_ = new ::flyte::plugins::sagemaker::AlgorithmSpecification(*from.algorithmspecification_);
+  } else {
+    algorithmspecification_ = NULL;
+  }
+  if (from.has_resourceconfig()) {
+    resourceconfig_ = new ::flyte::plugins::sagemaker::ResourceConfig(*from.resourceconfig_);
+  } else {
+    resourceconfig_ = NULL;
+  }
+  if (from.has_stoppingcondition()) {
+    stoppingcondition_ = new ::flyte::plugins::sagemaker::StoppingCondition(*from.stoppingcondition_);
+  } else {
+    stoppingcondition_ = NULL;
+  }
+  if (from.has_vpcconfig()) {
+    vpcconfig_ = new ::flyte::plugins::sagemaker::VpcConfig(*from.vpcconfig_);
+  } else {
+    vpcconfig_ = NULL;
+  }
+  enablespottraining_ = from.enablespottraining_;
+  // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.SagemakerHPOJob)
+}
+
+void SagemakerHPOJob::SharedCtor() {
+  rolearn_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&algorithmspecification_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&enablespottraining_) -
+      reinterpret_cast<char*>(&algorithmspecification_)) + sizeof(enablespottraining_));
+  _cached_size_ = 0;
+}
+
+SagemakerHPOJob::~SagemakerHPOJob() {
+  // @@protoc_insertion_point(destructor:flyte.plugins.sagemaker.SagemakerHPOJob)
+  SharedDtor();
+}
+
+void SagemakerHPOJob::SharedDtor() {
+  rolearn_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete algorithmspecification_;
+  if (this != internal_default_instance()) delete resourceconfig_;
+  if (this != internal_default_instance()) delete stoppingcondition_;
+  if (this != internal_default_instance()) delete vpcconfig_;
+}
+
+void SagemakerHPOJob::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SagemakerHPOJob::descriptor() {
+  ::protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const SagemakerHPOJob& SagemakerHPOJob::default_instance() {
+  ::protobuf_sagemaker_2eproto::InitDefaultsSagemakerHPOJob();
+  return *internal_default_instance();
+}
+
+SagemakerHPOJob* SagemakerHPOJob::New(::google::protobuf::Arena* arena) const {
+  SagemakerHPOJob* n = new SagemakerHPOJob;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void SagemakerHPOJob::Clear() {
+// @@protoc_insertion_point(message_clear_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  rolearn_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && algorithmspecification_ != NULL) {
+    delete algorithmspecification_;
+  }
+  algorithmspecification_ = NULL;
+  if (GetArenaNoVirtual() == NULL && resourceconfig_ != NULL) {
+    delete resourceconfig_;
+  }
+  resourceconfig_ = NULL;
+  if (GetArenaNoVirtual() == NULL && stoppingcondition_ != NULL) {
+    delete stoppingcondition_;
+  }
+  stoppingcondition_ = NULL;
+  if (GetArenaNoVirtual() == NULL && vpcconfig_ != NULL) {
+    delete vpcconfig_;
+  }
+  vpcconfig_ = NULL;
+  enablespottraining_ = false;
+  _internal_metadata_.Clear();
+}
+
+bool SagemakerHPOJob::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string RoleArn = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_rolearn()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->rolearn().data(), static_cast<int>(this->rolearn().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_algorithmspecification()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_resourceconfig()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_stoppingcondition()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_vpcconfig()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bool EnableSpotTraining = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &enablespottraining_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:flyte.plugins.sagemaker.SagemakerHPOJob)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:flyte.plugins.sagemaker.SagemakerHPOJob)
+  return false;
+#undef DO_
+}
+
+void SagemakerHPOJob::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string RoleArn = 1;
+  if (this->rolearn().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->rolearn().data(), static_cast<int>(this->rolearn().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->rolearn(), output);
+  }
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  if (this->has_algorithmspecification()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->algorithmspecification_, output);
+  }
+
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  if (this->has_resourceconfig()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->resourceconfig_, output);
+  }
+
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  if (this->has_stoppingcondition()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->stoppingcondition_, output);
+  }
+
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  if (this->has_vpcconfig()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *this->vpcconfig_, output);
+  }
+
+  // bool EnableSpotTraining = 6;
+  if (this->enablespottraining() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->enablespottraining(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:flyte.plugins.sagemaker.SagemakerHPOJob)
+}
+
+::google::protobuf::uint8* SagemakerHPOJob::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string RoleArn = 1;
+  if (this->rolearn().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->rolearn().data(), static_cast<int>(this->rolearn().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->rolearn(), target);
+  }
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  if (this->has_algorithmspecification()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, *this->algorithmspecification_, deterministic, target);
+  }
+
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  if (this->has_resourceconfig()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        3, *this->resourceconfig_, deterministic, target);
+  }
+
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  if (this->has_stoppingcondition()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, *this->stoppingcondition_, deterministic, target);
+  }
+
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  if (this->has_vpcconfig()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        5, *this->vpcconfig_, deterministic, target);
+  }
+
+  // bool EnableSpotTraining = 6;
+  if (this->enablespottraining() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->enablespottraining(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:flyte.plugins.sagemaker.SagemakerHPOJob)
+  return target;
+}
+
+size_t SagemakerHPOJob::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string RoleArn = 1;
+  if (this->rolearn().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->rolearn());
+  }
+
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  if (this->has_algorithmspecification()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->algorithmspecification_);
+  }
+
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  if (this->has_resourceconfig()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->resourceconfig_);
+  }
+
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  if (this->has_stoppingcondition()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->stoppingcondition_);
+  }
+
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  if (this->has_vpcconfig()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->vpcconfig_);
+  }
+
+  // bool EnableSpotTraining = 6;
+  if (this->enablespottraining() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SagemakerHPOJob::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SagemakerHPOJob* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const SagemakerHPOJob>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:flyte.plugins.sagemaker.SagemakerHPOJob)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:flyte.plugins.sagemaker.SagemakerHPOJob)
+    MergeFrom(*source);
+  }
+}
+
+void SagemakerHPOJob::MergeFrom(const SagemakerHPOJob& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.rolearn().size() > 0) {
+
+    rolearn_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.rolearn_);
+  }
+  if (from.has_algorithmspecification()) {
+    mutable_algorithmspecification()->::flyte::plugins::sagemaker::AlgorithmSpecification::MergeFrom(from.algorithmspecification());
+  }
+  if (from.has_resourceconfig()) {
+    mutable_resourceconfig()->::flyte::plugins::sagemaker::ResourceConfig::MergeFrom(from.resourceconfig());
+  }
+  if (from.has_stoppingcondition()) {
+    mutable_stoppingcondition()->::flyte::plugins::sagemaker::StoppingCondition::MergeFrom(from.stoppingcondition());
+  }
+  if (from.has_vpcconfig()) {
+    mutable_vpcconfig()->::flyte::plugins::sagemaker::VpcConfig::MergeFrom(from.vpcconfig());
+  }
+  if (from.enablespottraining() != 0) {
+    set_enablespottraining(from.enablespottraining());
+  }
+}
+
+void SagemakerHPOJob::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SagemakerHPOJob::CopyFrom(const SagemakerHPOJob& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:flyte.plugins.sagemaker.SagemakerHPOJob)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SagemakerHPOJob::IsInitialized() const {
+  return true;
+}
+
+void SagemakerHPOJob::Swap(SagemakerHPOJob* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void SagemakerHPOJob::InternalSwap(SagemakerHPOJob* other) {
+  using std::swap;
+  rolearn_.Swap(&other->rolearn_);
+  swap(algorithmspecification_, other->algorithmspecification_);
+  swap(resourceconfig_, other->resourceconfig_);
+  swap(stoppingcondition_, other->stoppingcondition_);
+  swap(vpcconfig_, other->vpcconfig_);
+  swap(enablespottraining_, other->enablespottraining_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata SagemakerHPOJob::GetMetadata() const {
   protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_sagemaker_2eproto::file_level_metadata[kIndexInFileMessages];
 }

@@ -14,27 +14,80 @@ public final class Sagemaker {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface SagemakerJobOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.SagemakerJob)
+  public interface AlgorithmSpecificationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.AlgorithmSpecification)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string TrainingImage = 1;</code>
+     */
+    java.lang.String getTrainingImage();
+    /**
+     * <code>string TrainingImage = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getTrainingImageBytes();
+
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     */
+    int getTrainingInputModeValue();
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum getTrainingInputMode();
+
+    /**
+     * <code>string AlgorithmName = 3;</code>
+     */
+    java.lang.String getAlgorithmName();
+    /**
+     * <code>string AlgorithmName = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getAlgorithmNameBytes();
+
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    java.util.List<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition> 
+        getMetricDefinitionsList();
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition getMetricDefinitions(int index);
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    int getMetricDefinitionsCount();
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    java.util.List<? extends flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder> 
+        getMetricDefinitionsOrBuilderList();
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder getMetricDefinitionsOrBuilder(
+        int index);
   }
   /**
-   * <pre>
-   * Optional Custom Proto for Sagemaker Plugin.
-   * </pre>
-   *
-   * Protobuf type {@code flyte.plugins.sagemaker.SagemakerJob}
+   * Protobuf type {@code flyte.plugins.sagemaker.AlgorithmSpecification}
    */
-  public  static final class SagemakerJob extends
+  public  static final class AlgorithmSpecification extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.SagemakerJob)
-      SagemakerJobOrBuilder {
+      // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.AlgorithmSpecification)
+      AlgorithmSpecificationOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SagemakerJob.newBuilder() to construct.
-    private SagemakerJob(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use AlgorithmSpecification.newBuilder() to construct.
+    private AlgorithmSpecification(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SagemakerJob() {
+    private AlgorithmSpecification() {
+      trainingImage_ = "";
+      trainingInputMode_ = 0;
+      algorithmName_ = "";
+      metricDefinitions_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -42,7 +95,7 @@ public final class Sagemaker {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SagemakerJob(
+    private AlgorithmSpecification(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -50,6 +103,7 @@ public final class Sagemaker {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -67,6 +121,33 @@ public final class Sagemaker {
               }
               break;
             }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              trainingImage_ = s;
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+
+              trainingInputMode_ = rawValue;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              algorithmName_ = s;
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                metricDefinitions_ = new java.util.ArrayList<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              metricDefinitions_.add(
+                  input.readMessage(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.parser(), extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -75,20 +156,903 @@ public final class Sagemaker {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          metricDefinitions_ = java.util.Collections.unmodifiableList(metricDefinitions_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerJob_descriptor;
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerJob_fieldAccessorTable
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              flyte.plugins.sagemaker.Sagemaker.SagemakerJob.class, flyte.plugins.sagemaker.Sagemaker.SagemakerJob.Builder.class);
+              flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.class, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum}
+     */
+    public enum TrainingInputModeEnum
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>Pipe = 0;</code>
+       */
+      Pipe(0),
+      /**
+       * <code>File = 1;</code>
+       */
+      File(1),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>Pipe = 0;</code>
+       */
+      public static final int Pipe_VALUE = 0;
+      /**
+       * <code>File = 1;</code>
+       */
+      public static final int File_VALUE = 1;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TrainingInputModeEnum valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TrainingInputModeEnum forNumber(int value) {
+        switch (value) {
+          case 0: return Pipe;
+          case 1: return File;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<TrainingInputModeEnum>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          TrainingInputModeEnum> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TrainingInputModeEnum>() {
+              public TrainingInputModeEnum findValueByNumber(int number) {
+                return TrainingInputModeEnum.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final TrainingInputModeEnum[] VALUES = values();
+
+      public static TrainingInputModeEnum valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private TrainingInputModeEnum(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum)
+    }
+
+    public interface MetricDefinitionOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string Name = 1;</code>
+       */
+      java.lang.String getName();
+      /**
+       * <code>string Name = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+
+      /**
+       * <code>string Regex = 2;</code>
+       */
+      java.lang.String getRegex();
+      /**
+       * <code>string Regex = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getRegexBytes();
+    }
+    /**
+     * Protobuf type {@code flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition}
+     */
+    public  static final class MetricDefinition extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
+        MetricDefinitionOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use MetricDefinition.newBuilder() to construct.
+      private MetricDefinition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private MetricDefinition() {
+        name_ = "";
+        regex_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private MetricDefinition(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                name_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                regex_ = s;
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.class, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder.class);
+      }
+
+      public static final int NAME_FIELD_NUMBER = 1;
+      private volatile java.lang.Object name_;
+      /**
+       * <code>string Name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string Name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int REGEX_FIELD_NUMBER = 2;
+      private volatile java.lang.Object regex_;
+      /**
+       * <code>string Regex = 2;</code>
+       */
+      public java.lang.String getRegex() {
+        java.lang.Object ref = regex_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          regex_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string Regex = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRegexBytes() {
+        java.lang.Object ref = regex_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          regex_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        }
+        if (!getRegexBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, regex_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        }
+        if (!getRegexBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, regex_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition)) {
+          return super.equals(obj);
+        }
+        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition other = (flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition) obj;
+
+        boolean result = true;
+        result = result && getName()
+            .equals(other.getName());
+        result = result && getRegex()
+            .equals(other.getRegex());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+        hash = (37 * hash) + REGEX_FIELD_NUMBER;
+        hash = (53 * hash) + getRegex().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.class, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder.class);
+        }
+
+        // Construct using flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        public Builder clear() {
+          super.clear();
+          name_ = "";
+
+          regex_ = "";
+
+          return this;
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_descriptor;
+        }
+
+        public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition getDefaultInstanceForType() {
+          return flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.getDefaultInstance();
+        }
+
+        public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition build() {
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition buildPartial() {
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition result = new flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition(this);
+          result.name_ = name_;
+          result.regex_ = regex_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition) {
+            return mergeFrom((flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition other) {
+          if (other == flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.getDefaultInstance()) return this;
+          if (!other.getName().isEmpty()) {
+            name_ = other.name_;
+            onChanged();
+          }
+          if (!other.getRegex().isEmpty()) {
+            regex_ = other.regex_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object name_ = "";
+        /**
+         * <code>string Name = 1;</code>
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            name_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string Name = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string Name = 1;</code>
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          name_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string Name = 1;</code>
+         */
+        public Builder clearName() {
+          
+          name_ = getDefaultInstance().getName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string Name = 1;</code>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          name_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object regex_ = "";
+        /**
+         * <code>string Regex = 2;</code>
+         */
+        public java.lang.String getRegex() {
+          java.lang.Object ref = regex_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            regex_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string Regex = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getRegexBytes() {
+          java.lang.Object ref = regex_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            regex_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string Regex = 2;</code>
+         */
+        public Builder setRegex(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          regex_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string Regex = 2;</code>
+         */
+        public Builder clearRegex() {
+          
+          regex_ = getDefaultInstance().getRegex();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string Regex = 2;</code>
+         */
+        public Builder setRegexBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          regex_ = value;
+          onChanged();
+          return this;
+        }
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
+      }
+
+      // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition)
+      private static final flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition();
+      }
+
+      public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<MetricDefinition>
+          PARSER = new com.google.protobuf.AbstractParser<MetricDefinition>() {
+        public MetricDefinition parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MetricDefinition(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<MetricDefinition> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<MetricDefinition> getParserForType() {
+        return PARSER;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private int bitField0_;
+    public static final int TRAININGIMAGE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object trainingImage_;
+    /**
+     * <code>string TrainingImage = 1;</code>
+     */
+    public java.lang.String getTrainingImage() {
+      java.lang.Object ref = trainingImage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        trainingImage_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string TrainingImage = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTrainingImageBytes() {
+      java.lang.Object ref = trainingImage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        trainingImage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TRAININGINPUTMODE_FIELD_NUMBER = 2;
+    private int trainingInputMode_;
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     */
+    public int getTrainingInputModeValue() {
+      return trainingInputMode_;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum getTrainingInputMode() {
+      flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum result = flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.valueOf(trainingInputMode_);
+      return result == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.UNRECOGNIZED : result;
+    }
+
+    public static final int ALGORITHMNAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object algorithmName_;
+    /**
+     * <code>string AlgorithmName = 3;</code>
+     */
+    public java.lang.String getAlgorithmName() {
+      java.lang.Object ref = algorithmName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        algorithmName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string AlgorithmName = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAlgorithmNameBytes() {
+      java.lang.Object ref = algorithmName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        algorithmName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int METRICDEFINITIONS_FIELD_NUMBER = 4;
+    private java.util.List<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition> metricDefinitions_;
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    public java.util.List<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition> getMetricDefinitionsList() {
+      return metricDefinitions_;
+    }
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    public java.util.List<? extends flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder> 
+        getMetricDefinitionsOrBuilderList() {
+      return metricDefinitions_;
+    }
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    public int getMetricDefinitionsCount() {
+      return metricDefinitions_.size();
+    }
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition getMetricDefinitions(int index) {
+      return metricDefinitions_.get(index);
+    }
+    /**
+     * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder getMetricDefinitionsOrBuilder(
+        int index) {
+      return metricDefinitions_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -103,6 +1067,18 @@ public final class Sagemaker {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getTrainingImageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, trainingImage_);
+      }
+      if (trainingInputMode_ != flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.Pipe.getNumber()) {
+        output.writeEnum(2, trainingInputMode_);
+      }
+      if (!getAlgorithmNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, algorithmName_);
+      }
+      for (int i = 0; i < metricDefinitions_.size(); i++) {
+        output.writeMessage(4, metricDefinitions_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -111,6 +1087,20 @@ public final class Sagemaker {
       if (size != -1) return size;
 
       size = 0;
+      if (!getTrainingImageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, trainingImage_);
+      }
+      if (trainingInputMode_ != flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.Pipe.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, trainingInputMode_);
+      }
+      if (!getAlgorithmNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, algorithmName_);
+      }
+      for (int i = 0; i < metricDefinitions_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, metricDefinitions_.get(i));
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -121,12 +1111,19 @@ public final class Sagemaker {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.SagemakerJob)) {
+      if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification)) {
         return super.equals(obj);
       }
-      flyte.plugins.sagemaker.Sagemaker.SagemakerJob other = (flyte.plugins.sagemaker.Sagemaker.SagemakerJob) obj;
+      flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification other = (flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification) obj;
 
       boolean result = true;
+      result = result && getTrainingImage()
+          .equals(other.getTrainingImage());
+      result = result && trainingInputMode_ == other.trainingInputMode_;
+      result = result && getAlgorithmName()
+          .equals(other.getAlgorithmName());
+      result = result && getMetricDefinitionsList()
+          .equals(other.getMetricDefinitionsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -138,74 +1135,84 @@ public final class Sagemaker {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TRAININGIMAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getTrainingImage().hashCode();
+      hash = (37 * hash) + TRAININGINPUTMODE_FIELD_NUMBER;
+      hash = (53 * hash) + trainingInputMode_;
+      hash = (37 * hash) + ALGORITHMNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getAlgorithmName().hashCode();
+      if (getMetricDefinitionsCount() > 0) {
+        hash = (37 * hash) + METRICDEFINITIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getMetricDefinitionsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(byte[] data)
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(java.io.InputStream input)
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseDelimitedFrom(java.io.InputStream input)
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseDelimitedFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob parseFrom(
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -217,7 +1224,7 @@ public final class Sagemaker {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.SagemakerJob prototype) {
+    public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -232,29 +1239,25 @@ public final class Sagemaker {
       return builder;
     }
     /**
-     * <pre>
-     * Optional Custom Proto for Sagemaker Plugin.
-     * </pre>
-     *
-     * Protobuf type {@code flyte.plugins.sagemaker.SagemakerJob}
+     * Protobuf type {@code flyte.plugins.sagemaker.AlgorithmSpecification}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.SagemakerJob)
-        flyte.plugins.sagemaker.Sagemaker.SagemakerJobOrBuilder {
+        // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.AlgorithmSpecification)
+        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerJob_descriptor;
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerJob_fieldAccessorTable
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                flyte.plugins.sagemaker.Sagemaker.SagemakerJob.class, flyte.plugins.sagemaker.Sagemaker.SagemakerJob.Builder.class);
+                flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.class, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder.class);
       }
 
-      // Construct using flyte.plugins.sagemaker.Sagemaker.SagemakerJob.newBuilder()
+      // Construct using flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -267,32 +1270,60 @@ public final class Sagemaker {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getMetricDefinitionsFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
+        trainingImage_ = "";
+
+        trainingInputMode_ = 0;
+
+        algorithmName_ = "";
+
+        if (metricDefinitionsBuilder_ == null) {
+          metricDefinitions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          metricDefinitionsBuilder_.clear();
+        }
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerJob_descriptor;
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor;
       }
 
-      public flyte.plugins.sagemaker.Sagemaker.SagemakerJob getDefaultInstanceForType() {
-        return flyte.plugins.sagemaker.Sagemaker.SagemakerJob.getDefaultInstance();
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getDefaultInstanceForType() {
+        return flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDefaultInstance();
       }
 
-      public flyte.plugins.sagemaker.Sagemaker.SagemakerJob build() {
-        flyte.plugins.sagemaker.Sagemaker.SagemakerJob result = buildPartial();
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification build() {
+        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public flyte.plugins.sagemaker.Sagemaker.SagemakerJob buildPartial() {
-        flyte.plugins.sagemaker.Sagemaker.SagemakerJob result = new flyte.plugins.sagemaker.Sagemaker.SagemakerJob(this);
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification buildPartial() {
+        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification result = new flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.trainingImage_ = trainingImage_;
+        result.trainingInputMode_ = trainingInputMode_;
+        result.algorithmName_ = algorithmName_;
+        if (metricDefinitionsBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            metricDefinitions_ = java.util.Collections.unmodifiableList(metricDefinitions_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.metricDefinitions_ = metricDefinitions_;
+        } else {
+          result.metricDefinitions_ = metricDefinitionsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -324,16 +1355,53 @@ public final class Sagemaker {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof flyte.plugins.sagemaker.Sagemaker.SagemakerJob) {
-          return mergeFrom((flyte.plugins.sagemaker.Sagemaker.SagemakerJob)other);
+        if (other instanceof flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification) {
+          return mergeFrom((flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.SagemakerJob other) {
-        if (other == flyte.plugins.sagemaker.Sagemaker.SagemakerJob.getDefaultInstance()) return this;
+      public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification other) {
+        if (other == flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDefaultInstance()) return this;
+        if (!other.getTrainingImage().isEmpty()) {
+          trainingImage_ = other.trainingImage_;
+          onChanged();
+        }
+        if (other.trainingInputMode_ != 0) {
+          setTrainingInputModeValue(other.getTrainingInputModeValue());
+        }
+        if (!other.getAlgorithmName().isEmpty()) {
+          algorithmName_ = other.algorithmName_;
+          onChanged();
+        }
+        if (metricDefinitionsBuilder_ == null) {
+          if (!other.metricDefinitions_.isEmpty()) {
+            if (metricDefinitions_.isEmpty()) {
+              metricDefinitions_ = other.metricDefinitions_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureMetricDefinitionsIsMutable();
+              metricDefinitions_.addAll(other.metricDefinitions_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.metricDefinitions_.isEmpty()) {
+            if (metricDefinitionsBuilder_.isEmpty()) {
+              metricDefinitionsBuilder_.dispose();
+              metricDefinitionsBuilder_ = null;
+              metricDefinitions_ = other.metricDefinitions_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              metricDefinitionsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMetricDefinitionsFieldBuilder() : null;
+            } else {
+              metricDefinitionsBuilder_.addAllMessages(other.metricDefinitions_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -347,17 +1415,1228 @@ public final class Sagemaker {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        flyte.plugins.sagemaker.Sagemaker.SagemakerJob parsedMessage = null;
+        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (flyte.plugins.sagemaker.Sagemaker.SagemakerJob) e.getUnfinishedMessage();
+          parsedMessage = (flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object trainingImage_ = "";
+      /**
+       * <code>string TrainingImage = 1;</code>
+       */
+      public java.lang.String getTrainingImage() {
+        java.lang.Object ref = trainingImage_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          trainingImage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string TrainingImage = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTrainingImageBytes() {
+        java.lang.Object ref = trainingImage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          trainingImage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string TrainingImage = 1;</code>
+       */
+      public Builder setTrainingImage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        trainingImage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TrainingImage = 1;</code>
+       */
+      public Builder clearTrainingImage() {
+        
+        trainingImage_ = getDefaultInstance().getTrainingImage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TrainingImage = 1;</code>
+       */
+      public Builder setTrainingImageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        trainingImage_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int trainingInputMode_ = 0;
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       */
+      public int getTrainingInputModeValue() {
+        return trainingInputMode_;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       */
+      public Builder setTrainingInputModeValue(int value) {
+        trainingInputMode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum getTrainingInputMode() {
+        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum result = flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.valueOf(trainingInputMode_);
+        return result == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       */
+      public Builder setTrainingInputMode(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        trainingInputMode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       */
+      public Builder clearTrainingInputMode() {
+        
+        trainingInputMode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object algorithmName_ = "";
+      /**
+       * <code>string AlgorithmName = 3;</code>
+       */
+      public java.lang.String getAlgorithmName() {
+        java.lang.Object ref = algorithmName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          algorithmName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string AlgorithmName = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAlgorithmNameBytes() {
+        java.lang.Object ref = algorithmName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          algorithmName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string AlgorithmName = 3;</code>
+       */
+      public Builder setAlgorithmName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        algorithmName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string AlgorithmName = 3;</code>
+       */
+      public Builder clearAlgorithmName() {
+        
+        algorithmName_ = getDefaultInstance().getAlgorithmName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string AlgorithmName = 3;</code>
+       */
+      public Builder setAlgorithmNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        algorithmName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition> metricDefinitions_ =
+        java.util.Collections.emptyList();
+      private void ensureMetricDefinitionsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          metricDefinitions_ = new java.util.ArrayList<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition>(metricDefinitions_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder> metricDefinitionsBuilder_;
+
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public java.util.List<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition> getMetricDefinitionsList() {
+        if (metricDefinitionsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(metricDefinitions_);
+        } else {
+          return metricDefinitionsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public int getMetricDefinitionsCount() {
+        if (metricDefinitionsBuilder_ == null) {
+          return metricDefinitions_.size();
+        } else {
+          return metricDefinitionsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition getMetricDefinitions(int index) {
+        if (metricDefinitionsBuilder_ == null) {
+          return metricDefinitions_.get(index);
+        } else {
+          return metricDefinitionsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder setMetricDefinitions(
+          int index, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition value) {
+        if (metricDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.set(index, value);
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder setMetricDefinitions(
+          int index, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder builderForValue) {
+        if (metricDefinitionsBuilder_ == null) {
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder addMetricDefinitions(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition value) {
+        if (metricDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.add(value);
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder addMetricDefinitions(
+          int index, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition value) {
+        if (metricDefinitionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.add(index, value);
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder addMetricDefinitions(
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder builderForValue) {
+        if (metricDefinitionsBuilder_ == null) {
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.add(builderForValue.build());
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder addMetricDefinitions(
+          int index, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder builderForValue) {
+        if (metricDefinitionsBuilder_ == null) {
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder addAllMetricDefinitions(
+          java.lang.Iterable<? extends flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition> values) {
+        if (metricDefinitionsBuilder_ == null) {
+          ensureMetricDefinitionsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, metricDefinitions_);
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder clearMetricDefinitions() {
+        if (metricDefinitionsBuilder_ == null) {
+          metricDefinitions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public Builder removeMetricDefinitions(int index) {
+        if (metricDefinitionsBuilder_ == null) {
+          ensureMetricDefinitionsIsMutable();
+          metricDefinitions_.remove(index);
+          onChanged();
+        } else {
+          metricDefinitionsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder getMetricDefinitionsBuilder(
+          int index) {
+        return getMetricDefinitionsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder getMetricDefinitionsOrBuilder(
+          int index) {
+        if (metricDefinitionsBuilder_ == null) {
+          return metricDefinitions_.get(index);  } else {
+          return metricDefinitionsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public java.util.List<? extends flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder> 
+           getMetricDefinitionsOrBuilderList() {
+        if (metricDefinitionsBuilder_ != null) {
+          return metricDefinitionsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(metricDefinitions_);
+        }
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder addMetricDefinitionsBuilder() {
+        return getMetricDefinitionsFieldBuilder().addBuilder(
+            flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder addMetricDefinitionsBuilder(
+          int index) {
+        return getMetricDefinitionsFieldBuilder().addBuilder(
+            index, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;</code>
+       */
+      public java.util.List<flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder> 
+           getMetricDefinitionsBuilderList() {
+        return getMetricDefinitionsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder> 
+          getMetricDefinitionsFieldBuilder() {
+        if (metricDefinitionsBuilder_ == null) {
+          metricDefinitionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinition.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.MetricDefinitionOrBuilder>(
+                  metricDefinitions_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          metricDefinitions_ = null;
+        }
+        return metricDefinitionsBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.AlgorithmSpecification)
+    }
+
+    // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.AlgorithmSpecification)
+    private static final flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification();
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AlgorithmSpecification>
+        PARSER = new com.google.protobuf.AbstractParser<AlgorithmSpecification>() {
+      public AlgorithmSpecification parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AlgorithmSpecification(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AlgorithmSpecification> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AlgorithmSpecification> getParserForType() {
+      return PARSER;
+    }
+
+    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ResourceConfigOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.ResourceConfig)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string InstanceType = 1;</code>
+     */
+    java.lang.String getInstanceType();
+    /**
+     * <code>string InstanceType = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getInstanceTypeBytes();
+
+    /**
+     * <code>int32 InstanceCount = 2;</code>
+     */
+    int getInstanceCount();
+
+    /**
+     * <code>int32 VolumeSizeInGB = 3;</code>
+     */
+    int getVolumeSizeInGB();
+
+    /**
+     * <code>string VolumeKmsKeyId = 4;</code>
+     */
+    java.lang.String getVolumeKmsKeyId();
+    /**
+     * <code>string VolumeKmsKeyId = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getVolumeKmsKeyIdBytes();
+  }
+  /**
+   * Protobuf type {@code flyte.plugins.sagemaker.ResourceConfig}
+   */
+  public  static final class ResourceConfig extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.ResourceConfig)
+      ResourceConfigOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ResourceConfig.newBuilder() to construct.
+    private ResourceConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ResourceConfig() {
+      instanceType_ = "";
+      instanceCount_ = 0;
+      volumeSizeInGB_ = 0;
+      volumeKmsKeyId_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResourceConfig(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              instanceType_ = s;
+              break;
+            }
+            case 16: {
+
+              instanceCount_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              volumeSizeInGB_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              volumeKmsKeyId_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_ResourceConfig_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_ResourceConfig_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              flyte.plugins.sagemaker.Sagemaker.ResourceConfig.class, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder.class);
+    }
+
+    public static final int INSTANCETYPE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object instanceType_;
+    /**
+     * <code>string InstanceType = 1;</code>
+     */
+    public java.lang.String getInstanceType() {
+      java.lang.Object ref = instanceType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        instanceType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string InstanceType = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInstanceTypeBytes() {
+      java.lang.Object ref = instanceType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        instanceType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int INSTANCECOUNT_FIELD_NUMBER = 2;
+    private int instanceCount_;
+    /**
+     * <code>int32 InstanceCount = 2;</code>
+     */
+    public int getInstanceCount() {
+      return instanceCount_;
+    }
+
+    public static final int VOLUMESIZEINGB_FIELD_NUMBER = 3;
+    private int volumeSizeInGB_;
+    /**
+     * <code>int32 VolumeSizeInGB = 3;</code>
+     */
+    public int getVolumeSizeInGB() {
+      return volumeSizeInGB_;
+    }
+
+    public static final int VOLUMEKMSKEYID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object volumeKmsKeyId_;
+    /**
+     * <code>string VolumeKmsKeyId = 4;</code>
+     */
+    public java.lang.String getVolumeKmsKeyId() {
+      java.lang.Object ref = volumeKmsKeyId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        volumeKmsKeyId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string VolumeKmsKeyId = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getVolumeKmsKeyIdBytes() {
+      java.lang.Object ref = volumeKmsKeyId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        volumeKmsKeyId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getInstanceTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, instanceType_);
+      }
+      if (instanceCount_ != 0) {
+        output.writeInt32(2, instanceCount_);
+      }
+      if (volumeSizeInGB_ != 0) {
+        output.writeInt32(3, volumeSizeInGB_);
+      }
+      if (!getVolumeKmsKeyIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, volumeKmsKeyId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getInstanceTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, instanceType_);
+      }
+      if (instanceCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, instanceCount_);
+      }
+      if (volumeSizeInGB_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, volumeSizeInGB_);
+      }
+      if (!getVolumeKmsKeyIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, volumeKmsKeyId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.ResourceConfig)) {
+        return super.equals(obj);
+      }
+      flyte.plugins.sagemaker.Sagemaker.ResourceConfig other = (flyte.plugins.sagemaker.Sagemaker.ResourceConfig) obj;
+
+      boolean result = true;
+      result = result && getInstanceType()
+          .equals(other.getInstanceType());
+      result = result && (getInstanceCount()
+          == other.getInstanceCount());
+      result = result && (getVolumeSizeInGB()
+          == other.getVolumeSizeInGB());
+      result = result && getVolumeKmsKeyId()
+          .equals(other.getVolumeKmsKeyId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INSTANCETYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getInstanceType().hashCode();
+      hash = (37 * hash) + INSTANCECOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getInstanceCount();
+      hash = (37 * hash) + VOLUMESIZEINGB_FIELD_NUMBER;
+      hash = (53 * hash) + getVolumeSizeInGB();
+      hash = (37 * hash) + VOLUMEKMSKEYID_FIELD_NUMBER;
+      hash = (53 * hash) + getVolumeKmsKeyId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.ResourceConfig prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code flyte.plugins.sagemaker.ResourceConfig}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.ResourceConfig)
+        flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_ResourceConfig_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_ResourceConfig_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                flyte.plugins.sagemaker.Sagemaker.ResourceConfig.class, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder.class);
+      }
+
+      // Construct using flyte.plugins.sagemaker.Sagemaker.ResourceConfig.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        instanceType_ = "";
+
+        instanceCount_ = 0;
+
+        volumeSizeInGB_ = 0;
+
+        volumeKmsKeyId_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_ResourceConfig_descriptor;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.ResourceConfig getDefaultInstanceForType() {
+        return flyte.plugins.sagemaker.Sagemaker.ResourceConfig.getDefaultInstance();
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.ResourceConfig build() {
+        flyte.plugins.sagemaker.Sagemaker.ResourceConfig result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.ResourceConfig buildPartial() {
+        flyte.plugins.sagemaker.Sagemaker.ResourceConfig result = new flyte.plugins.sagemaker.Sagemaker.ResourceConfig(this);
+        result.instanceType_ = instanceType_;
+        result.instanceCount_ = instanceCount_;
+        result.volumeSizeInGB_ = volumeSizeInGB_;
+        result.volumeKmsKeyId_ = volumeKmsKeyId_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof flyte.plugins.sagemaker.Sagemaker.ResourceConfig) {
+          return mergeFrom((flyte.plugins.sagemaker.Sagemaker.ResourceConfig)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.ResourceConfig other) {
+        if (other == flyte.plugins.sagemaker.Sagemaker.ResourceConfig.getDefaultInstance()) return this;
+        if (!other.getInstanceType().isEmpty()) {
+          instanceType_ = other.instanceType_;
+          onChanged();
+        }
+        if (other.getInstanceCount() != 0) {
+          setInstanceCount(other.getInstanceCount());
+        }
+        if (other.getVolumeSizeInGB() != 0) {
+          setVolumeSizeInGB(other.getVolumeSizeInGB());
+        }
+        if (!other.getVolumeKmsKeyId().isEmpty()) {
+          volumeKmsKeyId_ = other.volumeKmsKeyId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        flyte.plugins.sagemaker.Sagemaker.ResourceConfig parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (flyte.plugins.sagemaker.Sagemaker.ResourceConfig) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object instanceType_ = "";
+      /**
+       * <code>string InstanceType = 1;</code>
+       */
+      public java.lang.String getInstanceType() {
+        java.lang.Object ref = instanceType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          instanceType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string InstanceType = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInstanceTypeBytes() {
+        java.lang.Object ref = instanceType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          instanceType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string InstanceType = 1;</code>
+       */
+      public Builder setInstanceType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        instanceType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string InstanceType = 1;</code>
+       */
+      public Builder clearInstanceType() {
+        
+        instanceType_ = getDefaultInstance().getInstanceType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string InstanceType = 1;</code>
+       */
+      public Builder setInstanceTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        instanceType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int instanceCount_ ;
+      /**
+       * <code>int32 InstanceCount = 2;</code>
+       */
+      public int getInstanceCount() {
+        return instanceCount_;
+      }
+      /**
+       * <code>int32 InstanceCount = 2;</code>
+       */
+      public Builder setInstanceCount(int value) {
+        
+        instanceCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 InstanceCount = 2;</code>
+       */
+      public Builder clearInstanceCount() {
+        
+        instanceCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int volumeSizeInGB_ ;
+      /**
+       * <code>int32 VolumeSizeInGB = 3;</code>
+       */
+      public int getVolumeSizeInGB() {
+        return volumeSizeInGB_;
+      }
+      /**
+       * <code>int32 VolumeSizeInGB = 3;</code>
+       */
+      public Builder setVolumeSizeInGB(int value) {
+        
+        volumeSizeInGB_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 VolumeSizeInGB = 3;</code>
+       */
+      public Builder clearVolumeSizeInGB() {
+        
+        volumeSizeInGB_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object volumeKmsKeyId_ = "";
+      /**
+       * <code>string VolumeKmsKeyId = 4;</code>
+       */
+      public java.lang.String getVolumeKmsKeyId() {
+        java.lang.Object ref = volumeKmsKeyId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          volumeKmsKeyId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string VolumeKmsKeyId = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getVolumeKmsKeyIdBytes() {
+        java.lang.Object ref = volumeKmsKeyId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          volumeKmsKeyId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string VolumeKmsKeyId = 4;</code>
+       */
+      public Builder setVolumeKmsKeyId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        volumeKmsKeyId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string VolumeKmsKeyId = 4;</code>
+       */
+      public Builder clearVolumeKmsKeyId() {
+        
+        volumeKmsKeyId_ = getDefaultInstance().getVolumeKmsKeyId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string VolumeKmsKeyId = 4;</code>
+       */
+      public Builder setVolumeKmsKeyIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        volumeKmsKeyId_ = value;
+        onChanged();
         return this;
       }
       public final Builder setUnknownFields(
@@ -371,49 +2650,2721 @@ public final class Sagemaker {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.SagemakerJob)
+      // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.ResourceConfig)
     }
 
-    // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.SagemakerJob)
-    private static final flyte.plugins.sagemaker.Sagemaker.SagemakerJob DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.ResourceConfig)
+    private static final flyte.plugins.sagemaker.Sagemaker.ResourceConfig DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.SagemakerJob();
+      DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.ResourceConfig();
     }
 
-    public static flyte.plugins.sagemaker.Sagemaker.SagemakerJob getDefaultInstance() {
+    public static flyte.plugins.sagemaker.Sagemaker.ResourceConfig getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SagemakerJob>
-        PARSER = new com.google.protobuf.AbstractParser<SagemakerJob>() {
-      public SagemakerJob parsePartialFrom(
+    private static final com.google.protobuf.Parser<ResourceConfig>
+        PARSER = new com.google.protobuf.AbstractParser<ResourceConfig>() {
+      public ResourceConfig parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SagemakerJob(input, extensionRegistry);
+        return new ResourceConfig(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<SagemakerJob> parser() {
+    public static com.google.protobuf.Parser<ResourceConfig> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SagemakerJob> getParserForType() {
+    public com.google.protobuf.Parser<ResourceConfig> getParserForType() {
       return PARSER;
     }
 
-    public flyte.plugins.sagemaker.Sagemaker.SagemakerJob getDefaultInstanceForType() {
+    public flyte.plugins.sagemaker.Sagemaker.ResourceConfig getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface StoppingConditionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.StoppingCondition)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 MaxRuntimeInSeconds = 1;</code>
+     */
+    int getMaxRuntimeInSeconds();
+
+    /**
+     * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+     */
+    int getMaxWaitTimeInSeconds();
+  }
+  /**
+   * Protobuf type {@code flyte.plugins.sagemaker.StoppingCondition}
+   */
+  public  static final class StoppingCondition extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.StoppingCondition)
+      StoppingConditionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use StoppingCondition.newBuilder() to construct.
+    private StoppingCondition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private StoppingCondition() {
+      maxRuntimeInSeconds_ = 0;
+      maxWaitTimeInSeconds_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private StoppingCondition(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              maxRuntimeInSeconds_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              maxWaitTimeInSeconds_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_StoppingCondition_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_StoppingCondition_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              flyte.plugins.sagemaker.Sagemaker.StoppingCondition.class, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder.class);
+    }
+
+    public static final int MAXRUNTIMEINSECONDS_FIELD_NUMBER = 1;
+    private int maxRuntimeInSeconds_;
+    /**
+     * <code>int32 MaxRuntimeInSeconds = 1;</code>
+     */
+    public int getMaxRuntimeInSeconds() {
+      return maxRuntimeInSeconds_;
+    }
+
+    public static final int MAXWAITTIMEINSECONDS_FIELD_NUMBER = 2;
+    private int maxWaitTimeInSeconds_;
+    /**
+     * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+     */
+    public int getMaxWaitTimeInSeconds() {
+      return maxWaitTimeInSeconds_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (maxRuntimeInSeconds_ != 0) {
+        output.writeInt32(1, maxRuntimeInSeconds_);
+      }
+      if (maxWaitTimeInSeconds_ != 0) {
+        output.writeInt32(2, maxWaitTimeInSeconds_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (maxRuntimeInSeconds_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, maxRuntimeInSeconds_);
+      }
+      if (maxWaitTimeInSeconds_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, maxWaitTimeInSeconds_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.StoppingCondition)) {
+        return super.equals(obj);
+      }
+      flyte.plugins.sagemaker.Sagemaker.StoppingCondition other = (flyte.plugins.sagemaker.Sagemaker.StoppingCondition) obj;
+
+      boolean result = true;
+      result = result && (getMaxRuntimeInSeconds()
+          == other.getMaxRuntimeInSeconds());
+      result = result && (getMaxWaitTimeInSeconds()
+          == other.getMaxWaitTimeInSeconds());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MAXRUNTIMEINSECONDS_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxRuntimeInSeconds();
+      hash = (37 * hash) + MAXWAITTIMEINSECONDS_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxWaitTimeInSeconds();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.StoppingCondition prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code flyte.plugins.sagemaker.StoppingCondition}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.StoppingCondition)
+        flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_StoppingCondition_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_StoppingCondition_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                flyte.plugins.sagemaker.Sagemaker.StoppingCondition.class, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder.class);
+      }
+
+      // Construct using flyte.plugins.sagemaker.Sagemaker.StoppingCondition.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        maxRuntimeInSeconds_ = 0;
+
+        maxWaitTimeInSeconds_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_StoppingCondition_descriptor;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.StoppingCondition getDefaultInstanceForType() {
+        return flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance();
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.StoppingCondition build() {
+        flyte.plugins.sagemaker.Sagemaker.StoppingCondition result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.StoppingCondition buildPartial() {
+        flyte.plugins.sagemaker.Sagemaker.StoppingCondition result = new flyte.plugins.sagemaker.Sagemaker.StoppingCondition(this);
+        result.maxRuntimeInSeconds_ = maxRuntimeInSeconds_;
+        result.maxWaitTimeInSeconds_ = maxWaitTimeInSeconds_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof flyte.plugins.sagemaker.Sagemaker.StoppingCondition) {
+          return mergeFrom((flyte.plugins.sagemaker.Sagemaker.StoppingCondition)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.StoppingCondition other) {
+        if (other == flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance()) return this;
+        if (other.getMaxRuntimeInSeconds() != 0) {
+          setMaxRuntimeInSeconds(other.getMaxRuntimeInSeconds());
+        }
+        if (other.getMaxWaitTimeInSeconds() != 0) {
+          setMaxWaitTimeInSeconds(other.getMaxWaitTimeInSeconds());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        flyte.plugins.sagemaker.Sagemaker.StoppingCondition parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (flyte.plugins.sagemaker.Sagemaker.StoppingCondition) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int maxRuntimeInSeconds_ ;
+      /**
+       * <code>int32 MaxRuntimeInSeconds = 1;</code>
+       */
+      public int getMaxRuntimeInSeconds() {
+        return maxRuntimeInSeconds_;
+      }
+      /**
+       * <code>int32 MaxRuntimeInSeconds = 1;</code>
+       */
+      public Builder setMaxRuntimeInSeconds(int value) {
+        
+        maxRuntimeInSeconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 MaxRuntimeInSeconds = 1;</code>
+       */
+      public Builder clearMaxRuntimeInSeconds() {
+        
+        maxRuntimeInSeconds_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxWaitTimeInSeconds_ ;
+      /**
+       * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+       */
+      public int getMaxWaitTimeInSeconds() {
+        return maxWaitTimeInSeconds_;
+      }
+      /**
+       * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+       */
+      public Builder setMaxWaitTimeInSeconds(int value) {
+        
+        maxWaitTimeInSeconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+       */
+      public Builder clearMaxWaitTimeInSeconds() {
+        
+        maxWaitTimeInSeconds_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.StoppingCondition)
+    }
+
+    // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.StoppingCondition)
+    private static final flyte.plugins.sagemaker.Sagemaker.StoppingCondition DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.StoppingCondition();
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.StoppingCondition getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<StoppingCondition>
+        PARSER = new com.google.protobuf.AbstractParser<StoppingCondition>() {
+      public StoppingCondition parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new StoppingCondition(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<StoppingCondition> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StoppingCondition> getParserForType() {
+      return PARSER;
+    }
+
+    public flyte.plugins.sagemaker.Sagemaker.StoppingCondition getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface VpcConfigOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.VpcConfig)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    java.util.List<java.lang.String>
+        getSecurityGroupIdsList();
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    int getSecurityGroupIdsCount();
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    java.lang.String getSecurityGroupIds(int index);
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getSecurityGroupIdsBytes(int index);
+
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    java.util.List<java.lang.String>
+        getSubnetsList();
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    int getSubnetsCount();
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    java.lang.String getSubnets(int index);
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSubnetsBytes(int index);
+  }
+  /**
+   * Protobuf type {@code flyte.plugins.sagemaker.VpcConfig}
+   */
+  public  static final class VpcConfig extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.VpcConfig)
+      VpcConfigOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use VpcConfig.newBuilder() to construct.
+    private VpcConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private VpcConfig() {
+      securityGroupIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      subnets_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private VpcConfig(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                securityGroupIds_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              securityGroupIds_.add(s);
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                subnets_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              subnets_.add(s);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          securityGroupIds_ = securityGroupIds_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          subnets_ = subnets_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_VpcConfig_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_VpcConfig_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              flyte.plugins.sagemaker.Sagemaker.VpcConfig.class, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder.class);
+    }
+
+    public static final int SECURITYGROUPIDS_FIELD_NUMBER = 1;
+    private com.google.protobuf.LazyStringList securityGroupIds_;
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getSecurityGroupIdsList() {
+      return securityGroupIds_;
+    }
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    public int getSecurityGroupIdsCount() {
+      return securityGroupIds_.size();
+    }
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    public java.lang.String getSecurityGroupIds(int index) {
+      return securityGroupIds_.get(index);
+    }
+    /**
+     * <code>repeated string SecurityGroupIds = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSecurityGroupIdsBytes(int index) {
+      return securityGroupIds_.getByteString(index);
+    }
+
+    public static final int SUBNETS_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList subnets_;
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getSubnetsList() {
+      return subnets_;
+    }
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    public int getSubnetsCount() {
+      return subnets_.size();
+    }
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    public java.lang.String getSubnets(int index) {
+      return subnets_.get(index);
+    }
+    /**
+     * <code>repeated string Subnets = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSubnetsBytes(int index) {
+      return subnets_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < securityGroupIds_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, securityGroupIds_.getRaw(i));
+      }
+      for (int i = 0; i < subnets_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, subnets_.getRaw(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < securityGroupIds_.size(); i++) {
+          dataSize += computeStringSizeNoTag(securityGroupIds_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getSecurityGroupIdsList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < subnets_.size(); i++) {
+          dataSize += computeStringSizeNoTag(subnets_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getSubnetsList().size();
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.VpcConfig)) {
+        return super.equals(obj);
+      }
+      flyte.plugins.sagemaker.Sagemaker.VpcConfig other = (flyte.plugins.sagemaker.Sagemaker.VpcConfig) obj;
+
+      boolean result = true;
+      result = result && getSecurityGroupIdsList()
+          .equals(other.getSecurityGroupIdsList());
+      result = result && getSubnetsList()
+          .equals(other.getSubnetsList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getSecurityGroupIdsCount() > 0) {
+        hash = (37 * hash) + SECURITYGROUPIDS_FIELD_NUMBER;
+        hash = (53 * hash) + getSecurityGroupIdsList().hashCode();
+      }
+      if (getSubnetsCount() > 0) {
+        hash = (37 * hash) + SUBNETS_FIELD_NUMBER;
+        hash = (53 * hash) + getSubnetsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.VpcConfig prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code flyte.plugins.sagemaker.VpcConfig}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.VpcConfig)
+        flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_VpcConfig_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_VpcConfig_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                flyte.plugins.sagemaker.Sagemaker.VpcConfig.class, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder.class);
+      }
+
+      // Construct using flyte.plugins.sagemaker.Sagemaker.VpcConfig.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        securityGroupIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        subnets_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_VpcConfig_descriptor;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.VpcConfig getDefaultInstanceForType() {
+        return flyte.plugins.sagemaker.Sagemaker.VpcConfig.getDefaultInstance();
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.VpcConfig build() {
+        flyte.plugins.sagemaker.Sagemaker.VpcConfig result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.VpcConfig buildPartial() {
+        flyte.plugins.sagemaker.Sagemaker.VpcConfig result = new flyte.plugins.sagemaker.Sagemaker.VpcConfig(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          securityGroupIds_ = securityGroupIds_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.securityGroupIds_ = securityGroupIds_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          subnets_ = subnets_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.subnets_ = subnets_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof flyte.plugins.sagemaker.Sagemaker.VpcConfig) {
+          return mergeFrom((flyte.plugins.sagemaker.Sagemaker.VpcConfig)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.VpcConfig other) {
+        if (other == flyte.plugins.sagemaker.Sagemaker.VpcConfig.getDefaultInstance()) return this;
+        if (!other.securityGroupIds_.isEmpty()) {
+          if (securityGroupIds_.isEmpty()) {
+            securityGroupIds_ = other.securityGroupIds_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureSecurityGroupIdsIsMutable();
+            securityGroupIds_.addAll(other.securityGroupIds_);
+          }
+          onChanged();
+        }
+        if (!other.subnets_.isEmpty()) {
+          if (subnets_.isEmpty()) {
+            subnets_ = other.subnets_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureSubnetsIsMutable();
+            subnets_.addAll(other.subnets_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        flyte.plugins.sagemaker.Sagemaker.VpcConfig parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (flyte.plugins.sagemaker.Sagemaker.VpcConfig) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringList securityGroupIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureSecurityGroupIdsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          securityGroupIds_ = new com.google.protobuf.LazyStringArrayList(securityGroupIds_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getSecurityGroupIdsList() {
+        return securityGroupIds_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public int getSecurityGroupIdsCount() {
+        return securityGroupIds_.size();
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public java.lang.String getSecurityGroupIds(int index) {
+        return securityGroupIds_.get(index);
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSecurityGroupIdsBytes(int index) {
+        return securityGroupIds_.getByteString(index);
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public Builder setSecurityGroupIds(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSecurityGroupIdsIsMutable();
+        securityGroupIds_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public Builder addSecurityGroupIds(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSecurityGroupIdsIsMutable();
+        securityGroupIds_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public Builder addAllSecurityGroupIds(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureSecurityGroupIdsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, securityGroupIds_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public Builder clearSecurityGroupIds() {
+        securityGroupIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string SecurityGroupIds = 1;</code>
+       */
+      public Builder addSecurityGroupIdsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureSecurityGroupIdsIsMutable();
+        securityGroupIds_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList subnets_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureSubnetsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          subnets_ = new com.google.protobuf.LazyStringArrayList(subnets_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getSubnetsList() {
+        return subnets_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public int getSubnetsCount() {
+        return subnets_.size();
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public java.lang.String getSubnets(int index) {
+        return subnets_.get(index);
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSubnetsBytes(int index) {
+        return subnets_.getByteString(index);
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public Builder setSubnets(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSubnetsIsMutable();
+        subnets_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public Builder addSubnets(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSubnetsIsMutable();
+        subnets_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public Builder addAllSubnets(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureSubnetsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, subnets_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public Builder clearSubnets() {
+        subnets_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string Subnets = 2;</code>
+       */
+      public Builder addSubnetsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureSubnetsIsMutable();
+        subnets_.add(value);
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.VpcConfig)
+    }
+
+    // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.VpcConfig)
+    private static final flyte.plugins.sagemaker.Sagemaker.VpcConfig DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.VpcConfig();
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.VpcConfig getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<VpcConfig>
+        PARSER = new com.google.protobuf.AbstractParser<VpcConfig>() {
+      public VpcConfig parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VpcConfig(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<VpcConfig> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VpcConfig> getParserForType() {
+      return PARSER;
+    }
+
+    public flyte.plugins.sagemaker.Sagemaker.VpcConfig getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SagemakerHPOJobOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:flyte.plugins.sagemaker.SagemakerHPOJob)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string RoleArn = 1;</code>
+     */
+    java.lang.String getRoleArn();
+    /**
+     * <code>string RoleArn = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getRoleArnBytes();
+
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     */
+    boolean hasAlgorithmSpecification();
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getAlgorithmSpecification();
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder getAlgorithmSpecificationOrBuilder();
+
+    /**
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     */
+    boolean hasResourceConfig();
+    /**
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.ResourceConfig getResourceConfig();
+    /**
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder getResourceConfigOrBuilder();
+
+    /**
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     */
+    boolean hasStoppingCondition();
+    /**
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.StoppingCondition getStoppingCondition();
+    /**
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder getStoppingConditionOrBuilder();
+
+    /**
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     */
+    boolean hasVpcConfig();
+    /**
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.VpcConfig getVpcConfig();
+    /**
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     */
+    flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder getVpcConfigOrBuilder();
+
+    /**
+     * <code>bool EnableSpotTraining = 6;</code>
+     */
+    boolean getEnableSpotTraining();
+  }
+  /**
+   * Protobuf type {@code flyte.plugins.sagemaker.SagemakerHPOJob}
+   */
+  public  static final class SagemakerHPOJob extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:flyte.plugins.sagemaker.SagemakerHPOJob)
+      SagemakerHPOJobOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SagemakerHPOJob.newBuilder() to construct.
+    private SagemakerHPOJob(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SagemakerHPOJob() {
+      roleArn_ = "";
+      enableSpotTraining_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SagemakerHPOJob(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              roleArn_ = s;
+              break;
+            }
+            case 18: {
+              flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder subBuilder = null;
+              if (algorithmSpecification_ != null) {
+                subBuilder = algorithmSpecification_.toBuilder();
+              }
+              algorithmSpecification_ = input.readMessage(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(algorithmSpecification_);
+                algorithmSpecification_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder subBuilder = null;
+              if (resourceConfig_ != null) {
+                subBuilder = resourceConfig_.toBuilder();
+              }
+              resourceConfig_ = input.readMessage(flyte.plugins.sagemaker.Sagemaker.ResourceConfig.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(resourceConfig_);
+                resourceConfig_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder subBuilder = null;
+              if (stoppingCondition_ != null) {
+                subBuilder = stoppingCondition_.toBuilder();
+              }
+              stoppingCondition_ = input.readMessage(flyte.plugins.sagemaker.Sagemaker.StoppingCondition.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(stoppingCondition_);
+                stoppingCondition_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 42: {
+              flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder subBuilder = null;
+              if (vpcConfig_ != null) {
+                subBuilder = vpcConfig_.toBuilder();
+              }
+              vpcConfig_ = input.readMessage(flyte.plugins.sagemaker.Sagemaker.VpcConfig.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(vpcConfig_);
+                vpcConfig_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 48: {
+
+              enableSpotTraining_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.class, flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.Builder.class);
+    }
+
+    public static final int ROLEARN_FIELD_NUMBER = 1;
+    private volatile java.lang.Object roleArn_;
+    /**
+     * <code>string RoleArn = 1;</code>
+     */
+    public java.lang.String getRoleArn() {
+      java.lang.Object ref = roleArn_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        roleArn_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string RoleArn = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRoleArnBytes() {
+      java.lang.Object ref = roleArn_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        roleArn_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ALGORITHMSPECIFICATION_FIELD_NUMBER = 2;
+    private flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification algorithmSpecification_;
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     */
+    public boolean hasAlgorithmSpecification() {
+      return algorithmSpecification_ != null;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getAlgorithmSpecification() {
+      return algorithmSpecification_ == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDefaultInstance() : algorithmSpecification_;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder getAlgorithmSpecificationOrBuilder() {
+      return getAlgorithmSpecification();
+    }
+
+    public static final int RESOURCECONFIG_FIELD_NUMBER = 3;
+    private flyte.plugins.sagemaker.Sagemaker.ResourceConfig resourceConfig_;
+    /**
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     */
+    public boolean hasResourceConfig() {
+      return resourceConfig_ != null;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.ResourceConfig getResourceConfig() {
+      return resourceConfig_ == null ? flyte.plugins.sagemaker.Sagemaker.ResourceConfig.getDefaultInstance() : resourceConfig_;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder getResourceConfigOrBuilder() {
+      return getResourceConfig();
+    }
+
+    public static final int STOPPINGCONDITION_FIELD_NUMBER = 4;
+    private flyte.plugins.sagemaker.Sagemaker.StoppingCondition stoppingCondition_;
+    /**
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     */
+    public boolean hasStoppingCondition() {
+      return stoppingCondition_ != null;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.StoppingCondition getStoppingCondition() {
+      return stoppingCondition_ == null ? flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance() : stoppingCondition_;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder getStoppingConditionOrBuilder() {
+      return getStoppingCondition();
+    }
+
+    public static final int VPCCONFIG_FIELD_NUMBER = 5;
+    private flyte.plugins.sagemaker.Sagemaker.VpcConfig vpcConfig_;
+    /**
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     */
+    public boolean hasVpcConfig() {
+      return vpcConfig_ != null;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.VpcConfig getVpcConfig() {
+      return vpcConfig_ == null ? flyte.plugins.sagemaker.Sagemaker.VpcConfig.getDefaultInstance() : vpcConfig_;
+    }
+    /**
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     */
+    public flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder getVpcConfigOrBuilder() {
+      return getVpcConfig();
+    }
+
+    public static final int ENABLESPOTTRAINING_FIELD_NUMBER = 6;
+    private boolean enableSpotTraining_;
+    /**
+     * <code>bool EnableSpotTraining = 6;</code>
+     */
+    public boolean getEnableSpotTraining() {
+      return enableSpotTraining_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getRoleArnBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roleArn_);
+      }
+      if (algorithmSpecification_ != null) {
+        output.writeMessage(2, getAlgorithmSpecification());
+      }
+      if (resourceConfig_ != null) {
+        output.writeMessage(3, getResourceConfig());
+      }
+      if (stoppingCondition_ != null) {
+        output.writeMessage(4, getStoppingCondition());
+      }
+      if (vpcConfig_ != null) {
+        output.writeMessage(5, getVpcConfig());
+      }
+      if (enableSpotTraining_ != false) {
+        output.writeBool(6, enableSpotTraining_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getRoleArnBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roleArn_);
+      }
+      if (algorithmSpecification_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getAlgorithmSpecification());
+      }
+      if (resourceConfig_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getResourceConfig());
+      }
+      if (stoppingCondition_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getStoppingCondition());
+      }
+      if (vpcConfig_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getVpcConfig());
+      }
+      if (enableSpotTraining_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, enableSpotTraining_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob)) {
+        return super.equals(obj);
+      }
+      flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob other = (flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob) obj;
+
+      boolean result = true;
+      result = result && getRoleArn()
+          .equals(other.getRoleArn());
+      result = result && (hasAlgorithmSpecification() == other.hasAlgorithmSpecification());
+      if (hasAlgorithmSpecification()) {
+        result = result && getAlgorithmSpecification()
+            .equals(other.getAlgorithmSpecification());
+      }
+      result = result && (hasResourceConfig() == other.hasResourceConfig());
+      if (hasResourceConfig()) {
+        result = result && getResourceConfig()
+            .equals(other.getResourceConfig());
+      }
+      result = result && (hasStoppingCondition() == other.hasStoppingCondition());
+      if (hasStoppingCondition()) {
+        result = result && getStoppingCondition()
+            .equals(other.getStoppingCondition());
+      }
+      result = result && (hasVpcConfig() == other.hasVpcConfig());
+      if (hasVpcConfig()) {
+        result = result && getVpcConfig()
+            .equals(other.getVpcConfig());
+      }
+      result = result && (getEnableSpotTraining()
+          == other.getEnableSpotTraining());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ROLEARN_FIELD_NUMBER;
+      hash = (53 * hash) + getRoleArn().hashCode();
+      if (hasAlgorithmSpecification()) {
+        hash = (37 * hash) + ALGORITHMSPECIFICATION_FIELD_NUMBER;
+        hash = (53 * hash) + getAlgorithmSpecification().hashCode();
+      }
+      if (hasResourceConfig()) {
+        hash = (37 * hash) + RESOURCECONFIG_FIELD_NUMBER;
+        hash = (53 * hash) + getResourceConfig().hashCode();
+      }
+      if (hasStoppingCondition()) {
+        hash = (37 * hash) + STOPPINGCONDITION_FIELD_NUMBER;
+        hash = (53 * hash) + getStoppingCondition().hashCode();
+      }
+      if (hasVpcConfig()) {
+        hash = (37 * hash) + VPCCONFIG_FIELD_NUMBER;
+        hash = (53 * hash) + getVpcConfig().hashCode();
+      }
+      hash = (37 * hash) + ENABLESPOTTRAINING_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getEnableSpotTraining());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code flyte.plugins.sagemaker.SagemakerHPOJob}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:flyte.plugins.sagemaker.SagemakerHPOJob)
+        flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJobOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.class, flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.Builder.class);
+      }
+
+      // Construct using flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        roleArn_ = "";
+
+        if (algorithmSpecificationBuilder_ == null) {
+          algorithmSpecification_ = null;
+        } else {
+          algorithmSpecification_ = null;
+          algorithmSpecificationBuilder_ = null;
+        }
+        if (resourceConfigBuilder_ == null) {
+          resourceConfig_ = null;
+        } else {
+          resourceConfig_ = null;
+          resourceConfigBuilder_ = null;
+        }
+        if (stoppingConditionBuilder_ == null) {
+          stoppingCondition_ = null;
+        } else {
+          stoppingCondition_ = null;
+          stoppingConditionBuilder_ = null;
+        }
+        if (vpcConfigBuilder_ == null) {
+          vpcConfig_ = null;
+        } else {
+          vpcConfig_ = null;
+          vpcConfigBuilder_ = null;
+        }
+        enableSpotTraining_ = false;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob getDefaultInstanceForType() {
+        return flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.getDefaultInstance();
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob build() {
+        flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob buildPartial() {
+        flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob result = new flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob(this);
+        result.roleArn_ = roleArn_;
+        if (algorithmSpecificationBuilder_ == null) {
+          result.algorithmSpecification_ = algorithmSpecification_;
+        } else {
+          result.algorithmSpecification_ = algorithmSpecificationBuilder_.build();
+        }
+        if (resourceConfigBuilder_ == null) {
+          result.resourceConfig_ = resourceConfig_;
+        } else {
+          result.resourceConfig_ = resourceConfigBuilder_.build();
+        }
+        if (stoppingConditionBuilder_ == null) {
+          result.stoppingCondition_ = stoppingCondition_;
+        } else {
+          result.stoppingCondition_ = stoppingConditionBuilder_.build();
+        }
+        if (vpcConfigBuilder_ == null) {
+          result.vpcConfig_ = vpcConfig_;
+        } else {
+          result.vpcConfig_ = vpcConfigBuilder_.build();
+        }
+        result.enableSpotTraining_ = enableSpotTraining_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob) {
+          return mergeFrom((flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob other) {
+        if (other == flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.getDefaultInstance()) return this;
+        if (!other.getRoleArn().isEmpty()) {
+          roleArn_ = other.roleArn_;
+          onChanged();
+        }
+        if (other.hasAlgorithmSpecification()) {
+          mergeAlgorithmSpecification(other.getAlgorithmSpecification());
+        }
+        if (other.hasResourceConfig()) {
+          mergeResourceConfig(other.getResourceConfig());
+        }
+        if (other.hasStoppingCondition()) {
+          mergeStoppingCondition(other.getStoppingCondition());
+        }
+        if (other.hasVpcConfig()) {
+          mergeVpcConfig(other.getVpcConfig());
+        }
+        if (other.getEnableSpotTraining() != false) {
+          setEnableSpotTraining(other.getEnableSpotTraining());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object roleArn_ = "";
+      /**
+       * <code>string RoleArn = 1;</code>
+       */
+      public java.lang.String getRoleArn() {
+        java.lang.Object ref = roleArn_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          roleArn_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string RoleArn = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRoleArnBytes() {
+        java.lang.Object ref = roleArn_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          roleArn_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string RoleArn = 1;</code>
+       */
+      public Builder setRoleArn(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        roleArn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string RoleArn = 1;</code>
+       */
+      public Builder clearRoleArn() {
+        
+        roleArn_ = getDefaultInstance().getRoleArn();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string RoleArn = 1;</code>
+       */
+      public Builder setRoleArnBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        roleArn_ = value;
+        onChanged();
+        return this;
+      }
+
+      private flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification algorithmSpecification_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder> algorithmSpecificationBuilder_;
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public boolean hasAlgorithmSpecification() {
+        return algorithmSpecificationBuilder_ != null || algorithmSpecification_ != null;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getAlgorithmSpecification() {
+        if (algorithmSpecificationBuilder_ == null) {
+          return algorithmSpecification_ == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDefaultInstance() : algorithmSpecification_;
+        } else {
+          return algorithmSpecificationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public Builder setAlgorithmSpecification(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification value) {
+        if (algorithmSpecificationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          algorithmSpecification_ = value;
+          onChanged();
+        } else {
+          algorithmSpecificationBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public Builder setAlgorithmSpecification(
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder builderForValue) {
+        if (algorithmSpecificationBuilder_ == null) {
+          algorithmSpecification_ = builderForValue.build();
+          onChanged();
+        } else {
+          algorithmSpecificationBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public Builder mergeAlgorithmSpecification(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification value) {
+        if (algorithmSpecificationBuilder_ == null) {
+          if (algorithmSpecification_ != null) {
+            algorithmSpecification_ =
+              flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.newBuilder(algorithmSpecification_).mergeFrom(value).buildPartial();
+          } else {
+            algorithmSpecification_ = value;
+          }
+          onChanged();
+        } else {
+          algorithmSpecificationBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public Builder clearAlgorithmSpecification() {
+        if (algorithmSpecificationBuilder_ == null) {
+          algorithmSpecification_ = null;
+          onChanged();
+        } else {
+          algorithmSpecification_ = null;
+          algorithmSpecificationBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder getAlgorithmSpecificationBuilder() {
+        
+        onChanged();
+        return getAlgorithmSpecificationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder getAlgorithmSpecificationOrBuilder() {
+        if (algorithmSpecificationBuilder_ != null) {
+          return algorithmSpecificationBuilder_.getMessageOrBuilder();
+        } else {
+          return algorithmSpecification_ == null ?
+              flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDefaultInstance() : algorithmSpecification_;
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder> 
+          getAlgorithmSpecificationFieldBuilder() {
+        if (algorithmSpecificationBuilder_ == null) {
+          algorithmSpecificationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder>(
+                  getAlgorithmSpecification(),
+                  getParentForChildren(),
+                  isClean());
+          algorithmSpecification_ = null;
+        }
+        return algorithmSpecificationBuilder_;
+      }
+
+      private flyte.plugins.sagemaker.Sagemaker.ResourceConfig resourceConfig_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.ResourceConfig, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder, flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder> resourceConfigBuilder_;
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public boolean hasResourceConfig() {
+        return resourceConfigBuilder_ != null || resourceConfig_ != null;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.ResourceConfig getResourceConfig() {
+        if (resourceConfigBuilder_ == null) {
+          return resourceConfig_ == null ? flyte.plugins.sagemaker.Sagemaker.ResourceConfig.getDefaultInstance() : resourceConfig_;
+        } else {
+          return resourceConfigBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public Builder setResourceConfig(flyte.plugins.sagemaker.Sagemaker.ResourceConfig value) {
+        if (resourceConfigBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          resourceConfig_ = value;
+          onChanged();
+        } else {
+          resourceConfigBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public Builder setResourceConfig(
+          flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder builderForValue) {
+        if (resourceConfigBuilder_ == null) {
+          resourceConfig_ = builderForValue.build();
+          onChanged();
+        } else {
+          resourceConfigBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public Builder mergeResourceConfig(flyte.plugins.sagemaker.Sagemaker.ResourceConfig value) {
+        if (resourceConfigBuilder_ == null) {
+          if (resourceConfig_ != null) {
+            resourceConfig_ =
+              flyte.plugins.sagemaker.Sagemaker.ResourceConfig.newBuilder(resourceConfig_).mergeFrom(value).buildPartial();
+          } else {
+            resourceConfig_ = value;
+          }
+          onChanged();
+        } else {
+          resourceConfigBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public Builder clearResourceConfig() {
+        if (resourceConfigBuilder_ == null) {
+          resourceConfig_ = null;
+          onChanged();
+        } else {
+          resourceConfig_ = null;
+          resourceConfigBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder getResourceConfigBuilder() {
+        
+        onChanged();
+        return getResourceConfigFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder getResourceConfigOrBuilder() {
+        if (resourceConfigBuilder_ != null) {
+          return resourceConfigBuilder_.getMessageOrBuilder();
+        } else {
+          return resourceConfig_ == null ?
+              flyte.plugins.sagemaker.Sagemaker.ResourceConfig.getDefaultInstance() : resourceConfig_;
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.ResourceConfig, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder, flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder> 
+          getResourceConfigFieldBuilder() {
+        if (resourceConfigBuilder_ == null) {
+          resourceConfigBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              flyte.plugins.sagemaker.Sagemaker.ResourceConfig, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder, flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder>(
+                  getResourceConfig(),
+                  getParentForChildren(),
+                  isClean());
+          resourceConfig_ = null;
+        }
+        return resourceConfigBuilder_;
+      }
+
+      private flyte.plugins.sagemaker.Sagemaker.StoppingCondition stoppingCondition_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.StoppingCondition, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder, flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder> stoppingConditionBuilder_;
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public boolean hasStoppingCondition() {
+        return stoppingConditionBuilder_ != null || stoppingCondition_ != null;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.StoppingCondition getStoppingCondition() {
+        if (stoppingConditionBuilder_ == null) {
+          return stoppingCondition_ == null ? flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance() : stoppingCondition_;
+        } else {
+          return stoppingConditionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public Builder setStoppingCondition(flyte.plugins.sagemaker.Sagemaker.StoppingCondition value) {
+        if (stoppingConditionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          stoppingCondition_ = value;
+          onChanged();
+        } else {
+          stoppingConditionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public Builder setStoppingCondition(
+          flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder builderForValue) {
+        if (stoppingConditionBuilder_ == null) {
+          stoppingCondition_ = builderForValue.build();
+          onChanged();
+        } else {
+          stoppingConditionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public Builder mergeStoppingCondition(flyte.plugins.sagemaker.Sagemaker.StoppingCondition value) {
+        if (stoppingConditionBuilder_ == null) {
+          if (stoppingCondition_ != null) {
+            stoppingCondition_ =
+              flyte.plugins.sagemaker.Sagemaker.StoppingCondition.newBuilder(stoppingCondition_).mergeFrom(value).buildPartial();
+          } else {
+            stoppingCondition_ = value;
+          }
+          onChanged();
+        } else {
+          stoppingConditionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public Builder clearStoppingCondition() {
+        if (stoppingConditionBuilder_ == null) {
+          stoppingCondition_ = null;
+          onChanged();
+        } else {
+          stoppingCondition_ = null;
+          stoppingConditionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder getStoppingConditionBuilder() {
+        
+        onChanged();
+        return getStoppingConditionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder getStoppingConditionOrBuilder() {
+        if (stoppingConditionBuilder_ != null) {
+          return stoppingConditionBuilder_.getMessageOrBuilder();
+        } else {
+          return stoppingCondition_ == null ?
+              flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance() : stoppingCondition_;
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.StoppingCondition, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder, flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder> 
+          getStoppingConditionFieldBuilder() {
+        if (stoppingConditionBuilder_ == null) {
+          stoppingConditionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              flyte.plugins.sagemaker.Sagemaker.StoppingCondition, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder, flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder>(
+                  getStoppingCondition(),
+                  getParentForChildren(),
+                  isClean());
+          stoppingCondition_ = null;
+        }
+        return stoppingConditionBuilder_;
+      }
+
+      private flyte.plugins.sagemaker.Sagemaker.VpcConfig vpcConfig_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.VpcConfig, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder, flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder> vpcConfigBuilder_;
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public boolean hasVpcConfig() {
+        return vpcConfigBuilder_ != null || vpcConfig_ != null;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.VpcConfig getVpcConfig() {
+        if (vpcConfigBuilder_ == null) {
+          return vpcConfig_ == null ? flyte.plugins.sagemaker.Sagemaker.VpcConfig.getDefaultInstance() : vpcConfig_;
+        } else {
+          return vpcConfigBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public Builder setVpcConfig(flyte.plugins.sagemaker.Sagemaker.VpcConfig value) {
+        if (vpcConfigBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          vpcConfig_ = value;
+          onChanged();
+        } else {
+          vpcConfigBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public Builder setVpcConfig(
+          flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder builderForValue) {
+        if (vpcConfigBuilder_ == null) {
+          vpcConfig_ = builderForValue.build();
+          onChanged();
+        } else {
+          vpcConfigBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public Builder mergeVpcConfig(flyte.plugins.sagemaker.Sagemaker.VpcConfig value) {
+        if (vpcConfigBuilder_ == null) {
+          if (vpcConfig_ != null) {
+            vpcConfig_ =
+              flyte.plugins.sagemaker.Sagemaker.VpcConfig.newBuilder(vpcConfig_).mergeFrom(value).buildPartial();
+          } else {
+            vpcConfig_ = value;
+          }
+          onChanged();
+        } else {
+          vpcConfigBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public Builder clearVpcConfig() {
+        if (vpcConfigBuilder_ == null) {
+          vpcConfig_ = null;
+          onChanged();
+        } else {
+          vpcConfig_ = null;
+          vpcConfigBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder getVpcConfigBuilder() {
+        
+        onChanged();
+        return getVpcConfigFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      public flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder getVpcConfigOrBuilder() {
+        if (vpcConfigBuilder_ != null) {
+          return vpcConfigBuilder_.getMessageOrBuilder();
+        } else {
+          return vpcConfig_ == null ?
+              flyte.plugins.sagemaker.Sagemaker.VpcConfig.getDefaultInstance() : vpcConfig_;
+        }
+      }
+      /**
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          flyte.plugins.sagemaker.Sagemaker.VpcConfig, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder, flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder> 
+          getVpcConfigFieldBuilder() {
+        if (vpcConfigBuilder_ == null) {
+          vpcConfigBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              flyte.plugins.sagemaker.Sagemaker.VpcConfig, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder, flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder>(
+                  getVpcConfig(),
+                  getParentForChildren(),
+                  isClean());
+          vpcConfig_ = null;
+        }
+        return vpcConfigBuilder_;
+      }
+
+      private boolean enableSpotTraining_ ;
+      /**
+       * <code>bool EnableSpotTraining = 6;</code>
+       */
+      public boolean getEnableSpotTraining() {
+        return enableSpotTraining_;
+      }
+      /**
+       * <code>bool EnableSpotTraining = 6;</code>
+       */
+      public Builder setEnableSpotTraining(boolean value) {
+        
+        enableSpotTraining_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool EnableSpotTraining = 6;</code>
+       */
+      public Builder clearEnableSpotTraining() {
+        
+        enableSpotTraining_ = false;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:flyte.plugins.sagemaker.SagemakerHPOJob)
+    }
+
+    // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.SagemakerHPOJob)
+    private static final flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob();
+    }
+
+    public static flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SagemakerHPOJob>
+        PARSER = new com.google.protobuf.AbstractParser<SagemakerHPOJob>() {
+      public SagemakerHPOJob parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SagemakerHPOJob(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SagemakerHPOJob> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SagemakerHPOJob> getParserForType() {
+      return PARSER;
+    }
+
+    public flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_flyte_plugins_sagemaker_SagemakerJob_descriptor;
+    internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_flyte_plugins_sagemaker_SagemakerJob_fieldAccessorTable;
+      internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_flyte_plugins_sagemaker_ResourceConfig_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_flyte_plugins_sagemaker_ResourceConfig_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_flyte_plugins_sagemaker_StoppingCondition_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_flyte_plugins_sagemaker_StoppingCondition_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_flyte_plugins_sagemaker_VpcConfig_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_flyte_plugins_sagemaker_VpcConfig_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -424,8 +5375,32 @@ public final class Sagemaker {
   static {
     java.lang.String[] descriptorData = {
       "\n\017sagemaker.proto\022\027flyte.plugins.sagemak" +
-      "er\"\016\n\014SagemakerJobB4Z2github.com/kumare3" +
-      "/awsflyteplugins/gen/pb-go/protob\006proto3"
+      "er\"\343\002\n\026AlgorithmSpecification\022\025\n\rTrainin" +
+      "gImage\030\001 \001(\t\022`\n\021TrainingInputMode\030\002 \001(\0162" +
+      "E.flyte.plugins.sagemaker.AlgorithmSpeci" +
+      "fication.TrainingInputModeEnum\022\025\n\rAlgori" +
+      "thmName\030\003 \001(\t\022[\n\021MetricDefinitions\030\004 \003(\013" +
+      "2@.flyte.plugins.sagemaker.AlgorithmSpec" +
+      "ification.MetricDefinition\032/\n\020MetricDefi" +
+      "nition\022\014\n\004Name\030\001 \001(\t\022\r\n\005Regex\030\002 \001(\t\"+\n\025T" +
+      "rainingInputModeEnum\022\010\n\004Pipe\020\000\022\010\n\004File\020\001" +
+      "\"m\n\016ResourceConfig\022\024\n\014InstanceType\030\001 \001(\t" +
+      "\022\025\n\rInstanceCount\030\002 \001(\005\022\026\n\016VolumeSizeInG" +
+      "B\030\003 \001(\005\022\026\n\016VolumeKmsKeyId\030\004 \001(\t\"N\n\021Stopp" +
+      "ingCondition\022\033\n\023MaxRuntimeInSeconds\030\001 \001(" +
+      "\005\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\005\"6\n\tVpcCo" +
+      "nfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Subnet" +
+      "s\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleArn\030\001" +
+      " \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\0132/.f" +
+      "lyte.plugins.sagemaker.AlgorithmSpecific" +
+      "ation\022?\n\016ResourceConfig\030\003 \001(\0132\'.flyte.pl" +
+      "ugins.sagemaker.ResourceConfig\022E\n\021Stoppi" +
+      "ngCondition\030\004 \001(\0132*.flyte.plugins.sagema" +
+      "ker.StoppingCondition\0225\n\tVpcConfig\030\005 \001(\013" +
+      "2\".flyte.plugins.sagemaker.VpcConfig\022\032\n\022" +
+      "EnableSpotTraining\030\006 \001(\010B4Z2github.com/k" +
+      "umare3/awsflyteplugins/gen/pb-go/protob\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -439,12 +5414,42 @@ public final class Sagemaker {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_flyte_plugins_sagemaker_SagemakerJob_descriptor =
+    internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_flyte_plugins_sagemaker_SagemakerJob_fieldAccessorTable = new
+    internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_flyte_plugins_sagemaker_SagemakerJob_descriptor,
-        new java.lang.String[] { });
+        internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor,
+        new java.lang.String[] { "TrainingImage", "TrainingInputMode", "AlgorithmName", "MetricDefinitions", });
+    internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_descriptor =
+      internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_descriptor.getNestedTypes().get(0);
+    internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_MetricDefinition_descriptor,
+        new java.lang.String[] { "Name", "Regex", });
+    internal_static_flyte_plugins_sagemaker_ResourceConfig_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_flyte_plugins_sagemaker_ResourceConfig_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_flyte_plugins_sagemaker_ResourceConfig_descriptor,
+        new java.lang.String[] { "InstanceType", "InstanceCount", "VolumeSizeInGB", "VolumeKmsKeyId", });
+    internal_static_flyte_plugins_sagemaker_StoppingCondition_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_flyte_plugins_sagemaker_StoppingCondition_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_flyte_plugins_sagemaker_StoppingCondition_descriptor,
+        new java.lang.String[] { "MaxRuntimeInSeconds", "MaxWaitTimeInSeconds", });
+    internal_static_flyte_plugins_sagemaker_VpcConfig_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_flyte_plugins_sagemaker_VpcConfig_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_flyte_plugins_sagemaker_VpcConfig_descriptor,
+        new java.lang.String[] { "SecurityGroupIds", "Subnets", });
+    internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor,
+        new java.lang.String[] { "RoleArn", "AlgorithmSpecification", "ResourceConfig", "StoppingCondition", "VpcConfig", "EnableSpotTraining", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

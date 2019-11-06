@@ -18,51 +18,420 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// Optional Custom Proto for Sagemaker Plugin.
-type SagemakerJob struct {
+type AlgorithmSpecification_TrainingInputModeEnum int32
+
+const (
+	AlgorithmSpecification_Pipe AlgorithmSpecification_TrainingInputModeEnum = 0
+	AlgorithmSpecification_File AlgorithmSpecification_TrainingInputModeEnum = 1
+)
+
+var AlgorithmSpecification_TrainingInputModeEnum_name = map[int32]string{
+	0: "Pipe",
+	1: "File",
+}
+var AlgorithmSpecification_TrainingInputModeEnum_value = map[string]int32{
+	"Pipe": 0,
+	"File": 1,
+}
+
+func (x AlgorithmSpecification_TrainingInputModeEnum) String() string {
+	return proto.EnumName(AlgorithmSpecification_TrainingInputModeEnum_name, int32(x))
+}
+func (AlgorithmSpecification_TrainingInputModeEnum) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{0, 0}
+}
+
+type AlgorithmSpecification struct {
+	TrainingImage        string                                       `protobuf:"bytes,1,opt,name=TrainingImage,proto3" json:"TrainingImage,omitempty"`
+	TrainingInputMode    AlgorithmSpecification_TrainingInputModeEnum `protobuf:"varint,2,opt,name=TrainingInputMode,proto3,enum=flyte.plugins.sagemaker.AlgorithmSpecification_TrainingInputModeEnum" json:"TrainingInputMode,omitempty"`
+	AlgorithmName        string                                       `protobuf:"bytes,3,opt,name=AlgorithmName,proto3" json:"AlgorithmName,omitempty"`
+	MetricDefinitions    []*AlgorithmSpecification_MetricDefinition   `protobuf:"bytes,4,rep,name=MetricDefinitions,proto3" json:"MetricDefinitions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                     `json:"-"`
+	XXX_unrecognized     []byte                                       `json:"-"`
+	XXX_sizecache        int32                                        `json:"-"`
+}
+
+func (m *AlgorithmSpecification) Reset()         { *m = AlgorithmSpecification{} }
+func (m *AlgorithmSpecification) String() string { return proto.CompactTextString(m) }
+func (*AlgorithmSpecification) ProtoMessage()    {}
+func (*AlgorithmSpecification) Descriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{0}
+}
+func (m *AlgorithmSpecification) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AlgorithmSpecification.Unmarshal(m, b)
+}
+func (m *AlgorithmSpecification) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AlgorithmSpecification.Marshal(b, m, deterministic)
+}
+func (dst *AlgorithmSpecification) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AlgorithmSpecification.Merge(dst, src)
+}
+func (m *AlgorithmSpecification) XXX_Size() int {
+	return xxx_messageInfo_AlgorithmSpecification.Size(m)
+}
+func (m *AlgorithmSpecification) XXX_DiscardUnknown() {
+	xxx_messageInfo_AlgorithmSpecification.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AlgorithmSpecification proto.InternalMessageInfo
+
+func (m *AlgorithmSpecification) GetTrainingImage() string {
+	if m != nil {
+		return m.TrainingImage
+	}
+	return ""
+}
+
+func (m *AlgorithmSpecification) GetTrainingInputMode() AlgorithmSpecification_TrainingInputModeEnum {
+	if m != nil {
+		return m.TrainingInputMode
+	}
+	return AlgorithmSpecification_Pipe
+}
+
+func (m *AlgorithmSpecification) GetAlgorithmName() string {
+	if m != nil {
+		return m.AlgorithmName
+	}
+	return ""
+}
+
+func (m *AlgorithmSpecification) GetMetricDefinitions() []*AlgorithmSpecification_MetricDefinition {
+	if m != nil {
+		return m.MetricDefinitions
+	}
+	return nil
+}
+
+type AlgorithmSpecification_MetricDefinition struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name,omitempty"`
+	Regex                string   `protobuf:"bytes,2,opt,name=Regex,proto3" json:"Regex,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SagemakerJob) Reset()         { *m = SagemakerJob{} }
-func (m *SagemakerJob) String() string { return proto.CompactTextString(m) }
-func (*SagemakerJob) ProtoMessage()    {}
-func (*SagemakerJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sagemaker_c7d15c66a5826ac3, []int{0}
+func (m *AlgorithmSpecification_MetricDefinition) Reset() {
+	*m = AlgorithmSpecification_MetricDefinition{}
 }
-func (m *SagemakerJob) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SagemakerJob.Unmarshal(m, b)
+func (m *AlgorithmSpecification_MetricDefinition) String() string { return proto.CompactTextString(m) }
+func (*AlgorithmSpecification_MetricDefinition) ProtoMessage()    {}
+func (*AlgorithmSpecification_MetricDefinition) Descriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{0, 0}
 }
-func (m *SagemakerJob) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SagemakerJob.Marshal(b, m, deterministic)
+func (m *AlgorithmSpecification_MetricDefinition) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AlgorithmSpecification_MetricDefinition.Unmarshal(m, b)
 }
-func (dst *SagemakerJob) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SagemakerJob.Merge(dst, src)
+func (m *AlgorithmSpecification_MetricDefinition) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AlgorithmSpecification_MetricDefinition.Marshal(b, m, deterministic)
 }
-func (m *SagemakerJob) XXX_Size() int {
-	return xxx_messageInfo_SagemakerJob.Size(m)
+func (dst *AlgorithmSpecification_MetricDefinition) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AlgorithmSpecification_MetricDefinition.Merge(dst, src)
 }
-func (m *SagemakerJob) XXX_DiscardUnknown() {
-	xxx_messageInfo_SagemakerJob.DiscardUnknown(m)
+func (m *AlgorithmSpecification_MetricDefinition) XXX_Size() int {
+	return xxx_messageInfo_AlgorithmSpecification_MetricDefinition.Size(m)
+}
+func (m *AlgorithmSpecification_MetricDefinition) XXX_DiscardUnknown() {
+	xxx_messageInfo_AlgorithmSpecification_MetricDefinition.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_SagemakerJob proto.InternalMessageInfo
+var xxx_messageInfo_AlgorithmSpecification_MetricDefinition proto.InternalMessageInfo
+
+func (m *AlgorithmSpecification_MetricDefinition) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AlgorithmSpecification_MetricDefinition) GetRegex() string {
+	if m != nil {
+		return m.Regex
+	}
+	return ""
+}
+
+type ResourceConfig struct {
+	InstanceType         string   `protobuf:"bytes,1,opt,name=InstanceType,proto3" json:"InstanceType,omitempty"`
+	InstanceCount        int32    `protobuf:"varint,2,opt,name=InstanceCount,proto3" json:"InstanceCount,omitempty"`
+	VolumeSizeInGB       int32    `protobuf:"varint,3,opt,name=VolumeSizeInGB,proto3" json:"VolumeSizeInGB,omitempty"`
+	VolumeKmsKeyId       string   `protobuf:"bytes,4,opt,name=VolumeKmsKeyId,proto3" json:"VolumeKmsKeyId,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResourceConfig) Reset()         { *m = ResourceConfig{} }
+func (m *ResourceConfig) String() string { return proto.CompactTextString(m) }
+func (*ResourceConfig) ProtoMessage()    {}
+func (*ResourceConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{1}
+}
+func (m *ResourceConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResourceConfig.Unmarshal(m, b)
+}
+func (m *ResourceConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResourceConfig.Marshal(b, m, deterministic)
+}
+func (dst *ResourceConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResourceConfig.Merge(dst, src)
+}
+func (m *ResourceConfig) XXX_Size() int {
+	return xxx_messageInfo_ResourceConfig.Size(m)
+}
+func (m *ResourceConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResourceConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResourceConfig proto.InternalMessageInfo
+
+func (m *ResourceConfig) GetInstanceType() string {
+	if m != nil {
+		return m.InstanceType
+	}
+	return ""
+}
+
+func (m *ResourceConfig) GetInstanceCount() int32 {
+	if m != nil {
+		return m.InstanceCount
+	}
+	return 0
+}
+
+func (m *ResourceConfig) GetVolumeSizeInGB() int32 {
+	if m != nil {
+		return m.VolumeSizeInGB
+	}
+	return 0
+}
+
+func (m *ResourceConfig) GetVolumeKmsKeyId() string {
+	if m != nil {
+		return m.VolumeKmsKeyId
+	}
+	return ""
+}
+
+type StoppingCondition struct {
+	MaxRuntimeInSeconds  int32    `protobuf:"varint,1,opt,name=MaxRuntimeInSeconds,proto3" json:"MaxRuntimeInSeconds,omitempty"`
+	MaxWaitTimeInSeconds int32    `protobuf:"varint,2,opt,name=MaxWaitTimeInSeconds,proto3" json:"MaxWaitTimeInSeconds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StoppingCondition) Reset()         { *m = StoppingCondition{} }
+func (m *StoppingCondition) String() string { return proto.CompactTextString(m) }
+func (*StoppingCondition) ProtoMessage()    {}
+func (*StoppingCondition) Descriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{2}
+}
+func (m *StoppingCondition) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StoppingCondition.Unmarshal(m, b)
+}
+func (m *StoppingCondition) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StoppingCondition.Marshal(b, m, deterministic)
+}
+func (dst *StoppingCondition) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StoppingCondition.Merge(dst, src)
+}
+func (m *StoppingCondition) XXX_Size() int {
+	return xxx_messageInfo_StoppingCondition.Size(m)
+}
+func (m *StoppingCondition) XXX_DiscardUnknown() {
+	xxx_messageInfo_StoppingCondition.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StoppingCondition proto.InternalMessageInfo
+
+func (m *StoppingCondition) GetMaxRuntimeInSeconds() int32 {
+	if m != nil {
+		return m.MaxRuntimeInSeconds
+	}
+	return 0
+}
+
+func (m *StoppingCondition) GetMaxWaitTimeInSeconds() int32 {
+	if m != nil {
+		return m.MaxWaitTimeInSeconds
+	}
+	return 0
+}
+
+type VpcConfig struct {
+	SecurityGroupIds     []string `protobuf:"bytes,1,rep,name=SecurityGroupIds,proto3" json:"SecurityGroupIds,omitempty"`
+	Subnets              []string `protobuf:"bytes,2,rep,name=Subnets,proto3" json:"Subnets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *VpcConfig) Reset()         { *m = VpcConfig{} }
+func (m *VpcConfig) String() string { return proto.CompactTextString(m) }
+func (*VpcConfig) ProtoMessage()    {}
+func (*VpcConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{3}
+}
+func (m *VpcConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_VpcConfig.Unmarshal(m, b)
+}
+func (m *VpcConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_VpcConfig.Marshal(b, m, deterministic)
+}
+func (dst *VpcConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_VpcConfig.Merge(dst, src)
+}
+func (m *VpcConfig) XXX_Size() int {
+	return xxx_messageInfo_VpcConfig.Size(m)
+}
+func (m *VpcConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_VpcConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_VpcConfig proto.InternalMessageInfo
+
+func (m *VpcConfig) GetSecurityGroupIds() []string {
+	if m != nil {
+		return m.SecurityGroupIds
+	}
+	return nil
+}
+
+func (m *VpcConfig) GetSubnets() []string {
+	if m != nil {
+		return m.Subnets
+	}
+	return nil
+}
+
+type SagemakerHPOJob struct {
+	RoleArn                string                  `protobuf:"bytes,1,opt,name=RoleArn,proto3" json:"RoleArn,omitempty"`
+	AlgorithmSpecification *AlgorithmSpecification `protobuf:"bytes,2,opt,name=AlgorithmSpecification,proto3" json:"AlgorithmSpecification,omitempty"`
+	ResourceConfig         *ResourceConfig         `protobuf:"bytes,3,opt,name=ResourceConfig,proto3" json:"ResourceConfig,omitempty"`
+	StoppingCondition      *StoppingCondition      `protobuf:"bytes,4,opt,name=StoppingCondition,proto3" json:"StoppingCondition,omitempty"`
+	VpcConfig              *VpcConfig              `protobuf:"bytes,5,opt,name=VpcConfig,proto3" json:"VpcConfig,omitempty"`
+	EnableSpotTraining     bool                    `protobuf:"varint,6,opt,name=EnableSpotTraining,proto3" json:"EnableSpotTraining,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}                `json:"-"`
+	XXX_unrecognized       []byte                  `json:"-"`
+	XXX_sizecache          int32                   `json:"-"`
+}
+
+func (m *SagemakerHPOJob) Reset()         { *m = SagemakerHPOJob{} }
+func (m *SagemakerHPOJob) String() string { return proto.CompactTextString(m) }
+func (*SagemakerHPOJob) ProtoMessage()    {}
+func (*SagemakerHPOJob) Descriptor() ([]byte, []int) {
+	return fileDescriptor_sagemaker_11b9fb82e34ec31c, []int{4}
+}
+func (m *SagemakerHPOJob) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SagemakerHPOJob.Unmarshal(m, b)
+}
+func (m *SagemakerHPOJob) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SagemakerHPOJob.Marshal(b, m, deterministic)
+}
+func (dst *SagemakerHPOJob) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SagemakerHPOJob.Merge(dst, src)
+}
+func (m *SagemakerHPOJob) XXX_Size() int {
+	return xxx_messageInfo_SagemakerHPOJob.Size(m)
+}
+func (m *SagemakerHPOJob) XXX_DiscardUnknown() {
+	xxx_messageInfo_SagemakerHPOJob.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SagemakerHPOJob proto.InternalMessageInfo
+
+func (m *SagemakerHPOJob) GetRoleArn() string {
+	if m != nil {
+		return m.RoleArn
+	}
+	return ""
+}
+
+func (m *SagemakerHPOJob) GetAlgorithmSpecification() *AlgorithmSpecification {
+	if m != nil {
+		return m.AlgorithmSpecification
+	}
+	return nil
+}
+
+func (m *SagemakerHPOJob) GetResourceConfig() *ResourceConfig {
+	if m != nil {
+		return m.ResourceConfig
+	}
+	return nil
+}
+
+func (m *SagemakerHPOJob) GetStoppingCondition() *StoppingCondition {
+	if m != nil {
+		return m.StoppingCondition
+	}
+	return nil
+}
+
+func (m *SagemakerHPOJob) GetVpcConfig() *VpcConfig {
+	if m != nil {
+		return m.VpcConfig
+	}
+	return nil
+}
+
+func (m *SagemakerHPOJob) GetEnableSpotTraining() bool {
+	if m != nil {
+		return m.EnableSpotTraining
+	}
+	return false
+}
 
 func init() {
-	proto.RegisterType((*SagemakerJob)(nil), "flyte.plugins.sagemaker.SagemakerJob")
+	proto.RegisterType((*AlgorithmSpecification)(nil), "flyte.plugins.sagemaker.AlgorithmSpecification")
+	proto.RegisterType((*AlgorithmSpecification_MetricDefinition)(nil), "flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition")
+	proto.RegisterType((*ResourceConfig)(nil), "flyte.plugins.sagemaker.ResourceConfig")
+	proto.RegisterType((*StoppingCondition)(nil), "flyte.plugins.sagemaker.StoppingCondition")
+	proto.RegisterType((*VpcConfig)(nil), "flyte.plugins.sagemaker.VpcConfig")
+	proto.RegisterType((*SagemakerHPOJob)(nil), "flyte.plugins.sagemaker.SagemakerHPOJob")
+	proto.RegisterEnum("flyte.plugins.sagemaker.AlgorithmSpecification_TrainingInputModeEnum", AlgorithmSpecification_TrainingInputModeEnum_name, AlgorithmSpecification_TrainingInputModeEnum_value)
 }
 
-func init() { proto.RegisterFile("proto/sagemaker.proto", fileDescriptor_sagemaker_c7d15c66a5826ac3) }
+func init() { proto.RegisterFile("proto/sagemaker.proto", fileDescriptor_sagemaker_11b9fb82e34ec31c) }
 
-var fileDescriptor_sagemaker_c7d15c66a5826ac3 = []byte{
-	// 119 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2d, 0x28, 0xca, 0x2f,
-	0xc9, 0xd7, 0x2f, 0x4e, 0x4c, 0x4f, 0xcd, 0x4d, 0xcc, 0x4e, 0x2d, 0xd2, 0x03, 0xf3, 0x85, 0xc4,
-	0xd3, 0x72, 0x2a, 0x4b, 0x52, 0xf5, 0x0a, 0x72, 0x4a, 0xd3, 0x33, 0xf3, 0x8a, 0xf5, 0xe0, 0xd2,
-	0x4a, 0x7c, 0x5c, 0x3c, 0xc1, 0x30, 0x8e, 0x57, 0x7e, 0x92, 0x93, 0x49, 0x94, 0x51, 0x7a, 0x66,
-	0x49, 0x46, 0x69, 0x92, 0x5e, 0x72, 0x7e, 0xae, 0x7e, 0x76, 0x69, 0x6e, 0x62, 0x51, 0xaa, 0xb1,
-	0x7e, 0x62, 0x79, 0x31, 0xd8, 0x00, 0xa8, 0x7e, 0xfd, 0xf4, 0xd4, 0x3c, 0xfd, 0x82, 0x24, 0xdd,
-	0xf4, 0x7c, 0x7d, 0xb0, 0xf1, 0x49, 0x6c, 0x60, 0xca, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x59,
-	0x25, 0xaf, 0x00, 0x7e, 0x00, 0x00, 0x00,
+var fileDescriptor_sagemaker_11b9fb82e34ec31c = []byte{
+	// 580 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xcf, 0x6f, 0xd3, 0x30,
+	0x14, 0xa6, 0xb4, 0x1d, 0xab, 0x0b, 0xa3, 0x33, 0x1b, 0x44, 0x9c, 0xaa, 0x08, 0x41, 0x35, 0x44,
+	0x82, 0x32, 0x8e, 0x1c, 0xf6, 0x83, 0x31, 0xca, 0x54, 0x36, 0x9c, 0x69, 0x20, 0x6e, 0x6e, 0xfa,
+	0xea, 0x59, 0x4b, 0x6c, 0x2b, 0xb1, 0xc5, 0xca, 0x9f, 0xc4, 0x0d, 0x89, 0x3f, 0x10, 0xc5, 0x5d,
+	0xcb, 0x92, 0x26, 0x87, 0x9d, 0x9a, 0xf7, 0xbd, 0xe7, 0xef, 0x7b, 0xfe, 0xde, 0x73, 0xd1, 0xb6,
+	0x4a, 0xa5, 0x96, 0x7e, 0x46, 0x19, 0x24, 0xf4, 0x0a, 0x52, 0xcf, 0xc6, 0xf8, 0xd9, 0x34, 0x9e,
+	0x69, 0xf0, 0x54, 0x6c, 0x18, 0x17, 0x99, 0xb7, 0x4c, 0xbb, 0x7f, 0x9b, 0xe8, 0xe9, 0x7e, 0xcc,
+	0x64, 0xca, 0xf5, 0x65, 0x12, 0x2a, 0x88, 0xf8, 0x94, 0x47, 0x54, 0x73, 0x29, 0xf0, 0x0b, 0xf4,
+	0xe8, 0x3c, 0xa5, 0x5c, 0x70, 0xc1, 0x86, 0x09, 0x65, 0xe0, 0x34, 0xfa, 0x8d, 0x41, 0x87, 0x14,
+	0x41, 0x9c, 0xa1, 0xcd, 0x25, 0x20, 0x94, 0xd1, 0x23, 0x39, 0x01, 0xe7, 0x7e, 0xbf, 0x31, 0xd8,
+	0x08, 0x8e, 0xbc, 0x1a, 0x55, 0xaf, 0x5a, 0xd1, 0x5b, 0x21, 0x3a, 0x12, 0x26, 0x21, 0xab, 0xfc,
+	0x79, 0x6b, 0x4b, 0x8a, 0x2f, 0x34, 0x01, 0xa7, 0x39, 0x6f, 0xad, 0x00, 0x62, 0x81, 0x36, 0x47,
+	0xa0, 0x53, 0x1e, 0x7d, 0x80, 0x29, 0x17, 0x3c, 0x97, 0xc8, 0x9c, 0x56, 0xbf, 0x39, 0xe8, 0x06,
+	0x7b, 0x77, 0x6d, 0xad, 0x4c, 0x44, 0x56, 0xa9, 0x9f, 0xbf, 0x47, 0xbd, 0x32, 0x88, 0x31, 0x6a,
+	0xd9, 0x06, 0xe7, 0xde, 0xd9, 0x6f, 0xbc, 0x85, 0xda, 0x04, 0x18, 0x5c, 0x5b, 0x9b, 0x3a, 0x64,
+	0x1e, 0xb8, 0xaf, 0xd1, 0x76, 0xe5, 0xfd, 0xf1, 0x3a, 0x6a, 0x9d, 0x71, 0x05, 0xbd, 0x7b, 0xf9,
+	0xd7, 0x47, 0x1e, 0x43, 0xaf, 0xe1, 0xfe, 0x6e, 0xa0, 0x0d, 0x02, 0x99, 0x34, 0x69, 0x04, 0x87,
+	0x52, 0x4c, 0x39, 0xc3, 0x2e, 0x7a, 0x38, 0x14, 0x99, 0xa6, 0x22, 0x82, 0xf3, 0x99, 0x5a, 0x28,
+	0x16, 0xb0, 0xdc, 0xb7, 0x45, 0x7c, 0x28, 0x8d, 0xd0, 0xb6, 0x83, 0x36, 0x29, 0x82, 0xf8, 0x25,
+	0xda, 0xb8, 0x90, 0xb1, 0x49, 0x20, 0xe4, 0xbf, 0x60, 0x28, 0x8e, 0x0f, 0xac, 0xbd, 0x6d, 0x52,
+	0x42, 0xff, 0xd7, 0x9d, 0x24, 0xd9, 0x09, 0xcc, 0x86, 0x13, 0xa7, 0x65, 0x35, 0x4b, 0xa8, 0x3b,
+	0x43, 0x9b, 0xa1, 0x96, 0x4a, 0x71, 0xc1, 0x0e, 0xa5, 0x98, 0xcc, 0x8d, 0x79, 0x8b, 0x9e, 0x8c,
+	0xe8, 0x35, 0x31, 0x42, 0xf3, 0x04, 0x86, 0x22, 0x84, 0x48, 0x8a, 0x49, 0x66, 0xbb, 0x6e, 0x93,
+	0xaa, 0x14, 0x0e, 0xd0, 0xd6, 0x88, 0x5e, 0x7f, 0xa3, 0x5c, 0x9f, 0x17, 0x8e, 0xcc, 0xef, 0x50,
+	0x99, 0x73, 0xbf, 0xa2, 0xce, 0x85, 0x8a, 0x6e, 0x1c, 0xda, 0x41, 0xbd, 0x10, 0x22, 0x93, 0x72,
+	0x3d, 0x3b, 0x4e, 0xa5, 0x51, 0x43, 0xab, 0xd7, 0x1c, 0x74, 0xc8, 0x0a, 0x8e, 0x1d, 0xf4, 0x20,
+	0x34, 0x63, 0x01, 0x3a, 0xe7, 0xcf, 0x4b, 0x16, 0xa1, 0xfb, 0xa7, 0x89, 0x1e, 0x87, 0x8b, 0x75,
+	0xf9, 0x74, 0x76, 0xfa, 0x59, 0x8e, 0xf3, 0x6a, 0x22, 0x63, 0xd8, 0x4f, 0xc5, 0x8d, 0xed, 0x8b,
+	0x10, 0xb3, 0xba, 0xe7, 0x65, 0xdb, 0xee, 0x06, 0xfe, 0x1d, 0x17, 0x91, 0xd4, 0xbd, 0xd6, 0xd3,
+	0xf2, 0x42, 0xd8, 0xa1, 0x75, 0x83, 0x57, 0xb5, 0x02, 0xc5, 0x72, 0x52, 0xde, 0xa7, 0xef, 0x15,
+	0x53, 0xb3, 0x03, 0xee, 0x06, 0x3b, 0xb5, 0x9c, 0x2b, 0x27, 0x48, 0xc5, 0xe8, 0xf7, 0x6e, 0x0d,
+	0xc5, 0x69, 0x5b, 0x46, 0xb7, 0x96, 0x71, 0x59, 0x49, 0x6e, 0x4d, 0xd2, 0x43, 0xf8, 0x48, 0xd0,
+	0x71, 0x0c, 0xa1, 0x92, 0x7a, 0xf1, 0x6a, 0x9c, 0xb5, 0x7e, 0x63, 0xb0, 0x4e, 0x2a, 0x32, 0x07,
+	0xef, 0x7e, 0x04, 0x8c, 0xeb, 0x4b, 0x33, 0xf6, 0x22, 0x99, 0xf8, 0x57, 0x26, 0xa1, 0x29, 0xec,
+	0xfa, 0xf4, 0x67, 0x66, 0x55, 0x6f, 0x44, 0x7d, 0x06, 0xc2, 0x57, 0xe3, 0x37, 0x4c, 0xfa, 0xf6,
+	0x4f, 0x73, 0xbc, 0x66, 0x7f, 0x76, 0xff, 0x05, 0x00, 0x00, 0xff, 0xff, 0x30, 0xf9, 0x57, 0x40,
+	0x54, 0x05, 0x00, 0x00,
 }
