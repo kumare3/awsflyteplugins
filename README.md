@@ -55,3 +55,21 @@ The default flyte sdk is flytekit (python) and in this example we implement a py
 Finally if the backend plugin requires any operators, they are specified using a kustomize script
 
 
+#### To test the demo workflow
+1. First build python package for the plugin
+```
+make build_python
+```
+
+2. build docker image
+```
+make build_demo_docker
+```
+3. you need to upload the docker image or change the tag such that it is the same as the one registered and the image should be available to your sandbox cluster
+```
+upload the image to ecr?
+```
+4. enter your image and run register.sh
+```
+docker run --rm -ti 8cdec6176236 bash
+```

@@ -32,3 +32,14 @@ test_go:
 .PHONY: test_unit_cover
 test_unit_cover:
 	@go test ./... -coverprofile /tmp/cover.out -covermode=count; go tool cover -func /tmp/cover.out
+
+
+export IMAGE_NAME=awsdemoplugin
+PROJECT=aws
+DOMAIN=development
+VERSION=$(shell git rev-parse HEAD)
+IMAGE="docker.io/aws/${IMAGE_NAME}:${VERSION}"
+
+.PHONY: build_docker
+build_demo_docker:
+	docker build -t "${IMAGE}" --build-arg DOCKER_IMAGE="${IMAGE}" .
