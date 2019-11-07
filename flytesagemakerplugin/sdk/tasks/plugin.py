@@ -12,7 +12,7 @@ from flytekit.models import (
 from google.protobuf.json_format import MessageToDict, ParseDict
 import gen.pb_python.sagemaker_pb2 as sagemaker_pb2
 
-_TASK_TYPE = "aws-sagemaker-hpo"
+_TASK_TYPE = "aws_sagemaker_hpo"
 
 
 class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):

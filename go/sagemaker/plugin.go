@@ -2,12 +2,11 @@ package sagemaker
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery"
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/flytek8s"
 	"github.com/pkg/errors"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 
 	pluginsCore "github.com/lyft/flyteplugins/go/tasks/pluginmachinery/core"
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/k8s"
@@ -19,8 +18,8 @@ import (
 )
 
 const (
-	pluginID          = "aws_sagemaker"
-	sagemakerTaskType = "aws_sagemaker"
+	pluginID          = "aws_sagemaker_hpo"
+	sagemakerTaskType = "aws_sagemaker_hpo"
 )
 
 // Sanity test that the plugin implements method of k8s.Plugin
@@ -61,8 +60,6 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 
 	// When adding env vars there are some default env vars that are available, you can pass them through
 	envVars := flytek8s.DecorateEnvVars(ctx, flytek8s.ToK8sEnvVar(container.GetEnv()), taskCtx.TaskExecutionMetadata().GetTaskExecutionID())
-	fmt.Print(envVars)
-	panic("Implement me")
 }
 
 func (m mySamplePlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
