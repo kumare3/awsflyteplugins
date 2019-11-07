@@ -2,6 +2,8 @@ module github.com/kumare3/awsflyteplugins
 
 go 1.13
 
+replace go.amzn.com/sagemaker/sagemaker-k8s-operator v0.0.0 => ./sagemaker-k8s-operator
+
 require (
 	cloud.google.com/go v0.47.0 // indirect
 	github.com/Azure/azure-sdk-for-go v10.2.1-beta+incompatible // indirect
@@ -42,10 +44,11 @@ require (
 	github.com/satori/uuid v1.2.0 // indirect
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.4.0
+	go.amzn.com/sagemaker/sagemaker-k8s-operator v0.0.0
 	go.opencensus.io v0.22.1 // indirect
 	go.uber.org/zap v1.12.0 // indirect
 	golang.org/x/crypto v0.0.0-20191029031824-8986dd9e96cf // indirect
-	golang.org/x/net v0.0.0-20191028085509-fe3aa8a45271 // indirect
+	golang.org/x/net v0.0.0-20191028085509-fe3aa8a45271
 	golang.org/x/sys v0.0.0-20191029155521-f43be2a4598c // indirect
 	golang.org/x/time v0.0.0-20191024005414-555d28b269f0 // indirect
 	golang.org/x/tools v0.0.0-20191030232956-1e24073be82c // indirect
@@ -55,10 +58,13 @@ require (
 	k8s.io/api v0.0.0-20191031065753-b19d8caf39be
 	k8s.io/apiextensions-apiserver v0.0.0-20191028232452-c47e10e6d5a3 // indirect
 	k8s.io/apimachinery v0.0.0-20191030190112-bb31b70367b7
+	k8s.io/client-go v11.0.1-0.20190409021438-1a26190bd76a+incompatible
 	sigs.k8s.io/controller-runtime v0.3.1-0.20191029211253-40070e2a1958
 	sigs.k8s.io/testing_frameworks v0.1.2 // indirect
 )
 
-replace k8s.io/apimachinery v0.0.0 => github.com/lyft/apimachinery v0.0.0-20191031200210-047e3ea32d7f
+replace k8s.io/api => k8s.io/api v0.0.0-20190918155943-95b840bb6a1f
 
-replace k8s.io/api v0.0.0 => github.com/lyft/api v0.0.0-20191031200350-b49a72c274e0
+replace k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190913080033-27d36303b655
+
+replace k8s.io/client-go => k8s.io/client-go v0.0.0-20190918160344-1fbdaa4c8d90
