@@ -28,7 +28,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -92,27 +91,6 @@ namespace flyte {
 namespace plugins {
 namespace sagemaker {
 
-enum AlgorithmSpecification_TrainingInputModeEnum {
-  AlgorithmSpecification_TrainingInputModeEnum_Pipe = 0,
-  AlgorithmSpecification_TrainingInputModeEnum_File = 1,
-  AlgorithmSpecification_TrainingInputModeEnum_AlgorithmSpecification_TrainingInputModeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  AlgorithmSpecification_TrainingInputModeEnum_AlgorithmSpecification_TrainingInputModeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool AlgorithmSpecification_TrainingInputModeEnum_IsValid(int value);
-const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MIN = AlgorithmSpecification_TrainingInputModeEnum_Pipe;
-const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MAX = AlgorithmSpecification_TrainingInputModeEnum_File;
-const int AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_ARRAYSIZE = AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* AlgorithmSpecification_TrainingInputModeEnum_descriptor();
-inline const ::std::string& AlgorithmSpecification_TrainingInputModeEnum_Name(AlgorithmSpecification_TrainingInputModeEnum value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    AlgorithmSpecification_TrainingInputModeEnum_descriptor(), value);
-}
-inline bool AlgorithmSpecification_TrainingInputModeEnum_Parse(
-    const ::std::string& name, AlgorithmSpecification_TrainingInputModeEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<AlgorithmSpecification_TrainingInputModeEnum>(
-    AlgorithmSpecification_TrainingInputModeEnum_descriptor(), name, value);
-}
 // ===================================================================
 
 class AlgorithmSpecification_MetricDefinition : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition) */ {
@@ -319,32 +297,6 @@ class AlgorithmSpecification : public ::google::protobuf::Message /* @@protoc_in
 
   typedef AlgorithmSpecification_MetricDefinition MetricDefinition;
 
-  typedef AlgorithmSpecification_TrainingInputModeEnum TrainingInputModeEnum;
-  static const TrainingInputModeEnum Pipe =
-    AlgorithmSpecification_TrainingInputModeEnum_Pipe;
-  static const TrainingInputModeEnum File =
-    AlgorithmSpecification_TrainingInputModeEnum_File;
-  static inline bool TrainingInputModeEnum_IsValid(int value) {
-    return AlgorithmSpecification_TrainingInputModeEnum_IsValid(value);
-  }
-  static const TrainingInputModeEnum TrainingInputModeEnum_MIN =
-    AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MIN;
-  static const TrainingInputModeEnum TrainingInputModeEnum_MAX =
-    AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_MAX;
-  static const int TrainingInputModeEnum_ARRAYSIZE =
-    AlgorithmSpecification_TrainingInputModeEnum_TrainingInputModeEnum_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  TrainingInputModeEnum_descriptor() {
-    return AlgorithmSpecification_TrainingInputModeEnum_descriptor();
-  }
-  static inline const ::std::string& TrainingInputModeEnum_Name(TrainingInputModeEnum value) {
-    return AlgorithmSpecification_TrainingInputModeEnum_Name(value);
-  }
-  static inline bool TrainingInputModeEnum_Parse(const ::std::string& name,
-      TrainingInputModeEnum* value) {
-    return AlgorithmSpecification_TrainingInputModeEnum_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   // repeated .flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition MetricDefinitions = 4;
@@ -373,6 +325,20 @@ class AlgorithmSpecification : public ::google::protobuf::Message /* @@protoc_in
   ::std::string* release_trainingimage();
   void set_allocated_trainingimage(::std::string* trainingimage);
 
+  // string TrainingInputMode = 2;
+  void clear_traininginputmode();
+  static const int kTrainingInputModeFieldNumber = 2;
+  const ::std::string& traininginputmode() const;
+  void set_traininginputmode(const ::std::string& value);
+  #if LANG_CXX11
+  void set_traininginputmode(::std::string&& value);
+  #endif
+  void set_traininginputmode(const char* value);
+  void set_traininginputmode(const char* value, size_t size);
+  ::std::string* mutable_traininginputmode();
+  ::std::string* release_traininginputmode();
+  void set_allocated_traininginputmode(::std::string* traininginputmode);
+
   // string AlgorithmName = 3;
   void clear_algorithmname();
   static const int kAlgorithmNameFieldNumber = 3;
@@ -387,20 +353,14 @@ class AlgorithmSpecification : public ::google::protobuf::Message /* @@protoc_in
   ::std::string* release_algorithmname();
   void set_allocated_algorithmname(::std::string* algorithmname);
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
-  void clear_traininginputmode();
-  static const int kTrainingInputModeFieldNumber = 2;
-  ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum traininginputmode() const;
-  void set_traininginputmode(::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum value);
-
   // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.AlgorithmSpecification)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::flyte::plugins::sagemaker::AlgorithmSpecification_MetricDefinition > metricdefinitions_;
   ::google::protobuf::internal::ArenaStringPtr trainingimage_;
+  ::google::protobuf::internal::ArenaStringPtr traininginputmode_;
   ::google::protobuf::internal::ArenaStringPtr algorithmname_;
-  int traininginputmode_;
   mutable int _cached_size_;
   friend struct ::protobuf_sagemaker_2eproto::TableStruct;
   friend void ::protobuf_sagemaker_2eproto::InitDefaultsAlgorithmSpecificationImpl();
@@ -517,17 +477,17 @@ class ResourceConfig : public ::google::protobuf::Message /* @@protoc_insertion_
   ::std::string* release_volumekmskeyid();
   void set_allocated_volumekmskeyid(::std::string* volumekmskeyid);
 
-  // int32 InstanceCount = 2;
+  // int64 InstanceCount = 2;
   void clear_instancecount();
   static const int kInstanceCountFieldNumber = 2;
-  ::google::protobuf::int32 instancecount() const;
-  void set_instancecount(::google::protobuf::int32 value);
+  ::google::protobuf::int64 instancecount() const;
+  void set_instancecount(::google::protobuf::int64 value);
 
-  // int32 VolumeSizeInGB = 3;
+  // int64 VolumeSizeInGB = 3;
   void clear_volumesizeingb();
   static const int kVolumeSizeInGBFieldNumber = 3;
-  ::google::protobuf::int32 volumesizeingb() const;
-  void set_volumesizeingb(::google::protobuf::int32 value);
+  ::google::protobuf::int64 volumesizeingb() const;
+  void set_volumesizeingb(::google::protobuf::int64 value);
 
   // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.ResourceConfig)
  private:
@@ -535,8 +495,8 @@ class ResourceConfig : public ::google::protobuf::Message /* @@protoc_insertion_
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr instancetype_;
   ::google::protobuf::internal::ArenaStringPtr volumekmskeyid_;
-  ::google::protobuf::int32 instancecount_;
-  ::google::protobuf::int32 volumesizeingb_;
+  ::google::protobuf::int64 instancecount_;
+  ::google::protobuf::int64 volumesizeingb_;
   mutable int _cached_size_;
   friend struct ::protobuf_sagemaker_2eproto::TableStruct;
   friend void ::protobuf_sagemaker_2eproto::InitDefaultsResourceConfigImpl();
@@ -625,24 +585,24 @@ class StoppingCondition : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // int32 MaxRuntimeInSeconds = 1;
+  // int64 MaxRuntimeInSeconds = 1;
   void clear_maxruntimeinseconds();
   static const int kMaxRuntimeInSecondsFieldNumber = 1;
-  ::google::protobuf::int32 maxruntimeinseconds() const;
-  void set_maxruntimeinseconds(::google::protobuf::int32 value);
+  ::google::protobuf::int64 maxruntimeinseconds() const;
+  void set_maxruntimeinseconds(::google::protobuf::int64 value);
 
-  // int32 MaxWaitTimeInSeconds = 2;
+  // int64 MaxWaitTimeInSeconds = 2;
   void clear_maxwaittimeinseconds();
   static const int kMaxWaitTimeInSecondsFieldNumber = 2;
-  ::google::protobuf::int32 maxwaittimeinseconds() const;
-  void set_maxwaittimeinseconds(::google::protobuf::int32 value);
+  ::google::protobuf::int64 maxwaittimeinseconds() const;
+  void set_maxwaittimeinseconds(::google::protobuf::int64 value);
 
   // @@protoc_insertion_point(class_scope:flyte.plugins.sagemaker.StoppingCondition)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 maxruntimeinseconds_;
-  ::google::protobuf::int32 maxwaittimeinseconds_;
+  ::google::protobuf::int64 maxruntimeinseconds_;
+  ::google::protobuf::int64 maxwaittimeinseconds_;
   mutable int _cached_size_;
   friend struct ::protobuf_sagemaker_2eproto::TableStruct;
   friend void ::protobuf_sagemaker_2eproto::InitDefaultsStoppingConditionImpl();
@@ -1113,18 +1073,57 @@ inline void AlgorithmSpecification::set_allocated_trainingimage(::std::string* t
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingImage)
 }
 
-// .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+// string TrainingInputMode = 2;
 inline void AlgorithmSpecification::clear_traininginputmode() {
-  traininginputmode_ = 0;
+  traininginputmode_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::traininginputmode() const {
+inline const ::std::string& AlgorithmSpecification::traininginputmode() const {
   // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
-  return static_cast< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum >(traininginputmode_);
+  return traininginputmode_.GetNoArena();
 }
-inline void AlgorithmSpecification::set_traininginputmode(::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum value) {
+inline void AlgorithmSpecification::set_traininginputmode(const ::std::string& value) {
   
-  traininginputmode_ = value;
+  traininginputmode_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+}
+#if LANG_CXX11
+inline void AlgorithmSpecification::set_traininginputmode(::std::string&& value) {
+  
+  traininginputmode_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+}
+#endif
+inline void AlgorithmSpecification::set_traininginputmode(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  traininginputmode_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+}
+inline void AlgorithmSpecification::set_traininginputmode(const char* value, size_t size) {
+  
+  traininginputmode_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+}
+inline ::std::string* AlgorithmSpecification::mutable_traininginputmode() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+  return traininginputmode_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* AlgorithmSpecification::release_traininginputmode() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
+  
+  return traininginputmode_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void AlgorithmSpecification::set_allocated_traininginputmode(::std::string* traininginputmode) {
+  if (traininginputmode != NULL) {
+    
+  } else {
+    
+  }
+  traininginputmode_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), traininginputmode);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode)
 }
 
 // string AlgorithmName = 3;
@@ -1267,29 +1266,29 @@ inline void ResourceConfig::set_allocated_instancetype(::std::string* instancety
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.ResourceConfig.InstanceType)
 }
 
-// int32 InstanceCount = 2;
+// int64 InstanceCount = 2;
 inline void ResourceConfig::clear_instancecount() {
-  instancecount_ = 0;
+  instancecount_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int32 ResourceConfig::instancecount() const {
+inline ::google::protobuf::int64 ResourceConfig::instancecount() const {
   // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.ResourceConfig.InstanceCount)
   return instancecount_;
 }
-inline void ResourceConfig::set_instancecount(::google::protobuf::int32 value) {
+inline void ResourceConfig::set_instancecount(::google::protobuf::int64 value) {
   
   instancecount_ = value;
   // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.ResourceConfig.InstanceCount)
 }
 
-// int32 VolumeSizeInGB = 3;
+// int64 VolumeSizeInGB = 3;
 inline void ResourceConfig::clear_volumesizeingb() {
-  volumesizeingb_ = 0;
+  volumesizeingb_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int32 ResourceConfig::volumesizeingb() const {
+inline ::google::protobuf::int64 ResourceConfig::volumesizeingb() const {
   // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.ResourceConfig.VolumeSizeInGB)
   return volumesizeingb_;
 }
-inline void ResourceConfig::set_volumesizeingb(::google::protobuf::int32 value) {
+inline void ResourceConfig::set_volumesizeingb(::google::protobuf::int64 value) {
   
   volumesizeingb_ = value;
   // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.ResourceConfig.VolumeSizeInGB)
@@ -1352,29 +1351,29 @@ inline void ResourceConfig::set_allocated_volumekmskeyid(::std::string* volumekm
 
 // StoppingCondition
 
-// int32 MaxRuntimeInSeconds = 1;
+// int64 MaxRuntimeInSeconds = 1;
 inline void StoppingCondition::clear_maxruntimeinseconds() {
-  maxruntimeinseconds_ = 0;
+  maxruntimeinseconds_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int32 StoppingCondition::maxruntimeinseconds() const {
+inline ::google::protobuf::int64 StoppingCondition::maxruntimeinseconds() const {
   // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.StoppingCondition.MaxRuntimeInSeconds)
   return maxruntimeinseconds_;
 }
-inline void StoppingCondition::set_maxruntimeinseconds(::google::protobuf::int32 value) {
+inline void StoppingCondition::set_maxruntimeinseconds(::google::protobuf::int64 value) {
   
   maxruntimeinseconds_ = value;
   // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.StoppingCondition.MaxRuntimeInSeconds)
 }
 
-// int32 MaxWaitTimeInSeconds = 2;
+// int64 MaxWaitTimeInSeconds = 2;
 inline void StoppingCondition::clear_maxwaittimeinseconds() {
-  maxwaittimeinseconds_ = 0;
+  maxwaittimeinseconds_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int32 StoppingCondition::maxwaittimeinseconds() const {
+inline ::google::protobuf::int64 StoppingCondition::maxwaittimeinseconds() const {
   // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.StoppingCondition.MaxWaitTimeInSeconds)
   return maxwaittimeinseconds_;
 }
-inline void StoppingCondition::set_maxwaittimeinseconds(::google::protobuf::int32 value) {
+inline void StoppingCondition::set_maxwaittimeinseconds(::google::protobuf::int64 value) {
   
   maxwaittimeinseconds_ = value;
   // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.StoppingCondition.MaxWaitTimeInSeconds)
@@ -1812,18 +1811,6 @@ inline void SagemakerHPOJob::set_enablespottraining(bool value) {
 }  // namespace sagemaker
 }  // namespace plugins
 }  // namespace flyte
-
-namespace google {
-namespace protobuf {
-
-template <> struct is_proto_enum< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum>() {
-  return ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

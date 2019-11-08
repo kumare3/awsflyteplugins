@@ -70,8 +70,8 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 	if !ok {
 		return nil, errors.Errorf("validation input not specified")
 	}
-	_ = trainPath
-	_ = validatePath
+
+	outputPath := taskCtx.OutputWriter().GetOutputPrefixPath().String()
 
 	// TODO if we have special information to be marshalled through from the python SDK then it can be retrieved using the util
 	sagemakerJob := proto.SagemakerHPOJob{}
@@ -87,6 +87,8 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 	envVars := flytek8s.DecorateEnvVars(ctx, flytek8s.ToK8sEnvVar(container.GetEnv()), taskCtx.TaskExecutionMetadata().GetTaskExecutionID())
 	_ = envVars
 
+	trainingInputMode := commonv1.TrainingInputMode(sagemakerJob.AlgorithmSpecification.TrainingInputMode)
+
 	hpoJob := &hpojobv1.HyperparameterTuningJob{
 		Spec: hpojobv1.HyperparameterTuningJobSpec{
 			HyperParameterTuningJobConfig: &commonv1.HyperParameterTuningJobConfig{
@@ -98,24 +100,48 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 			},
 			TrainingJobDefinition: &commonv1.HyperParameterTrainingJobDefinition{
 				AlgorithmSpecification: &commonv1.HyperParameterAlgorithmSpecification{
-
+					TrainingImage:     &sagemakerJob.AlgorithmSpecification.TrainingImage,
+					TrainingInputMode: trainingInputMode,
 				},
-				InputDataConfig: [commonv1.Channel{
-
-				}, commonv1.Channel{
-
-				},],
+				InputDataConfig: []commonv1.Channel{
+					commonv1.Channel{
+						ChannelName: ToStringPtr("train"),
+						DataSource: &commonv1.DataSource{
+							S3DataSource: &commonv1.S3DataSource{
+								S3DataType: "S3Prefix",
+								S3Uri:      ToStringPtr(trainPath.GetScalar().GetBlob().GetUri()),
+							},
+						},
+						ContentType: ToStringPtr("text/csv"),
+						InputMode:   "File",
+					},
+					commonv1.Channel{
+						ChannelName: ToStringPtr("validation"),
+						DataSource: &commonv1.DataSource{
+							S3DataSource: &commonv1.S3DataSource{
+								S3DataType: "S3Prefix",
+								S3Uri:      ToStringPtr(validatePath.GetScalar().GetBlob().GetUri()),
+							},
+						},
+						ContentType: ToStringPtr("text/csv"),
+						InputMode:   "File",
+					},
+				},
 				OutputDataConfig: &commonv1.OutputDataConfig{
-
+					S3OutputPath: ToStringPtr(outputPath),
 				},
 				ResourceConfig: &commonv1.ResourceConfig{
-
+					InstanceType:   sagemakerJob.ResourceConfig.InstanceType,
+					InstanceCount:  &sagemakerJob.ResourceConfig.InstanceCount,
+					VolumeSizeInGB: &sagemakerJob.ResourceConfig.VolumeSizeInGB,
+					VolumeKmsKeyId: &sagemakerJob.ResourceConfig.VolumeKmsKeyId,
 				},
-				RoleArn: ,
+				RoleArn: &sagemakerJob.RoleArn,
 				StoppingCondition: &commonv1.StoppingCondition{
-
-				}
-			}
+					MaxRuntimeInSeconds:  &sagemakerJob.StoppingCondition.MaxRuntimeInSeconds,
+					MaxWaitTimeInSeconds: &sagemakerJob.StoppingCondition.MaxWaitTimeInSeconds,
+				},
+			},
 			Region: ToStringPtr("us-east-1"),
 		},
 	}

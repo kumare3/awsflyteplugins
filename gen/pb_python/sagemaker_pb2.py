@@ -19,32 +19,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='sagemaker.proto',
   package='flyte.plugins.sagemaker',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fsagemaker.proto\x12\x17\x66lyte.plugins.sagemaker\"\xe3\x02\n\x16\x41lgorithmSpecification\x12\x15\n\rTrainingImage\x18\x01 \x01(\t\x12`\n\x11TrainingInputMode\x18\x02 \x01(\x0e\x32\x45.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum\x12\x15\n\rAlgorithmName\x18\x03 \x01(\t\x12[\n\x11MetricDefinitions\x18\x04 \x03(\x0b\x32@.flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition\x1a/\n\x10MetricDefinition\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05Regex\x18\x02 \x01(\t\"+\n\x15TrainingInputModeEnum\x12\x08\n\x04Pipe\x10\x00\x12\x08\n\x04\x46ile\x10\x01\"m\n\x0eResourceConfig\x12\x14\n\x0cInstanceType\x18\x01 \x01(\t\x12\x15\n\rInstanceCount\x18\x02 \x01(\x05\x12\x16\n\x0eVolumeSizeInGB\x18\x03 \x01(\x05\x12\x16\n\x0eVolumeKmsKeyId\x18\x04 \x01(\t\"N\n\x11StoppingCondition\x12\x1b\n\x13MaxRuntimeInSeconds\x18\x01 \x01(\x05\x12\x1c\n\x14MaxWaitTimeInSeconds\x18\x02 \x01(\x05\"6\n\tVpcConfig\x12\x18\n\x10SecurityGroupIds\x18\x01 \x03(\t\x12\x0f\n\x07Subnets\x18\x02 \x03(\t\"\xce\x02\n\x0fSagemakerHPOJob\x12\x0f\n\x07RoleArn\x18\x01 \x01(\t\x12O\n\x16\x41lgorithmSpecification\x18\x02 \x01(\x0b\x32/.flyte.plugins.sagemaker.AlgorithmSpecification\x12?\n\x0eResourceConfig\x18\x03 \x01(\x0b\x32\'.flyte.plugins.sagemaker.ResourceConfig\x12\x45\n\x11StoppingCondition\x18\x04 \x01(\x0b\x32*.flyte.plugins.sagemaker.StoppingCondition\x12\x35\n\tVpcConfig\x18\x05 \x01(\x0b\x32\".flyte.plugins.sagemaker.VpcConfig\x12\x1a\n\x12\x45nableSpotTraining\x18\x06 \x01(\x08\x42\x34Z2github.com/kumare3/awsflyteplugins/gen/pb-go/protob\x06proto3')
+  serialized_pb=_b('\n\x0fsagemaker.proto\x12\x17\x66lyte.plugins.sagemaker\"\xef\x01\n\x16\x41lgorithmSpecification\x12\x15\n\rTrainingImage\x18\x01 \x01(\t\x12\x19\n\x11TrainingInputMode\x18\x02 \x01(\t\x12\x15\n\rAlgorithmName\x18\x03 \x01(\t\x12[\n\x11MetricDefinitions\x18\x04 \x03(\x0b\x32@.flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition\x1a/\n\x10MetricDefinition\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05Regex\x18\x02 \x01(\t\"m\n\x0eResourceConfig\x12\x14\n\x0cInstanceType\x18\x01 \x01(\t\x12\x15\n\rInstanceCount\x18\x02 \x01(\x03\x12\x16\n\x0eVolumeSizeInGB\x18\x03 \x01(\x03\x12\x16\n\x0eVolumeKmsKeyId\x18\x04 \x01(\t\"N\n\x11StoppingCondition\x12\x1b\n\x13MaxRuntimeInSeconds\x18\x01 \x01(\x03\x12\x1c\n\x14MaxWaitTimeInSeconds\x18\x02 \x01(\x03\"6\n\tVpcConfig\x12\x18\n\x10SecurityGroupIds\x18\x01 \x03(\t\x12\x0f\n\x07Subnets\x18\x02 \x03(\t\"\xce\x02\n\x0fSagemakerHPOJob\x12\x0f\n\x07RoleArn\x18\x01 \x01(\t\x12O\n\x16\x41lgorithmSpecification\x18\x02 \x01(\x0b\x32/.flyte.plugins.sagemaker.AlgorithmSpecification\x12?\n\x0eResourceConfig\x18\x03 \x01(\x0b\x32\'.flyte.plugins.sagemaker.ResourceConfig\x12\x45\n\x11StoppingCondition\x18\x04 \x01(\x0b\x32*.flyte.plugins.sagemaker.StoppingCondition\x12\x35\n\tVpcConfig\x18\x05 \x01(\x0b\x32\".flyte.plugins.sagemaker.VpcConfig\x12\x1a\n\x12\x45nableSpotTraining\x18\x06 \x01(\x08\x42\x34Z2github.com/kumare3/awsflyteplugins/gen/pb-go/protob\x06proto3')
 )
 
 
-
-_ALGORITHMSPECIFICATION_TRAININGINPUTMODEENUM = _descriptor.EnumDescriptor(
-  name='TrainingInputModeEnum',
-  full_name='flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='Pipe', index=0, number=0,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='File', index=1, number=1,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=357,
-  serialized_end=400,
-)
-_sym_db.RegisterEnumDescriptor(_ALGORITHMSPECIFICATION_TRAININGINPUTMODEENUM)
 
 
 _ALGORITHMSPECIFICATION_METRICDEFINITION = _descriptor.Descriptor(
@@ -80,8 +58,8 @@ _ALGORITHMSPECIFICATION_METRICDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=308,
-  serialized_end=355,
+  serialized_start=237,
+  serialized_end=284,
 )
 
 _ALGORITHMSPECIFICATION = _descriptor.Descriptor(
@@ -100,8 +78,8 @@ _ALGORITHMSPECIFICATION = _descriptor.Descriptor(
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='TrainingInputMode', full_name='flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
@@ -124,7 +102,6 @@ _ALGORITHMSPECIFICATION = _descriptor.Descriptor(
   ],
   nested_types=[_ALGORITHMSPECIFICATION_METRICDEFINITION, ],
   enum_types=[
-    _ALGORITHMSPECIFICATION_TRAININGINPUTMODEENUM,
   ],
   options=None,
   is_extendable=False,
@@ -133,7 +110,7 @@ _ALGORITHMSPECIFICATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=45,
-  serialized_end=400,
+  serialized_end=284,
 )
 
 
@@ -153,14 +130,14 @@ _RESOURCECONFIG = _descriptor.Descriptor(
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='InstanceCount', full_name='flyte.plugins.sagemaker.ResourceConfig.InstanceCount', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='VolumeSizeInGB', full_name='flyte.plugins.sagemaker.ResourceConfig.VolumeSizeInGB', index=2,
-      number=3, type=5, cpp_type=1, label=1,
+      number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -184,8 +161,8 @@ _RESOURCECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=511,
+  serialized_start=286,
+  serialized_end=395,
 )
 
 
@@ -198,14 +175,14 @@ _STOPPINGCONDITION = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='MaxRuntimeInSeconds', full_name='flyte.plugins.sagemaker.StoppingCondition.MaxRuntimeInSeconds', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='MaxWaitTimeInSeconds', full_name='flyte.plugins.sagemaker.StoppingCondition.MaxWaitTimeInSeconds', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -222,8 +199,8 @@ _STOPPINGCONDITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=513,
-  serialized_end=591,
+  serialized_start=397,
+  serialized_end=475,
 )
 
 
@@ -260,8 +237,8 @@ _VPCCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=593,
-  serialized_end=647,
+  serialized_start=477,
+  serialized_end=531,
 )
 
 
@@ -326,14 +303,12 @@ _SAGEMAKERHPOJOB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=650,
-  serialized_end=984,
+  serialized_start=534,
+  serialized_end=868,
 )
 
 _ALGORITHMSPECIFICATION_METRICDEFINITION.containing_type = _ALGORITHMSPECIFICATION
-_ALGORITHMSPECIFICATION.fields_by_name['TrainingInputMode'].enum_type = _ALGORITHMSPECIFICATION_TRAININGINPUTMODEENUM
 _ALGORITHMSPECIFICATION.fields_by_name['MetricDefinitions'].message_type = _ALGORITHMSPECIFICATION_METRICDEFINITION
-_ALGORITHMSPECIFICATION_TRAININGINPUTMODEENUM.containing_type = _ALGORITHMSPECIFICATION
 _SAGEMAKERHPOJOB.fields_by_name['AlgorithmSpecification'].message_type = _ALGORITHMSPECIFICATION
 _SAGEMAKERHPOJOB.fields_by_name['ResourceConfig'].message_type = _RESOURCECONFIG
 _SAGEMAKERHPOJOB.fields_by_name['StoppingCondition'].message_type = _STOPPINGCONDITION

@@ -8,13 +8,14 @@ from flytekit.configuration import TemporaryConfiguration
 
 
 xgtrainer_task = SagemakerXgBoostOptimizer(
-    role_arn="TODO: Fill me in",
+    role_arn="arn:123456789:12346579812345679",
     resource_config={
         "InstanceCount": 1,
         "InstanceType": "ml.c4.large",
         "VolumeSizeInGB": 10,
     },
-    stopping_condition={"MaxRuntimeInSeconds": 43200},
+    stopping_condition={"MaxRuntimeInSeconds": 43200, "MaxWaitTimeInSeconds": 43200},
+    algorithm_specification={"TrainingInputMode": "File", "AlgorithmName": "xgboost"},
     retries=2,
 )
 

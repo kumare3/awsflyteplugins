@@ -29,13 +29,14 @@ public final class Sagemaker {
         getTrainingImageBytes();
 
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     * <code>string TrainingInputMode = 2;</code>
      */
-    int getTrainingInputModeValue();
+    java.lang.String getTrainingInputMode();
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     * <code>string TrainingInputMode = 2;</code>
      */
-    flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum getTrainingInputMode();
+    com.google.protobuf.ByteString
+        getTrainingInputModeBytes();
 
     /**
      * <code>string AlgorithmName = 3;</code>
@@ -85,7 +86,7 @@ public final class Sagemaker {
     }
     private AlgorithmSpecification() {
       trainingImage_ = "";
-      trainingInputMode_ = 0;
+      trainingInputMode_ = "";
       algorithmName_ = "";
       metricDefinitions_ = java.util.Collections.emptyList();
     }
@@ -127,10 +128,10 @@ public final class Sagemaker {
               trainingImage_ = s;
               break;
             }
-            case 16: {
-              int rawValue = input.readEnum();
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              trainingInputMode_ = rawValue;
+              trainingInputMode_ = s;
               break;
             }
             case 26: {
@@ -173,104 +174,6 @@ public final class Sagemaker {
       return flyte.plugins.sagemaker.Sagemaker.internal_static_flyte_plugins_sagemaker_AlgorithmSpecification_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.class, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder.class);
-    }
-
-    /**
-     * Protobuf enum {@code flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum}
-     */
-    public enum TrainingInputModeEnum
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>Pipe = 0;</code>
-       */
-      Pipe(0),
-      /**
-       * <code>File = 1;</code>
-       */
-      File(1),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <code>Pipe = 0;</code>
-       */
-      public static final int Pipe_VALUE = 0;
-      /**
-       * <code>File = 1;</code>
-       */
-      public static final int File_VALUE = 1;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
-
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static TrainingInputModeEnum valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static TrainingInputModeEnum forNumber(int value) {
-        switch (value) {
-          case 0: return Pipe;
-          case 1: return File;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<TrainingInputModeEnum>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          TrainingInputModeEnum> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<TrainingInputModeEnum>() {
-              public TrainingInputModeEnum findValueByNumber(int number) {
-                return TrainingInputModeEnum.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final TrainingInputModeEnum[] VALUES = values();
-
-      public static TrainingInputModeEnum valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private TrainingInputModeEnum(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum)
     }
 
     public interface MetricDefinitionOrBuilder extends
@@ -971,19 +874,37 @@ public final class Sagemaker {
     }
 
     public static final int TRAININGINPUTMODE_FIELD_NUMBER = 2;
-    private int trainingInputMode_;
+    private volatile java.lang.Object trainingInputMode_;
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     * <code>string TrainingInputMode = 2;</code>
      */
-    public int getTrainingInputModeValue() {
-      return trainingInputMode_;
+    public java.lang.String getTrainingInputMode() {
+      java.lang.Object ref = trainingInputMode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        trainingInputMode_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+     * <code>string TrainingInputMode = 2;</code>
      */
-    public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum getTrainingInputMode() {
-      flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum result = flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.valueOf(trainingInputMode_);
-      return result == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.UNRECOGNIZED : result;
+    public com.google.protobuf.ByteString
+        getTrainingInputModeBytes() {
+      java.lang.Object ref = trainingInputMode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        trainingInputMode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int ALGORITHMNAME_FIELD_NUMBER = 3;
@@ -1070,8 +991,8 @@ public final class Sagemaker {
       if (!getTrainingImageBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, trainingImage_);
       }
-      if (trainingInputMode_ != flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.Pipe.getNumber()) {
-        output.writeEnum(2, trainingInputMode_);
+      if (!getTrainingInputModeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, trainingInputMode_);
       }
       if (!getAlgorithmNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, algorithmName_);
@@ -1090,9 +1011,8 @@ public final class Sagemaker {
       if (!getTrainingImageBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, trainingImage_);
       }
-      if (trainingInputMode_ != flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.Pipe.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, trainingInputMode_);
+      if (!getTrainingInputModeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, trainingInputMode_);
       }
       if (!getAlgorithmNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, algorithmName_);
@@ -1119,7 +1039,8 @@ public final class Sagemaker {
       boolean result = true;
       result = result && getTrainingImage()
           .equals(other.getTrainingImage());
-      result = result && trainingInputMode_ == other.trainingInputMode_;
+      result = result && getTrainingInputMode()
+          .equals(other.getTrainingInputMode());
       result = result && getAlgorithmName()
           .equals(other.getAlgorithmName());
       result = result && getMetricDefinitionsList()
@@ -1138,7 +1059,7 @@ public final class Sagemaker {
       hash = (37 * hash) + TRAININGIMAGE_FIELD_NUMBER;
       hash = (53 * hash) + getTrainingImage().hashCode();
       hash = (37 * hash) + TRAININGINPUTMODE_FIELD_NUMBER;
-      hash = (53 * hash) + trainingInputMode_;
+      hash = (53 * hash) + getTrainingInputMode().hashCode();
       hash = (37 * hash) + ALGORITHMNAME_FIELD_NUMBER;
       hash = (53 * hash) + getAlgorithmName().hashCode();
       if (getMetricDefinitionsCount() > 0) {
@@ -1277,7 +1198,7 @@ public final class Sagemaker {
         super.clear();
         trainingImage_ = "";
 
-        trainingInputMode_ = 0;
+        trainingInputMode_ = "";
 
         algorithmName_ = "";
 
@@ -1369,8 +1290,9 @@ public final class Sagemaker {
           trainingImage_ = other.trainingImage_;
           onChanged();
         }
-        if (other.trainingInputMode_ != 0) {
-          setTrainingInputModeValue(other.getTrainingInputModeValue());
+        if (!other.getTrainingInputMode().isEmpty()) {
+          trainingInputMode_ = other.trainingInputMode_;
+          onChanged();
         }
         if (!other.getAlgorithmName().isEmpty()) {
           algorithmName_ = other.algorithmName_;
@@ -1499,46 +1421,71 @@ public final class Sagemaker {
         return this;
       }
 
-      private int trainingInputMode_ = 0;
+      private java.lang.Object trainingInputMode_ = "";
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       * <code>string TrainingInputMode = 2;</code>
        */
-      public int getTrainingInputModeValue() {
-        return trainingInputMode_;
+      public java.lang.String getTrainingInputMode() {
+        java.lang.Object ref = trainingInputMode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          trainingInputMode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       * <code>string TrainingInputMode = 2;</code>
        */
-      public Builder setTrainingInputModeValue(int value) {
+      public com.google.protobuf.ByteString
+          getTrainingInputModeBytes() {
+        java.lang.Object ref = trainingInputMode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          trainingInputMode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string TrainingInputMode = 2;</code>
+       */
+      public Builder setTrainingInputMode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         trainingInputMode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       * <code>string TrainingInputMode = 2;</code>
        */
-      public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum getTrainingInputMode() {
-        flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum result = flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.valueOf(trainingInputMode_);
-        return result == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
-       */
-      public Builder setTrainingInputMode(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.TrainingInputModeEnum value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
+      public Builder clearTrainingInputMode() {
         
-        trainingInputMode_ = value.getNumber();
+        trainingInputMode_ = getDefaultInstance().getTrainingInputMode();
         onChanged();
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;</code>
+       * <code>string TrainingInputMode = 2;</code>
        */
-      public Builder clearTrainingInputMode() {
+      public Builder setTrainingInputModeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
         
-        trainingInputMode_ = 0;
+        trainingInputMode_ = value;
         onChanged();
         return this;
       }
@@ -1915,14 +1862,14 @@ public final class Sagemaker {
         getInstanceTypeBytes();
 
     /**
-     * <code>int32 InstanceCount = 2;</code>
+     * <code>int64 InstanceCount = 2;</code>
      */
-    int getInstanceCount();
+    long getInstanceCount();
 
     /**
-     * <code>int32 VolumeSizeInGB = 3;</code>
+     * <code>int64 VolumeSizeInGB = 3;</code>
      */
-    int getVolumeSizeInGB();
+    long getVolumeSizeInGB();
 
     /**
      * <code>string VolumeKmsKeyId = 4;</code>
@@ -1948,8 +1895,8 @@ public final class Sagemaker {
     }
     private ResourceConfig() {
       instanceType_ = "";
-      instanceCount_ = 0;
-      volumeSizeInGB_ = 0;
+      instanceCount_ = 0L;
+      volumeSizeInGB_ = 0L;
       volumeKmsKeyId_ = "";
     }
 
@@ -1992,12 +1939,12 @@ public final class Sagemaker {
             }
             case 16: {
 
-              instanceCount_ = input.readInt32();
+              instanceCount_ = input.readInt64();
               break;
             }
             case 24: {
 
-              volumeSizeInGB_ = input.readInt32();
+              volumeSizeInGB_ = input.readInt64();
               break;
             }
             case 34: {
@@ -2065,20 +2012,20 @@ public final class Sagemaker {
     }
 
     public static final int INSTANCECOUNT_FIELD_NUMBER = 2;
-    private int instanceCount_;
+    private long instanceCount_;
     /**
-     * <code>int32 InstanceCount = 2;</code>
+     * <code>int64 InstanceCount = 2;</code>
      */
-    public int getInstanceCount() {
+    public long getInstanceCount() {
       return instanceCount_;
     }
 
     public static final int VOLUMESIZEINGB_FIELD_NUMBER = 3;
-    private int volumeSizeInGB_;
+    private long volumeSizeInGB_;
     /**
-     * <code>int32 VolumeSizeInGB = 3;</code>
+     * <code>int64 VolumeSizeInGB = 3;</code>
      */
-    public int getVolumeSizeInGB() {
+    public long getVolumeSizeInGB() {
       return volumeSizeInGB_;
     }
 
@@ -2131,11 +2078,11 @@ public final class Sagemaker {
       if (!getInstanceTypeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, instanceType_);
       }
-      if (instanceCount_ != 0) {
-        output.writeInt32(2, instanceCount_);
+      if (instanceCount_ != 0L) {
+        output.writeInt64(2, instanceCount_);
       }
-      if (volumeSizeInGB_ != 0) {
-        output.writeInt32(3, volumeSizeInGB_);
+      if (volumeSizeInGB_ != 0L) {
+        output.writeInt64(3, volumeSizeInGB_);
       }
       if (!getVolumeKmsKeyIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, volumeKmsKeyId_);
@@ -2151,13 +2098,13 @@ public final class Sagemaker {
       if (!getInstanceTypeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, instanceType_);
       }
-      if (instanceCount_ != 0) {
+      if (instanceCount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, instanceCount_);
+          .computeInt64Size(2, instanceCount_);
       }
-      if (volumeSizeInGB_ != 0) {
+      if (volumeSizeInGB_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, volumeSizeInGB_);
+          .computeInt64Size(3, volumeSizeInGB_);
       }
       if (!getVolumeKmsKeyIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, volumeKmsKeyId_);
@@ -2200,9 +2147,11 @@ public final class Sagemaker {
       hash = (37 * hash) + INSTANCETYPE_FIELD_NUMBER;
       hash = (53 * hash) + getInstanceType().hashCode();
       hash = (37 * hash) + INSTANCECOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getInstanceCount();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getInstanceCount());
       hash = (37 * hash) + VOLUMESIZEINGB_FIELD_NUMBER;
-      hash = (53 * hash) + getVolumeSizeInGB();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVolumeSizeInGB());
       hash = (37 * hash) + VOLUMEKMSKEYID_FIELD_NUMBER;
       hash = (53 * hash) + getVolumeKmsKeyId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -2336,9 +2285,9 @@ public final class Sagemaker {
         super.clear();
         instanceType_ = "";
 
-        instanceCount_ = 0;
+        instanceCount_ = 0L;
 
-        volumeSizeInGB_ = 0;
+        volumeSizeInGB_ = 0L;
 
         volumeKmsKeyId_ = "";
 
@@ -2413,10 +2362,10 @@ public final class Sagemaker {
           instanceType_ = other.instanceType_;
           onChanged();
         }
-        if (other.getInstanceCount() != 0) {
+        if (other.getInstanceCount() != 0L) {
           setInstanceCount(other.getInstanceCount());
         }
-        if (other.getVolumeSizeInGB() != 0) {
+        if (other.getVolumeSizeInGB() != 0L) {
           setVolumeSizeInGB(other.getVolumeSizeInGB());
         }
         if (!other.getVolumeKmsKeyId().isEmpty()) {
@@ -2519,54 +2468,54 @@ public final class Sagemaker {
         return this;
       }
 
-      private int instanceCount_ ;
+      private long instanceCount_ ;
       /**
-       * <code>int32 InstanceCount = 2;</code>
+       * <code>int64 InstanceCount = 2;</code>
        */
-      public int getInstanceCount() {
+      public long getInstanceCount() {
         return instanceCount_;
       }
       /**
-       * <code>int32 InstanceCount = 2;</code>
+       * <code>int64 InstanceCount = 2;</code>
        */
-      public Builder setInstanceCount(int value) {
+      public Builder setInstanceCount(long value) {
         
         instanceCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 InstanceCount = 2;</code>
+       * <code>int64 InstanceCount = 2;</code>
        */
       public Builder clearInstanceCount() {
         
-        instanceCount_ = 0;
+        instanceCount_ = 0L;
         onChanged();
         return this;
       }
 
-      private int volumeSizeInGB_ ;
+      private long volumeSizeInGB_ ;
       /**
-       * <code>int32 VolumeSizeInGB = 3;</code>
+       * <code>int64 VolumeSizeInGB = 3;</code>
        */
-      public int getVolumeSizeInGB() {
+      public long getVolumeSizeInGB() {
         return volumeSizeInGB_;
       }
       /**
-       * <code>int32 VolumeSizeInGB = 3;</code>
+       * <code>int64 VolumeSizeInGB = 3;</code>
        */
-      public Builder setVolumeSizeInGB(int value) {
+      public Builder setVolumeSizeInGB(long value) {
         
         volumeSizeInGB_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 VolumeSizeInGB = 3;</code>
+       * <code>int64 VolumeSizeInGB = 3;</code>
        */
       public Builder clearVolumeSizeInGB() {
         
-        volumeSizeInGB_ = 0;
+        volumeSizeInGB_ = 0L;
         onChanged();
         return this;
       }
@@ -2693,14 +2642,14 @@ public final class Sagemaker {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 MaxRuntimeInSeconds = 1;</code>
+     * <code>int64 MaxRuntimeInSeconds = 1;</code>
      */
-    int getMaxRuntimeInSeconds();
+    long getMaxRuntimeInSeconds();
 
     /**
-     * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+     * <code>int64 MaxWaitTimeInSeconds = 2;</code>
      */
-    int getMaxWaitTimeInSeconds();
+    long getMaxWaitTimeInSeconds();
   }
   /**
    * Protobuf type {@code flyte.plugins.sagemaker.StoppingCondition}
@@ -2715,8 +2664,8 @@ public final class Sagemaker {
       super(builder);
     }
     private StoppingCondition() {
-      maxRuntimeInSeconds_ = 0;
-      maxWaitTimeInSeconds_ = 0;
+      maxRuntimeInSeconds_ = 0L;
+      maxWaitTimeInSeconds_ = 0L;
     }
 
     @java.lang.Override
@@ -2752,12 +2701,12 @@ public final class Sagemaker {
             }
             case 8: {
 
-              maxRuntimeInSeconds_ = input.readInt32();
+              maxRuntimeInSeconds_ = input.readInt64();
               break;
             }
             case 16: {
 
-              maxWaitTimeInSeconds_ = input.readInt32();
+              maxWaitTimeInSeconds_ = input.readInt64();
               break;
             }
           }
@@ -2785,20 +2734,20 @@ public final class Sagemaker {
     }
 
     public static final int MAXRUNTIMEINSECONDS_FIELD_NUMBER = 1;
-    private int maxRuntimeInSeconds_;
+    private long maxRuntimeInSeconds_;
     /**
-     * <code>int32 MaxRuntimeInSeconds = 1;</code>
+     * <code>int64 MaxRuntimeInSeconds = 1;</code>
      */
-    public int getMaxRuntimeInSeconds() {
+    public long getMaxRuntimeInSeconds() {
       return maxRuntimeInSeconds_;
     }
 
     public static final int MAXWAITTIMEINSECONDS_FIELD_NUMBER = 2;
-    private int maxWaitTimeInSeconds_;
+    private long maxWaitTimeInSeconds_;
     /**
-     * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+     * <code>int64 MaxWaitTimeInSeconds = 2;</code>
      */
-    public int getMaxWaitTimeInSeconds() {
+    public long getMaxWaitTimeInSeconds() {
       return maxWaitTimeInSeconds_;
     }
 
@@ -2814,11 +2763,11 @@ public final class Sagemaker {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (maxRuntimeInSeconds_ != 0) {
-        output.writeInt32(1, maxRuntimeInSeconds_);
+      if (maxRuntimeInSeconds_ != 0L) {
+        output.writeInt64(1, maxRuntimeInSeconds_);
       }
-      if (maxWaitTimeInSeconds_ != 0) {
-        output.writeInt32(2, maxWaitTimeInSeconds_);
+      if (maxWaitTimeInSeconds_ != 0L) {
+        output.writeInt64(2, maxWaitTimeInSeconds_);
       }
       unknownFields.writeTo(output);
     }
@@ -2828,13 +2777,13 @@ public final class Sagemaker {
       if (size != -1) return size;
 
       size = 0;
-      if (maxRuntimeInSeconds_ != 0) {
+      if (maxRuntimeInSeconds_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, maxRuntimeInSeconds_);
+          .computeInt64Size(1, maxRuntimeInSeconds_);
       }
-      if (maxWaitTimeInSeconds_ != 0) {
+      if (maxWaitTimeInSeconds_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, maxWaitTimeInSeconds_);
+          .computeInt64Size(2, maxWaitTimeInSeconds_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2868,9 +2817,11 @@ public final class Sagemaker {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MAXRUNTIMEINSECONDS_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxRuntimeInSeconds();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxRuntimeInSeconds());
       hash = (37 * hash) + MAXWAITTIMEINSECONDS_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxWaitTimeInSeconds();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxWaitTimeInSeconds());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3000,9 +2951,9 @@ public final class Sagemaker {
       }
       public Builder clear() {
         super.clear();
-        maxRuntimeInSeconds_ = 0;
+        maxRuntimeInSeconds_ = 0L;
 
-        maxWaitTimeInSeconds_ = 0;
+        maxWaitTimeInSeconds_ = 0L;
 
         return this;
       }
@@ -3069,10 +3020,10 @@ public final class Sagemaker {
 
       public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.StoppingCondition other) {
         if (other == flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance()) return this;
-        if (other.getMaxRuntimeInSeconds() != 0) {
+        if (other.getMaxRuntimeInSeconds() != 0L) {
           setMaxRuntimeInSeconds(other.getMaxRuntimeInSeconds());
         }
-        if (other.getMaxWaitTimeInSeconds() != 0) {
+        if (other.getMaxWaitTimeInSeconds() != 0L) {
           setMaxWaitTimeInSeconds(other.getMaxWaitTimeInSeconds());
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -3102,54 +3053,54 @@ public final class Sagemaker {
         return this;
       }
 
-      private int maxRuntimeInSeconds_ ;
+      private long maxRuntimeInSeconds_ ;
       /**
-       * <code>int32 MaxRuntimeInSeconds = 1;</code>
+       * <code>int64 MaxRuntimeInSeconds = 1;</code>
        */
-      public int getMaxRuntimeInSeconds() {
+      public long getMaxRuntimeInSeconds() {
         return maxRuntimeInSeconds_;
       }
       /**
-       * <code>int32 MaxRuntimeInSeconds = 1;</code>
+       * <code>int64 MaxRuntimeInSeconds = 1;</code>
        */
-      public Builder setMaxRuntimeInSeconds(int value) {
+      public Builder setMaxRuntimeInSeconds(long value) {
         
         maxRuntimeInSeconds_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 MaxRuntimeInSeconds = 1;</code>
+       * <code>int64 MaxRuntimeInSeconds = 1;</code>
        */
       public Builder clearMaxRuntimeInSeconds() {
         
-        maxRuntimeInSeconds_ = 0;
+        maxRuntimeInSeconds_ = 0L;
         onChanged();
         return this;
       }
 
-      private int maxWaitTimeInSeconds_ ;
+      private long maxWaitTimeInSeconds_ ;
       /**
-       * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+       * <code>int64 MaxWaitTimeInSeconds = 2;</code>
        */
-      public int getMaxWaitTimeInSeconds() {
+      public long getMaxWaitTimeInSeconds() {
         return maxWaitTimeInSeconds_;
       }
       /**
-       * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+       * <code>int64 MaxWaitTimeInSeconds = 2;</code>
        */
-      public Builder setMaxWaitTimeInSeconds(int value) {
+      public Builder setMaxWaitTimeInSeconds(long value) {
         
         maxWaitTimeInSeconds_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 MaxWaitTimeInSeconds = 2;</code>
+       * <code>int64 MaxWaitTimeInSeconds = 2;</code>
        */
       public Builder clearMaxWaitTimeInSeconds() {
         
-        maxWaitTimeInSeconds_ = 0;
+        maxWaitTimeInSeconds_ = 0L;
         onChanged();
         return this;
       }
@@ -5375,32 +5326,29 @@ public final class Sagemaker {
   static {
     java.lang.String[] descriptorData = {
       "\n\017sagemaker.proto\022\027flyte.plugins.sagemak" +
-      "er\"\343\002\n\026AlgorithmSpecification\022\025\n\rTrainin" +
-      "gImage\030\001 \001(\t\022`\n\021TrainingInputMode\030\002 \001(\0162" +
-      "E.flyte.plugins.sagemaker.AlgorithmSpeci" +
-      "fication.TrainingInputModeEnum\022\025\n\rAlgori" +
-      "thmName\030\003 \001(\t\022[\n\021MetricDefinitions\030\004 \003(\013" +
-      "2@.flyte.plugins.sagemaker.AlgorithmSpec" +
-      "ification.MetricDefinition\032/\n\020MetricDefi" +
-      "nition\022\014\n\004Name\030\001 \001(\t\022\r\n\005Regex\030\002 \001(\t\"+\n\025T" +
-      "rainingInputModeEnum\022\010\n\004Pipe\020\000\022\010\n\004File\020\001" +
-      "\"m\n\016ResourceConfig\022\024\n\014InstanceType\030\001 \001(\t" +
-      "\022\025\n\rInstanceCount\030\002 \001(\005\022\026\n\016VolumeSizeInG" +
-      "B\030\003 \001(\005\022\026\n\016VolumeKmsKeyId\030\004 \001(\t\"N\n\021Stopp" +
-      "ingCondition\022\033\n\023MaxRuntimeInSeconds\030\001 \001(" +
-      "\005\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\005\"6\n\tVpcCo" +
-      "nfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Subnet" +
-      "s\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleArn\030\001" +
-      " \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\0132/.f" +
-      "lyte.plugins.sagemaker.AlgorithmSpecific" +
-      "ation\022?\n\016ResourceConfig\030\003 \001(\0132\'.flyte.pl" +
-      "ugins.sagemaker.ResourceConfig\022E\n\021Stoppi" +
-      "ngCondition\030\004 \001(\0132*.flyte.plugins.sagema" +
-      "ker.StoppingCondition\0225\n\tVpcConfig\030\005 \001(\013" +
-      "2\".flyte.plugins.sagemaker.VpcConfig\022\032\n\022" +
-      "EnableSpotTraining\030\006 \001(\010B4Z2github.com/k" +
-      "umare3/awsflyteplugins/gen/pb-go/protob\006" +
-      "proto3"
+      "er\"\357\001\n\026AlgorithmSpecification\022\025\n\rTrainin" +
+      "gImage\030\001 \001(\t\022\031\n\021TrainingInputMode\030\002 \001(\t\022" +
+      "\025\n\rAlgorithmName\030\003 \001(\t\022[\n\021MetricDefiniti" +
+      "ons\030\004 \003(\0132@.flyte.plugins.sagemaker.Algo" +
+      "rithmSpecification.MetricDefinition\032/\n\020M" +
+      "etricDefinition\022\014\n\004Name\030\001 \001(\t\022\r\n\005Regex\030\002" +
+      " \001(\t\"m\n\016ResourceConfig\022\024\n\014InstanceType\030\001" +
+      " \001(\t\022\025\n\rInstanceCount\030\002 \001(\003\022\026\n\016VolumeSiz" +
+      "eInGB\030\003 \001(\003\022\026\n\016VolumeKmsKeyId\030\004 \001(\t\"N\n\021S" +
+      "toppingCondition\022\033\n\023MaxRuntimeInSeconds\030" +
+      "\001 \001(\003\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\003\"6\n\tV" +
+      "pcConfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Su" +
+      "bnets\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleA" +
+      "rn\030\001 \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\013" +
+      "2/.flyte.plugins.sagemaker.AlgorithmSpec" +
+      "ification\022?\n\016ResourceConfig\030\003 \001(\0132\'.flyt" +
+      "e.plugins.sagemaker.ResourceConfig\022E\n\021St" +
+      "oppingCondition\030\004 \001(\0132*.flyte.plugins.sa" +
+      "gemaker.StoppingCondition\0225\n\tVpcConfig\030\005" +
+      " \001(\0132\".flyte.plugins.sagemaker.VpcConfig" +
+      "\022\032\n\022EnableSpotTraining\030\006 \001(\010B4Z2github.c" +
+      "om/kumare3/awsflyteplugins/gen/pb-go/pro" +
+      "tob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

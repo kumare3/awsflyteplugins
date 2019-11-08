@@ -188,7 +188,6 @@ void InitDefaultsSagemakerHPOJob() {
 }
 
 ::google::protobuf::Metadata file_level_metadata[6];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -265,7 +264,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "sagemaker.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, file_level_enum_descriptors, NULL);
+      file_level_metadata, NULL, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -283,35 +282,32 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\017sagemaker.proto\022\027flyte.plugins.sagemak"
-      "er\"\343\002\n\026AlgorithmSpecification\022\025\n\rTrainin"
-      "gImage\030\001 \001(\t\022`\n\021TrainingInputMode\030\002 \001(\0162"
-      "E.flyte.plugins.sagemaker.AlgorithmSpeci"
-      "fication.TrainingInputModeEnum\022\025\n\rAlgori"
-      "thmName\030\003 \001(\t\022[\n\021MetricDefinitions\030\004 \003(\013"
-      "2@.flyte.plugins.sagemaker.AlgorithmSpec"
-      "ification.MetricDefinition\032/\n\020MetricDefi"
-      "nition\022\014\n\004Name\030\001 \001(\t\022\r\n\005Regex\030\002 \001(\t\"+\n\025T"
-      "rainingInputModeEnum\022\010\n\004Pipe\020\000\022\010\n\004File\020\001"
-      "\"m\n\016ResourceConfig\022\024\n\014InstanceType\030\001 \001(\t"
-      "\022\025\n\rInstanceCount\030\002 \001(\005\022\026\n\016VolumeSizeInG"
-      "B\030\003 \001(\005\022\026\n\016VolumeKmsKeyId\030\004 \001(\t\"N\n\021Stopp"
-      "ingCondition\022\033\n\023MaxRuntimeInSeconds\030\001 \001("
-      "\005\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\005\"6\n\tVpcCo"
-      "nfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Subnet"
-      "s\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleArn\030\001"
-      " \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\0132/.f"
-      "lyte.plugins.sagemaker.AlgorithmSpecific"
-      "ation\022\?\n\016ResourceConfig\030\003 \001(\0132\'.flyte.pl"
-      "ugins.sagemaker.ResourceConfig\022E\n\021Stoppi"
-      "ngCondition\030\004 \001(\0132*.flyte.plugins.sagema"
-      "ker.StoppingCondition\0225\n\tVpcConfig\030\005 \001(\013"
-      "2\".flyte.plugins.sagemaker.VpcConfig\022\032\n\022"
-      "EnableSpotTraining\030\006 \001(\010B4Z2github.com/k"
-      "umare3/awsflyteplugins/gen/pb-go/protob\006"
-      "proto3"
+      "er\"\357\001\n\026AlgorithmSpecification\022\025\n\rTrainin"
+      "gImage\030\001 \001(\t\022\031\n\021TrainingInputMode\030\002 \001(\t\022"
+      "\025\n\rAlgorithmName\030\003 \001(\t\022[\n\021MetricDefiniti"
+      "ons\030\004 \003(\0132@.flyte.plugins.sagemaker.Algo"
+      "rithmSpecification.MetricDefinition\032/\n\020M"
+      "etricDefinition\022\014\n\004Name\030\001 \001(\t\022\r\n\005Regex\030\002"
+      " \001(\t\"m\n\016ResourceConfig\022\024\n\014InstanceType\030\001"
+      " \001(\t\022\025\n\rInstanceCount\030\002 \001(\003\022\026\n\016VolumeSiz"
+      "eInGB\030\003 \001(\003\022\026\n\016VolumeKmsKeyId\030\004 \001(\t\"N\n\021S"
+      "toppingCondition\022\033\n\023MaxRuntimeInSeconds\030"
+      "\001 \001(\003\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\003\"6\n\tV"
+      "pcConfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Su"
+      "bnets\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleA"
+      "rn\030\001 \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\013"
+      "2/.flyte.plugins.sagemaker.AlgorithmSpec"
+      "ification\022\?\n\016ResourceConfig\030\003 \001(\0132\'.flyt"
+      "e.plugins.sagemaker.ResourceConfig\022E\n\021St"
+      "oppingCondition\030\004 \001(\0132*.flyte.plugins.sa"
+      "gemaker.StoppingCondition\0225\n\tVpcConfig\030\005"
+      " \001(\0132\".flyte.plugins.sagemaker.VpcConfig"
+      "\022\032\n\022EnableSpotTraining\030\006 \001(\010B4Z2github.c"
+      "om/kumare3/awsflyteplugins/gen/pb-go/pro"
+      "tob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1046);
+      descriptor, 930);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "sagemaker.proto", &protobuf_RegisterTypes);
 }
@@ -330,27 +326,6 @@ struct StaticDescriptorInitializer {
 namespace flyte {
 namespace plugins {
 namespace sagemaker {
-const ::google::protobuf::EnumDescriptor* AlgorithmSpecification_TrainingInputModeEnum_descriptor() {
-  protobuf_sagemaker_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_sagemaker_2eproto::file_level_enum_descriptors[0];
-}
-bool AlgorithmSpecification_TrainingInputModeEnum_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::Pipe;
-const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::File;
-const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::TrainingInputModeEnum_MIN;
-const AlgorithmSpecification_TrainingInputModeEnum AlgorithmSpecification::TrainingInputModeEnum_MAX;
-const int AlgorithmSpecification::TrainingInputModeEnum_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 // ===================================================================
 
@@ -694,18 +669,21 @@ AlgorithmSpecification::AlgorithmSpecification(const AlgorithmSpecification& fro
   if (from.trainingimage().size() > 0) {
     trainingimage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.trainingimage_);
   }
+  traininginputmode_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.traininginputmode().size() > 0) {
+    traininginputmode_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.traininginputmode_);
+  }
   algorithmname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.algorithmname().size() > 0) {
     algorithmname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.algorithmname_);
   }
-  traininginputmode_ = from.traininginputmode_;
   // @@protoc_insertion_point(copy_constructor:flyte.plugins.sagemaker.AlgorithmSpecification)
 }
 
 void AlgorithmSpecification::SharedCtor() {
   trainingimage_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  traininginputmode_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   algorithmname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  traininginputmode_ = 0;
   _cached_size_ = 0;
 }
 
@@ -716,6 +694,7 @@ AlgorithmSpecification::~AlgorithmSpecification() {
 
 void AlgorithmSpecification::SharedDtor() {
   trainingimage_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  traininginputmode_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   algorithmname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -750,8 +729,8 @@ void AlgorithmSpecification::Clear() {
 
   metricdefinitions_.Clear();
   trainingimage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  traininginputmode_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   algorithmname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  traininginputmode_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -781,15 +760,16 @@ bool AlgorithmSpecification::MergePartialFromCodedStream(
         break;
       }
 
-      // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
+      // string TrainingInputMode = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_traininginputmode(static_cast< ::flyte::plugins::sagemaker::AlgorithmSpecification_TrainingInputModeEnum >(value));
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_traininginputmode()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->traininginputmode().data(), static_cast<int>(this->traininginputmode().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode"));
         } else {
           goto handle_unusual;
         }
@@ -859,9 +839,13 @@ void AlgorithmSpecification::SerializeWithCachedSizes(
       1, this->trainingimage(), output);
   }
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
-  if (this->traininginputmode() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+  // string TrainingInputMode = 2;
+  if (this->traininginputmode().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->traininginputmode().data(), static_cast<int>(this->traininginputmode().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->traininginputmode(), output);
   }
 
@@ -907,10 +891,15 @@ void AlgorithmSpecification::SerializeWithCachedSizes(
         1, this->trainingimage(), target);
   }
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
-  if (this->traininginputmode() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->traininginputmode(), target);
+  // string TrainingInputMode = 2;
+  if (this->traininginputmode().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->traininginputmode().data(), static_cast<int>(this->traininginputmode().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->traininginputmode(), target);
   }
 
   // string AlgorithmName = 3;
@@ -967,17 +956,18 @@ size_t AlgorithmSpecification::ByteSizeLong() const {
         this->trainingimage());
   }
 
+  // string TrainingInputMode = 2;
+  if (this->traininginputmode().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->traininginputmode());
+  }
+
   // string AlgorithmName = 3;
   if (this->algorithmname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->algorithmname());
-  }
-
-  // .flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum TrainingInputMode = 2;
-  if (this->traininginputmode() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->traininginputmode());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1014,12 +1004,13 @@ void AlgorithmSpecification::MergeFrom(const AlgorithmSpecification& from) {
 
     trainingimage_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.trainingimage_);
   }
+  if (from.traininginputmode().size() > 0) {
+
+    traininginputmode_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.traininginputmode_);
+  }
   if (from.algorithmname().size() > 0) {
 
     algorithmname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.algorithmname_);
-  }
-  if (from.traininginputmode() != 0) {
-    set_traininginputmode(from.traininginputmode());
   }
 }
 
@@ -1049,8 +1040,8 @@ void AlgorithmSpecification::InternalSwap(AlgorithmSpecification* other) {
   using std::swap;
   metricdefinitions_.InternalSwap(&other->metricdefinitions_);
   trainingimage_.Swap(&other->trainingimage_);
+  traininginputmode_.Swap(&other->traininginputmode_);
   algorithmname_.Swap(&other->algorithmname_);
-  swap(traininginputmode_, other->traininginputmode_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1181,13 +1172,13 @@ bool ResourceConfig::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 InstanceCount = 2;
+      // int64 InstanceCount = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &instancecount_)));
         } else {
           goto handle_unusual;
@@ -1195,13 +1186,13 @@ bool ResourceConfig::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 VolumeSizeInGB = 3;
+      // int64 VolumeSizeInGB = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &volumesizeingb_)));
         } else {
           goto handle_unusual;
@@ -1261,14 +1252,14 @@ void ResourceConfig::SerializeWithCachedSizes(
       1, this->instancetype(), output);
   }
 
-  // int32 InstanceCount = 2;
+  // int64 InstanceCount = 2;
   if (this->instancecount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->instancecount(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->instancecount(), output);
   }
 
-  // int32 VolumeSizeInGB = 3;
+  // int64 VolumeSizeInGB = 3;
   if (this->volumesizeingb() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->volumesizeingb(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->volumesizeingb(), output);
   }
 
   // string VolumeKmsKeyId = 4;
@@ -1306,14 +1297,14 @@ void ResourceConfig::SerializeWithCachedSizes(
         1, this->instancetype(), target);
   }
 
-  // int32 InstanceCount = 2;
+  // int64 InstanceCount = 2;
   if (this->instancecount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->instancecount(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->instancecount(), target);
   }
 
-  // int32 VolumeSizeInGB = 3;
+  // int64 VolumeSizeInGB = 3;
   if (this->volumesizeingb() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->volumesizeingb(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->volumesizeingb(), target);
   }
 
   // string VolumeKmsKeyId = 4;
@@ -1358,17 +1349,17 @@ size_t ResourceConfig::ByteSizeLong() const {
         this->volumekmskeyid());
   }
 
-  // int32 InstanceCount = 2;
+  // int64 InstanceCount = 2;
   if (this->instancecount() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->instancecount());
   }
 
-  // int32 VolumeSizeInGB = 3;
+  // int64 VolumeSizeInGB = 3;
   if (this->volumesizeingb() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->volumesizeingb());
   }
 
@@ -1543,13 +1534,13 @@ bool StoppingCondition::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 MaxRuntimeInSeconds = 1;
+      // int64 MaxRuntimeInSeconds = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &maxruntimeinseconds_)));
         } else {
           goto handle_unusual;
@@ -1557,13 +1548,13 @@ bool StoppingCondition::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 MaxWaitTimeInSeconds = 2;
+      // int64 MaxWaitTimeInSeconds = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &maxwaittimeinseconds_)));
         } else {
           goto handle_unusual;
@@ -1597,14 +1588,14 @@ void StoppingCondition::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 MaxRuntimeInSeconds = 1;
+  // int64 MaxRuntimeInSeconds = 1;
   if (this->maxruntimeinseconds() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->maxruntimeinseconds(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->maxruntimeinseconds(), output);
   }
 
-  // int32 MaxWaitTimeInSeconds = 2;
+  // int64 MaxWaitTimeInSeconds = 2;
   if (this->maxwaittimeinseconds() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->maxwaittimeinseconds(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->maxwaittimeinseconds(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1621,14 +1612,14 @@ void StoppingCondition::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 MaxRuntimeInSeconds = 1;
+  // int64 MaxRuntimeInSeconds = 1;
   if (this->maxruntimeinseconds() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->maxruntimeinseconds(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->maxruntimeinseconds(), target);
   }
 
-  // int32 MaxWaitTimeInSeconds = 2;
+  // int64 MaxWaitTimeInSeconds = 2;
   if (this->maxwaittimeinseconds() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->maxwaittimeinseconds(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->maxwaittimeinseconds(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1648,17 +1639,17 @@ size_t StoppingCondition::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // int32 MaxRuntimeInSeconds = 1;
+  // int64 MaxRuntimeInSeconds = 1;
   if (this->maxruntimeinseconds() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->maxruntimeinseconds());
   }
 
-  // int32 MaxWaitTimeInSeconds = 2;
+  // int64 MaxWaitTimeInSeconds = 2;
   if (this->maxwaittimeinseconds() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->maxwaittimeinseconds());
   }
 

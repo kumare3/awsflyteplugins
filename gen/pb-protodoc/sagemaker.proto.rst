@@ -28,7 +28,7 @@ TrainingImage
 .. _api_field_flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputMode:
 
 TrainingInputMode
-  (:ref:`flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum <api_enum_flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum>`) 
+  (`string <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
   
 .. _api_field_flyte.plugins.sagemaker.AlgorithmSpecification.AlgorithmName:
 
@@ -45,7 +45,7 @@ MetricDefinitions
 flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition
 ---------------------------------------------------------------
 
-`[flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L16>`_
+`[flyte.plugins.sagemaker.AlgorithmSpecification.MetricDefinition proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L11>`_
 
 
 .. code-block:: json
@@ -67,31 +67,13 @@ Regex
   
 
 
-.. _api_enum_flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum:
-
-Enum flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum
--------------------------------------------------------------------------
-
-`[flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L9>`_
-
-
-.. _api_enum_value_flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum.Pipe:
-
-Pipe
-  *(DEFAULT)* ⁣
-  
-.. _api_enum_value_flyte.plugins.sagemaker.AlgorithmSpecification.TrainingInputModeEnum.File:
-
-File
-  ⁣
-  
 
 .. _api_msg_flyte.plugins.sagemaker.ResourceConfig:
 
 flyte.plugins.sagemaker.ResourceConfig
 --------------------------------------
 
-`[flyte.plugins.sagemaker.ResourceConfig proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L23>`_
+`[flyte.plugins.sagemaker.ResourceConfig proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L18>`_
 
 
 .. code-block:: json
@@ -111,12 +93,12 @@ InstanceType
 .. _api_field_flyte.plugins.sagemaker.ResourceConfig.InstanceCount:
 
 InstanceCount
-  (`int32 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
+  (`int64 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
   
 .. _api_field_flyte.plugins.sagemaker.ResourceConfig.VolumeSizeInGB:
 
 VolumeSizeInGB
-  (`int32 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
+  (`int64 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
   
 .. _api_field_flyte.plugins.sagemaker.ResourceConfig.VolumeKmsKeyId:
 
@@ -130,7 +112,7 @@ VolumeKmsKeyId
 flyte.plugins.sagemaker.StoppingCondition
 -----------------------------------------
 
-`[flyte.plugins.sagemaker.StoppingCondition proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L30>`_
+`[flyte.plugins.sagemaker.StoppingCondition proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L25>`_
 
 
 .. code-block:: json
@@ -143,12 +125,12 @@ flyte.plugins.sagemaker.StoppingCondition
 .. _api_field_flyte.plugins.sagemaker.StoppingCondition.MaxRuntimeInSeconds:
 
 MaxRuntimeInSeconds
-  (`int32 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
+  (`int64 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
   
 .. _api_field_flyte.plugins.sagemaker.StoppingCondition.MaxWaitTimeInSeconds:
 
 MaxWaitTimeInSeconds
-  (`int32 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
+  (`int64 <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
   
 
 
@@ -157,7 +139,7 @@ MaxWaitTimeInSeconds
 flyte.plugins.sagemaker.VpcConfig
 ---------------------------------
 
-`[flyte.plugins.sagemaker.VpcConfig proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L35>`_
+`[flyte.plugins.sagemaker.VpcConfig proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L30>`_
 
 
 .. code-block:: json
@@ -184,7 +166,7 @@ Subnets
 flyte.plugins.sagemaker.SagemakerHPOJob
 ---------------------------------------
 
-`[flyte.plugins.sagemaker.SagemakerHPOJob proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L40>`_
+`[flyte.plugins.sagemaker.SagemakerHPOJob proto] <https://github.com/lyft/flyteidl/blob/master/protos/sagemaker.proto#L35>`_
 
 
 .. code-block:: json

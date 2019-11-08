@@ -6,12 +6,7 @@ option go_package = "github.com/kumare3/awsflyteplugins/gen/pb-go/proto";
 
 message AlgorithmSpecification {
   string TrainingImage = 1;
-
-  enum TrainingInputModeEnum {
-    Pipe = 0;
-    File = 1;
-  }
-  TrainingInputModeEnum TrainingInputMode = 2;
+  string TrainingInputMode = 2;
   string AlgorithmName = 3;
 
   message MetricDefinition {
@@ -23,14 +18,14 @@ message AlgorithmSpecification {
 
 message ResourceConfig {
   string InstanceType = 1; 
-  int32 InstanceCount = 2;
-  int32 VolumeSizeInGB = 3;
+  int64 InstanceCount = 2;
+  int64 VolumeSizeInGB = 3;
   string VolumeKmsKeyId = 4;
 }
 
 message StoppingCondition {
-  int32 MaxRuntimeInSeconds = 1;
-  int32 MaxWaitTimeInSeconds = 2;
+  int64 MaxRuntimeInSeconds = 1;
+  int64 MaxWaitTimeInSeconds = 2;
 }
 
 message VpcConfig {

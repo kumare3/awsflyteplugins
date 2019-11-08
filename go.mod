@@ -30,7 +30,7 @@ require (
 	github.com/json-iterator/go v1.1.8 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/lyft/datacatalog v0.1.1 // indirect
-	github.com/lyft/flyteidl v0.14.1 // indirect
+	github.com/lyft/flyteidl v0.14.1
 	github.com/lyft/flyteplugins v0.1.11-0.20191101043918-c69cd62d7664
 	github.com/lyft/flytepropeller v0.1.10-0.20191101182752-5b2e9cdbba69
 	github.com/lyft/flytestdlib v0.2.28 // indirect
