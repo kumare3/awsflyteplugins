@@ -87,21 +87,37 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 	envVars := flytek8s.DecorateEnvVars(ctx, flytek8s.ToK8sEnvVar(container.GetEnv()), taskCtx.TaskExecutionMetadata().GetTaskExecutionID())
 	_ = envVars
 
-	trainingInputMode := commonv1.TrainingInputMode(sagemakerJob.AlgorithmSpecification.TrainingInputMode)
+	taskName := taskCtx.TaskExecutionMetadata().GetTaskExecutionID().GetID().NodeExecutionId.GetExecutionId().GetName()
 
 	hpoJob := &hpojobv1.HyperparameterTuningJob{
 		Spec: hpojobv1.HyperparameterTuningJobSpec{
+			HyperParameterTuningJobName: &taskName,
 			HyperParameterTuningJobConfig: &commonv1.HyperParameterTuningJobConfig{
 				ResourceLimits: &commonv1.ResourceLimits{
 					MaxNumberOfTrainingJobs: ToInt64Ptr(10),
-					MaxParallelTrainingJobs: ToInt64Ptr(10),
+					MaxParallelTrainingJobs: ToInt64Ptr(5),
 				},
 				Strategy: "Bayesian",
+				HyperParameterTuningJobObjective: &commonv1.HyperParameterTuningJobObjective{
+					Type:       "Minimize",
+					MetricName: ToStringPtr("validation:error"),
+				},
+				ParameterRanges: &commonv1.ParameterRanges{
+					IntegerParameterRanges: []commonv1.IntegerParameterRange{
+						commonv1.IntegerParameterRange{
+							Name:        ToStringPtr("num_round"),
+							MinValue:    ToStringPtr("10"),
+							MaxValue:    ToStringPtr("20"),
+							ScalingType: "Linear",
+						},
+					},
+				},
+				TrainingJobEarlyStoppingType: "Auto",
 			},
 			TrainingJobDefinition: &commonv1.HyperParameterTrainingJobDefinition{
 				AlgorithmSpecification: &commonv1.HyperParameterAlgorithmSpecification{
 					TrainingImage:     &sagemakerJob.AlgorithmSpecification.TrainingImage,
-					TrainingInputMode: trainingInputMode,
+					TrainingInputMode: commonv1.TrainingInputMode(sagemakerJob.AlgorithmSpecification.TrainingInputMode),
 				},
 				InputDataConfig: []commonv1.Channel{
 					commonv1.Channel{
@@ -138,11 +154,10 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 				},
 				RoleArn: &sagemakerJob.RoleArn,
 				StoppingCondition: &commonv1.StoppingCondition{
-					MaxRuntimeInSeconds:  &sagemakerJob.StoppingCondition.MaxRuntimeInSeconds,
-					MaxWaitTimeInSeconds: &sagemakerJob.StoppingCondition.MaxWaitTimeInSeconds,
+					MaxRuntimeInSeconds: &sagemakerJob.StoppingCondition.MaxRuntimeInSeconds,
 				},
 			},
-			Region: ToStringPtr("us-east-1"),
+			Region: ToStringPtr("us-east-2"),
 		},
 	}
 

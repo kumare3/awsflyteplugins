@@ -8,11 +8,11 @@ from flytekit.configuration import TemporaryConfiguration
 
 
 xgtrainer_task = SagemakerXgBoostOptimizer(
-    role_arn="arn:123456789:12346579812345679",
+    role_arn="arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
     resource_config={
         "InstanceCount": 1,
-        "InstanceType": "ml.c4.large",
-        "VolumeSizeInGB": 10,
+        "InstanceType": "ml.m4.xlarge",
+        "VolumeSizeInGB": 25,
     },
     stopping_condition={"MaxRuntimeInSeconds": 43200, "MaxWaitTimeInSeconds": 43200},
     algorithm_specification={"TrainingInputMode": "File", "AlgorithmName": "xgboost"},
