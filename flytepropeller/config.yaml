@@ -28,7 +28,7 @@ tasks:
       - container
       - K8S-ARRAY
       - sidecar
-      - aws_sagemaker
+      - aws_sagemaker_hpo
 plugins:
   # All k8s plugins default configuration
   k8s:

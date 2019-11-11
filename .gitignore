@@ -106,4 +106,5 @@ vendor/
 .idea/
 
 bin/
-
+flytepropeller/cmd/__debug_bin
+sagemaker-k8s-operator/*
