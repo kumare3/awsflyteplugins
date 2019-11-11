@@ -34,10 +34,11 @@ message VpcConfig {
 }
 
 message SagemakerHPOJob {
-  string RoleArn = 1;
-  AlgorithmSpecification AlgorithmSpecification = 2;
-  ResourceConfig ResourceConfig = 3;
-  StoppingCondition StoppingCondition = 4;
-  VpcConfig VpcConfig = 5;
-  bool EnableSpotTraining = 6;
+  string Region = 1;
+  string RoleArn = 2;
+  AlgorithmSpecification AlgorithmSpecification = 3;
+  ResourceConfig ResourceConfig = 4;
+  StoppingCondition StoppingCondition = 5;
+  VpcConfig VpcConfig = 6;
+  bool EnableSpotTraining = 7;
 }

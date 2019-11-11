@@ -234,6 +234,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, region_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, rolearn_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, algorithmspecification_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::flyte::plugins::sagemaker::SagemakerHPOJob, resourceconfig_),
@@ -294,20 +295,20 @@ void AddDescriptorsImpl() {
       "toppingCondition\022\033\n\023MaxRuntimeInSeconds\030"
       "\001 \001(\003\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\003\"6\n\tV"
       "pcConfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Su"
-      "bnets\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleA"
-      "rn\030\001 \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\013"
-      "2/.flyte.plugins.sagemaker.AlgorithmSpec"
-      "ification\022\?\n\016ResourceConfig\030\003 \001(\0132\'.flyt"
-      "e.plugins.sagemaker.ResourceConfig\022E\n\021St"
-      "oppingCondition\030\004 \001(\0132*.flyte.plugins.sa"
-      "gemaker.StoppingCondition\0225\n\tVpcConfig\030\005"
-      " \001(\0132\".flyte.plugins.sagemaker.VpcConfig"
-      "\022\032\n\022EnableSpotTraining\030\006 \001(\010B4Z2github.c"
-      "om/kumare3/awsflyteplugins/gen/pb-go/pro"
-      "tob\006proto3"
+      "bnets\030\002 \003(\t\"\336\002\n\017SagemakerHPOJob\022\016\n\006Regio"
+      "n\030\001 \001(\t\022\017\n\007RoleArn\030\002 \001(\t\022O\n\026AlgorithmSpe"
+      "cification\030\003 \001(\0132/.flyte.plugins.sagemak"
+      "er.AlgorithmSpecification\022\?\n\016ResourceCon"
+      "fig\030\004 \001(\0132\'.flyte.plugins.sagemaker.Reso"
+      "urceConfig\022E\n\021StoppingCondition\030\005 \001(\0132*."
+      "flyte.plugins.sagemaker.StoppingConditio"
+      "n\0225\n\tVpcConfig\030\006 \001(\0132\".flyte.plugins.sag"
+      "emaker.VpcConfig\022\032\n\022EnableSpotTraining\030\007"
+      " \001(\010B4Z2github.com/kumare3/awsflyteplugi"
+      "ns/gen/pb-go/protob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 930);
+      descriptor, 946);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "sagemaker.proto", &protobuf_RegisterTypes);
 }
@@ -2038,6 +2039,7 @@ void SagemakerHPOJob::InitAsDefaultInstance() {
       ::flyte::plugins::sagemaker::VpcConfig::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int SagemakerHPOJob::kRegionFieldNumber;
 const int SagemakerHPOJob::kRoleArnFieldNumber;
 const int SagemakerHPOJob::kAlgorithmSpecificationFieldNumber;
 const int SagemakerHPOJob::kResourceConfigFieldNumber;
@@ -2059,6 +2061,10 @@ SagemakerHPOJob::SagemakerHPOJob(const SagemakerHPOJob& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  region_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.region().size() > 0) {
+    region_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.region_);
+  }
   rolearn_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.rolearn().size() > 0) {
     rolearn_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.rolearn_);
@@ -2088,6 +2094,7 @@ SagemakerHPOJob::SagemakerHPOJob(const SagemakerHPOJob& from)
 }
 
 void SagemakerHPOJob::SharedCtor() {
+  region_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   rolearn_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&algorithmspecification_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&enablespottraining_) -
@@ -2101,6 +2108,7 @@ SagemakerHPOJob::~SagemakerHPOJob() {
 }
 
 void SagemakerHPOJob::SharedDtor() {
+  region_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   rolearn_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete algorithmspecification_;
   if (this != internal_default_instance()) delete resourceconfig_;
@@ -2137,6 +2145,7 @@ void SagemakerHPOJob::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  region_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   rolearn_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && algorithmspecification_ != NULL) {
     delete algorithmspecification_;
@@ -2168,10 +2177,26 @@ bool SagemakerHPOJob::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string RoleArn = 1;
+      // string Region = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_region()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->region().data(), static_cast<int>(this->region().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "flyte.plugins.sagemaker.SagemakerHPOJob.Region"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string RoleArn = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_rolearn()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2184,10 +2209,10 @@ bool SagemakerHPOJob::MergePartialFromCodedStream(
         break;
       }
 
-      // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
-      case 2: {
+      // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;
+      case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_algorithmspecification()));
         } else {
@@ -2196,10 +2221,10 @@ bool SagemakerHPOJob::MergePartialFromCodedStream(
         break;
       }
 
-      // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
-      case 3: {
+      // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;
+      case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_resourceconfig()));
         } else {
@@ -2208,10 +2233,10 @@ bool SagemakerHPOJob::MergePartialFromCodedStream(
         break;
       }
 
-      // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
-      case 4: {
+      // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;
+      case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_stoppingcondition()));
         } else {
@@ -2220,10 +2245,10 @@ bool SagemakerHPOJob::MergePartialFromCodedStream(
         break;
       }
 
-      // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
-      case 5: {
+      // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;
+      case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_vpcconfig()));
         } else {
@@ -2232,10 +2257,10 @@ bool SagemakerHPOJob::MergePartialFromCodedStream(
         break;
       }
 
-      // bool EnableSpotTraining = 6;
-      case 6: {
+      // bool EnableSpotTraining = 7;
+      case 7: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -2272,43 +2297,53 @@ void SagemakerHPOJob::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string RoleArn = 1;
+  // string Region = 1;
+  if (this->region().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->region().data(), static_cast<int>(this->region().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.SagemakerHPOJob.Region");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->region(), output);
+  }
+
+  // string RoleArn = 2;
   if (this->rolearn().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->rolearn().data(), static_cast<int>(this->rolearn().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->rolearn(), output);
+      2, this->rolearn(), output);
   }
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;
   if (this->has_algorithmspecification()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->algorithmspecification_, output);
+      3, *this->algorithmspecification_, output);
   }
 
-  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;
   if (this->has_resourceconfig()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->resourceconfig_, output);
+      4, *this->resourceconfig_, output);
   }
 
-  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;
   if (this->has_stoppingcondition()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *this->stoppingcondition_, output);
+      5, *this->stoppingcondition_, output);
   }
 
-  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;
   if (this->has_vpcconfig()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *this->vpcconfig_, output);
+      6, *this->vpcconfig_, output);
   }
 
-  // bool EnableSpotTraining = 6;
+  // bool EnableSpotTraining = 7;
   if (this->enablespottraining() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->enablespottraining(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->enablespottraining(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2325,7 +2360,18 @@ void SagemakerHPOJob::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string RoleArn = 1;
+  // string Region = 1;
+  if (this->region().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->region().data(), static_cast<int>(this->region().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "flyte.plugins.sagemaker.SagemakerHPOJob.Region");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->region(), target);
+  }
+
+  // string RoleArn = 2;
   if (this->rolearn().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->rolearn().data(), static_cast<int>(this->rolearn().length()),
@@ -2333,40 +2379,40 @@ void SagemakerHPOJob::SerializeWithCachedSizes(
       "flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->rolearn(), target);
+        2, this->rolearn(), target);
   }
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;
   if (this->has_algorithmspecification()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, *this->algorithmspecification_, deterministic, target);
+        3, *this->algorithmspecification_, deterministic, target);
   }
 
-  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;
   if (this->has_resourceconfig()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, *this->resourceconfig_, deterministic, target);
+        4, *this->resourceconfig_, deterministic, target);
   }
 
-  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;
   if (this->has_stoppingcondition()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        4, *this->stoppingcondition_, deterministic, target);
+        5, *this->stoppingcondition_, deterministic, target);
   }
 
-  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;
   if (this->has_vpcconfig()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        5, *this->vpcconfig_, deterministic, target);
+        6, *this->vpcconfig_, deterministic, target);
   }
 
-  // bool EnableSpotTraining = 6;
+  // bool EnableSpotTraining = 7;
   if (this->enablespottraining() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->enablespottraining(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->enablespottraining(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2386,42 +2432,49 @@ size_t SagemakerHPOJob::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string RoleArn = 1;
+  // string Region = 1;
+  if (this->region().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->region());
+  }
+
+  // string RoleArn = 2;
   if (this->rolearn().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->rolearn());
   }
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;
   if (this->has_algorithmspecification()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->algorithmspecification_);
   }
 
-  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;
   if (this->has_resourceconfig()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->resourceconfig_);
   }
 
-  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;
   if (this->has_stoppingcondition()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->stoppingcondition_);
   }
 
-  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;
   if (this->has_vpcconfig()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->vpcconfig_);
   }
 
-  // bool EnableSpotTraining = 6;
+  // bool EnableSpotTraining = 7;
   if (this->enablespottraining() != 0) {
     total_size += 1 + 1;
   }
@@ -2455,6 +2508,10 @@ void SagemakerHPOJob::MergeFrom(const SagemakerHPOJob& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.region().size() > 0) {
+
+    region_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.region_);
+  }
   if (from.rolearn().size() > 0) {
 
     rolearn_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.rolearn_);
@@ -2500,6 +2557,7 @@ void SagemakerHPOJob::Swap(SagemakerHPOJob* other) {
 }
 void SagemakerHPOJob::InternalSwap(SagemakerHPOJob* other) {
   using std::swap;
+  region_.Swap(&other->region_);
   rolearn_.Swap(&other->rolearn_);
   swap(algorithmspecification_, other->algorithmspecification_);
   swap(resourceconfig_, other->resourceconfig_);

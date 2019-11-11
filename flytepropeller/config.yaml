@@ -2,6 +2,7 @@
 # Real configuration when running inside K8s (local or otherwise) lives in a ConfigMap
 propeller:
   workers: 4
+  max-workflow-retries: 30
   workflow-reeval-duration: 10s
   downstream-eval-duration: 5s
   limit-namespace: "all"
@@ -57,10 +58,10 @@ storage:
     auth-type: accesskey
     disable-ssl: true
     endpoint: http://localhost:9000
-    region: us-east-1
+    region: us-east-2
     secret-key: miniostorage
   type: minio
-  container: "my-s3-bucket"
+  container: "flyte-artifacts"
 event:
   type: admin
   rate: 500

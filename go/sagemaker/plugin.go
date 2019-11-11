@@ -2,23 +2,25 @@ package sagemaker
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery"
 	"github.com/pkg/errors"
-	v1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes/scheme"
 
+	"github.com/lyft/flyteidl/gen/pb-go/flyteidl/core"
 	pluginsCore "github.com/lyft/flyteplugins/go/tasks/pluginmachinery/core"
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/flytek8s"
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/k8s"
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/utils"
 
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-
+	"github.com/aws/aws-sdk-go/service/sagemaker"
 	commonv1 "go.amzn.com/sagemaker/sagemaker-k8s-operator/api/v1/common"
 	hpojobv1 "go.amzn.com/sagemaker/sagemaker-k8s-operator/api/v1/hyperparametertuningjob"
 
 	"github.com/kumare3/awsflyteplugins/gen/pb-go/proto"
+	taskError "github.com/lyft/flyteplugins/go/tasks/errors"
 	. "go.amzn.com/sagemaker/sagemaker-k8s-operator/controllers/controllertest"
 )
 
@@ -30,23 +32,29 @@ const (
 )
 
 // Sanity test that the plugin implements method of k8s.Plugin
-var _ k8s.Plugin = mySamplePlugin{}
+var _ k8s.Plugin = awsSagemakerPlugin{}
 
-type mySamplePlugin struct {
+type awsSagemakerPlugin struct {
 }
 
-func (m mySamplePlugin) BuildIdentityResource(ctx context.Context, taskCtx pluginsCore.TaskExecutionMetadata) (k8s.Resource, error) {
-	// TODO This should return the type of the kubernetes resource. As golang has no generics it is hard to gather the type information automatically
-	// Example of a pod
-	return &hpojobv1.HyperparameterTuningJob{
-		TypeMeta: metav1.TypeMeta{
-			Kind:       KindSagemakerHPOJob,
-			APIVersion: commonv1.GroupVersion.String(),
-		},
-	}, nil
+func (m awsSagemakerPlugin) BuildIdentityResource(ctx context.Context, taskCtx pluginsCore.TaskExecutionMetadata) (k8s.Resource, error) {
+	return &hpojobv1.HyperparameterTuningJob{}, nil
 }
 
-func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.TaskExecutionContext) (k8s.Resource, error) {
+func convertStaticHyperparamsLiteralToSpecType(hyperparamLiteral *core.Literal) ([]*commonv1.KeyValuePair, error) {
+	var retValue []*commonv1.KeyValuePair
+	hyperFields := hyperparamLiteral.GetScalar().GetGeneric().GetFields()
+	for k, v := range hyperFields {
+		var newElem = commonv1.KeyValuePair{
+			Name:  k,
+			Value: v.GetStringValue(),
+		}
+		retValue = append(retValue, &newElem)
+	}
+	return retValue, nil
+}
+
+func (m awsSagemakerPlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.TaskExecutionContext) (k8s.Resource, error) {
 	// TODO build the actual spec of the k8s resource from the taskCtx Some helpful code is already added
 	taskTemplate, err := taskCtx.TaskReader().Read(ctx)
 	if err != nil {
@@ -62,22 +70,32 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 
 	// Get inputs from literals
 	inputLiterals := taskInput.GetLiterals()
-	trainPath, ok := inputLiterals["train"]
+	trainPathLiteral, ok := inputLiterals["train"]
 	if !ok {
 		return nil, errors.Errorf("train input not specified")
 	}
-	validatePath, ok := inputLiterals["validation"]
+	validatePathLiteral, ok := inputLiterals["validation"]
 	if !ok {
 		return nil, errors.Errorf("validation input not specified")
 	}
+	staticHyperparamsLiteral, ok := inputLiterals["static_hyperparameters"]
+	if !ok {
+		return nil, errors.Errorf("static hyperparameters input not specified")
+	}
 
 	outputPath := taskCtx.OutputWriter().GetOutputPrefixPath().String()
+	outputPath = fmt.Sprintf("%s/hpo_outputs", outputPath)
 
-	// TODO if we have special information to be marshalled through from the python SDK then it can be retrieved using the util
 	sagemakerJob := proto.SagemakerHPOJob{}
 	err = utils.UnmarshalStruct(taskTemplate.GetCustom(), &sagemakerJob)
 	if err != nil {
 		return nil, errors.Wrapf(err, "invalid task specification for taskType [%s]", sagemakerTaskType)
+	}
+
+	// Convert the hyperparameters to the spec value
+	staticHyperparams, err := convertStaticHyperparamsLiteralToSpecType(staticHyperparamsLiteral)
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not convert static hyperparameters to spec type")
 	}
 
 	// If the container is part of the task template you can access it here
@@ -115,6 +133,7 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 				TrainingJobEarlyStoppingType: "Auto",
 			},
 			TrainingJobDefinition: &commonv1.HyperParameterTrainingJobDefinition{
+				StaticHyperParameters: staticHyperparams,
 				AlgorithmSpecification: &commonv1.HyperParameterAlgorithmSpecification{
 					TrainingImage:     &sagemakerJob.AlgorithmSpecification.TrainingImage,
 					TrainingInputMode: commonv1.TrainingInputMode(sagemakerJob.AlgorithmSpecification.TrainingInputMode),
@@ -125,7 +144,7 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 						DataSource: &commonv1.DataSource{
 							S3DataSource: &commonv1.S3DataSource{
 								S3DataType: "S3Prefix",
-								S3Uri:      ToStringPtr(trainPath.GetScalar().GetBlob().GetUri()),
+								S3Uri:      ToStringPtr(trainPathLiteral.GetScalar().GetBlob().GetUri()),
 							},
 						},
 						ContentType: ToStringPtr("text/csv"),
@@ -136,7 +155,7 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 						DataSource: &commonv1.DataSource{
 							S3DataSource: &commonv1.S3DataSource{
 								S3DataType: "S3Prefix",
-								S3Uri:      ToStringPtr(validatePath.GetScalar().GetBlob().GetUri()),
+								S3Uri:      ToStringPtr(validatePathLiteral.GetScalar().GetBlob().GetUri()),
 							},
 						},
 						ContentType: ToStringPtr("text/csv"),
@@ -157,21 +176,52 @@ func (m mySamplePlugin) BuildResource(ctx context.Context, taskCtx pluginsCore.T
 					MaxRuntimeInSeconds: &sagemakerJob.StoppingCondition.MaxRuntimeInSeconds,
 				},
 			},
-			Region: ToStringPtr("us-east-2"),
+			Region: &sagemakerJob.Region,
 		},
 	}
 
 	return hpoJob, nil
 }
 
-func (m mySamplePlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
-	// TODO observe the applicate state from the passed in resource and return the PhaseInfo
-	// E.g we will consider the resource to be a pod
-	//p := resource.(*v1.Pod)
-	p := resource.(*hpojobv1.HyperparameterTuningJob)
-	_ = p
+func getEventInfoForHPOJob(job *hpojobv1.HyperparameterTuningJob) (*pluginsCore.TaskInfo, error) {
+	var taskLogs []*core.TaskLog
+	customInfoMap := make(map[string]string)
 
-	return pluginsCore.PhaseInfoRunning(1, &pluginsCore.TaskInfo{}), nil
+	customInfo, err := utils.MarshalObjToStruct(customInfoMap)
+	if err != nil {
+		return nil, err
+	}
+
+	return &pluginsCore.TaskInfo{
+		Logs:       taskLogs,
+		CustomInfo: customInfo,
+	}, nil
+}
+
+func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
+	job := resource.(*hpojobv1.HyperparameterTuningJob)
+	info, err := getEventInfoForHPOJob(job)
+	if err != nil {
+		return pluginsCore.PhaseInfoUndefined, err
+	}
+
+	occurredAt := time.Now()
+	switch job.Status.HyperParameterTuningJobStatus {
+	case sagemaker.HyperParameterTuningJobStatusFailed:
+		execError := &core.ExecutionError{
+			Message: job.Status.Additional,
+		}
+		return pluginsCore.PhaseInfoFailed(pluginsCore.PhasePermanentFailure, execError, info), nil
+	case sagemaker.HyperParameterTuningJobStatusStopped:
+		reason := fmt.Sprintf("HPO Job Stopped")
+		return pluginsCore.PhaseInfoRetryableFailure(taskError.DownstreamSystemError, reason, info), nil
+	case sagemaker.HyperParameterTuningJobStatusCompleted:
+		return pluginsCore.PhaseInfoSuccess(info), nil
+	case "":
+		return pluginsCore.PhaseInfoQueued(occurredAt, pluginsCore.DefaultPhaseVersion, "job submitted"), nil
+	}
+
+	return pluginsCore.PhaseInfoRunning(pluginsCore.DefaultPhaseVersion, info), nil
 }
 
 // TODO we should register the plugin
@@ -184,9 +234,8 @@ func init() {
 		k8s.PluginEntry{
 			ID:                  pluginID,
 			RegisteredTaskTypes: []pluginsCore.TaskType{sagemakerTaskType},
-			// TODO Type of the k8s resource, e.g. Pod
-			ResourceToWatch: &v1.PersistentVolume{},
-			Plugin:          mySamplePlugin{},
-			IsDefault:       false,
+			ResourceToWatch:     &hpojobv1.HyperparameterTuningJob{},
+			Plugin:              awsSagemakerPlugin{},
+			IsDefault:           false,
 		})
 }

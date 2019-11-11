@@ -10,7 +10,7 @@ require (
 	github.com/Azure/go-autorest v13.3.0+incompatible // indirect
 	github.com/GoogleCloudPlatform/spark-on-k8s-operator v0.0.0-20191028162909-4990c026d087 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
-	github.com/aws/aws-sdk-go v1.25.23 // indirect
+	github.com/aws/aws-sdk-go v1.25.23
 	github.com/benlaurie/objecthash v0.0.0-20180202135721-d1e3d6079fc1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect

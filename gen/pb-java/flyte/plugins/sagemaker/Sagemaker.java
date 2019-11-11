@@ -3926,69 +3926,79 @@ public final class Sagemaker {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string RoleArn = 1;</code>
+     * <code>string Region = 1;</code>
+     */
+    java.lang.String getRegion();
+    /**
+     * <code>string Region = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getRegionBytes();
+
+    /**
+     * <code>string RoleArn = 2;</code>
      */
     java.lang.String getRoleArn();
     /**
-     * <code>string RoleArn = 1;</code>
+     * <code>string RoleArn = 2;</code>
      */
     com.google.protobuf.ByteString
         getRoleArnBytes();
 
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
      */
     boolean hasAlgorithmSpecification();
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getAlgorithmSpecification();
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder getAlgorithmSpecificationOrBuilder();
 
     /**
-     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
      */
     boolean hasResourceConfig();
     /**
-     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.ResourceConfig getResourceConfig();
     /**
-     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder getResourceConfigOrBuilder();
 
     /**
-     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
      */
     boolean hasStoppingCondition();
     /**
-     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.StoppingCondition getStoppingCondition();
     /**
-     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder getStoppingConditionOrBuilder();
 
     /**
-     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
      */
     boolean hasVpcConfig();
     /**
-     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.VpcConfig getVpcConfig();
     /**
-     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
      */
     flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder getVpcConfigOrBuilder();
 
     /**
-     * <code>bool EnableSpotTraining = 6;</code>
+     * <code>bool EnableSpotTraining = 7;</code>
      */
     boolean getEnableSpotTraining();
   }
@@ -4005,6 +4015,7 @@ public final class Sagemaker {
       super(builder);
     }
     private SagemakerHPOJob() {
+      region_ = "";
       roleArn_ = "";
       enableSpotTraining_ = false;
     }
@@ -4043,10 +4054,16 @@ public final class Sagemaker {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              roleArn_ = s;
+              region_ = s;
               break;
             }
             case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              roleArn_ = s;
+              break;
+            }
+            case 26: {
               flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder subBuilder = null;
               if (algorithmSpecification_ != null) {
                 subBuilder = algorithmSpecification_.toBuilder();
@@ -4059,7 +4076,7 @@ public final class Sagemaker {
 
               break;
             }
-            case 26: {
+            case 34: {
               flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder subBuilder = null;
               if (resourceConfig_ != null) {
                 subBuilder = resourceConfig_.toBuilder();
@@ -4072,7 +4089,7 @@ public final class Sagemaker {
 
               break;
             }
-            case 34: {
+            case 42: {
               flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder subBuilder = null;
               if (stoppingCondition_ != null) {
                 subBuilder = stoppingCondition_.toBuilder();
@@ -4085,7 +4102,7 @@ public final class Sagemaker {
 
               break;
             }
-            case 42: {
+            case 50: {
               flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder subBuilder = null;
               if (vpcConfig_ != null) {
                 subBuilder = vpcConfig_.toBuilder();
@@ -4098,7 +4115,7 @@ public final class Sagemaker {
 
               break;
             }
-            case 48: {
+            case 56: {
 
               enableSpotTraining_ = input.readBool();
               break;
@@ -4127,10 +4144,44 @@ public final class Sagemaker {
               flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.class, flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.Builder.class);
     }
 
-    public static final int ROLEARN_FIELD_NUMBER = 1;
+    public static final int REGION_FIELD_NUMBER = 1;
+    private volatile java.lang.Object region_;
+    /**
+     * <code>string Region = 1;</code>
+     */
+    public java.lang.String getRegion() {
+      java.lang.Object ref = region_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        region_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Region = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRegionBytes() {
+      java.lang.Object ref = region_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        region_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ROLEARN_FIELD_NUMBER = 2;
     private volatile java.lang.Object roleArn_;
     /**
-     * <code>string RoleArn = 1;</code>
+     * <code>string RoleArn = 2;</code>
      */
     public java.lang.String getRoleArn() {
       java.lang.Object ref = roleArn_;
@@ -4145,7 +4196,7 @@ public final class Sagemaker {
       }
     }
     /**
-     * <code>string RoleArn = 1;</code>
+     * <code>string RoleArn = 2;</code>
      */
     public com.google.protobuf.ByteString
         getRoleArnBytes() {
@@ -4161,94 +4212,94 @@ public final class Sagemaker {
       }
     }
 
-    public static final int ALGORITHMSPECIFICATION_FIELD_NUMBER = 2;
+    public static final int ALGORITHMSPECIFICATION_FIELD_NUMBER = 3;
     private flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification algorithmSpecification_;
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
      */
     public boolean hasAlgorithmSpecification() {
       return algorithmSpecification_ != null;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getAlgorithmSpecification() {
       return algorithmSpecification_ == null ? flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.getDefaultInstance() : algorithmSpecification_;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+     * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder getAlgorithmSpecificationOrBuilder() {
       return getAlgorithmSpecification();
     }
 
-    public static final int RESOURCECONFIG_FIELD_NUMBER = 3;
+    public static final int RESOURCECONFIG_FIELD_NUMBER = 4;
     private flyte.plugins.sagemaker.Sagemaker.ResourceConfig resourceConfig_;
     /**
-     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
      */
     public boolean hasResourceConfig() {
       return resourceConfig_ != null;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.ResourceConfig getResourceConfig() {
       return resourceConfig_ == null ? flyte.plugins.sagemaker.Sagemaker.ResourceConfig.getDefaultInstance() : resourceConfig_;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+     * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder getResourceConfigOrBuilder() {
       return getResourceConfig();
     }
 
-    public static final int STOPPINGCONDITION_FIELD_NUMBER = 4;
+    public static final int STOPPINGCONDITION_FIELD_NUMBER = 5;
     private flyte.plugins.sagemaker.Sagemaker.StoppingCondition stoppingCondition_;
     /**
-     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
      */
     public boolean hasStoppingCondition() {
       return stoppingCondition_ != null;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.StoppingCondition getStoppingCondition() {
       return stoppingCondition_ == null ? flyte.plugins.sagemaker.Sagemaker.StoppingCondition.getDefaultInstance() : stoppingCondition_;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+     * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder getStoppingConditionOrBuilder() {
       return getStoppingCondition();
     }
 
-    public static final int VPCCONFIG_FIELD_NUMBER = 5;
+    public static final int VPCCONFIG_FIELD_NUMBER = 6;
     private flyte.plugins.sagemaker.Sagemaker.VpcConfig vpcConfig_;
     /**
-     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
      */
     public boolean hasVpcConfig() {
       return vpcConfig_ != null;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.VpcConfig getVpcConfig() {
       return vpcConfig_ == null ? flyte.plugins.sagemaker.Sagemaker.VpcConfig.getDefaultInstance() : vpcConfig_;
     }
     /**
-     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+     * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
      */
     public flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder getVpcConfigOrBuilder() {
       return getVpcConfig();
     }
 
-    public static final int ENABLESPOTTRAINING_FIELD_NUMBER = 6;
+    public static final int ENABLESPOTTRAINING_FIELD_NUMBER = 7;
     private boolean enableSpotTraining_;
     /**
-     * <code>bool EnableSpotTraining = 6;</code>
+     * <code>bool EnableSpotTraining = 7;</code>
      */
     public boolean getEnableSpotTraining() {
       return enableSpotTraining_;
@@ -4266,23 +4317,26 @@ public final class Sagemaker {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getRegionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, region_);
+      }
       if (!getRoleArnBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roleArn_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, roleArn_);
       }
       if (algorithmSpecification_ != null) {
-        output.writeMessage(2, getAlgorithmSpecification());
+        output.writeMessage(3, getAlgorithmSpecification());
       }
       if (resourceConfig_ != null) {
-        output.writeMessage(3, getResourceConfig());
+        output.writeMessage(4, getResourceConfig());
       }
       if (stoppingCondition_ != null) {
-        output.writeMessage(4, getStoppingCondition());
+        output.writeMessage(5, getStoppingCondition());
       }
       if (vpcConfig_ != null) {
-        output.writeMessage(5, getVpcConfig());
+        output.writeMessage(6, getVpcConfig());
       }
       if (enableSpotTraining_ != false) {
-        output.writeBool(6, enableSpotTraining_);
+        output.writeBool(7, enableSpotTraining_);
       }
       unknownFields.writeTo(output);
     }
@@ -4292,28 +4346,31 @@ public final class Sagemaker {
       if (size != -1) return size;
 
       size = 0;
+      if (!getRegionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, region_);
+      }
       if (!getRoleArnBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roleArn_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, roleArn_);
       }
       if (algorithmSpecification_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getAlgorithmSpecification());
+          .computeMessageSize(3, getAlgorithmSpecification());
       }
       if (resourceConfig_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getResourceConfig());
+          .computeMessageSize(4, getResourceConfig());
       }
       if (stoppingCondition_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getStoppingCondition());
+          .computeMessageSize(5, getStoppingCondition());
       }
       if (vpcConfig_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getVpcConfig());
+          .computeMessageSize(6, getVpcConfig());
       }
       if (enableSpotTraining_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(6, enableSpotTraining_);
+          .computeBoolSize(7, enableSpotTraining_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4331,6 +4388,8 @@ public final class Sagemaker {
       flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob other = (flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob) obj;
 
       boolean result = true;
+      result = result && getRegion()
+          .equals(other.getRegion());
       result = result && getRoleArn()
           .equals(other.getRoleArn());
       result = result && (hasAlgorithmSpecification() == other.hasAlgorithmSpecification());
@@ -4366,6 +4425,8 @@ public final class Sagemaker {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + REGION_FIELD_NUMBER;
+      hash = (53 * hash) + getRegion().hashCode();
       hash = (37 * hash) + ROLEARN_FIELD_NUMBER;
       hash = (53 * hash) + getRoleArn().hashCode();
       if (hasAlgorithmSpecification()) {
@@ -4516,6 +4577,8 @@ public final class Sagemaker {
       }
       public Builder clear() {
         super.clear();
+        region_ = "";
+
         roleArn_ = "";
 
         if (algorithmSpecificationBuilder_ == null) {
@@ -4566,6 +4629,7 @@ public final class Sagemaker {
 
       public flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob buildPartial() {
         flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob result = new flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob(this);
+        result.region_ = region_;
         result.roleArn_ = roleArn_;
         if (algorithmSpecificationBuilder_ == null) {
           result.algorithmSpecification_ = algorithmSpecification_;
@@ -4629,6 +4693,10 @@ public final class Sagemaker {
 
       public Builder mergeFrom(flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob other) {
         if (other == flyte.plugins.sagemaker.Sagemaker.SagemakerHPOJob.getDefaultInstance()) return this;
+        if (!other.getRegion().isEmpty()) {
+          region_ = other.region_;
+          onChanged();
+        }
         if (!other.getRoleArn().isEmpty()) {
           roleArn_ = other.roleArn_;
           onChanged();
@@ -4675,9 +4743,78 @@ public final class Sagemaker {
         return this;
       }
 
+      private java.lang.Object region_ = "";
+      /**
+       * <code>string Region = 1;</code>
+       */
+      public java.lang.String getRegion() {
+        java.lang.Object ref = region_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          region_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Region = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRegionBytes() {
+        java.lang.Object ref = region_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          region_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Region = 1;</code>
+       */
+      public Builder setRegion(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        region_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Region = 1;</code>
+       */
+      public Builder clearRegion() {
+        
+        region_ = getDefaultInstance().getRegion();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Region = 1;</code>
+       */
+      public Builder setRegionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        region_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object roleArn_ = "";
       /**
-       * <code>string RoleArn = 1;</code>
+       * <code>string RoleArn = 2;</code>
        */
       public java.lang.String getRoleArn() {
         java.lang.Object ref = roleArn_;
@@ -4692,7 +4829,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>string RoleArn = 1;</code>
+       * <code>string RoleArn = 2;</code>
        */
       public com.google.protobuf.ByteString
           getRoleArnBytes() {
@@ -4708,7 +4845,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>string RoleArn = 1;</code>
+       * <code>string RoleArn = 2;</code>
        */
       public Builder setRoleArn(
           java.lang.String value) {
@@ -4721,7 +4858,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>string RoleArn = 1;</code>
+       * <code>string RoleArn = 2;</code>
        */
       public Builder clearRoleArn() {
         
@@ -4730,7 +4867,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>string RoleArn = 1;</code>
+       * <code>string RoleArn = 2;</code>
        */
       public Builder setRoleArnBytes(
           com.google.protobuf.ByteString value) {
@@ -4748,13 +4885,13 @@ public final class Sagemaker {
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder> algorithmSpecificationBuilder_;
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public boolean hasAlgorithmSpecification() {
         return algorithmSpecificationBuilder_ != null || algorithmSpecification_ != null;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification getAlgorithmSpecification() {
         if (algorithmSpecificationBuilder_ == null) {
@@ -4764,7 +4901,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public Builder setAlgorithmSpecification(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification value) {
         if (algorithmSpecificationBuilder_ == null) {
@@ -4780,7 +4917,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public Builder setAlgorithmSpecification(
           flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder builderForValue) {
@@ -4794,7 +4931,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public Builder mergeAlgorithmSpecification(flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification value) {
         if (algorithmSpecificationBuilder_ == null) {
@@ -4812,7 +4949,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public Builder clearAlgorithmSpecification() {
         if (algorithmSpecificationBuilder_ == null) {
@@ -4826,7 +4963,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder getAlgorithmSpecificationBuilder() {
         
@@ -4834,7 +4971,7 @@ public final class Sagemaker {
         return getAlgorithmSpecificationFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder getAlgorithmSpecificationOrBuilder() {
         if (algorithmSpecificationBuilder_ != null) {
@@ -4845,7 +4982,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;</code>
+       * <code>.flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecification.Builder, flyte.plugins.sagemaker.Sagemaker.AlgorithmSpecificationOrBuilder> 
@@ -4865,13 +5002,13 @@ public final class Sagemaker {
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.ResourceConfig, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder, flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder> resourceConfigBuilder_;
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public boolean hasResourceConfig() {
         return resourceConfigBuilder_ != null || resourceConfig_ != null;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.ResourceConfig getResourceConfig() {
         if (resourceConfigBuilder_ == null) {
@@ -4881,7 +5018,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public Builder setResourceConfig(flyte.plugins.sagemaker.Sagemaker.ResourceConfig value) {
         if (resourceConfigBuilder_ == null) {
@@ -4897,7 +5034,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public Builder setResourceConfig(
           flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder builderForValue) {
@@ -4911,7 +5048,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public Builder mergeResourceConfig(flyte.plugins.sagemaker.Sagemaker.ResourceConfig value) {
         if (resourceConfigBuilder_ == null) {
@@ -4929,7 +5066,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public Builder clearResourceConfig() {
         if (resourceConfigBuilder_ == null) {
@@ -4943,7 +5080,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder getResourceConfigBuilder() {
         
@@ -4951,7 +5088,7 @@ public final class Sagemaker {
         return getResourceConfigFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder getResourceConfigOrBuilder() {
         if (resourceConfigBuilder_ != null) {
@@ -4962,7 +5099,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;</code>
+       * <code>.flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.ResourceConfig, flyte.plugins.sagemaker.Sagemaker.ResourceConfig.Builder, flyte.plugins.sagemaker.Sagemaker.ResourceConfigOrBuilder> 
@@ -4982,13 +5119,13 @@ public final class Sagemaker {
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.StoppingCondition, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder, flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder> stoppingConditionBuilder_;
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public boolean hasStoppingCondition() {
         return stoppingConditionBuilder_ != null || stoppingCondition_ != null;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.StoppingCondition getStoppingCondition() {
         if (stoppingConditionBuilder_ == null) {
@@ -4998,7 +5135,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public Builder setStoppingCondition(flyte.plugins.sagemaker.Sagemaker.StoppingCondition value) {
         if (stoppingConditionBuilder_ == null) {
@@ -5014,7 +5151,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public Builder setStoppingCondition(
           flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder builderForValue) {
@@ -5028,7 +5165,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public Builder mergeStoppingCondition(flyte.plugins.sagemaker.Sagemaker.StoppingCondition value) {
         if (stoppingConditionBuilder_ == null) {
@@ -5046,7 +5183,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public Builder clearStoppingCondition() {
         if (stoppingConditionBuilder_ == null) {
@@ -5060,7 +5197,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder getStoppingConditionBuilder() {
         
@@ -5068,7 +5205,7 @@ public final class Sagemaker {
         return getStoppingConditionFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder getStoppingConditionOrBuilder() {
         if (stoppingConditionBuilder_ != null) {
@@ -5079,7 +5216,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;</code>
+       * <code>.flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.StoppingCondition, flyte.plugins.sagemaker.Sagemaker.StoppingCondition.Builder, flyte.plugins.sagemaker.Sagemaker.StoppingConditionOrBuilder> 
@@ -5099,13 +5236,13 @@ public final class Sagemaker {
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.VpcConfig, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder, flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder> vpcConfigBuilder_;
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public boolean hasVpcConfig() {
         return vpcConfigBuilder_ != null || vpcConfig_ != null;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.VpcConfig getVpcConfig() {
         if (vpcConfigBuilder_ == null) {
@@ -5115,7 +5252,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public Builder setVpcConfig(flyte.plugins.sagemaker.Sagemaker.VpcConfig value) {
         if (vpcConfigBuilder_ == null) {
@@ -5131,7 +5268,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public Builder setVpcConfig(
           flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder builderForValue) {
@@ -5145,7 +5282,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public Builder mergeVpcConfig(flyte.plugins.sagemaker.Sagemaker.VpcConfig value) {
         if (vpcConfigBuilder_ == null) {
@@ -5163,7 +5300,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public Builder clearVpcConfig() {
         if (vpcConfigBuilder_ == null) {
@@ -5177,7 +5314,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder getVpcConfigBuilder() {
         
@@ -5185,7 +5322,7 @@ public final class Sagemaker {
         return getVpcConfigFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       public flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder getVpcConfigOrBuilder() {
         if (vpcConfigBuilder_ != null) {
@@ -5196,7 +5333,7 @@ public final class Sagemaker {
         }
       }
       /**
-       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;</code>
+       * <code>.flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           flyte.plugins.sagemaker.Sagemaker.VpcConfig, flyte.plugins.sagemaker.Sagemaker.VpcConfig.Builder, flyte.plugins.sagemaker.Sagemaker.VpcConfigOrBuilder> 
@@ -5214,13 +5351,13 @@ public final class Sagemaker {
 
       private boolean enableSpotTraining_ ;
       /**
-       * <code>bool EnableSpotTraining = 6;</code>
+       * <code>bool EnableSpotTraining = 7;</code>
        */
       public boolean getEnableSpotTraining() {
         return enableSpotTraining_;
       }
       /**
-       * <code>bool EnableSpotTraining = 6;</code>
+       * <code>bool EnableSpotTraining = 7;</code>
        */
       public Builder setEnableSpotTraining(boolean value) {
         
@@ -5229,7 +5366,7 @@ public final class Sagemaker {
         return this;
       }
       /**
-       * <code>bool EnableSpotTraining = 6;</code>
+       * <code>bool EnableSpotTraining = 7;</code>
        */
       public Builder clearEnableSpotTraining() {
         
@@ -5338,17 +5475,17 @@ public final class Sagemaker {
       "toppingCondition\022\033\n\023MaxRuntimeInSeconds\030" +
       "\001 \001(\003\022\034\n\024MaxWaitTimeInSeconds\030\002 \001(\003\"6\n\tV" +
       "pcConfig\022\030\n\020SecurityGroupIds\030\001 \003(\t\022\017\n\007Su" +
-      "bnets\030\002 \003(\t\"\316\002\n\017SagemakerHPOJob\022\017\n\007RoleA" +
-      "rn\030\001 \001(\t\022O\n\026AlgorithmSpecification\030\002 \001(\013" +
-      "2/.flyte.plugins.sagemaker.AlgorithmSpec" +
-      "ification\022?\n\016ResourceConfig\030\003 \001(\0132\'.flyt" +
-      "e.plugins.sagemaker.ResourceConfig\022E\n\021St" +
-      "oppingCondition\030\004 \001(\0132*.flyte.plugins.sa" +
-      "gemaker.StoppingCondition\0225\n\tVpcConfig\030\005" +
-      " \001(\0132\".flyte.plugins.sagemaker.VpcConfig" +
-      "\022\032\n\022EnableSpotTraining\030\006 \001(\010B4Z2github.c" +
-      "om/kumare3/awsflyteplugins/gen/pb-go/pro" +
-      "tob\006proto3"
+      "bnets\030\002 \003(\t\"\336\002\n\017SagemakerHPOJob\022\016\n\006Regio" +
+      "n\030\001 \001(\t\022\017\n\007RoleArn\030\002 \001(\t\022O\n\026AlgorithmSpe" +
+      "cification\030\003 \001(\0132/.flyte.plugins.sagemak" +
+      "er.AlgorithmSpecification\022?\n\016ResourceCon" +
+      "fig\030\004 \001(\0132\'.flyte.plugins.sagemaker.Reso" +
+      "urceConfig\022E\n\021StoppingCondition\030\005 \001(\0132*." +
+      "flyte.plugins.sagemaker.StoppingConditio" +
+      "n\0225\n\tVpcConfig\030\006 \001(\0132\".flyte.plugins.sag" +
+      "emaker.VpcConfig\022\032\n\022EnableSpotTraining\030\007" +
+      " \001(\010B4Z2github.com/kumare3/awsflyteplugi" +
+      "ns/gen/pb-go/protob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5397,7 +5534,7 @@ public final class Sagemaker {
     internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_flyte_plugins_sagemaker_SagemakerHPOJob_descriptor,
-        new java.lang.String[] { "RoleArn", "AlgorithmSpecification", "ResourceConfig", "StoppingCondition", "VpcConfig", "EnableSpotTraining", });
+        new java.lang.String[] { "Region", "RoleArn", "AlgorithmSpecification", "ResourceConfig", "StoppingCondition", "VpcConfig", "EnableSpotTraining", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

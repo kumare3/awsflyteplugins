@@ -172,6 +172,7 @@ flyte.plugins.sagemaker.SagemakerHPOJob
 .. code-block:: json
 
   {
+    "Region": "...",
     "RoleArn": "...",
     "AlgorithmSpecification": "{...}",
     "ResourceConfig": "{...}",
@@ -180,6 +181,11 @@ flyte.plugins.sagemaker.SagemakerHPOJob
     "EnableSpotTraining": "..."
   }
 
+.. _api_field_flyte.plugins.sagemaker.SagemakerHPOJob.Region:
+
+Region
+  (`string <https://developers.google.com/protocol-buffers/docs/proto#scalar>`_) 
+  
 .. _api_field_flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn:
 
 RoleArn
