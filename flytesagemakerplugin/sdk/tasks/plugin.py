@@ -18,6 +18,7 @@ _TASK_TYPE = "aws_sagemaker_hpo"
 class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
     def __init__(
         self,
+        region,
         role_arn,
         resource_config,
         algorithm_specification=None,
@@ -29,7 +30,8 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
         cache_version="",
     ):
         """
-        :param Text role_arn: This probably shouldn't be statically configured here.
+        :param Text region: The region in which to run the SageMaker job.
+        :param Text role_arn: The ARN of the role to run in the SageMaker job.
         :param dict[Text,T] algorithm_specification: https://docs.aws.amazon.com/sagemaker/latest/dg/API_AlgorithmSpecification.html
         :param dict[Text,T] resource_config: https://docs.aws.amazon.com/sagemaker/latest/dg/API_ResourceConfig.html
         :param dict[Text,T] stopping_condition: https://docs.aws.amazon.com/sagemaker/latest/dg/API_StoppingCondition.html
@@ -49,6 +51,7 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
 
         job_config = ParseDict(
             {
+                "Region": region,
                 "ResourceConfig": resource_config,
                 "StoppingCondition": stopping_condition,
                 "VpcConfig": vpc_config,
@@ -92,9 +95,9 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
         # refactor.
         self.add_inputs(
             {
-                # "static_hyperparameters": _interface_model.Variable(
-                #     _sdk_types.Types.Generic.to_flyte_literal_type(), ""
-                # ),
+                "static_hyperparameters": _interface_model.Variable(
+                    _sdk_types.Types.Generic.to_flyte_literal_type(), ""
+                ),
                 "train": _interface_model.Variable(
                     _sdk_types.Types.MultiPartCSV.to_flyte_literal_type(), ""
                 ),

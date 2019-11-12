@@ -10,7 +10,7 @@ require (
 	github.com/Azure/go-autorest v13.3.0+incompatible // indirect
 	github.com/GoogleCloudPlatform/spark-on-k8s-operator v0.0.0-20191028162909-4990c026d087 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
-	github.com/aws/aws-sdk-go v1.25.23 // indirect
+	github.com/aws/aws-sdk-go v1.25.23
 	github.com/benlaurie/objecthash v0.0.0-20180202135721-d1e3d6079fc1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
@@ -31,8 +31,8 @@ require (
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/lyft/datacatalog v0.1.1 // indirect
 	github.com/lyft/flyteidl v0.14.1
-	github.com/lyft/flyteplugins v0.1.11-0.20191101043918-c69cd62d7664
-	github.com/lyft/flytepropeller v0.1.10-0.20191101182752-5b2e9cdbba69
+	github.com/lyft/flyteplugins v0.2.0
+	github.com/lyft/flytepropeller v0.1.13-0.20191112060948-c2d2fde4537c
 	github.com/lyft/flytestdlib v0.2.28 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/mitchellh/mapstructure v1.1.2
@@ -52,6 +52,7 @@ require (
 	golang.org/x/sys v0.0.0-20191029155521-f43be2a4598c // indirect
 	golang.org/x/time v0.0.0-20191024005414-555d28b269f0 // indirect
 	golang.org/x/tools v0.0.0-20191030232956-1e24073be82c // indirect
+	golang.org/x/vgo v0.0.0-20180912184537-9d567625acf4 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
 	google.golang.org/genproto v0.0.0-20191028173616-919d9bdd9fe6 // indirect
 	google.golang.org/grpc v1.24.0 // indirect

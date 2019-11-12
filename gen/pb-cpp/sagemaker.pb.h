@@ -829,9 +829,23 @@ class SagemakerHPOJob : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // string RoleArn = 1;
+  // string Region = 1;
+  void clear_region();
+  static const int kRegionFieldNumber = 1;
+  const ::std::string& region() const;
+  void set_region(const ::std::string& value);
+  #if LANG_CXX11
+  void set_region(::std::string&& value);
+  #endif
+  void set_region(const char* value);
+  void set_region(const char* value, size_t size);
+  ::std::string* mutable_region();
+  ::std::string* release_region();
+  void set_allocated_region(::std::string* region);
+
+  // string RoleArn = 2;
   void clear_rolearn();
-  static const int kRoleArnFieldNumber = 1;
+  static const int kRoleArnFieldNumber = 2;
   const ::std::string& rolearn() const;
   void set_rolearn(const ::std::string& value);
   #if LANG_CXX11
@@ -843,45 +857,45 @@ class SagemakerHPOJob : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_rolearn();
   void set_allocated_rolearn(::std::string* rolearn);
 
-  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+  // .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;
   bool has_algorithmspecification() const;
   void clear_algorithmspecification();
-  static const int kAlgorithmSpecificationFieldNumber = 2;
+  static const int kAlgorithmSpecificationFieldNumber = 3;
   const ::flyte::plugins::sagemaker::AlgorithmSpecification& algorithmspecification() const;
   ::flyte::plugins::sagemaker::AlgorithmSpecification* release_algorithmspecification();
   ::flyte::plugins::sagemaker::AlgorithmSpecification* mutable_algorithmspecification();
   void set_allocated_algorithmspecification(::flyte::plugins::sagemaker::AlgorithmSpecification* algorithmspecification);
 
-  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+  // .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;
   bool has_resourceconfig() const;
   void clear_resourceconfig();
-  static const int kResourceConfigFieldNumber = 3;
+  static const int kResourceConfigFieldNumber = 4;
   const ::flyte::plugins::sagemaker::ResourceConfig& resourceconfig() const;
   ::flyte::plugins::sagemaker::ResourceConfig* release_resourceconfig();
   ::flyte::plugins::sagemaker::ResourceConfig* mutable_resourceconfig();
   void set_allocated_resourceconfig(::flyte::plugins::sagemaker::ResourceConfig* resourceconfig);
 
-  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+  // .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;
   bool has_stoppingcondition() const;
   void clear_stoppingcondition();
-  static const int kStoppingConditionFieldNumber = 4;
+  static const int kStoppingConditionFieldNumber = 5;
   const ::flyte::plugins::sagemaker::StoppingCondition& stoppingcondition() const;
   ::flyte::plugins::sagemaker::StoppingCondition* release_stoppingcondition();
   ::flyte::plugins::sagemaker::StoppingCondition* mutable_stoppingcondition();
   void set_allocated_stoppingcondition(::flyte::plugins::sagemaker::StoppingCondition* stoppingcondition);
 
-  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+  // .flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;
   bool has_vpcconfig() const;
   void clear_vpcconfig();
-  static const int kVpcConfigFieldNumber = 5;
+  static const int kVpcConfigFieldNumber = 6;
   const ::flyte::plugins::sagemaker::VpcConfig& vpcconfig() const;
   ::flyte::plugins::sagemaker::VpcConfig* release_vpcconfig();
   ::flyte::plugins::sagemaker::VpcConfig* mutable_vpcconfig();
   void set_allocated_vpcconfig(::flyte::plugins::sagemaker::VpcConfig* vpcconfig);
 
-  // bool EnableSpotTraining = 6;
+  // bool EnableSpotTraining = 7;
   void clear_enablespottraining();
-  static const int kEnableSpotTrainingFieldNumber = 6;
+  static const int kEnableSpotTrainingFieldNumber = 7;
   bool enablespottraining() const;
   void set_enablespottraining(bool value);
 
@@ -889,6 +903,7 @@ class SagemakerHPOJob : public ::google::protobuf::Message /* @@protoc_insertion
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr region_;
   ::google::protobuf::internal::ArenaStringPtr rolearn_;
   ::flyte::plugins::sagemaker::AlgorithmSpecification* algorithmspecification_;
   ::flyte::plugins::sagemaker::ResourceConfig* resourceconfig_;
@@ -1525,7 +1540,60 @@ VpcConfig::mutable_subnets() {
 
 // SagemakerHPOJob
 
-// string RoleArn = 1;
+// string Region = 1;
+inline void SagemakerHPOJob::clear_region() {
+  region_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SagemakerHPOJob::region() const {
+  // @@protoc_insertion_point(field_get:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+  return region_.GetNoArena();
+}
+inline void SagemakerHPOJob::set_region(const ::std::string& value) {
+  
+  region_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+}
+#if LANG_CXX11
+inline void SagemakerHPOJob::set_region(::std::string&& value) {
+  
+  region_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+}
+#endif
+inline void SagemakerHPOJob::set_region(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  region_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+}
+inline void SagemakerHPOJob::set_region(const char* value, size_t size) {
+  
+  region_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+}
+inline ::std::string* SagemakerHPOJob::mutable_region() {
+  
+  // @@protoc_insertion_point(field_mutable:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+  return region_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SagemakerHPOJob::release_region() {
+  // @@protoc_insertion_point(field_release:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+  
+  return region_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SagemakerHPOJob::set_allocated_region(::std::string* region) {
+  if (region != NULL) {
+    
+  } else {
+    
+  }
+  region_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), region);
+  // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.Region)
+}
+
+// string RoleArn = 2;
 inline void SagemakerHPOJob::clear_rolearn() {
   rolearn_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1578,7 +1646,7 @@ inline void SagemakerHPOJob::set_allocated_rolearn(::std::string* rolearn) {
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.RoleArn)
 }
 
-// .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 2;
+// .flyte.plugins.sagemaker.AlgorithmSpecification AlgorithmSpecification = 3;
 inline bool SagemakerHPOJob::has_algorithmspecification() const {
   return this != internal_default_instance() && algorithmspecification_ != NULL;
 }
@@ -1628,7 +1696,7 @@ inline void SagemakerHPOJob::set_allocated_algorithmspecification(::flyte::plugi
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.AlgorithmSpecification)
 }
 
-// .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 3;
+// .flyte.plugins.sagemaker.ResourceConfig ResourceConfig = 4;
 inline bool SagemakerHPOJob::has_resourceconfig() const {
   return this != internal_default_instance() && resourceconfig_ != NULL;
 }
@@ -1678,7 +1746,7 @@ inline void SagemakerHPOJob::set_allocated_resourceconfig(::flyte::plugins::sage
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.ResourceConfig)
 }
 
-// .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 4;
+// .flyte.plugins.sagemaker.StoppingCondition StoppingCondition = 5;
 inline bool SagemakerHPOJob::has_stoppingcondition() const {
   return this != internal_default_instance() && stoppingcondition_ != NULL;
 }
@@ -1728,7 +1796,7 @@ inline void SagemakerHPOJob::set_allocated_stoppingcondition(::flyte::plugins::s
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.StoppingCondition)
 }
 
-// .flyte.plugins.sagemaker.VpcConfig VpcConfig = 5;
+// .flyte.plugins.sagemaker.VpcConfig VpcConfig = 6;
 inline bool SagemakerHPOJob::has_vpcconfig() const {
   return this != internal_default_instance() && vpcconfig_ != NULL;
 }
@@ -1778,7 +1846,7 @@ inline void SagemakerHPOJob::set_allocated_vpcconfig(::flyte::plugins::sagemaker
   // @@protoc_insertion_point(field_set_allocated:flyte.plugins.sagemaker.SagemakerHPOJob.VpcConfig)
 }
 
-// bool EnableSpotTraining = 6;
+// bool EnableSpotTraining = 7;
 inline void SagemakerHPOJob::clear_enablespottraining() {
   enablespottraining_ = false;
 }

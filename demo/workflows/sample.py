@@ -6,8 +6,34 @@ from flytekit.sdk.workflow import workflow_class, Input, Output
 from flytekit.sdk.types import Types
 from flytekit.configuration import TemporaryConfiguration
 
+example_hyperparams = {
+    "base_score": "0.5",
+    "booster": "gbtree",
+    "csv_weights": "0",
+    "dsplit": "row",
+    "grow_policy": "depthwise",
+    "lambda_bias": "0.0",
+    "max_bin": "256",
+    "max_leaves": "0",
+    "normalize_type": "tree",
+    "objective": "reg:linear",
+    "one_drop": "0",
+    "prob_buffer_row": "1.0",
+    "process_type": "default",
+    "rate_drop": "0.0",
+    "refresh_leaf": "1",
+    "sample_type": "uniform",
+    "scale_pos_weight": "1.0",
+    "silent": "0",
+    "sketch_eps": "0.03",
+    "skip_drop": "0.0",
+    "tree_method": "auto",
+    "tweedie_variance_power": "1.5",
+    "updater": "grow_colmaker,prune",
+}
 
 xgtrainer_task = SagemakerXgBoostOptimizer(
+    region="us-east-2",
     role_arn="arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
     resource_config={
         "InstanceCount": 1,
@@ -23,31 +49,26 @@ xgtrainer_task = SagemakerXgBoostOptimizer(
 @workflow_class
 class DemoWorkflow(object):
     # Input parameters
+    static_hyperparameters = Input(
+        Types.Generic,
+        help="A list of the static hyperparameters to pass to the training jobs.",
+    )
     train_data = Input(
-        Types.MultiPartCSV, help="s3 path to a flat directory of CSV files."
+        Types.MultiPartCSV, help="S3 path to a flat directory of CSV files."
     )
     validation_data = Input(
-        Types.MultiPartCSV, help="s3 path to a flat directory of CSV files."
+        Types.MultiPartCSV, help="S3 path to a flat directory of CSV files."
     )
 
     # Node definitions
     train_node = xgtrainer_task(
-        # static_hyperparameters={
-        #     "eval_metric": "auc",
-        #     "num_round": "100",
-        #     "objective": "binary:logistic",
-        #     "rate_drop": "0.3",
-        #     "tweedie_variance_power": "1.4",
-        # },
+        static_hyperparameters=example_hyperparams,
         train=train_data,
         validation=validation_data,
     )
 
     # Outputs
     trained_model = Output(train_node.outputs.model, sdk_type=Types.Blob)
-
-    # TODO: Do other things with the resulting model! Ping Matt Smith if you'd like help expanding on this demo
-    # for a more holistic example.
 
 
 if __name__ == "__main__":
@@ -89,7 +110,11 @@ if __name__ == "__main__":
                 ex = lp.execute(
                     _PROJECT,
                     _DOMAIN,
-                    inputs={"train_data": sys.argv[3], "validation_data": sys.argv[4]},
+                    inputs={
+                        "train_data": sys.argv[3],
+                        "validation_data": sys.argv[4],
+                        "static_hyperparameters": example_hyperparams,
+                    },
                 )
                 print("Waiting for execution to complete...")
                 ex.wait_for_completion()
