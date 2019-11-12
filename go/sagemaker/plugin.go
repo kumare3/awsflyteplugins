@@ -225,6 +225,7 @@ func getOutputs(ctx context.Context, tr pluginsCore.TaskReader, outputPath strin
 	// TODO: @kumare3 OMG This looks scary, provide helper methods for this
 	for k := range tk.Interface.Outputs.Variables {
 		// if v != core.LiteralType_Blob{}
+		op.Literals = make(map[string]*core.Literal)
 		op.Literals[k] = &core.Literal{
 			Value: &core.Literal_Scalar{
 				Scalar: &core.Scalar{
