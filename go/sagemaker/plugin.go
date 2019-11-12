@@ -24,9 +24,8 @@ import (
 	taskError "github.com/lyft/flyteplugins/go/tasks/errors"
 
 	"github.com/kumare3/awsflyteplugins/gen/pb-go/proto"
+	. "go.amzn.com/sagemaker/sagemaker-k8s-operator/controllers/controllertest"
 )
-
-const KindSagemakerHPOJob = "HyperparameterTuningJob"
 
 const (
 	pluginID          = "aws_sagemaker_hpo"
@@ -184,10 +183,13 @@ func (m awsSagemakerPlugin) BuildResource(ctx context.Context, taskCtx pluginsCo
 }
 
 func getEventInfoForHPOJob(job *hpojobv1.HyperparameterTuningJob) (*pluginsCore.TaskInfo, error) {
+	cwLogURL := fmt.Sprintf("https://%s.console.aws.amazon.com/cloudwatch/home?region=%s#logStream:group=/aws/sagemaker/TrainingJobs;prefix=%s;streamFilter=typeLogStreamPrefix",
+		*job.Spec.Region, *job.Spec.Region, *job.Spec.HyperParameterTuningJobName)
+
 	taskLogs := []*core.TaskLog{
 		{
-			Uri:           "http://amazon.com",
-			Name:          "cwlogs",
+			Uri:           cwLogURL,
+			Name:          "CloudWatch Logs",
 			MessageFormat: core.TaskLog_JSON,
 		},
 	}
