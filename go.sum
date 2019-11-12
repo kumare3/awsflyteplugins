@@ -314,6 +314,8 @@ github.com/lyft/flyteplugins v0.1.10 h1:q8t4UzaDZkseJOp/2xdJgVmj8dGAftu+onycuDxV
 github.com/lyft/flyteplugins v0.1.10/go.mod h1:zRiav0Af3/5RIdwco8cb0ldu0eqSWLNH2BgyVt51CsI=
 github.com/lyft/flyteplugins v0.1.11-0.20191101043918-c69cd62d7664 h1:uVHp/6y2fR+hB7zkDtefG/ceg2MjOe39ZC4U+rgXp7E=
 github.com/lyft/flyteplugins v0.1.11-0.20191101043918-c69cd62d7664/go.mod h1:zRiav0Af3/5RIdwco8cb0ldu0eqSWLNH2BgyVt51CsI=
+github.com/lyft/flyteplugins v0.2.0 h1:5RQM0EMZETXiJfa02yk5PzUiHbiugSi2tpQz20DpnZE=
+github.com/lyft/flyteplugins v0.2.0/go.mod h1:zRiav0Af3/5RIdwco8cb0ldu0eqSWLNH2BgyVt51CsI=
 github.com/lyft/flytepropeller v0.1.10-0.20191031172944-b050d24f7925 h1:PNgS3HH5ohzDe7iJduWEG2T0WI+AZPz6in/UvhSBYFw=
 github.com/lyft/flytepropeller v0.1.10-0.20191031172944-b050d24f7925/go.mod h1:SgMi8FEw9K8BZHggUXIQ5Maw8LF9ymgtNTDjNahmXOc=
 github.com/lyft/flytepropeller v0.1.10-0.20191031200046-cfb37b0d119c h1:mKvZFbGTLbomt7zHFTsI4hNmXEGGYQ8hMNcQwBFd2Ss=
@@ -322,6 +324,8 @@ github.com/lyft/flytepropeller v0.1.10-0.20191101182752-5b2e9cdbba69 h1:dwB0ZS/i
 github.com/lyft/flytepropeller v0.1.10-0.20191101182752-5b2e9cdbba69/go.mod h1:SgMi8FEw9K8BZHggUXIQ5Maw8LF9ymgtNTDjNahmXOc=
 github.com/lyft/flytepropeller v0.1.11 h1:2eImlcNNHvaByD6U2jGDQFGJs+Kpn/VcQjoS91bYuhk=
 github.com/lyft/flytepropeller v0.1.11/go.mod h1:SgMi8FEw9K8BZHggUXIQ5Maw8LF9ymgtNTDjNahmXOc=
+github.com/lyft/flytepropeller v0.1.13-0.20191112060948-c2d2fde4537c h1:0H9LKtpjGu+faEH6UQmNQKQYtc/D/SJq12NDsDVgdsk=
+github.com/lyft/flytepropeller v0.1.13-0.20191112060948-c2d2fde4537c/go.mod h1:SgMi8FEw9K8BZHggUXIQ5Maw8LF9ymgtNTDjNahmXOc=
 github.com/lyft/flytestdlib v0.2.28 h1:keqb5RGbU2GppuhCeR6zapoeKh+VUtweVBzSIK1KCfo=
 github.com/lyft/flytestdlib v0.2.28/go.mod h1:cN89OAMbgIB4fc71HTLbENOFFqHGc318Reot9B7dPfw=
 github.com/magiconair/properties v1.8.0 h1:LLgXmsheXeRoUOBOjtwPQCWIYqM/LU1ayDtDePerRcY=
@@ -610,6 +614,8 @@ golang.org/x/tools v0.0.0-20191029041327-9cc4af7d6b2c/go.mod h1:b+2E5dAYhXwXZwtn
 golang.org/x/tools v0.0.0-20191029190741-b9c20aec41a5/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
 golang.org/x/tools v0.0.0-20191030232956-1e24073be82c h1:VBydyJ1aqR8NsGk94ZythzCMGWp9qZKz1mbar2tdih8=
 golang.org/x/tools v0.0.0-20191030232956-1e24073be82c/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
+golang.org/x/vgo v0.0.0-20180912184537-9d567625acf4 h1:ouUW0k6XvH360Tr2/HkzQWY7/aU+3QVkfWnrRNf2udQ=
+golang.org/x/vgo v0.0.0-20180912184537-9d567625acf4/go.mod h1:rPwukS3Aj8LZv1dK2rFNXSfYxdueYuvBJ7u3uL3f47I=
 golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 h1:9zdDQZ7Thm29KFXgAX/+yaf3eVbP7djjWp/dXAppNCc=
 golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 gomodules.xyz/jsonpatch/v2 v2.0.1 h1:xyiBuvkD2g5n7cYzx6u2sxQvsAy4QJsZFCzGVdzOXZ0=

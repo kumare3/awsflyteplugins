@@ -6,6 +6,8 @@ import (
 	"time"
 
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery"
+	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/ioutils"
+	"github.com/lyft/flytestdlib/logger"
 	"github.com/pkg/errors"
 	"k8s.io/client-go/kubernetes/scheme"
 
@@ -19,9 +21,9 @@ import (
 	commonv1 "go.amzn.com/sagemaker/sagemaker-k8s-operator/api/v1/common"
 	hpojobv1 "go.amzn.com/sagemaker/sagemaker-k8s-operator/api/v1/hyperparametertuningjob"
 
-	"github.com/kumare3/awsflyteplugins/gen/pb-go/proto"
 	taskError "github.com/lyft/flyteplugins/go/tasks/errors"
-	. "go.amzn.com/sagemaker/sagemaker-k8s-operator/controllers/controllertest"
+
+	"github.com/kumare3/awsflyteplugins/gen/pb-go/proto"
 )
 
 const KindSagemakerHPOJob = "HyperparameterTuningJob"
@@ -83,9 +85,7 @@ func (m awsSagemakerPlugin) BuildResource(ctx context.Context, taskCtx pluginsCo
 		return nil, errors.Errorf("static hyperparameters input not specified")
 	}
 
-	outputPath := taskCtx.OutputWriter().GetOutputPrefixPath().String()
-	outputPath = fmt.Sprintf("%s/hpo_outputs", outputPath)
-
+	outputPath := createOutputPath(taskCtx.OutputWriter().GetOutputPrefixPath().String())
 	sagemakerJob := proto.SagemakerHPOJob{}
 	err = utils.UnmarshalStruct(taskTemplate.GetCustom(), &sagemakerJob)
 	if err != nil {
@@ -184,7 +184,14 @@ func (m awsSagemakerPlugin) BuildResource(ctx context.Context, taskCtx pluginsCo
 }
 
 func getEventInfoForHPOJob(job *hpojobv1.HyperparameterTuningJob) (*pluginsCore.TaskInfo, error) {
-	var taskLogs []*core.TaskLog
+	taskLogs := []*core.TaskLog{
+		{
+			Uri:           "http://amazon.com",
+			Name:          "cwlogs",
+			MessageFormat: core.TaskLog_JSON,
+		},
+	}
+
 	customInfoMap := make(map[string]string)
 
 	customInfo, err := utils.MarshalObjToStruct(customInfoMap)
@@ -196,6 +203,46 @@ func getEventInfoForHPOJob(job *hpojobv1.HyperparameterTuningJob) (*pluginsCore.
 		Logs:       taskLogs,
 		CustomInfo: customInfo,
 	}, nil
+}
+
+func getOutputs(ctx context.Context, tr pluginsCore.TaskReader, outputPath string) (*core.LiteralMap, error) {
+	tk, err := tr.Read(ctx)
+	if err != nil {
+		return nil, err
+	}
+	if tk.Interface.Outputs != nil && tk.Interface.Outputs.Variables == nil {
+		logger.Warnf(ctx, "No outputs declared in the output interface. Ignoring the generated outputs.")
+		return nil, nil
+	}
+
+	// We know that for XGBoost task there is only one output to be generated
+	if len(tk.Interface.Outputs.Variables) > 1 {
+		return nil, fmt.Errorf("expected to generate more than one outputs of type [%v]", tk.Interface.Outputs.Variables)
+	}
+	op := &core.LiteralMap{}
+	// TODO: @kumare3 OMG This looks scary, provide helper methods for this
+	for k := range tk.Interface.Outputs.Variables {
+		// if v != core.LiteralType_Blob{}
+		op.Literals[k] = &core.Literal{
+			Value: &core.Literal_Scalar{
+				Scalar: &core.Scalar{
+					Value: &core.Scalar_Blob{
+						Blob: &core.Blob{
+							Metadata: &core.BlobMetadata{
+								Type: &core.BlobType{Format: ".xgb", Dimensionality: core.BlobType_SINGLE},
+							},
+							Uri: outputPath,
+						},
+					},
+				},
+			},
+		}
+	}
+	return op, nil
+}
+
+func createOutputPath(prefix string) string {
+	return fmt.Sprintf("%s/hpo_outputs", prefix)
 }
 
 func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
@@ -216,6 +263,16 @@ func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.
 		reason := fmt.Sprintf("HPO Job Stopped")
 		return pluginsCore.PhaseInfoRetryableFailure(taskError.DownstreamSystemError, reason, info), nil
 	case sagemaker.HyperParameterTuningJobStatusCompleted:
+		// Now that it is success we will set the outputs as expected by the task
+		out, err := getOutputs(ctx, pluginContext.TaskReader(), createOutputPath(pluginContext.OutputWriter().GetOutputPrefixPath().String()))
+		if err != nil {
+			logger.Errorf(ctx, "Failed to create outputs, err: %s", err)
+			return pluginsCore.PhaseInfoUndefined, errors.Wrapf(err, "failed to create outputs for the task")
+		}
+		if err := pluginContext.OutputWriter().Put(ctx, ioutils.NewInMemoryOutputReader(out, nil)); err != nil {
+			return pluginsCore.PhaseInfoUndefined, err
+		}
+		logger.Debugf(ctx, "Successfully produced and returned outputs")
 		return pluginsCore.PhaseInfoSuccess(info), nil
 	case "":
 		return pluginsCore.PhaseInfoQueued(occurredAt, pluginsCore.DefaultPhaseVersion, "job submitted"), nil
