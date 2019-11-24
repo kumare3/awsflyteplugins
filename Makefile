@@ -34,6 +34,7 @@ test_unit_cover:
 	@go test ./... -coverprofile /tmp/cover.out -covermode=count; go tool cover -func /tmp/cover.out
 
 
+export AWS_PROFILE=flytedemo
 export IMAGE_NAME=awsdemoplugin
 PROJECT=aws
 DOMAIN=development
