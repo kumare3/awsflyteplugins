@@ -16,6 +16,9 @@ RUN ${VENV}/bin/pip install wheel
 COPY dist/. /plugin/.
 RUN ${VENV}/bin/pip install /plugin/flytesagemakerplugin-0.0.1.tar.gz
 
+COPY ./requirements.txt .
+RUN ${VENV}/bin/pip install -r requirements.txt
+
 # This is a script that enables a virtualenv, copy it to a better location
 RUN cp ${VENV}/bin/flytekit_venv /opt/
 

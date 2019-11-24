@@ -40,13 +40,15 @@ PROJECT=aws
 DOMAIN=development
 VERSION=$(shell git rev-parse HEAD)
 ACCOUNT_ID=`aws sts get-caller-identity | jq -r '.Account'`
-IMAGE="${ACCOUNT_ID}.dkr.ecr.us-east-2.amazonaws.com/${IMAGE_NAME}:${VERSION}"
+IMAGE="${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${IMAGE_NAME}:${VERSION}"
 
 .PHONY: build_docker
 build_demo_docker:
 	docker build -t "${IMAGE}" --build-arg DOCKER_IMAGE="${IMAGE}" .
 
+ECR_LOGIN=$(shell aws ecr get-login --no-include-email)
 .PHONY: deploy_demo_docker
 deploy_demo_docker: build_demo_docker
+	@${ECR_LOGIN}
 	docker push "${IMAGE}"
 	docker run --network host -e FLYTE_PLATFORM_URL='127.0.0.1:1234' ${IMAGE} pyflyte -p aws -d development -c flyte.config register workflows
