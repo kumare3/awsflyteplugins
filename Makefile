@@ -51,4 +51,4 @@ ECR_LOGIN=$(shell aws ecr get-login --no-include-email)
 deploy_demo_docker: build_demo_docker
 	@${ECR_LOGIN}
 	docker push "${IMAGE}"
-	docker run --network host -e FLYTE_PLATFORM_URL='127.0.0.1:1234' ${IMAGE} pyflyte -p aws -d development -c flyte.config register workflows
+	docker run --network host -e FLYTE_PLATFORM_URL='host.docker.internal:8089' ${IMAGE} pyflyte -p aws -d development -c flyte.config register workflows
