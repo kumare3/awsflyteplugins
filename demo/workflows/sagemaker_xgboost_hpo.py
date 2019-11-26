@@ -37,7 +37,7 @@ example_hyperparams = {
 
 xgtrainer_task = SagemakerXgBoostOptimizer(
     region="us-east-2",
-    role_arn="arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+    role_arn="arn:aws:iam::236416911133:role/SageMaker-Executor",
     resource_config={
         "InstanceCount": 1,
         "InstanceType": "ml.m4.xlarge",
