@@ -70,12 +70,12 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
     _train = read_and_merge(y_train, x_train)
     _validate = read_and_merge(y_test, x_test)
 
-    with utils.AutoDeletingTempDir as t:
+    with utils.AutoDeletingTempDir("train") as t:
         f = t.get_named_tempfile("train.csv")
         _train.to_csv(f, header=False)
         train.set(t.name)
 
-    with utils.AutoDeletingTempDir as t:
+    with utils.AutoDeletingTempDir("validate") as t:
         f = t.get_named_tempfile("validate.csv")
         _validate.to_csv(f, header=False)
         validation.set(t.name)
