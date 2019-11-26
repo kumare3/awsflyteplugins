@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import pandas as pd
+from flytekit.common import utils
 from flytekit.sdk.tasks import python_task, outputs, inputs
 from flytekit.sdk.types import Types
 from flytekit.sdk.workflow import workflow_class, Input, Output
@@ -69,13 +70,15 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
     _train = read_and_merge(y_train, x_train)
     _validate = read_and_merge(y_test, x_test)
 
-    train_file = "train.csv"
-    _train.to_csv(train_file, header=False)
-    train.set(train_file)
+    with utils.AutoDeletingTempDir as t:
+        f = t.get_named_tempfile("train.csv")
+        _train.to_csv(f, header=False)
+        train.set(t.name)
 
-    validate_file = "validate.csv"
-    _validate.to_csv(validate_file, header=False)
-    validation.set(validate_file)
+    with utils.AutoDeletingTempDir as t:
+        f = t.get_named_tempfile("validate.csv")
+        _validate.to_csv(f, header=False)
+        validation.set(t.name)
 
 
 @workflow_class
