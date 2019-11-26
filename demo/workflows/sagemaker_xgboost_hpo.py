@@ -115,4 +115,4 @@ class StructuredSagemakerXGBoostHPO(object):
 
 
 # Create a launch plan that can be used in other workflows, with default inputs
-sagemaker_xgboost_hpo_lp = StructuredSagemakerXGBoostHPO.create_launch_plan()
+fit_lp = StructuredSagemakerXGBoostHPO.create_launch_plan()

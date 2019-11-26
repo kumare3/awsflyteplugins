@@ -2,16 +2,12 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import joblib
-import pandas as pd
-from flytekit.sdk.tasks import python_task, outputs, inputs
 from flytekit.sdk.types import Types
 from flytekit.sdk.workflow import workflow_class, Output, Input
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
-from xgboost import XGBClassifier
 
 import workflows.diabetes_xgboost as dxgb
+import workflows.sagemaker_xgboost_hpo as sxghpo
+
 
 @workflow_class
 class DiabetesXGBoostModelOptimizer(object):
@@ -30,7 +26,8 @@ class DiabetesXGBoostModelOptimizer(object):
 
     # the actual algorithm
     split = dxgb.get_traintest_splitdatabase(dataset=dataset, seed=seed, test_split_ratio=test_split_ratio)
-    fit_task = dxgb.fit(x=split.outputs.x_train, y=split.outputs.y_train, hyperparams=dxgb.XGBoostModelHyperparams(max_depth=4).to_dict())
+    fit_task = sxghpo.fit_lp(train_data=split.outputs.x_train, train_target=split.outputs.y_train, validation_data=split.outputs.x_test, validation_target=split.outputs.y_test)
+
     predicted = dxgb.predict(model_ser=fit_task.outputs.model, x=split.outputs.x_test)
     score_task = dxgb.metrics(predictions=predicted.outputs.predictions, y=split.outputs.y_test)
 
