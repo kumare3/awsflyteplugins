@@ -3,10 +3,10 @@ from __future__ import division
 from __future__ import print_function
 
 import pandas as pd
-from flytesagemakerplugin.sdk.tasks.plugin import SagemakerXgBoostOptimizer
 from flytekit.sdk.tasks import python_task, outputs, inputs
-from flytekit.sdk.workflow import workflow_class, Input, Output
 from flytekit.sdk.types import Types
+from flytekit.sdk.workflow import workflow_class, Input, Output
+from flytesagemakerplugin.sdk.tasks.plugin import SagemakerXgBoostOptimizer
 
 example_hyperparams = {
     "base_score": "0.5",
@@ -63,7 +63,7 @@ def read_and_merge(first, second):
 
 
 @inputs(x_train=Types.Schema(), x_test=Types.Schema(), y_train=Types.Schema(), y_test=Types.Schema())
-@outputs(train=Types.CSV, validation=Types.CSV)
+@outputs(train=Types.MultiPartCSV, validation=Types.MultiPartCSV)
 @python_task(cache_version='1.0', cache=True, memory_limit="200Mi")
 def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, validation):
     _train = read_and_merge(y_train, x_train)
