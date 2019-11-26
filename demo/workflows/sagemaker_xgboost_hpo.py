@@ -111,7 +111,7 @@ class StructuredSagemakerXGBoostHPO(object):
     )
 
     # Outputs
-    trained_model = Output(train_node.outputs.model, sdk_type=Types.Blob)
+    model = Output(train_node.outputs.model, sdk_type=Types.Blob)
 
 
 # Create a launch plan that can be used in other workflows, with default inputs
