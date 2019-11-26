@@ -53,12 +53,12 @@ def read_and_merge(first, second):
     Sagemaker likes the target to be in column 1. This method takes the y and the x and just places the dataframes
     next to each other, yielding a common dataframe
     """
-    if len(first) != len(second):
-        raise Exception("trying to merge to data frames which are not equal in length")
     with first as r:
         first_df = r.read()
     with second as r:
         second_df = r.read()
+    if len(first_df) != len(second_df):
+        raise Exception("trying to merge to data frames which are not equal in length")
     return pd.concat([first_df, second_df], axis=1)
 
 
