@@ -33,7 +33,7 @@ require (
 	github.com/lyft/flyteidl v0.14.1
 	github.com/lyft/flyteplugins v0.2.0
 	github.com/lyft/flytepropeller v0.1.13-0.20191112060948-c2d2fde4537c
-	github.com/lyft/flytestdlib v0.2.28 // indirect
+	github.com/lyft/flytestdlib v0.2.28
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/ncw/swift v1.0.49-0.20190728102658-a24ef33bc9b7 // indirect
