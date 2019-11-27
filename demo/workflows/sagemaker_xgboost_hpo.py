@@ -86,6 +86,7 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
 
 @inputs(model_pkl=Types.Blob)
 @inputs(model=Types.Blob)
+@python_task(cache_version="1.0", cache=True, memory_limit="200Mi")
 def convert_to_joblib_format(ctx, model_pkl, model):
     model_pkl.download()
     raw_model = None
