@@ -2,7 +2,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import tarfile
+import joblib
 import pandas as pd
+import pickle
 from flytekit.common import utils
 from flytekit.sdk.tasks import python_task, outputs, inputs
 from flytekit.sdk.types import Types
@@ -81,6 +84,20 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
         validation.set(t.name)
 
 
+@inputs(model_pkl=Types.Blob)
+@inputs(model=Types.Blob)
+def convert_to_joblib_format(ctx, model_pkl, model):
+    model_pkl.download()
+    raw_model = None
+    with tarfile.open(model_pkl.local_path, "r:gz") as tf:
+        raw_model = pickle.load(tf)
+
+    with utils.AutoDeletingTempDir("joblib-model") as m:
+        tf = m.get_named_tempfile("model")
+        joblib.dump(raw_model, tf)
+        model.set(tf)
+
+
 @workflow_class
 class StructuredSagemakerXGBoostHPO(object):
     # Input parameters
@@ -113,8 +130,12 @@ class StructuredSagemakerXGBoostHPO(object):
         validation=sagemaker_transform.outputs.validation,
     )
 
+    convert_format = convert_to_joblib_format(
+        model_pkl=train_node.outputs.model,
+    )
+
     # Outputs
-    model = Output(train_node.outputs.model, sdk_type=Types.Blob)
+    model = Output(convert_format.outputs.model, sdk_type=Types.Blob)
 
 
 # Create a launch plan that can be used in other workflows, with default inputs
