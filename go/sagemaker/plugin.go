@@ -271,7 +271,7 @@ func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.
 		return pluginsCore.PhaseInfoRetryableFailure(taskError.DownstreamSystemError, reason, info), nil
 	case sagemaker.HyperParameterTuningJobStatusCompleted:
 		// Now that it is success we will set the outputs as expected by the task
-		out, err := getOutputs(ctx, pluginContext.TaskReader(), createModelOutputPath(pluginContext.OutputWriter().GetOutputPrefixPath().String(), job.Status.BestTrainingJob.TrainingJobName))
+		out, err := getOutputs(ctx, pluginContext.TaskReader(), createModelOutputPath(pluginContext.OutputWriter().GetOutputPrefixPath().String(), *job.Status.BestTrainingJob.TrainingJobName))
 		if err != nil {
 			logger.Errorf(ctx, "Failed to create outputs, err: %s", err)
 			return pluginsCore.PhaseInfoUndefined, errors.Wrapf(err, "failed to create outputs for the task")
