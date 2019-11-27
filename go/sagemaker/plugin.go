@@ -248,6 +248,10 @@ func createOutputPath(prefix string) string {
 	return fmt.Sprintf("%s/hpo_outputs", prefix)
 }
 
+func createModelOutputPath(prefix, bestExperiment string) string {
+	return fmt.Sprintf("%s/%s/model.tar.gz", createOutputPath(prefix), bestExperiment)
+}
+
 func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
 	job := resource.(*hpojobv1.HyperparameterTuningJob)
 	info, err := getEventInfoForHPOJob(job)
@@ -267,7 +271,7 @@ func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.
 		return pluginsCore.PhaseInfoRetryableFailure(taskError.DownstreamSystemError, reason, info), nil
 	case sagemaker.HyperParameterTuningJobStatusCompleted:
 		// Now that it is success we will set the outputs as expected by the task
-		out, err := getOutputs(ctx, pluginContext.TaskReader(), createOutputPath(pluginContext.OutputWriter().GetOutputPrefixPath().String()))
+		out, err := getOutputs(ctx, pluginContext.TaskReader(), createModelOutputPath(pluginContext.OutputWriter().GetOutputPrefixPath().String(), job.Status.BestTrainingJob.TrainingJobName))
 		if err != nil {
 			logger.Errorf(ctx, "Failed to create outputs, err: %s", err)
 			return pluginsCore.PhaseInfoUndefined, errors.Wrapf(err, "failed to create outputs for the task")
