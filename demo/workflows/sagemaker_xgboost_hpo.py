@@ -3,7 +3,6 @@ from __future__ import division
 from __future__ import print_function
 
 import tarfile
-import StringIO
 import joblib
 import pandas as pd
 import pickle
