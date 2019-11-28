@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import tarfile
+import StringIO
 import joblib
 import pandas as pd
 import pickle
@@ -92,10 +93,11 @@ def convert_to_joblib_format(ctx, model_pkl, model):
     model_pkl.download()
     raw_model = None
     with tarfile.open(model_pkl.local_path, "r:gz") as tf:
-        raw_model = pickle.load(tf)
+        filelike = tf.extractfile("xgboost-model")
+        raw_model = pickle.load(filelike)
 
     with utils.AutoDeletingTempDir("joblib-model") as m:
-        tf = m.get_named_tempfile("model")
+        tf = m.get_named_tempfile("model.joblib.dat")
         joblib.dump(raw_model, tf)
         model.set(tf)
 
