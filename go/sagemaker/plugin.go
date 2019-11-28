@@ -249,7 +249,7 @@ func createOutputPath(prefix string) string {
 }
 
 func createModelOutputPath(prefix, bestExperiment string) string {
-	return fmt.Sprintf("%s/%s/model.tar.gz", createOutputPath(prefix), bestExperiment)
+	return fmt.Sprintf("%s/%s/output/model.tar.gz", createOutputPath(prefix), bestExperiment)
 }
 
 func (m awsSagemakerPlugin) GetTaskPhase(ctx context.Context, pluginContext k8s.PluginContext, resource k8s.Resource) (pluginsCore.PhaseInfo, error) {
