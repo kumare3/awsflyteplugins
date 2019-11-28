@@ -94,10 +94,10 @@ def convert_to_joblib_format(ctx, model_pkl, model):
     model_pkl.download()
     raw_model = None
     with utils.AutoDeletingTempDir("pickled-model") as m:
-        tf = m.get_named_tempfile("model.pkl")
+        f = m.get_named_tempfile("model.pkl")
         with tarfile.open(model_pkl.local_path, "r:gz") as tf:
-            filelike = tf.extract("xgboost-model", tf)
-        model.set(tf)
+            filelike = tf.extract("xgboost-model", f)
+        model.set(f)
 
 
 @workflow_class
