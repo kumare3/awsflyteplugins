@@ -50,7 +50,7 @@ xgtrainer_task = SagemakerXgBoostOptimizer(
     algorithm_specification={"TrainingInputMode": "File", "AlgorithmName": "xgboost"},
     retries=2,
     cacheable=True,
-    cache_version="1.0",
+    cache_version="2.0",
 )
 
 
