@@ -49,6 +49,7 @@ xgtrainer_task = SagemakerXgBoostOptimizer(
     stopping_condition={"MaxRuntimeInSeconds": 43200, "MaxWaitTimeInSeconds": 43200},
     algorithm_specification={"TrainingInputMode": "File", "AlgorithmName": "xgboost"},
     retries=2,
+    cacheable=True,
 )
 
 
