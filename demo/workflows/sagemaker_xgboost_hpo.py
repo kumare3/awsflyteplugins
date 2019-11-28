@@ -11,6 +11,7 @@ from flytekit.sdk.tasks import python_task, outputs, inputs
 from flytekit.sdk.types import Types
 from flytekit.sdk.workflow import workflow_class, Input, Output
 from flytesagemakerplugin.sdk.tasks.plugin import SagemakerXgBoostOptimizer
+from xgboost import XGBClassifier
 
 example_hyperparams = {
     "base_score": "0.5",
@@ -70,19 +71,19 @@ def read_and_merge(first, second):
 
 @inputs(x_train=Types.Schema(), x_test=Types.Schema(), y_train=Types.Schema(), y_test=Types.Schema())
 @outputs(train=Types.MultiPartCSV, validation=Types.MultiPartCSV)
-@python_task(cache_version='2.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='3.0', cache=True, memory_limit="200Mi")
 def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, validation):
     _train = read_and_merge(y_train, x_train)
     _validate = read_and_merge(y_test, x_test)
 
     with utils.AutoDeletingTempDir("train") as t:
         f = t.get_named_tempfile("train.csv")
-        _train.to_csv(f, header=False)
+        _train.to_csv(f, header=False, index=False)
         train.set(t.name)
 
     with utils.AutoDeletingTempDir("validate") as t:
         f = t.get_named_tempfile("validate.csv")
-        _validate.to_csv(f, header=False)
+        _validate.to_csv(f, header=False, index=False)
         validation.set(t.name)
 
 
@@ -96,10 +97,11 @@ def convert_to_joblib_format(ctx, model_pkl, model):
         filelike = tf.extractfile("xgboost-model")
         raw_model = pickle.load(filelike)
 
-    with utils.AutoDeletingTempDir("joblib-model") as m:
-        tf = m.get_named_tempfile("model.joblib.dat")
-        joblib.dump(raw_model, tf)
+    with utils.AutoDeletingTempDir("pickled-model") as m:
+        tf = m.get_named_tempfile("model.pkl")
+        raw_model.save_model(tf)
         model.set(tf)
+
 
 @workflow_class
 class StructuredSagemakerXGBoostHPO(object):
@@ -133,12 +135,12 @@ class StructuredSagemakerXGBoostHPO(object):
         validation=sagemaker_transform.outputs.validation,
     )
 
-    convert_format = convert_to_joblib_format(
-        model_pkl=train_node.outputs.model,
-    )
+    # convert_format = convert_to_joblib_format(
+    #     model_pkl=train_node.outputs.model,
+    # )
 
     # Outputs
-    model = Output(convert_format.outputs.model, sdk_type=Types.Blob)
+    model = Output(train_node.outputs.model, sdk_type=Types.Blob)
 
 
 # Create a launch plan that can be used in other workflows, with default inputs

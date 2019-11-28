@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import joblib
+import pickle
 import pandas as pd
 from flytekit.sdk.tasks import python_task, outputs, inputs
 from flytekit.sdk.types import Types
@@ -10,6 +10,7 @@ from flytekit.sdk.workflow import workflow_class, Output, Input
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
+import xgboost as xgb
 
 # Since we are working with a specific dataset, we will create a strictly typed schema for the dataset.
 # If we wanted a generic data splitter we could use a Generic schema without any column type and name information
@@ -101,7 +102,7 @@ def get_traintest_splitdatabase(ctx, dataset, seed, test_split_ratio, x_train, x
 
 
 @inputs(x=FEATURES_SCHEMA, y=CLASSES_SCHEMA, hyperparams=Types.Generic)  # TODO support arbitrary jsonifiable classes
-@outputs(model=Types.Blob)  # TODO: Support for subtype format=".joblib.dat"))
+@outputs(model=Types.Blob)
 @python_task(cache_version='1.0', cache=True, memory_limit="200Mi")
 def fit(ctx, x, y, hyperparams, model):
     """
@@ -120,8 +121,9 @@ def fit(ctx, x, y, hyperparams, model):
     m.fit(x_df, y_df)
 
     # TODO model Blob should be a file like object
-    fname = "model.joblib.dat"
-    joblib.dump(m, fname)
+    fname = "model.pkl"
+    with open(fname, "wb") as f:
+        pickle.dump(m, f)
     model.set(fname)
 
 
@@ -133,12 +135,19 @@ def predict(ctx, x, model_ser, predictions):
     Given a any trained model, serialized using joblib (this method can be shared!) and features, this method returns
     predictions.
     """
-    model_ser.download()
-    model = joblib.load(model_ser.local_path)
     # make predictions for test data
     with x as r:
         x_df = r.read()
-    y_pred = model.predict(x_df)
+
+    model_ser.download()
+    with open(model_ser.local_path, "rb") as f:
+        model = pickle.load(f)
+    booster = model
+    if not isinstance(model, xgb.core.Booster):
+        booster = model.get_booster()
+
+    dm = xgb.DMatrix(x_df)
+    y_pred = booster.predict(dm)
 
     col = [k for k in CLASSES_SCHEMA.columns.keys()]
     y_pred_df = pd.DataFrame(y_pred, columns=col, dtype="int64")
