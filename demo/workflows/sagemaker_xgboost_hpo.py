@@ -87,16 +87,16 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
         validation.set(t.name)
 
 
-@inputs(model_pkl=Types.Blob)
+@inputs(model_tar=Types.Blob)
 @outputs(model=Types.Blob)
 @python_task(cache_version="1.0", cache=True, memory_limit="200Mi")
-def convert_to_joblib_format(ctx, model_pkl, model):
-    model_pkl.download()
+def untar_xgboost(ctx, model_tar, model):
+    model_tar.download()
     raw_model = None
     with utils.AutoDeletingTempDir("pickled-model") as m:
         f = m.get_named_tempfile("model.pkl")
-        with tarfile.open(model_pkl.local_path, "r:gz") as tf:
-            filelike = tf.extract("xgboost-model", f)
+        with tarfile.open(model_tar.local_path, "r:gz") as tf:
+            tf.extract("xgboost-model", f)
         model.set(f)
 
 
@@ -132,12 +132,12 @@ class StructuredSagemakerXGBoostHPO(object):
         validation=sagemaker_transform.outputs.validation,
     )
 
-    convert_format = convert_to_joblib_format(
-        model_pkl=train_node.outputs.model,
+    untar = untar_xgboost(
+        model_tar=train_node.outputs.model,
     )
 
     # Outputs
-    model = Output(convert_format.outputs.model, sdk_type=Types.Blob)
+    model = Output(untar.outputs.model, sdk_type=Types.Blob)
 
 # Create a launch plan that can be used in other workflows, with default inputs
 fit_lp = StructuredSagemakerXGBoostHPO.create_launch_plan()
