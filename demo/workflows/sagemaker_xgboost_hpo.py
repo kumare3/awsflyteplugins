@@ -93,13 +93,10 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
 def convert_to_joblib_format(ctx, model_pkl, model):
     model_pkl.download()
     raw_model = None
-    with tarfile.open(model_pkl.local_path, "r:gz") as tf:
-        filelike = tf.extractfile("xgboost-model")
-        raw_model = pickle.load(filelike)
-
     with utils.AutoDeletingTempDir("pickled-model") as m:
         tf = m.get_named_tempfile("model.pkl")
-        raw_model.save_model(tf)
+        with tarfile.open(model_pkl.local_path, "r:gz") as tf:
+            filelike = tf.extract("xgboost-model", tf)
         model.set(tf)
 
 
@@ -135,13 +132,12 @@ class StructuredSagemakerXGBoostHPO(object):
         validation=sagemaker_transform.outputs.validation,
     )
 
-    # convert_format = convert_to_joblib_format(
-    #     model_pkl=train_node.outputs.model,
-    # )
+    convert_format = convert_to_joblib_format(
+        model_pkl=train_node.outputs.model,
+    )
 
     # Outputs
-    model = Output(train_node.outputs.model, sdk_type=Types.Blob)
-
+    model = Output(convert_format.outputs.model, sdk_type=Types.Blob)
 
 # Create a launch plan that can be used in other workflows, with default inputs
 fit_lp = StructuredSagemakerXGBoostHPO.create_launch_plan()
