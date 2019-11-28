@@ -232,7 +232,7 @@ func getOutputs(ctx context.Context, tr pluginsCore.TaskReader, outputPath strin
 					Value: &core.Scalar_Blob{
 						Blob: &core.Blob{
 							Metadata: &core.BlobMetadata{
-								Type: &core.BlobType{Format: ".xgb", Dimensionality: core.BlobType_SINGLE},
+								Type: &core.BlobType{Dimensionality: core.BlobType_SINGLE},
 							},
 							Uri: outputPath,
 						},
