@@ -89,15 +89,15 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
 
 @inputs(model_tar=Types.Blob)
 @outputs(model=Types.Blob)
-@python_task(cache_version="1.0", cache=True, memory_limit="200Mi")
+@python_task(cache_version="2.0", cache=True, memory_limit="200Mi")
 def untar_xgboost(ctx, model_tar, model):
     model_tar.download()
     raw_model = None
     with utils.AutoDeletingTempDir("pickled-model") as m:
-        f = m.get_named_tempfile("model.pkl")
         with tarfile.open(model_tar.local_path, "r:gz") as tf:
-            tf.extract("xgboost-model", f)
-        model.set(f)
+            tf.extract("xgboost-model", m)
+        f = m.get_named_tempfile("xgboost-model")
+    model.set(f)
 
 
 @workflow_class
