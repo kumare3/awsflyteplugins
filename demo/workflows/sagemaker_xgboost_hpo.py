@@ -3,7 +3,6 @@ from __future__ import division
 from __future__ import print_function
 
 import tarfile
-import joblib
 import pandas as pd
 import pickle
 from flytekit.common import utils
@@ -92,12 +91,10 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
 @python_task(cache_version="2.0", cache=True, memory_limit="200Mi")
 def untar_xgboost(ctx, model_tar, model):
     model_tar.download()
-    raw_model = None
-    with utils.AutoDeletingTempDir("pickled-model") as m:
-        with tarfile.open(model_tar.local_path, "r:gz") as tf:
-            tf.extract("xgboost-model", m.name)
-        f = m.get_named_tempfile("xgboost-model")
-    model.set(f)
+    fname = "xgboost-model"
+    with tarfile.open(model_tar.local_path, "r:gz") as tf:
+        tf.extract(fname)
+    model.set(fname)
 
 
 @workflow_class

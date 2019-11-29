@@ -129,7 +129,7 @@ def fit(ctx, x, y, hyperparams, model):
 
 @inputs(x=FEATURES_SCHEMA, model_ser=Types.Blob)  # TODO: format=".joblib.dat"))
 @outputs(predictions=CLASSES_SCHEMA)
-@python_task(cache_version='2.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='3.0', cache=True, memory_limit="200Mi")
 def predict(ctx, x, model_ser, predictions):
     """
     Given a any trained model, serialized using joblib (this method can be shared!) and features, this method returns
@@ -146,7 +146,7 @@ def predict(ctx, x, model_ser, predictions):
     if not isinstance(model, xgb.core.Booster):
         booster = model.get_booster()
 
-    dm = xgb.DMatrix(x_df)
+    dm = xgb.DMatrix(x_df, feature_names=booster.feature_names)
     y_pred = booster.predict(dm)
 
     col = [k for k in CLASSES_SCHEMA.columns.keys()]
