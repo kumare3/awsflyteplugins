@@ -95,7 +95,7 @@ def untar_xgboost(ctx, model_tar, model):
     raw_model = None
     with utils.AutoDeletingTempDir("pickled-model") as m:
         with tarfile.open(model_tar.local_path, "r:gz") as tf:
-            tf.extract("xgboost-model", m)
+            tf.extract("xgboost-model", m.name)
         f = m.get_named_tempfile("xgboost-model")
     model.set(f)
 
