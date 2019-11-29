@@ -88,7 +88,7 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
 
 @inputs(model_tar=Types.Blob)
 @outputs(model=Types.Blob)
-@python_task(cache_version="2.0", cache=True, memory_limit="200Mi")
+@python_task(cache_version="3.0", cache=True, memory_limit="200Mi")
 def untar_xgboost(ctx, model_tar, model):
     model_tar.download()
     fname = "xgboost-model"
