@@ -185,12 +185,19 @@ func (m awsSagemakerPlugin) BuildResource(ctx context.Context, taskCtx pluginsCo
 func getEventInfoForHPOJob(job *hpojobv1.HyperparameterTuningJob) (*pluginsCore.TaskInfo, error) {
 	cwLogURL := fmt.Sprintf("https://%s.console.aws.amazon.com/cloudwatch/home?region=%s#logStream:group=/aws/sagemaker/TrainingJobs;prefix=%s;streamFilter=typeLogStreamPrefix",
 		*job.Spec.Region, *job.Spec.Region, *job.Spec.HyperParameterTuningJobName)
+	smLogURL := fmt.Sprintf("https://%s.console.aws.amazon.com/sagemaker/home?region=%s#/hyper-tuning-jobs/%s",
+		*job.Spec.Region, *job.Spec.Region, *job.Spec.HyperParameterTuningJobName)
 
 	taskLogs := []*core.TaskLog{
 		{
 			Uri:           cwLogURL,
 			Name:          "CloudWatch Logs",
 			MessageFormat: core.TaskLog_JSON,
+		},
+		{
+			Uri:           smLogURL,
+			Name:          "SageMaker Hyperparameter Tuning Job",
+			MessageFormat: core.TaskLog_UNKNOWN,
 		},
 	}
 
