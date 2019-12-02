@@ -107,4 +107,4 @@ vendor/
 
 bin/
 flytepropeller/cmd/__debug_bin
-sagemaker-k8s-operator/*
+amazon-sagemaker-operator-for-k8s/*
