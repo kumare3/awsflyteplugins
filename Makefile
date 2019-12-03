@@ -36,9 +36,10 @@ test_unit_cover:
 
 export AWS_PROFILE=flytedemo
 export IMAGE_NAME=awsdemoplugin
-PROJECT=aws
+PROJECT=aws-demo
 DOMAIN=development
-VERSION=$(shell git rev-parse HEAD)
+#VERSION=$(shell git rev-parse HEAD)
+VERSION=v1
 ACCOUNT_ID=`aws sts get-caller-identity | jq -r '.Account'`
 IMAGE="${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${IMAGE_NAME}:${VERSION}"
 
