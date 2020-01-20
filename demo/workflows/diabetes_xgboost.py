@@ -158,7 +158,7 @@ def predict(ctx, x, model_ser, predictions):
 
 @inputs(predictions=CLASSES_SCHEMA, y=CLASSES_SCHEMA)
 @outputs(accuracy=Types.Float)
-@python_task(cache_version=,_CACHE_VERSION cache=True, memory_limit="200Mi")
+@python_task(cache_version=_CACHE_VERSION, cache=True, memory_limit="200Mi")
 def metrics(ctx, predictions, y, accuracy):
     """
     Compares the predictions with the actuals and returns the accuracy score.

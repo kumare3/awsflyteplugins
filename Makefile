@@ -39,7 +39,7 @@ export IMAGE_NAME=awsdemoplugin
 PROJECT=aws-demo
 DOMAIN=development
 #VERSION=$(shell git rev-parse HEAD)
-VERSION=v1
+VERSION=v1.0
 ACCOUNT_ID=`aws sts get-caller-identity | jq -r '.Account'`
 IMAGE="${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${IMAGE_NAME}:${VERSION}"
 
