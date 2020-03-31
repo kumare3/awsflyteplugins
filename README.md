@@ -12,20 +12,9 @@ This repo serves as an example of how a `backend` Flyte plugin can be developed.
  - an SDK only plugin
  - a backend plugin
 
-Since Flyte executes containers by default, an SDK plugin can essentially do anything that can be written in Python. It could call a remote service, launch a job and wait for it to complete or perform
-an inline single machine computation. SDK plugins are easy to write and by far the most useful and easily introduced. But, there are a few disadvantages of having SDK only plugins. From the point of
-view of Flyte backend the execution is purely a container execution. Any side-effects are not easily observed and actionable. (more on this later)
+Since Flyte executes containers by default, an SDK plugin can essentially do anything that can be written in Python. It could call a remote service, launch a job and wait for it to complete or perform an inline single machine computation. SDK plugins are easy to write and by far the most useful and easily introduced. But, there are a few disadvantages of having SDK only plugins. From the point of view of Flyte backend the execution is purely a container execution. Any side-effects are not easily observed and actionable. (more on this later)
 
 A backend plugin has extended capabilties, including improved visibility, custom information and progress indicators. It also provides better management primitives as compared to writing a SDK only (or within container plugin). 
-
-### Example when a backend plugin is preferable
- - A Kubernetes CRD is launched
- - A remote service called that has some advanced visibility options, like a separate log link a visualization link etc. Also if the remote service results in some expensive computation.
- - Abstraction of the remote execution is desirable
-
-`Expensive computation` Expensive here refers to expensive in dollar terms. The reason where it matters is when an execution is aborted, the abort should propagate to the downstream system. If the
-remote service or execution was invoked from the container only plugin (as a side-effect) FlyteBackend today does not have the capability of cleaning up or propagating the abort to the downstream
-system.
 
 
 ## What are the parts of a backend plugin?
@@ -43,7 +32,7 @@ If using protobuf, the protobuf is declared in the common.protos file and some h
 
 
 ### SDK plugin flytekit.
-The default flyte sdk is flytekit (python) and in this example we implement a python flyte spark task.
+The default flyte sdk is flytekit (python). In this example we implement a python flyte SagemakerXgBoostOptimizer task.
 
 
 ### Bundling dependencies
