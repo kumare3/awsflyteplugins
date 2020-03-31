@@ -1,9 +1,9 @@
-# flytek8ssparkplugin
-An example of Flyte Backend plugin for Spark on Kubernetes. It uses the Spark Operator https://github.com/GoogleCloudPlatform/spark-on-k8s-operator to start Spark jobs in kubernetes.
+# awsflyteplugins
+An example of Flyte Backend plugin for AWS SageMaker on Kubernetes. It uses the Amazon SageMaker operator for Kubernetes https://github.com/aws/amazon-sagemaker-operator-for-k8s to start SageMaker jobs in kubernetes.
 
-- common/proto/spark.proto specifies the custom information that is needed to execute besides the TaskTemplate
-- go/plugin/spark.go contains the backend plugin code that uses "Flyteplugins - plugin machinery"
-- flytek8ssparkplugin/sdk/..py contain the flytekit extensions that users can use to easily write a Flyte task that is executed on Spark
+- common/proto/sagemaker.proto specifies the custom information that is needed to execute besides the TaskTemplate
+- go/sagemaker/plugin.go contains the backend plugin code that uses "Flyteplugins - plugin machinery"
+- flytesagemakerplugin/sdk/..py contain the flytekit extensions that users can use to easily write a Flyte task that is executed on 
 
 This example provides a canonical example to write backend plugins. Refer to the docs for more details.
 
@@ -17,11 +17,6 @@ an inline single machine computation. SDK plugins are easy to write and by far t
 view of Flyte backend the execution is purely a container execution. Any side-effects are not easily observed and actionable. (more on this later)
 
 A backend plugin has extended capabilties, including improved visibility, custom information and progress indicators. It also provides better management primitives as compared to writing a SDK only (or within container plugin). 
-
-### Example when having a simple container plugin is enough
- - A plugin that can execute a jupyter notebook and adapt it to the Flyte task and type system. This can be expressed as a python task.
- - Any additional logic that enhances some existing core execution plugin. For example, in some environment for every task (python code) the user launches, the platform desires a sidecar container to
-   be executed (maybe for additional security, networking etc). This plugin simply provides a new task like `@improved_python_task` which decorates the already existing sidecar plugin: https://lyft.github.io/flyte/user/tasktypes/sidecar.html
 
 ### Example when a backend plugin is preferable
  - A Kubernetes CRD is launched
