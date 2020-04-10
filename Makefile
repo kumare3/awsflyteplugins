@@ -1,5 +1,13 @@
 include flytepropeller/Makefile
 
+.PHONY: update_submodule
+update_submodule:
+	@sh update_submodule.sh
+
+.PHONY: compile_propeller
+compile_propeller:
+	@sh compile_propeller.sh
+
 .PHONY: build_python
 build_python:
 	@python setup.py sdist
