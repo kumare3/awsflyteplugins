@@ -48,5 +48,5 @@ build_docker_manual:
 	docker build -t "${IMAGE}" --build-arg DOCKER_IMAGE="${IMAGE}" .
 
 .PHONY: deploy_docker_manual
-deploy_docker_manual:
+deploy_docker_manual: build_docker_manual
 	docker push "${IMAGE}"
