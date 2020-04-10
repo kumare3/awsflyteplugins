@@ -35,20 +35,18 @@ test_unit_cover:
 
 
 export AWS_PROFILE=flytedemo
-export IMAGE_NAME=awsdemoplugin
+export IMAGE_NAME=awsflyte
 PROJECT=aws
 DOMAIN=development
 VERSION=$(shell git rev-parse HEAD)
 ACCOUNT_ID=`aws sts get-caller-identity | jq -r '.Account'`
-IMAGE="${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${IMAGE_NAME}:${VERSION}"
+#IMAGE="${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${IMAGE_NAME}:${VERSION}"
+IMAGE="bnsblue/${IMAGE_NAME}:${VERSION}"
 
-.PHONY: build_docker
-build_demo_docker:
+.PHONY: build_docker_manual
+build_docker_manual:
 	docker build -t "${IMAGE}" --build-arg DOCKER_IMAGE="${IMAGE}" .
 
-ECR_LOGIN=$(shell aws ecr get-login --no-include-email)
-.PHONY: deploy_demo_docker
-deploy_demo_docker: build_demo_docker
-	@${ECR_LOGIN}
+.PHONY: deploy_docker_manual
+deploy_docker_manual:
 	docker push "${IMAGE}"
-	docker run --network host -e FLYTE_PLATFORM_URL='host.docker.internal:8089' ${IMAGE} pyflyte -p aws -d development -c flyte.config register workflows
