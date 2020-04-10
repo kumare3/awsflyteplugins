@@ -18,13 +18,13 @@ import (
 	"github.com/lyft/flyteplugins/go/tasks/pluginmachinery/utils"
 
 	"github.com/aws/aws-sdk-go/service/sagemaker"
-	commonv1 "go.amzn.com/sagemaker/sagemaker-k8s-operator/api/v1/common"
-	hpojobv1 "go.amzn.com/sagemaker/sagemaker-k8s-operator/api/v1/hyperparametertuningjob"
+	commonv1 "github.com/aws/amazon-sagemaker-operator-for-k8s/api/v1/common"
+	hpojobv1 "github.com/aws/amazon-sagemaker-operator-for-k8s/api/v1/hyperparametertuningjob"
 
 	taskError "github.com/lyft/flyteplugins/go/tasks/errors"
 
 	"github.com/kumare3/awsflyteplugins/gen/pb-go/proto"
-	. "go.amzn.com/sagemaker/sagemaker-k8s-operator/controllers/controllertest"
+	. "github.com/aws/amazon-sagemaker-operator-for-k8s/controllers/controllertest"
 )
 
 const (

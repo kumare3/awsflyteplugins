@@ -1,3 +1,0 @@
-[submodule "amazon-sagemaker-operator-for-k8s"]
-	path = amazon-sagemaker-operator-for-k8s
-	url = https://github.com/aws/amazon-sagemaker-operator-for-k8s
