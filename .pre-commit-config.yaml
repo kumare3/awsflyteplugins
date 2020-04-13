@@ -3,4 +3,5 @@
     hooks:
     -   id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
-        exclude: [.*/tests/.*, .*/go.mod]
+        exclude: .*/tests/.*
+        exclude: .*/go.mod
