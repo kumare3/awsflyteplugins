@@ -20,7 +20,7 @@ setup(
         "pip>10.0.0,<19.2.0"
     ],
     install_requires=[
-        "protobuf>=3.6.1,<4",
+        "protobuf>=3.7.0, <4, !=3.11.*"
         "flytekit>=0.6.0",
     ],
     tests_require=['pytest'],
