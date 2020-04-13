@@ -21,7 +21,7 @@ setup(
     ],
     install_requires=[
         "protobuf>=3.6.1,<4",
-        "flytekit>=0.3.0",
+        "flytekit>=0.6.0",
     ],
     tests_require=['pytest'],
     scripts=[
