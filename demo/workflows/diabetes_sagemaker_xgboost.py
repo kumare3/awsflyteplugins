@@ -17,7 +17,11 @@ class DiabetesXGBoostModelOptimizer(object):
     """
 
     # Inputs dataset, fraction of the dataset to be split out for validations and seed to use to perform the split
-    dataset = Input(Types.CSV, default=Types.CSV.create_at_known_location(
+    # dataset = Input(Types.CSV, default=Types.CSV.create_at_known_location(
+    #     "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
+    #                 help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
+
+    dataset = Input(Types.CSV, default=Types.CSV.fetch(
         "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
                     help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
