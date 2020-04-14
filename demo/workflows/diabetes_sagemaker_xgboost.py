@@ -21,7 +21,7 @@ class DiabetesXGBoostModelOptimizer(object):
     #     "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
     #                 help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
-    dataset = Input(Types.CSV, default=Types.CSV.fetch(
+    dataset = Input(Types.CSV, default=Types.CSV(
         "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
                     help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
