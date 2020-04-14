@@ -185,15 +185,14 @@ class DiabetesXGBoostModelTrainer(object):
     """
 
     # Inputs dataset, fraction of the dataset to be split out for validations and seed to use to perform the split
-    dataset = Input(Types.CSV, default=Types.CSV.create_at_known_location(
-        "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
-                    help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
+    dataset_remote_location = Input(Types.String, default="https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv",
+                    help="The remote location to a CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
     test_split_ratio = Input(Types.Float, default=0.33, help="Ratio of how much should be test to Train")
     seed = Input(Types.Integer, default=7, help="Seed to use for splitting.")
 
     # the actual algorithm
-    split = get_traintest_splitdatabase(dataset=dataset, seed=seed, test_split_ratio=test_split_ratio)
+    split = get_traintest_splitdatabase(dataset=dataset_remote_location, seed=seed, test_split_ratio=test_split_ratio)
     fit_task = fit(x=split.outputs.x_train, y=split.outputs.y_train, hyperparams=XGBoostModelHyperparams(
         max_depth=4,
     ).to_dict())
