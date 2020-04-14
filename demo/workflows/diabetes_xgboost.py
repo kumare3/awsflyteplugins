@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 import xgboost as xgb
+from flytekit.common import utils as flytekit_utils
 
 # Since we are working with a specific dataset, we will create a strictly typed schema for the dataset.
 # If we wanted a generic data splitter we could use a Generic schema without any column type and name information
@@ -81,24 +82,25 @@ def get_traintest_splitdatabase(ctx, dataset, seed, test_split_ratio, x_train, x
 
     The data is returned as a schema, which gets converted to a parquet file in the back.
     """
-    dataset.download()
-    column_names = [k for k in DATASET_SCHEMA.columns.keys()]
-    df = pd.read_csv(dataset.local_path, names=column_names)
+    with flytekit_utils.AutoDeletingTempDir("train_data"):
+        dataset.download()
+        column_names = [k for k in DATASET_SCHEMA.columns.keys()]
+        df = pd.read_csv(dataset.local_path, names=column_names)
 
-    # Select all features
-    x = df[column_names[:8]]
-    # Select only the classes
-    y = df[[column_names[-1]]]
+        # Select all features
+        x = df[column_names[:8]]
+        # Select only the classes
+        y = df[[column_names[-1]]]
 
-    # split data into train and test sets
-    _x_train, _x_test, _y_train, _y_test = train_test_split(
-        x, y, test_size=test_split_ratio, random_state=seed)
+        # split data into train and test sets
+        _x_train, _x_test, _y_train, _y_test = train_test_split(
+            x, y, test_size=test_split_ratio, random_state=seed)
 
-    # TODO also add support for Spark dataframe, but make the pyspark dependency optional
-    x_train.set(_x_train)
-    x_test.set(_x_test)
-    y_train.set(_y_train)
-    y_test.set(_y_test)
+        # TODO also add support for Spark dataframe, but make the pyspark dependency optional
+        x_train.set(_x_train)
+        x_test.set(_x_test)
+        y_train.set(_y_train)
+        y_test.set(_y_test)
 
 
 @inputs(x=FEATURES_SCHEMA, y=CLASSES_SCHEMA, hyperparams=Types.Generic)  # TODO support arbitrary jsonifiable classes
