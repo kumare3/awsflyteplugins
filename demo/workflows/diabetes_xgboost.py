@@ -71,7 +71,7 @@ class XGBoostModelHyperparams(object):
 
 # load data
 # Example file: https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv
-@inputs(dataset=Types.CSV, seed=Types.Integer, test_split_ratio=Types.Float)
+@inputs(dataset=Types.String, seed=Types.Integer, test_split_ratio=Types.Float)
 @outputs(x_train=FEATURES_SCHEMA, x_test=FEATURES_SCHEMA, y_train=CLASSES_SCHEMA, y_test=CLASSES_SCHEMA)
 @python_task(cache_version='1.0', cache=True, memory_limit="500Mi")
 def get_traintest_splitdatabase(ctx, dataset, seed, test_split_ratio, x_train, x_test, y_train, y_test):
@@ -82,10 +82,10 @@ def get_traintest_splitdatabase(ctx, dataset, seed, test_split_ratio, x_train, x
 
     The data is returned as a schema, which gets converted to a parquet file in the back.
     """
-    with flytekit_utils.AutoDeletingTempDir("train_data"):
-        dataset.download()
+    with flytekit_utils.AutoDeletingTempDir("dataset_dir"):
+        dataset_blob = Types.Blob.fetch(remote_path=dataset)
         column_names = [k for k in DATASET_SCHEMA.columns.keys()]
-        df = pd.read_csv(dataset.local_path, names=column_names)
+        df = pd.read_csv(dataset_blob.local_path, names=column_names)
 
         # Select all features
         x = df[column_names[:8]]

@@ -21,15 +21,14 @@ class DiabetesXGBoostModelOptimizer(object):
     #     "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
     #                 help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
-    dataset = Input(Types.CSV, default=Types.CSV.from_string(
-        "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
-                    help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
+    dataset_remote_location = Input(Types.String, default="https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv",
+                    help="Remote location to a CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
     test_split_ratio = Input(Types.Float, default=0.33, help="Ratio of how much should be test to Train")
     seed = Input(Types.Integer, default=7, help="Seed to use for splitting.")
 
     # the actual algorithm
-    split = dxgb.get_traintest_splitdatabase(dataset=dataset, seed=seed, test_split_ratio=test_split_ratio)
+    split = dxgb.get_traintest_splitdatabase(dataset=dataset_remote_location, seed=seed, test_split_ratio=test_split_ratio)
     fit_task = sxghpo.fit_lp(train_data=split.outputs.x_train, train_target=split.outputs.y_train, validation_data=split.outputs.x_test, validation_target=split.outputs.y_test)
 
     predicted = dxgb.predict(model_ser=fit_task.outputs.model, x=split.outputs.x_test)
