@@ -2,7 +2,7 @@ include flytepropeller/Makefile
 
 .PHONY: build_python
 build_python:
-	@python setup.py sdist
+	@python setup.py sdist bdist_wheel
 
 .PHONY: package
 package:
