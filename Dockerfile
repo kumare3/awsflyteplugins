@@ -20,7 +20,7 @@ RUN python3.6 -m venv ${VENV}
 RUN ${VENV}/bin/pip install wheel
 
 COPY dist/. /plugin/.
-RUN ${VENV}/bin/pip install /plugin/flytesagemakerplugin-0.0.1.tar.gz
+RUN ${VENV}/bin/pip install /plugin/flytesagemakerplugin-0.0.2.tar.gz
 
 COPY demo/requirements.txt .
 RUN ${VENV}/bin/pip install -r requirements.txt

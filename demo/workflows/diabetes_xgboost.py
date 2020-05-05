@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 import xgboost as xgb
+from flytekit.common import utils as flytekit_utils
 
 # Since we are working with a specific dataset, we will create a strictly typed schema for the dataset.
 # If we wanted a generic data splitter we could use a Generic schema without any column type and name information
@@ -70,9 +71,9 @@ class XGBoostModelHyperparams(object):
 
 # load data
 # Example file: https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv
-@inputs(dataset=Types.CSV, seed=Types.Integer, test_split_ratio=Types.Float)
+@inputs(dataset=Types.String, seed=Types.Integer, test_split_ratio=Types.Float)
 @outputs(x_train=FEATURES_SCHEMA, x_test=FEATURES_SCHEMA, y_train=CLASSES_SCHEMA, y_test=CLASSES_SCHEMA)
-@python_task(cache_version='1.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='1.0', cache=True, memory_limit="500Mi")
 def get_traintest_splitdatabase(ctx, dataset, seed, test_split_ratio, x_train, x_test, y_train, y_test):
     """
     Retrieves the training dataset from the given blob location and then splits it using the split ratio and returns the result
@@ -81,29 +82,30 @@ def get_traintest_splitdatabase(ctx, dataset, seed, test_split_ratio, x_train, x
 
     The data is returned as a schema, which gets converted to a parquet file in the back.
     """
-    dataset.download()
-    column_names = [k for k in DATASET_SCHEMA.columns.keys()]
-    df = pd.read_csv(dataset.local_path, names=column_names)
+    with flytekit_utils.AutoDeletingTempDir("dataset_dir"):
+        dataset_blob = Types.Blob.fetch(remote_path=dataset)
+        column_names = [k for k in DATASET_SCHEMA.columns.keys()]
+        df = pd.read_csv(dataset_blob.local_path, names=column_names)
 
-    # Select all features
-    x = df[column_names[:8]]
-    # Select only the classes
-    y = df[[column_names[-1]]]
+        # Select all features
+        x = df[column_names[:8]]
+        # Select only the classes
+        y = df[[column_names[-1]]]
 
-    # split data into train and test sets
-    _x_train, _x_test, _y_train, _y_test = train_test_split(
-        x, y, test_size=test_split_ratio, random_state=seed)
+        # split data into train and test sets
+        _x_train, _x_test, _y_train, _y_test = train_test_split(
+            x, y, test_size=test_split_ratio, random_state=seed)
 
-    # TODO also add support for Spark dataframe, but make the pyspark dependency optional
-    x_train.set(_x_train)
-    x_test.set(_x_test)
-    y_train.set(_y_train)
-    y_test.set(_y_test)
+        # TODO also add support for Spark dataframe, but make the pyspark dependency optional
+        x_train.set(_x_train)
+        x_test.set(_x_test)
+        y_train.set(_y_train)
+        y_test.set(_y_test)
 
 
 @inputs(x=FEATURES_SCHEMA, y=CLASSES_SCHEMA, hyperparams=Types.Generic)  # TODO support arbitrary jsonifiable classes
 @outputs(model=Types.Blob)
-@python_task(cache_version='2.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='2.0', cache=True, memory_limit="500Mi")
 def fit(ctx, x, y, hyperparams, model):
     """
     This function takes the given input features and their corresponding classes to train a XGBClassifier.
@@ -129,7 +131,7 @@ def fit(ctx, x, y, hyperparams, model):
 
 @inputs(x=FEATURES_SCHEMA, model_ser=Types.Blob)  # TODO: format=".joblib.dat"))
 @outputs(predictions=CLASSES_SCHEMA)
-@python_task(cache_version='3.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='3.0', cache=True, memory_limit="500Mi")
 def predict(ctx, x, model_ser, predictions):
     """
     Given a any trained model, serialized using joblib (this method can be shared!) and features, this method returns
@@ -157,7 +159,7 @@ def predict(ctx, x, model_ser, predictions):
 
 @inputs(predictions=CLASSES_SCHEMA, y=CLASSES_SCHEMA)
 @outputs(accuracy=Types.Float)
-@python_task(cache_version='1.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='1.0', cache=True, memory_limit="500Mi")
 def metrics(ctx, predictions, y, accuracy):
     """
     Compares the predictions with the actuals and returns the accuracy score.
@@ -183,15 +185,14 @@ class DiabetesXGBoostModelTrainer(object):
     """
 
     # Inputs dataset, fraction of the dataset to be split out for validations and seed to use to perform the split
-    dataset = Input(Types.CSV, default=Types.CSV.create_at_known_location(
-        "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"),
-                    help="A CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
+    dataset_remote_location = Input(Types.String, default="https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv",
+                    help="The remote location to a CSV File that matches the format https://github.com/jbrownlee/Datasets/blob/master/pima-indians-diabetes.names")
 
     test_split_ratio = Input(Types.Float, default=0.33, help="Ratio of how much should be test to Train")
     seed = Input(Types.Integer, default=7, help="Seed to use for splitting.")
 
     # the actual algorithm
-    split = get_traintest_splitdatabase(dataset=dataset, seed=seed, test_split_ratio=test_split_ratio)
+    split = get_traintest_splitdatabase(dataset=dataset_remote_location, seed=seed, test_split_ratio=test_split_ratio)
     fit_task = fit(x=split.outputs.x_train, y=split.outputs.y_train, hyperparams=XGBoostModelHyperparams(
         max_depth=4,
     ).to_dict())

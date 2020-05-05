@@ -11,6 +11,7 @@ from flytekit.models import (
 )
 from google.protobuf.json_format import MessageToDict, ParseDict
 import gen.pb_python.sagemaker_pb2 as sagemaker_pb2
+from flytekit.common.exceptions import scopes as _exception_scopes
 
 _TASK_TYPE = "aws_sagemaker_hpo"
 
@@ -25,6 +26,7 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
         stopping_condition=None,
         vpc_config=None,
         enable_spot_training=False,
+        interruptible=False,
         retries=0,
         cacheable=False,
         cache_version="",
@@ -82,6 +84,7 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
                 runtime=_task_models.RuntimeMetadata(0, "0.1.0b0", "sagemaker"),
                 timeout=timeout,
                 retries=_literal_models.RetryStrategy(retries=retries),
+                interruptible=interruptible,
                 discovery_version=cache_version,
                 deprecated_error_message="",
             ),
@@ -113,3 +116,14 @@ class SagemakerXgBoostOptimizer(_sdk_task.SdkTask):
                 )
             }
         )
+
+    @_exception_scopes.system_entry_point
+    def add_inputs(self, inputs):
+        """
+        Adds the inputs to this task.  This can be called multiple times, but it will fail if an input with a given
+        name is added more than once, a name collides with an output, or if the name doesn't exist as an arg name in
+        the wrapped function.
+        :param dict[Text, flytekit.models.interface.Variable] inputs: names and variables
+        """
+        self._validate_inputs(inputs)
+        self.interface.inputs.update(inputs)

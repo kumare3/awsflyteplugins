@@ -39,7 +39,7 @@ example_hyperparams = {
 }
 
 xgtrainer_task = SagemakerXgBoostOptimizer(
-    region="us-east-2",
+    region="us-east-1",
     role_arn="arn:aws:iam::236416911133:role/SageMaker-Executor",
     resource_config={
         "InstanceCount": 1,
@@ -47,7 +47,8 @@ xgtrainer_task = SagemakerXgBoostOptimizer(
         "VolumeSizeInGB": 25,
     },
     stopping_condition={"MaxRuntimeInSeconds": 43200, "MaxWaitTimeInSeconds": 43200},
-    algorithm_specification={"TrainingInputMode": "File", "AlgorithmName": "xgboost"},
+    algorithm_specification={"TrainingImage": "811284229777.dkr.ecr.us-east-1.amazonaws.com/xgboost:latest",
+                             "TrainingInputMode": "File", "AlgorithmName": "xgboost"},
     retries=2,
     cacheable=True,
     cache_version="2.0",
@@ -70,7 +71,7 @@ def read_and_merge(first, second):
 
 @inputs(x_train=Types.Schema(), x_test=Types.Schema(), y_train=Types.Schema(), y_test=Types.Schema())
 @outputs(train=Types.MultiPartCSV, validation=Types.MultiPartCSV)
-@python_task(cache_version='3.0', cache=True, memory_limit="200Mi")
+@python_task(cache_version='3.0', cache=True, memory_limit="500Mi")
 def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, validation):
     _train = read_and_merge(y_train, x_train)
     _validate = read_and_merge(y_test, x_test)
@@ -88,7 +89,7 @@ def convert_to_sagemaker_csv(ctx, x_train, y_train, x_test, y_test, train, valid
 
 @inputs(model_tar=Types.Blob)
 @outputs(model=Types.Blob)
-@python_task(cache_version="3.0", cache=True, memory_limit="200Mi")
+@python_task(cache_version="3.0", cache=True, memory_limit="500Mi")
 def untar_xgboost(ctx, model_tar, model):
     model_tar.download()
     fname = "xgboost-model"
